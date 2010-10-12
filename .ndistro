@@ -5,6 +5,7 @@ node 0.2.1
 module senchalabs connect 0.2.5
 module visionmedia express 1.0.0beta2
 module caolan async v0.1.5
+module documentcloud underscore 1.1.1
 
 # Untagged
 
