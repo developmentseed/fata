@@ -1,5 +1,12 @@
 Fata sentiment site.
 
+
+Requirements
+------------
+- ndistro (http://github.com/visionmedia/ndistro)
+- mongodb (http://www.mongodb.org)
+
+
 Install & Run
 -------------
 
