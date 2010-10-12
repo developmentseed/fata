@@ -30,3 +30,4 @@ rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/sup
 # Import data
 
 mongoimport --drop --type csv --db fata --collection responses --ignoreBlanks --headerline resources/fata_variables.csv
+mongoimport --drop --type csv --db fata --collection agencies --ignoreBlanks --headerline resources/fata_agencies.csv
