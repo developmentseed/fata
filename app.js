@@ -20,16 +20,20 @@ app.listen(settings.port);
 console.log('Express server started on port %s', app.address().port);
 app.set('view engine', 'hbs');
 
-app.get('/home', function(req, res){
+app.get('/', function(req, res) {
   res.render('index', {
-      locals: { title: 'My Site' }
+      locals: { pageTitle: 'Home | ' + settings.siteTitle }
   });
 });
 
-app.get('/agency/:id?', function(req, res){
-  res.send('agency ' + req.params.id);
+app.get('/agency/:id?', function(req, res) {
+  res.render('agency', {
+      locals: { pageTitle: 'Agency | ' + settings.siteTitle }
+  });
 });
 
-app.get('/question/:id?', function(req, res){
-  res.send('question');
+app.get('/question/:id?', function(req, res) {
+  res.render('question', {
+      locals: { pageTitle: 'Qeustion | ' + settings.siteTitle }
+  });
 });

@@ -3,4 +3,5 @@ module.exports = {
   db: {
     url: 'mongodb://localhost/fata',
   },
+  siteTitle: 'FATA Sentiment Survey',
 };
