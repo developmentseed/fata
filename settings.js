@@ -1,7 +1,9 @@
 module.exports = {
   port: 8888,
-  db: {
-    url: 'mongodb://localhost/fata',
+  mongodb: {
+    host: 'localhost',
+    db: 'fata',
+    
   },
   siteTitle: 'FATA Sentiment Survey',
 };
