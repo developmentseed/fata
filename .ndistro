@@ -10,12 +10,11 @@ module andris9 node-markdown
 
 module christkv node-mongodb-native V0.8.0
 
-wget -P public/js http://flot.googlecode.com/files/flot-0.6.tar.gz
-tar -C public/js -zxvf public/js/flot-0.6.tar.gz
-rm public/js/flot-0.6.tar.gz
-wget -O public/js/jquery.js http://code.jquery.com/jquery-1.4.2.min.js
+# Grab flot, jquery, css assets
 
-wget -P public/css http://github.com/developmentseed/tao/raw/master/reset.css
+! test -d public/js/flot && (wget -P public/js http://flot.googlecode.com/files/flot-0.6.tar.gz && tar -C public/js -zxvf public/js/flot-0.6.tar.gz && rm public/js/flot-0.6.tar.gz)
+! test -f public/js/jquery.js  && wget -O public/js/jquery.js http://code.jquery.com/jquery-1.4.2.min.js
+! test -f public/css/reset.css && wget -P public/css http://github.com/developmentseed/tao/raw/master/reset.css
 
 # Untagged
 
@@ -23,10 +22,11 @@ module donpark hbs
 
 # Submodule workarounds, see:
 # http://blog.iclutton.com/2010/09/nodejs-ndistro-and-git-submodules.html
-
-module wycats handlebars.js
-rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars
+! test -d modules/hbs/support/handlebars/handlebars.js && (module wycats handlebars.js && rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars)
 
 # Import data
 
 mongoimport --drop --type csv --db fata --collection responses --ignoreBlanks --headerline resources/fata_variables.csv
+
+# Run install tasks
+./bin/node install.js

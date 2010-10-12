@@ -6,7 +6,7 @@ var connect = require('connect'),
 
 // Initialize core object.
 var app = module.exports = new express.Server([
-    connect.logger(),
+    connect.logger({ format: '- [:response-timems] :date - :method :status' }),
     connect.staticProvider(__dirname + '/public')
 ]);
 
