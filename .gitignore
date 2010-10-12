@@ -1,5 +1,6 @@
 bin/
 lib/
 modules/
-public/flot
-public/jquery.js
+public/js/flot
+public/js/jquery.js
+public/css/reset.css
