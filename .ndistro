@@ -6,6 +6,9 @@ module senchalabs connect 0.2.5
 module visionmedia express 1.0.0beta2
 module caolan async v0.1.5
 module documentcloud underscore 1.1.1
+wget -P public http://flot.googlecode.com/files/flot-0.6.tar.gz
+tar -C public -zxvf public/flot-0.6.tar.gz
+rm public/flot-0.6.tar.gz
 
 # Untagged
 
