@@ -79,6 +79,25 @@ app.get('/about', function(req, res) {
     });
 });
 
+app.get('/layers', function(req, res) {
+  var default_layers = {
+    'afghanistan-landcover-fa': {
+      'type': 'OpenLayers.Layer.MapBox',
+      'value': {
+        'options': {
+          'projection': {
+            'type': 'OpenLayers.Projection',
+            'value': 'EPSG:900913'
+          },
+          'type': 'png',
+          'layername': 'afghanistan-landcover-fa'
+        }
+      }
+    }
+  };
+  res.send(default_layers);
+});
+
 if (settings.mongodb) {
     var mongo = require('node-mongodb-native/lib/mongodb');
     var DataHandler = require('./data');
