@@ -22,3 +22,7 @@ module donpark hbs
 
 module wycats handlebars.js
 rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars
+
+# Import data
+
+mongoimport --drop --type csv --db fata --collection responses --ignoreBlanks --headerline resources/fata_variables.csv
