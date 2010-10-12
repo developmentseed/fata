@@ -82,12 +82,16 @@ app.get('/about', function(req, res) {
 app.get('/layers', function(req, res) {
   var default_layers = {
     'afghanistan-landcover-fa': {
-      'type': 'OpenLayers.Layer.MapBox',
+      '_type': 'OpenLayers.Layer.MapBox',
       'value': {
         'options': {
           'projection': {
-            'type': 'OpenLayers.Projection',
+            '_type': 'OpenLayers.Projection',
             'value': 'EPSG:900913'
+          },
+          'maxExtent': {
+            '_type': 'OpenLayers.Bounds',
+            'value': [-20037508, -20037508, 20037508, 20037508]
           },
           'type': 'png',
           'layername': 'afghanistan-landcover-fa'
