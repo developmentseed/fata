@@ -22,11 +22,11 @@ app.dynamicHelpers({
             {title:'Questions', url:'/question'},
             {title:'About', url:'/about'}
         ];
-        for (item in items) {
-            if (items[item].url == req.url) {
-                items[item].active = true;
+        items.forEach(function (item) {
+            if (item.url == req.url) {
+                item.active = true;
             }
-        }
+        });
         return items;
     },
 });
@@ -65,7 +65,6 @@ app.get('/question/:id?', function(req, res) {
 });
 
 app.get('/about', function(req, res) {
-
     var markdown = require('markdown'),
         fs = require('fs');
 
@@ -78,6 +77,29 @@ app.get('/about', function(req, res) {
             }
         });
     });
+});
+
+app.get('/layers', function(req, res) {
+  var default_layers = {
+    'afghanistan-landcover-fa': {
+      '_type': 'OpenLayers.Layer.MapBox',
+      'value': {
+        'options': {
+          'projection': {
+            '_type': 'OpenLayers.Projection',
+            'value': 'EPSG:900913'
+          },
+          'maxExtent': {
+            '_type': 'OpenLayers.Bounds',
+            'value': [-20037508, -20037508, 20037508, 20037508]
+          },
+          'type': 'png',
+          'layername': 'afghanistan-landcover-fa'
+        }
+      }
+    }
+  };
+  res.send(default_layers);
 });
 
 if (settings.mongodb) {
