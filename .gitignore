@@ -2,3 +2,4 @@ bin/
 lib/
 modules/
 public/flot
+public/jquery.js
