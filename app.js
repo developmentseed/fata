@@ -4,22 +4,33 @@ var connect = require('connect'),
     express = require('express'),
     settings = require('settings');
 
-if (settings.db && settings.db.url) {
-    var mongoose = require('mongoose/mongoose').Mongoose;
-    var db = mongoose.connect(settings.db.url);
-
-    // mongoose Response model.
-    mongoose.model('Response', {
-        properties: [],
-        cast: {},
+if (settings.mongodb) {
+    var mongo = require('node-mongodb-native/lib/mongodb');
+    var db = new mongo.Db(settings.mongodb.db, new mongo.Server(settings.mongodb.host, mongo.Connection.DEFAULT_PORT, {}), {});
+    /*
+    db.open(function(err, db) {
+        db.collection('responses', function(err, collection) {
+            collection.count(function(err, foo) {
+                console.log(foo);
+            });
+        });
     });
-
-    // mongoose Question model.
-    mongoose.model('Question', {
-        properties: [],
-        cast: {},
+    */
+    /*
+    db.open(function(err, db) {
+        db.collection('responses', function(err, collection) {
+            collection.group(
+                { current_disaster:true }, // Fields
+                { }, // Conditions
+                { 1: 0, 0: 0 },
+                function(obj, prev) { prev[obj.current_disaster]++ }, // Reduce callback
+                function(err, foo) {
+                    console.log(foo);
+                }
+            );
+        });
     });
-    console.log('Using database %s', settings.db.url)
+    */
 }
 
 // Initialize core object.
