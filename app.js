@@ -4,43 +4,12 @@ var connect = require('connect'),
     express = require('express'),
     settings = require('settings');
 
-if (settings.mongodb) {
-    var mongo = require('node-mongodb-native/lib/mongodb');
-    var db = new mongo.Db(settings.mongodb.db, new mongo.Server(settings.mongodb.host, mongo.Connection.DEFAULT_PORT, {}), {});
-    /*
-    db.open(function(err, db) {
-        db.collection('responses', function(err, collection) {
-            collection.count(function(err, foo) {
-                console.log(foo);
-            });
-        });
-    });
-    */
-    /*
-    db.open(function(err, db) {
-        db.collection('responses', function(err, collection) {
-            collection.group(
-                { current_disaster:true }, // Fields
-                { }, // Conditions
-                { 1: 0, 0: 0 },
-                function(obj, prev) { prev[obj.current_disaster]++ }, // Reduce callback
-                function(err, foo) {
-                    console.log(foo);
-                }
-            );
-        });
-    });
-    */
-}
-
 // Initialize core object.
 var app = module.exports = new express.Server([
     connect.logger(),
     connect.staticProvider(__dirname + '/public')
 ]);
 
-app.listen(settings.port);
-console.log('Express server started on port %s', app.address().port);
 app.set('view engine', 'hbs');
 app.dynamicHelpers({
     siteTitle: function(req, res) {
@@ -69,8 +38,23 @@ app.get('/', function(req, res) {
 });
 
 app.get('/agency/:id?', function(req, res) {
-    res.render('agency', {
-        locals: { pageTitle: 'Agency' }
+    var async = require('async'),
+        parallel = [],
+        view = {},
+        dataHandler = app.dataHandler;
+    settings.questions.forEach(function(question) {
+        parallel.push(function(callback) {
+            dataHandler.countField('responses', question, {}, function(result) {
+                view[question] = result[question];
+                callback(null);
+            });
+        });
+    });
+    async.parallel(parallel, function(error) {
+        console.log(view);
+        res.render('agency', {
+            locals: { pageTitle: 'Agency' }
+        });
     });
 });
 
@@ -95,3 +79,16 @@ app.get('/about', function(req, res) {
         });
     });
 });
+
+if (settings.mongodb) {
+    var mongo = require('node-mongodb-native/lib/mongodb');
+    var DataHandler = require('./data');
+    var db = new mongo.Db(settings.mongodb.db, new mongo.Server(settings.mongodb.host, mongo.Connection.DEFAULT_PORT, {}), {});
+    db.open(function(err, db) {
+        app.db = db;
+        app.dataHandler = new DataHandler(db);
+        app.listen(settings.port);
+        console.log('Express server started on port %s', app.address().port);
+    });
+}
+
