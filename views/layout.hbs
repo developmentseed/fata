@@ -1,12 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+    "http://www.w3.org/TR/html4/strict.dtd">
 
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{ pageTitle }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{ pageTitle }} | {{ siteTitle }}</title>
 </head>
 <body>
-{{{ body }}}
+    <div id="branding">
+        <h1 class="site-name">{{ siteTitle }}</h1>
+        <ul class="primary-navigation">
+            {{#primaryNavigation}}
+                {{#active}}
+                    <li><a href="{{url}}" class="active">{{title}}</a></li>
+                {{/active}}
+                {{^active}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/active}}
+            {{/primaryNavigation}}
+        </ul>
+    </div>
+    <h2 class="page-title">{{pageTitle}}</h2>
+    {{{ body }}}
 </body>
 </html>
