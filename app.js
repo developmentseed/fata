@@ -22,11 +22,11 @@ app.dynamicHelpers({
             {title:'Questions', url:'/question'},
             {title:'About', url:'/about'}
         ];
-        for (item in items) {
-            if (items[item].url == req.url) {
-                items[item].active = true;
+        items.forEach(function (item) {
+            if (item.url == req.url) {
+                item.active = true;
             }
-        }
+        });
         return items;
     },
 });
@@ -65,7 +65,6 @@ app.get('/question/:id?', function(req, res) {
 });
 
 app.get('/about', function(req, res) {
-
     var markdown = require('markdown'),
         fs = require('fs');
 
