@@ -7,6 +7,18 @@ var connect = require('connect'),
 if (settings.db && settings.db.url) {
     var mongoose = require('mongoose/mongoose').Mongoose;
     var db = mongoose.connect(settings.db.url);
+
+    // mongoose Response model.
+    mongoose.model('Response', {
+        properties: [],
+        cast: {},
+    });
+
+    // mongoose Question model.
+    mongoose.model('Question', {
+        properties: [],
+        cast: {},
+    });
     console.log('Using database %s', settings.db.url)
 }
 
@@ -20,6 +32,7 @@ app.listen(settings.port);
 console.log('Express server started on port %s', app.address().port);
 app.set('view engine', 'hbs');
 
+<<<<<<< Updated upstream:app.js
 app.get('/', function(req, res) {
     res.render('index', {
         locals: { pageTitle: 'Home | ' + settings.siteTitle }
