@@ -50,7 +50,6 @@ app.dynamicHelpers({
     },
 });
 
-<<<<<<< Updated upstream:app.js
 app.get('/', function(req, res) {
     res.render('index', {
         locals: { pageTitle: 'Home' }
