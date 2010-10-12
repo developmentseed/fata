@@ -1,0 +1,21 @@
+node 0.2.2
+
+# Tagged
+
+module senchalabs connect 0.2.5
+module visionmedia express 1.0.0beta2
+module caolan async v0.1.5
+
+# Untagged
+
+module learnboost mongoose
+module donpark hbs
+
+# Submodule workarounds, see:
+# http://blog.iclutton.com/2010/09/nodejs-ndistro-and-git-submodules.html
+
+module christkv node-mongodb-native 78a96e85963f4869a4440355b5bbfb93c8d449a6
+mv modules/node-mongodb-native modules/mongoose/lib/support
+
+module wycats handlebars.js
+rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars
