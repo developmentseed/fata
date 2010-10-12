@@ -50,7 +50,8 @@ app.dynamicHelpers({
         items = [
             {title:'Home', url:'/'},
             {title:'Agencies', url:'/agency'},
-            {title:'Questions', url:'/question'}
+            {title:'Questions', url:'/question'},
+            {title:'About', url:'/about'}
         ];
         for (item in items) {
             if (items[item].url == req.url) {
@@ -76,5 +77,21 @@ app.get('/agency/:id?', function(req, res) {
 app.get('/question/:id?', function(req, res) {
     res.render('question', {
         locals: { pageTitle: 'Question' }
+    });
+});
+
+app.get('/about', function(req, res) {
+
+    var markdown = require('markdown'),
+        fs = require('fs');
+
+    fs.readFile('about.md', 'utf-8', function (err, data) {
+        if (err) throw err;
+        res.render('about', {
+            locals: {
+                pageTitle: 'About',
+                contentText: markdown.Markdown(data)
+            }
+        });
     });
 });
