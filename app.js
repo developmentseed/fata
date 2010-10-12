@@ -10,3 +10,18 @@ var app = module.exports = new express.Server([
 ]);
 
 app.listen(settings.port);
+app.set('view engine', 'hbs');
+
+app.get('/home', function(req, res){
+  res.render('index', {
+      locals: { title: 'My Site' }
+  });
+});
+
+app.get('/agency/:id?', function(req, res){
+  res.send('agency ' + req.params.id);
+});
+
+app.get('/question/:id?', function(req, res){
+  res.send('question');
+});
