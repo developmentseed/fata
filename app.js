@@ -164,11 +164,13 @@ app.get('/style/:question', function(req, res) {
         supportFields = ['Somewhat Support', 'Strongly Support'];
         question = req.params.question;
     waterfall.push(function(callback) {
+        // Load list of agencies
         dataHandler.field('agencies', {}, function(agencies) {
             callback(null, agencies);
         });
     });
     waterfall.push(function(agencies, callback) {
+        // Load question responses for each agency
         agencies.forEach(function(agency) {
             parallel.push(function (callback) {
                 dataHandler.countField('responses', question, {Agency:agency.ID}, function(result) {
@@ -183,10 +185,9 @@ app.get('/style/:question', function(req, res) {
                             }
                         });
                     });
-                    var percent = support / totalResponses * 100;
                     view.push({
                         agency: agency.ID,
-                        percent: percent,
+                        percent: support / totalResponses * 100
                     });
                     callback(null);
                 });
