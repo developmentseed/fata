@@ -1,21 +1,39 @@
 var _ = require('underscore')._;
 
 /**
- * Equal breaks in a dataset
- * @param {array}: data list of data.
- * @param {number}: n number of breaks.
- * @return {array} of break places.
+ * A library of data breaks algorithms
  */
-function equal(data, n) {
-    return _.range(_.min(data), _.max(data),
-        (_.max(data) - _.min(data)) / (n - 1)).
-        concat(_.max(data));
-}
+var Breaks = {
+    /**
+     * Quantile breaks in a dataset
+     * @param {array}: data list of data.
+     * @param {number}: n number of breaks.
+     * @return {array} of break places.
+     */
+    quantile: function(data, n) {
+        return _.select(data.sort(), function(val, index) {
+            return index % (data.length / (n - 1)) == 0;
+        }).concat(_.max(data));
+    },
+
+    /**
+     * Equal breaks in a dataset
+     * @param {array}: data list of data.
+     * @param {number}: n number of breaks.
+     * @return {array} of break places.
+     */
+    equal: function(data, n) {
+        return _.range(_.min(data), _.max(data),
+            (_.max(data) - _.min(data)) / (n - 1)).
+            concat(_.max(data));
+    }
+};
 
 /**
  * a color class
  *
  * @param {string} rgb a string of hexadecimal rgb.
+ * @return {Color} a color object.
  */
 function Color(rgb) {
     // Constructor
