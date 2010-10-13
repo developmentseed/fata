@@ -24,14 +24,8 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
                     return { count: total };
                 }
                 collection.mapReduce(map, reduce, { query: conditions }, function(err, collection) {
-                    if (collection) {
-                        self.collections[cid] = collection.collectionName;
-                        this.field(self.collections[cid], {}, callback);
-                    }
-                    else {
-                        console.log('fail');
-                        callback([]);
-                    }
+                    self.collections[cid] = collection.collectionName;
+                    self.field(self.collections[cid], {}, callback);
                 });
             });
         });
