@@ -253,11 +253,11 @@ app.get('/layers', function(req, res) {
 if (settings.mongodb) {
     var mongo = require('node-mongodb-native/lib/mongodb');
     var DataHandler = require('./data');
-    var db = new mongo.Db(settings.mongodb.db, 
+    var db = new mongo.Db(settings.mongodb.db,
         new mongo.Server(
-            settings.mongodb.host, 
+            settings.mongodb.host,
             mongo.Connection.DEFAULT_PORT,
-            {}), 
+            {}),
         {});
     app.db = db;
     app.dataHandler = new DataHandler(db);
