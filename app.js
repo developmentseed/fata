@@ -11,10 +11,16 @@ var app = module.exports = new express.Server([
     connect.staticProvider(__dirname + '/public')
 ]);
 
+// Set view engine
 app.set('view engine', 'hbs');
+
+// Populate dynamicHelpers (layout templating functions)
 app.dynamicHelpers({
     siteTitle: function(req, res) {
         return settings.siteTitle;
+    },
+    footerMessage: function() {
+        return settings.footerMessage;
     },
     primaryNavigation: function(req) {
         items = [
@@ -34,12 +40,29 @@ app.dynamicHelpers({
 
 // Handle home page
 app.get('/', function(req, res) {
-    var dataHandler = app.dataHandler;
-    dataHandler.field('agencies', {}, function(data) {
+    var async = require('async'),
+        parallel = [],
+        agenciesView = {},
+        questionsView = {},
+        dataHandler = app.dataHandler;
+    parallel.push(function(callback) {
+        dataHandler.field('agencies', {}, function(data) {
+            agenciesView = data;
+            callback(null);
+        });
+    });
+    parallel.push(function(callback) {
+        dataHandler.field('questions', {}, function(data) {
+            questionsView = data;
+            callback(null);
+        });
+    });
+    async.parallel(parallel, function(error) {
         res.render('index', {
             locals: {
                 pageTitle: 'Home',
-                agencies: data,
+                agencies: agenciesView,
+                questions: questionsView
             }
         });
     });
@@ -50,11 +73,30 @@ app.get('/agency/:id', function(req, res) {
     var async = require('async'),
         parallel = [],
         view = {},
+        pageTitle = '',
         dataHandler = app.dataHandler;
-    dataHandler.field('agencies', {URL: req.params.id}, function(data) {
+
+    settings.questions.forEach(function(question) {
+        parallel.push(function(callback) {
+            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
+                view[question] = result[question];
+                callback(null);
+            });
+        });
+    });
+
+    parallel.push(function(callback) {
+        dataHandler.field('agencies', {ID: req.params.id}, function(data) {
+            pageTitle = data[0].Human
+            callback(null);
+        });
+    });
+
+    async.parallel(parallel, function(error) {
+        console.log(view);
         res.render('agency', {
             locals: {
-                pageTitle: data[0].Human,
+                pageTitle: pageTitle,
             }
         });
     });
@@ -118,15 +160,15 @@ app.get('/layers', function(req, res) {
   res.send(default_layers);
 });
 
+// Database setup
 if (settings.mongodb) {
     var mongo = require('node-mongodb-native/lib/mongodb');
     var DataHandler = require('./data');
     var db = new mongo.Db(settings.mongodb.db, new mongo.Server(settings.mongodb.host, mongo.Connection.DEFAULT_PORT, {}), {});
-    db.open(function(err, db) {
-        app.db = db;
-        app.dataHandler = new DataHandler(db);
-        app.listen(settings.port);
-        console.log('Express server started on port %s', app.address().port);
-    });
+    app.db = db;
+    app.dataHandler = new DataHandler(db);
 }
 
+// Begin HTTP server!
+app.listen(settings.port);
+console.log('Express server started on port %s', app.address().port);
