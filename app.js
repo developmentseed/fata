@@ -24,18 +24,18 @@ app.dynamicHelpers({
     },
     primaryNavigation: function(req) {
         items = [
-            {title:'Home', url:'/'},
-            {title:'Agencies', url:'/agency'},
-            {title:'Questions', url:'/question'},
-            {title:'About', url:'/about'}
+            {title: 'Home', url: '/'},
+            {title: 'Agencies', url: '/agency'},
+            {title: 'Questions', url: '/question'},
+            {title: 'About', url: '/about'}
         ];
-        items.forEach(function (item) {
+        items.forEach(function(item) {
             if (item.url == req.url) {
                 item.active = true;
             }
         });
         return items;
-    },
+    }
 });
 
 // Handle home page
@@ -79,7 +79,8 @@ app.get('/agency/:id/:filter?', function(req, res) {
 
     settings.questions.forEach(function(question) {
         parallel.push(function(callback) {
-            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
+        dataHandler.countField('responses', question, {Agency: req.params.id}, 
+        function(result) {
                 view[question] = result[question];
                 callback(null);
             });
@@ -100,7 +101,7 @@ app.get('/agency/:id/:filter?', function(req, res) {
 
     parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
-            pageTitle = data[0].Human
+            pageTitle = data[0].Human;
             callback(null);
         });
     });
@@ -109,7 +110,7 @@ app.get('/agency/:id/:filter?', function(req, res) {
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
-                agencies: agenciesView,
+                agencies: agenciesView
             }
         });
     });
@@ -126,7 +127,7 @@ app.get('/question/:id/:filter?', function(req, res) {
                 response = {
                     name: key,
                     count: value
-                }
+                };
                 data.push(response);
             });
             res.render('question', {
@@ -144,7 +145,7 @@ app.get('/about', function(req, res) {
     var markdown = require('markdown'),
         fs = require('fs');
 
-    fs.readFile('about.md', 'utf-8', function (err, data) {
+    fs.readFile('about.md', 'utf-8', function(err, data) {
         if (err) throw err;
         res.render('about', {
             locals: {
@@ -174,7 +175,7 @@ app.get('/style', function(req, res) {
                 {
                     file: 'test.shp',
                     type: 'shape',
-                    id: 'data',
+                    id: 'data'
                 }
             ]
         }
