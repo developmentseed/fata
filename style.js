@@ -35,7 +35,7 @@ var Breaks = {
  * @param {string} rgb a string of hexadecimal rgb.
  * @return {Color} a color object.
  */
-function Color(rgb) {
+var Color = function(rgb) {
     // Constructor
     if (this instanceof Color) {
         this.rgb = _.isArray(rgb) ? rgb :
@@ -74,10 +74,29 @@ function Color(rgb) {
     this.to = function(color, n) {
         return _.map(
             _.zip(
-                _.map(equal([this.rgb[0], color.rgb[0]], n), Math.round),
-                _.map(equal([this.rgb[1], color.rgb[1]], n), Math.round),
-                _.map(equal([this.rgb[2], color.rgb[2]], n), Math.round)
+                _.map(Breaks.equal([this.rgb[0], color.rgb[0]], n), Math.round),
+                _.map(Breaks.equal([this.rgb[1], color.rgb[1]], n), Math.round),
+                _.map(Breaks.equal([this.rgb[2], color.rgb[2]], n), Math.round)
             ),
             Color);
     }
+
+    this.blendnum = function(a, b, n) {
+        return _.min([a, b]) + (Math.abs(a - b) * n);
+    }
+
+    /**
+     * @param {Color} color a Color object.
+     * @param {number} percentage in between colors.
+     * @return {array} array of colors.
+     */
+    this.blend = function(color, n) {
+        return Color([
+            Math.round(this.blendnum(this.rgb[0], color.rgb[0], n)),
+            Math.round(this.blendnum(this.rgb[1], color.rgb[1], n)),
+            Math.round(this.blendnum(this.rgb[2], color.rgb[2], n))]).hex();
+    }
 }
+
+exports['Color'] = Color;
+exports['Breaks'] = Breaks;

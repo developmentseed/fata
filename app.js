@@ -215,11 +215,14 @@ app.get('/about', function(req, res) {
 
 app.get('/style/:question', function(req, res) {
     var async = require('async'),
+        style = require('./style'),
         dataHandler = req.dataHandler,
         waterfall = [],
         parallel = [],
         view = [],
-        supportFields = ['Somewhat Support', 'Strongly Support'];
+        supportFields = ['Somewhat Support', 'Strongly Support'],
+        color_start = style.Color('000000'),
+        color_end = style.Color('111111');
         question = req.params.question;
     waterfall.push(function(callback) {
         // Load list of agencies
@@ -252,20 +255,25 @@ app.get('/style/:question', function(req, res) {
             });
         });
         async.parallel(parallel, function(err) {
+            var list_normalize = function(a, list) {
+                return (a - _.min(list)) / (_.max(list) - _.min(list));
+            }
             res.render('style', {
                 layout: false,
                 locals: {
-                    rules: [
-                        {
-                            selector: '#data[Province_ID = 5]',
-                            properties: [
-                                {
-                                    property: 'polygon-fill',
-                                    value: '#000'
-                                }
-                            ]
-                        }
-                    ],
+                    rules: _.map(view, function(record) {
+                            return {
+                                selector: '#data[ID = "' + record.agency + '"]',
+                                properties: [
+                                    {
+                                        property: 'polygon-fill',
+                                        value: color_start.blend(color_end, 
+                                            list_normalize(record.percent, _.pluck(view, 'percent')))
+                                    }
+                                ]
+                            }
+                        })
+                    ,
                     layers: [
                         {
                             property: 'polygon-fill',
@@ -282,32 +290,14 @@ app.get('/style/:question', function(req, res) {
     async.waterfall(waterfall);
 });
 
-app.get('/map', function(req, res) {
-  var default_layers = {
-      'controls': [
-          {
-              '_type': 'OpenLayers.Control.Navigation',
-              '_value': []
-          }
-      ],
-      'layers': [
-          {
-              '_type': 'OpenLayers.Layer.MapBox',
-              '_value': [
-                'blah',
-                {
-                  'projection': {
-                    '_type': 'OpenLayers.Projection',
-                    '_value': 'EPSG:900913'
-                  },
-                  'type': 'jpg',
-                  'layername': 'afghanistan-landcover-fa'
-                }
-              ]
-          }
-      ]
-  };
-  res.send(default_layers);
+app.get('/map/:question', function(req, res) {
+    var fs = require('fs');
+    var map_template = JSON.parse(fs.readFileSync('map_defaults.json', 'utf-8'));
+    var question_layer = map_template.layers.stylewriter;
+    question_layer._value[1].mapfile = '/style/' + req.params.question;
+    res.send({
+        'layers': [question_layer],
+        'controls': [map_template.controls.navigation]});
 });
 
 // Begin HTTP server!
