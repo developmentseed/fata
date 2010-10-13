@@ -69,7 +69,8 @@ app.get('/', function(req, res) {
 });
 
 // Handle agency page
-app.get('/agency/:id/:filter?', function(req, res) {
+app.get('/agency/:id/:filter?', function(req, res, next) {
+
     var async = require('async'),
         parallel = [],
         view = {},
@@ -100,7 +101,12 @@ app.get('/agency/:id/:filter?', function(req, res) {
 
     parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
-            pageTitle = data[0].Human;
+            if (data && data[0] && data[0].Human) {
+                pageTitle = data[0].Human;
+            }
+            else {
+                next();
+            }
             callback(null);
         });
     });
