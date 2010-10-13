@@ -3,6 +3,15 @@ var DataHandler = module.exports = function DataHandler(db) {
     this.collections = {};
 };
 
+DataHandler.prototype.connect = function(callback) {
+    if (this.db.state === 'connected') {
+        callback(null);
+    }
+    else {
+        this.db.open(function(err) { callback(err); });
+    }
+};
+
 DataHandler.prototype.countField = function(type, field, conditions, callback) {
     var self = this,
         db = this.db,
@@ -13,20 +22,26 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
         this.field(self.collections[cid], {}, callback);
     }
     else {
-        db.open(function(err) {
+        this.connect(function(err) {
             db.collection(type, function(err, collection) {
-                var map = 'function() { emit(this.' + field + ', {count: 1}); }';
-                var reduce = function(k, vals) {
-                    var total = 0;
-                    for (var i = 0; i < vals.length; i++) {
-                        total += vals[i].count;
+                if (collection) {
+                    var map = 'function() { emit(this.' + field + ', {count: 1}); }';
+                    var reduce = function(k, vals) {
+                        var total = 0;
+                        for (var i = 0; i < vals.length; i++) {
+                            total += vals[i].count;
+                        }
+                        return { count: total };
                     }
-                    return { count: total };
+                    collection.mapReduce(map, reduce, { query: conditions }, function(err, collection) {
+                        self.collections[cid] = collection.collectionName;
+                        self.field(self.collections[cid], {}, callback);
+                    });
                 }
-                collection.mapReduce(map, reduce, { query: conditions }, function(err, collection) {
-                    self.collections[cid] = collection.collectionName;
-                    self.field(self.collections[cid], {}, callback);
-                });
+                else {
+                    console.log(field);
+                    callback([]);
+                }
             });
         });
     }
@@ -34,7 +49,7 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
 
 DataHandler.prototype.field = function(type, conditions, callback) {
     var db = this.db;
-    db.open(function(err) {
+    this.connect(function(err) {
         db.collection(type, function(err, collection) {
             if (err)
                 throw err
