@@ -11,7 +11,10 @@ var app = module.exports = new express.Server([
     connect.staticProvider(__dirname + '/public')
 ]);
 
+// Set view engine
 app.set('view engine', 'hbs');
+
+// Populate dynamicHelpers (layout templating functions)
 app.dynamicHelpers({
     siteTitle: function(req, res) {
         return settings.siteTitle;
@@ -162,15 +165,15 @@ app.get('/layers', function(req, res) {
   res.send(default_layers);
 });
 
+// Database setup
 if (settings.mongodb) {
     var mongo = require('node-mongodb-native/lib/mongodb');
     var DataHandler = require('./data');
     var db = new mongo.Db(settings.mongodb.db, new mongo.Server(settings.mongodb.host, mongo.Connection.DEFAULT_PORT, {}), {});
-    db.open(function(err, db) {
-        app.db = db;
-        app.dataHandler = new DataHandler(db);
-        app.listen(settings.port);
-        console.log('Express server started on port %s', app.address().port);
-    });
+    app.db = db;
+    app.dataHandler = new DataHandler(db);
 }
 
+// Begin HTTP server!
+app.listen(settings.port);
+console.log('Express server started on port %s', app.address().port);
