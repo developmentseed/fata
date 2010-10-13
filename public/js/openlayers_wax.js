@@ -1,42 +1,36 @@
 OpenLayers.ImgPath = 'http://js.mapbox.com/theme/dark/';
 
-function get_function(head, f) {
-    if (arguments.length === 1) {
-        return get_function(head.split('.'), window);
-    }
-    else if (head.length === 0) {
-        return f;
-    }
-    h = head.shift();
-    if (typeof f[h] !== 'undefined') {
-        return get_function(head, f[h]);
-    }
-    else {
-        return false;
-    }
+
+function get_function(head) {
+  return _.reduce(head.split('.'), function(f, cl) {
+    return f[cl]
+  },
+  window);
 }
 
 /**
  * Instantiate JSON objects
  */
 function wax(json_object) {
-    for (i in json_object) {
-        if (json_object.hasOwnProperty(i)) {
-            if (json_object[i].hasOwnProperty'_type')) {
-                // console.log('has type');
-                // json_object[i] = new get_function(json_object[i]._type)(wax(json_object[i].value));
-            }
-            else if(typeof json_object[i] === 'string') {
-                // console.log('is string');
-                // json_object[i] = json_object[i];
-            }
-            else {
-                // console.log('is non-typed array');
-                // json_object[i] = wax(json_object[i]);
-            }
+    if (json_object.hasOwnProperty('_type')) {
+        var fn = get_function(json_object._type);
+        var waxed = wax(json_object._value);
+        if (waxed.length == 1) {
+          return new fn(waxed);
+        }
+        else {
+          return new fn(waxed[0], waxed[1]);
         }
     }
-    return json_object;
+    else if (_.isString(json_object)) {
+      return json_object;
+    }
+    else {
+      for (var i in json_object) {
+        json_object[i] = wax(json_object[i]);
+      }
+      return json_object;
+    }
 }
 
 function map_setup() {
