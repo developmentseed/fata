@@ -79,9 +79,8 @@ app.get('/agency/:id/:filter?', function(req, res) {
 
     settings.questions.forEach(function(question) {
         parallel.push(function(callback) {
-        dataHandler.countField('responses', question, {Agency: req.params.id}, 
-        function(result) {
-                view[question] = result[question];
+            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
+                view[question] = result;
                 callback(null);
             });
         });
