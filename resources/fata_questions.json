@@ -1,0 +1,270 @@
+[
+    {
+        "group": "Q1",
+        "shortname": "important-issues",
+        "text": "How important are the following issues?",
+        "questions": {
+            "Q1a": "Corruption of local officials",
+            "Q1b": "Lack of security",
+            "Q1c": "Drone attacks",
+            "Q1d": "Lack of jobs",
+            "Q1e": "Foreign fighters",
+            "Q1f": "Lack of schools and education",
+            "Q1g": "Lack of good roads and transportation",
+            "Q1h": "Poor health care and access to water",
+            "Q1i": "Taliban fighers",
+            "Q1j": "People fleeing from the area as refugees",
+            "Q1k": "Afghan refugees coming into the area" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q2",
+        "shortname": "government-goals",
+        "text": "How important are the following long-term goals for the government of Pakistan in the tribal areas?",
+        "questions": {
+            "Q2a": "Building new schools",
+            "Q2b": "Improving mosques",
+            "Q2c": "Improving health care",
+            "Q2d": "Improving the economy",
+            "Q2e": "Expelling foreign fighters",
+            "Q2f": "Support more drone attacks",
+            "Q2g": "Implementing strict Sharia",
+            "Q2h": "Ensuring and independent judiciary",
+            "Q2i": "Defeating Taliban fighers" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q3",
+        "shortname": "education-goals",
+        "text": "How important are the following long-term goals for education in the tribal areas?",
+        "questions": {
+            "Q3a": "Building new government schools for boys",
+            "Q3b": "Building new government schools for girls",
+            "Q3c": "Building new madrassas for boys",
+            "Q3d": "Building new madrassas for girls" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q4",
+        "shortname": "economy-goals",
+        "text": "How important are the following long-term goals for the economy in the tribal areas?",
+        "questions": {
+            "Q4a": "New jobs",
+            "Q4b": "New roads and transportation",
+            "Q4c": "Better water/sanitation",
+            "Q4d": "Better agricultural assistance",
+            "Q4e": "Land reform to allow for local ownership" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q5",
+        "shortname": "governance-goals",
+        "text": "How important are the following long-term goals for governing in the tribal areas?",
+        "questions": {
+            "Q5a": "FATA should be governed as it now is",
+            "Q5b": "Regular Pakistani criminal and civil laws should be extended to FATA",
+            "Q5c": "FATA should become part of an independent Pashtun state",
+            "Q5d": "FATA should be governed by the Pakistani military",
+            "Q5e": "FATA should have an independent and elected council" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q6",
+        "shortname": "governance-goals",
+        "text": "How important are the following long-term goals for justice in the tribal areas?",
+        "questions": {
+            "Q6a": "The tribal areas should be governed by Pakistani government courts",
+            "Q6b": "The tribal areas should be governed by local <em>jirga</em>",
+            "Q6c": "FATA should be governed by strict Sharia",
+            "Q6d": "FATA should be governed by the Pakistani military" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q7",
+        "shortname": "opinion-groups",
+        "text": "How favorable is your opinion of the following groups?",
+        "questions": {
+            "Q7a": "The tribal areas should be governed by Pakistani government courts",
+            "Q7b": "The tribal areas should be governed by local <em>jirga</em>",
+            "Q7c": "FATA should be governed by strict Sharia",
+            "Q7d": "FATA should be governed by the Pakistani military" 
+        },
+        "answers": [
+            "Very favorable",
+            "Somewhat favorable",
+            "Somewhat unfavorable",
+            "Very unfavorable" 
+        ] 
+    },
+    {
+        "group": "Q8",
+        "shortname": "opinion-us",
+        "text": "Would any of the following improve your opinion of the United States?",
+        "questions": {
+            "Q8a": "U.S. business investment in FATA",
+            "Q8b": "U.S. aid for school construction and teacher training in FATA",
+            "Q8c": "U.S. aid for medical care and training in FATA",
+            "Q8d": "U.S. military equipment and training to the Pakistani armed forces in FATA",
+            "Q8e": "U.S. increasing visas for people in FATA to work or study in the United States",
+            "Q8f": "U.S. increasing educational scholarships for students in FATA to study in the United States",
+            "Q8g": "Withdrawal of U.S. military from Afghanistan",
+            "Q8h": "Withdrawal of U.S. military from Afghanistan" 
+        },
+        "answers": [
+            "A great deal",
+            "Somewhat",
+            "Not significantly",
+            "Not at all" 
+        ] 
+    },
+    {
+        "group": "Q9",
+        "shortname": "opinion-individuals",
+        "text": "How favorable is your opinion of the following individuals?",
+        "questions": {
+            "Q9a": "Pervez Musharraf",
+            "Q9b": "Barack Obama",
+            "Q9c": "Ashfaq Parvez Kayani",
+            "Q9d": "Jaluddin Haqqani",
+            "Q9e": "Nawaz Sharif",
+            "Q9f": "Yousaf Raza Gilani",
+            "Q9g": "Siraj Haqqani",
+            "Q9h": "Monmohan Singh",
+            "Q9i": "Asif Ali Zardari",
+            "Q9j": "Fazl-ur-Rahman",
+            "Q9k": "Qazi Hussain Ahmed",
+            "Q9l": "Osama bin Laden",
+            "Q9m": "Mullah Omar",
+            "Q9n": "Sami ul-Haq" 
+        },
+        "answers": [
+            "Very favorable",
+            "Somewhat favorable",
+            "Somewhat unfavorable",
+            "Very unfavorable" 
+        ] 
+    },
+    {
+        "group": "Q10",
+        "shortname": "pursuing-militants",
+        "text": "Do you support or oppose each of the following?",
+        "questions": {
+            "Q10a": "The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighers inside FATA",
+            "Q10b": "The U.S. military working with the Pakistani military to pursue Taliban, Al Qaeda, and foreign fighters inside Pakistan",
+            "Q10c": "The U.S. military pursuing Taliban, Al Qaeda, and foreign fighters by itself inside Pakistan, without working with the Pakistani military" 
+        },
+        "answers": [
+            "Strongly support",
+            "Somewhat support",
+            "Somewhat oppose",
+            "Strongly oppose" 
+        ] 
+    },
+    {
+        "group": "Q11",
+        "shortname": "presence-groups",
+        "text": "Do you support or oppose the presence of the following groups inside FATA today?",
+        "questions": {
+            "Q11a": "The United States Military",
+            "Q11b": "Arab and foreign Al Qaeda fighters",
+            "Q11c": "Afghan Taliban fighters (led by Mullah Omar)",
+            "Q11d": "Pakistani Taliban fighters" 
+        },
+        "answers": [
+            "Strongly support",
+            "Somewhat support",
+            "Somewhat oppose",
+            "Strongly oppose" 
+        ] 
+    },
+    {
+        "group": "Q13",
+        "shortname": "negotiation",
+        "text": "Should the Pakistani government negotiate with, or continue to fight, the following groups?",
+        "questions": {
+            "Q13a": "Arab and foreign Al Qaeda fighters",
+            "Q13b": "Afghan Taliban fighters",
+            "Q13c": "Pakistani Taliban fighters",
+            "Q13d": "Other militant groups (e.g. Mangal Baghs's faction, etc)" 
+        },
+        "answers": [
+            "Negotiate",
+            "Not Negotiate and Fight" 
+        ] 
+    },
+    {
+        "group": "Q19",
+        "shortname": "importance-people",
+        "text": "Are the following people important in your area?",
+        "questions": {
+            "Q19a": "Maliks",
+            "Q19b": "Political agents",
+            "Q19c": "Pakistani army",
+            "Q19d": "Frontier Corps",
+            "Q19e": "Arab and other Foreign fighters",
+            "Q19f": "Local Imams and Mullahs",
+            "Q19g": "Taliban fighers",
+            "Q19h": "Political leaders",
+            "Q19i": "NGOs" 
+        },
+        "answers": [
+            "Very important",
+            "Somewhat important",
+            "Somewhat unimportant",
+            "Not at all important" 
+        ] 
+    },
+    {
+        "group": "Q21",
+        "shortname": "suicide-bombings",
+        "text": "Are suicide bombings justified against the following targets?",
+        "questions": {
+            "Q21a": "The Pakistani military and police",
+            "Q21b": "The U.S. military",
+            "Q21c": "Pakistani civilians",
+            "Q21d": "American civilians" 
+        },
+        "answers": [
+            "Often Justified",
+            "Sometimes Justified",
+            "Rarely Justified",
+            "Never Justified" 
+        ] 
+    }
+]
