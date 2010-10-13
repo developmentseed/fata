@@ -3,6 +3,7 @@ require.paths.unshift(__dirname + '/modules', __dirname + '/lib/node', __dirname
 var connect = require('connect'),
     express = require('express'),
     settings = require('settings');
+    _ = require('./modules/underscore/underscore')._;
 
 // Initialize core object.
 var app = module.exports = new express.Server([
@@ -31,20 +32,22 @@ app.dynamicHelpers({
     },
 });
 
+// Handle home page
 app.get('/', function(req, res) {
     res.render('index', {
         locals: { pageTitle: 'Home' }
     });
 });
 
-app.get('/agency/:id?', function(req, res) {
+// Handle agency page
+app.get('/agency/:id', function(req, res) {
     var async = require('async'),
         parallel = [],
         view = {},
         dataHandler = app.dataHandler;
     settings.questions.forEach(function(question) {
         parallel.push(function(callback) {
-            dataHandler.countField('responses', question, {}, function(result) {
+            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
                 view[question] = result[question];
                 callback(null);
             });
@@ -58,12 +61,31 @@ app.get('/agency/:id?', function(req, res) {
     });
 });
 
-app.get('/question/:id?', function(req, res) {
-    res.render('question', {
-        locals: { pageTitle: 'Question' }
-    });
+// Handle question page
+app.get('/question/:id', function(req, res) {
+    if (settings.questions.indexOf(req.params.id) !== -1) {
+        var question = req.params.id,
+            dataHandler = app.dataHandler;
+        dataHandler.countField('responses', question, {}, function(result) {
+            data = [];
+            _.each(result[question], function(value, key) {
+                response = {
+                    name: key,
+                    count: value
+                }
+                data.push(response);
+            });
+            res.render('question', {
+                locals: {
+                    pageTitle: 'Question',
+                    results: data
+                }
+            });
+        });
+    }
 });
 
+// Handle about page
 app.get('/about', function(req, res) {
     var markdown = require('markdown'),
         fs = require('fs');

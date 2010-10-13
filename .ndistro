@@ -27,6 +27,7 @@ module donpark hbs
 # Import data
 
 mongoimport --drop --type csv --db fata --collection responses --ignoreBlanks --headerline resources/fata_variables.csv
+mongoimport --drop --type csv --db fata --collection agencies --ignoreBlanks --headerline resources/fata_agencies.csv
 
 # Run install tasks
 ./bin/node install.js
