@@ -5,10 +5,29 @@ var connect = require('connect'),
     settings = require('settings');
     _ = require('./modules/underscore/underscore')._;
 
+// dbConnect middleware. Establishes a DataHandler with access to a single
+// db connection per HTTP request.
+var dbConnection = function dbConnection(options) {
+    return function dbConnection(req, res, next) {
+        var mongo = require('node-mongodb-native/lib/mongodb');
+        var DataHandler = require('./data');
+        var db = new mongo.Db(options.db,
+            new mongo.Server(
+                options.host,
+                mongo.Connection.DEFAULT_PORT,
+                {}),
+            {});
+        req.db = db;
+        req.dataHandler = new DataHandler(db);
+        next();
+    };
+};
+
 // Initialize core object.
 var app = module.exports = new express.Server([
     connect.logger({ format: '- [:response-timems] :date - :method :status' }),
-    connect.staticProvider(__dirname + '/public')
+    connect.staticProvider(__dirname + '/public'),
+    new dbConnection(settings.mongodb)
 ]);
 
 // Set view engine
@@ -44,7 +63,7 @@ app.get('/', function(req, res) {
         parallel = [],
         agenciesView = {},
         questionsView = {},
-        dataHandler = app.dataHandler;
+        dataHandler = req.dataHandler;
     parallel.push(function(callback) {
         dataHandler.field('agencies', {}, function(data) {
             agenciesView = data;
@@ -76,17 +95,47 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         agencies = {},
         responses = {},
         pageTitle = '',
-        dataHandler = app.dataHandler;
+        dataHandler = req.dataHandler;
 
-    settings.questions.forEach(function(question) {
-        parallel.push(function(callback) {
-            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
-                responses[question] = result;
-                callback(null);
+    // Load all questions
+    parallel.push(function(callback) {
+        // Set up waterfall:
+        // 1. Load all questions
+        // 2. For each question, load all responses
+        var waterfall = [];
+        waterfall.push(function(callback) {
+            dataHandler.field('questions', {}, function(questions) {
+                callback(null, questions);
             });
+        });
+        waterfall.push(function(groups, callback) {
+            var parallel = [];
+            groups.forEach(function(group) {
+                var questions = [];
+                for (var q in group.questions) {
+                    if (group.questions[q].display.indexOf('agency') !== -1) {
+                        questions.push(q);
+                    }
+                }
+                questions.forEach(function(q) {
+                    parallel.push(function(responseCallback) {
+                        dataHandler.countField('responses', q, {Agency: req.params.id}, function(result) {
+                            responses[q] = result;
+                            responseCallback(null);
+                        });
+                    });
+                });
+            });
+            async.parallel(parallel, function(error) {
+                callback(error);
+            });
+        });
+        async.waterfall(waterfall, function(error) {
+            callback(error);
         });
     });
 
+    // Load agencies for navigation.
     parallel.push(function(callback) {
         dataHandler.field('agencies', {}, function(data) {
             data.forEach(function(agency) {
@@ -99,6 +148,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         });
     });
 
+    // Load the current agency's information.
     parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
             if (data && data[0] && data[0].Human) {
@@ -111,7 +161,9 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         });
     });
 
+    // Run all tasks and render.
     async.parallel(parallel, function(error) {
+        // console.log(responses);
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
@@ -125,7 +177,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 app.get('/question/:id/:filter?', function(req, res) {
     if (settings.questions.indexOf(req.params.id) !== -1) {
         var question = req.params.id,
-            dataHandler = app.dataHandler;
+            dataHandler = req.dataHandler;
         dataHandler.countField('responses', question, {}, function(result) {
             data = [];
             _.each(result[question], function(value, key) {
@@ -163,7 +215,7 @@ app.get('/about', function(req, res) {
 
 app.get('/style/:question', function(req, res) {
     var async = require('async'),
-        dataHandler = app.dataHandler,
+        dataHandler = req.dataHandler,
         waterfall = [],
         parallel = [],
         view = [],
@@ -257,20 +309,6 @@ app.get('/map', function(req, res) {
   };
   res.send(default_layers);
 });
-
-// Database setup
-if (settings.mongodb) {
-    var mongo = require('node-mongodb-native/lib/mongodb');
-    var DataHandler = require('./data');
-    var db = new mongo.Db(settings.mongodb.db,
-        new mongo.Server(
-            settings.mongodb.host,
-            mongo.Connection.DEFAULT_PORT,
-            {}),
-        {});
-    app.db = db;
-    app.dataHandler = new DataHandler(db);
-}
 
 // Begin HTTP server!
 app.listen(settings.port);
