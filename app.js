@@ -72,15 +72,15 @@ app.get('/', function(req, res) {
 app.get('/agency/:id/:filter?', function(req, res) {
     var async = require('async'),
         parallel = [],
-        view = {},
-        agenciesView = {},
+        agencies = {},
+        responses = {},
         pageTitle = '',
         dataHandler = app.dataHandler;
 
     settings.questions.forEach(function(question) {
         parallel.push(function(callback) {
             dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
-                view[question] = result;
+                responses[question] = result;
                 callback(null);
             });
         });
@@ -93,7 +93,7 @@ app.get('/agency/:id/:filter?', function(req, res) {
                     agency.active = true;
                 }
             });
-            agenciesView = data;
+            agencies = data;
             callback(null);
         });
     });
@@ -109,7 +109,7 @@ app.get('/agency/:id/:filter?', function(req, res) {
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
-                agencies: agenciesView
+                agencies: agencies
             }
         });
     });
@@ -194,7 +194,6 @@ app.get('/style/:question', function(req, res) {
             });
         });
         async.parallel(parallel, function(err) {
-            console.log(view);
             res.render('style', {
                 layout: false,
                 locals: {
