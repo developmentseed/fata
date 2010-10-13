@@ -16,40 +16,48 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
     var self = this,
         db = this.db,
         data = [];
+
     // Build a collection id.
-    var cid = JSON.stringify([type, field, conditions]);
-    if (self.collections[cid]) {
-        this.field(self.collections[cid], {}, callback);
+    var cid = [type, field];
+    for (var key in conditions) {
+        cid.push(key, conditions[key]);
     }
-    else {
-        this.connect(function(err) {
-            db.collection(type, function(err, collection) {
-                if (collection) {
-                    var map = 'function() { emit(this.' + field + ', {count: 1}); }';
-                    var reduce = function(k, vals) {
-                        var total = 0;
-                        for (var i = 0; i < vals.length; i++) {
-                            total += vals[i].count;
+    cid = cid.join('-');
+    self.field(cid, {}, function(data) {
+        if (data && data.length > 0) {
+            callback(data);
+        }
+        else {
+            self.connect(function(err) {
+                db.collection(type, function(err, collection) {
+                    if (collection) {
+                        var map = 'function() { emit(this.' + field + ', {count: 1}); }';
+                        var reduce = function(k, vals) {
+                            var total = 0;
+                            for (var i = 0; i < vals.length; i++) {
+                                total += vals[i].count;
+                            }
+                            return { count: total };
                         }
-                        return { count: total };
+                        collection.mapReduce( map, reduce, { query: conditions, out: cid }, function(err, collection) {
+                                self.collections[cid] = collection.collectionName;
+                                self.field(self.collections[cid], {}, callback);
+                        });
                     }
-                    collection.mapReduce(map, reduce, { query: conditions }, function(err, collection) {
-                        self.collections[cid] = collection.collectionName;
-                        self.field(self.collections[cid], {}, callback);
-                    });
-                }
-                else {
-                    console.log(field);
-                    callback([]);
-                }
+                    else {
+                        console.log(field);
+                        callback([]);
+                    }
+                });
             });
-        });
-    }
+        }
+    });
 };
 
 DataHandler.prototype.field = function(type, conditions, callback) {
-    var db = this.db;
-    this.connect(function(err) {
+    var db = this.db,
+        self = this;
+    self.connect(function(err) {
         db.collection(type, function(err, collection) {
             if (err)
                 throw err
