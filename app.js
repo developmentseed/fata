@@ -231,20 +231,30 @@ app.get('/style/:question', function(req, res) {
     async.waterfall(waterfall);
 });
 
-app.get('/layers', function(req, res) {
+app.get('/map', function(req, res) {
   var default_layers = {
-    '_type': 'OpenLayers.Layer.MapBox',
-    '_value': [
-      'blah',
-      {
-        'projection': {
-          '_type': 'OpenLayers.Projection',
-          '_value': 'EPSG:900913'
-        },
-        'type': 'jpg',
-        'layername': 'afghanistan-landcover-fa'
-      }
-    ]
+      'controls': [
+          {
+              '_type': 'OpenLayers.Control.Navigation',
+              '_value': []
+          }
+      ],
+      'layers': [
+          {
+              '_type': 'OpenLayers.Layer.MapBox',
+              '_value': [
+                'blah',
+                {
+                  'projection': {
+                    '_type': 'OpenLayers.Projection',
+                    '_value': 'EPSG:900913'
+                  },
+                  'type': 'jpg',
+                  'layername': 'afghanistan-landcover-fa'
+                }
+              ]
+          }
+      ]
   };
   res.send(default_layers);
 });

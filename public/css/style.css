@@ -1,4 +1,98 @@
-#map {
+body {
+  font:normal 13px/20px Arial,sans-serif;
+  background:#585848 url(../images/bg.jpg) 50% 100% no-repeat fixed;
+  color:#d8d098;
+  }
+
+a {
+  color:#b8d070;
+  text-decoration:none;
+  }
+
+.limiter {
+  width:960px;
+  margin:0px auto;
+  }
+
+/**
+ * Global header
+ */
+#global {
+  background:url(../images/sprite.png) 0px 0px repeat-x;
+  height:30px;
+  }
+
+#global .new-america {
+  display:block;
+  width:240px;
+  height:30px;
+  text-indent:-9999px;
+  overflow:hidden;
+  background:url(../images/sprite.png) 0px -30px no-repeat;
+  }
+
+/**
+ * Branding (right column)
+ */
+#branding {
+  float:right;
+  width:150px;
+  padding:20px 0px 20px 10px;
+  }
+
+.site-name a {
+  display:block;
+  width:150px;
+  height:180px;
+  background:url(../images/sprite.png) 0px -60px no-repeat;
+  text-indent:-9999px;
+  overflow:hidden;
+  }
+
+/**
+ * Left column
+ */
+#left {
+  float:left;
+  width:160px;
+  }
+
+.sidebar .block-title {
+  background:#4c4c40;
+  color:#fff;
+  padding:30px 20px 9px;
+  margin:0px 0px 1px;
+  }
+
+.sidebar li a {
+  font-size:12px;
+  text-transform:uppercase;
+  white-space:nowrap;
+  display:block;
+  background:#4c4c40;
+  padding:5px 20px 4px;
+  margin:0px 0px 1px;
+  }
+
+.sidebar li a:hover { background:#383830; }
+
+/**
+ * Main column
+ */
+#main {
+  float:left;
+  width:640px;
+  }
+
+/**
+ * Footer
+ */
+#footer { clear:both; }
+
+/**
+ * @TODO ==============================================================
+ */
+#agency-map {
   width:400px;
   height:400px;
   }
