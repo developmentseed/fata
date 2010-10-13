@@ -1,7 +1,8 @@
 [
     {
         "group": "Q1",
-        "shortname": "important-issues",
+        "id": "important-issues",
+        "shortname": "Important Issues",
         "text": "How important are the following issues?",
         "questions": {
             "Q1a": "Corruption of local officials",
@@ -25,7 +26,8 @@
     },
     {
         "group": "Q2",
-        "shortname": "government-goals",
+        "id": "government-goals",
+        "shortname": "Goals for the Pakistan government",
         "text": "How important are the following long-term goals for the government of Pakistan in the tribal areas?",
         "questions": {
             "Q2a": "Building new schools",
@@ -47,7 +49,8 @@
     },
     {
         "group": "Q3",
-        "shortname": "education-goals",
+        "id": "education-goals",
+        "shortname": "Goals for education",
         "text": "How important are the following long-term goals for education in the tribal areas?",
         "questions": {
             "Q3a": "Building new government schools for boys",
@@ -64,7 +67,8 @@
     },
     {
         "group": "Q4",
-        "shortname": "economy-goals",
+        "id": "economy-goals",
+        "shortname": "Goals for the economy",
         "text": "How important are the following long-term goals for the economy in the tribal areas?",
         "questions": {
             "Q4a": "New jobs",
@@ -82,7 +86,8 @@
     },
     {
         "group": "Q5",
-        "shortname": "governance-goals",
+        "id": "governance-goals",
+        "shortname": "Goals for governance",
         "text": "How important are the following long-term goals for governing in the tribal areas?",
         "questions": {
             "Q5a": "FATA should be governed as it now is",
@@ -100,7 +105,8 @@
     },
     {
         "group": "Q6",
-        "shortname": "governance-goals",
+        "id": "justice-goals",
+        "shortname": "Goals for justice",
         "text": "How important are the following long-term goals for justice in the tribal areas?",
         "questions": {
             "Q6a": "The tribal areas should be governed by Pakistani government courts",
@@ -117,7 +123,8 @@
     },
     {
         "group": "Q7",
-        "shortname": "opinion-groups",
+        "id": "opinion-groups",
+        "shortname": "Opinions of groups",
         "text": "How favorable is your opinion of the following groups?",
         "questions": {
             "Q7a": "The tribal areas should be governed by Pakistani government courts",
@@ -134,7 +141,8 @@
     },
     {
         "group": "Q8",
-        "shortname": "opinion-us",
+        "id": "opinion-us",
+        "shortname": "Improving opinions of the U.S.",
         "text": "Would any of the following improve your opinion of the United States?",
         "questions": {
             "Q8a": "U.S. business investment in FATA",
@@ -155,7 +163,8 @@
     },
     {
         "group": "Q9",
-        "shortname": "opinion-individuals",
+        "id": "opinion-individuals",
+        "shortname": "Opinions of Individuals",
         "text": "How favorable is your opinion of the following individuals?",
         "questions": {
             "Q9a": "Pervez Musharraf",
@@ -182,7 +191,8 @@
     },
     {
         "group": "Q10",
-        "shortname": "pursuing-militants",
+        "id": "pursuing-militants",
+        "shortname": "Pursuing Militants inside FATA",
         "text": "Do you support or oppose each of the following?",
         "questions": {
             "Q10a": "The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighers inside FATA",
@@ -198,7 +208,8 @@
     },
     {
         "group": "Q11",
-        "shortname": "presence-groups",
+        "id": "presence-groups",
+        "shortname": "Presence of groups inside FATA",
         "text": "Do you support or oppose the presence of the following groups inside FATA today?",
         "questions": {
             "Q11a": "The United States Military",
@@ -215,7 +226,8 @@
     },
     {
         "group": "Q13",
-        "shortname": "negotiation",
+        "id": "negotiation",
+        "shortname": "Negotiation",
         "text": "Should the Pakistani government negotiate with, or continue to fight, the following groups?",
         "questions": {
             "Q13a": "Arab and foreign Al Qaeda fighters",
@@ -230,7 +242,8 @@
     },
     {
         "group": "Q19",
-        "shortname": "importance-people",
+        "id": "importance-people",
+        "shortname": "Important People",
         "text": "Are the following people important in your area?",
         "questions": {
             "Q19a": "Maliks",
@@ -252,7 +265,8 @@
     },
     {
         "group": "Q21",
-        "shortname": "suicide-bombings",
+        "id": "suicide-bombings",
+        "shortname": "Suicide Bombings",
         "text": "Are suicide bombings justified against the following targets?",
         "questions": {
             "Q21a": "The Pakistani military and police",
