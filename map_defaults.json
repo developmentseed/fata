@@ -1,0 +1,38 @@
+{
+    "controls": {
+        "navigation": {
+            "_type": "OpenLayers.Control.Navigation",
+            "_value": []
+        }
+    },
+    "layers": {
+      "stylewriter": {
+            "_type": "OpenLayers.Layer.StyleWriter",
+            "_value": [
+              "",
+              {
+                "projection": {
+                  "_type": "OpenLayers.Projection",
+                  "_value": "EPSG:900913"
+                },
+                "type": "png",
+                "mapfile": ""
+              }
+            ]
+        },
+        "mapbox": {
+            "_type": "OpenLayers.Layer.MapBox",
+            "_value": [
+              "",
+              {
+                "projection": {
+                  "_type": "OpenLayers.Projection",
+                  "_value": "EPSG:900913"
+                },
+                "type": "jpg",
+                "layername": "afghanistan-landcover-fa"
+              }
+            ]
+        }
+    }
+}

@@ -238,32 +238,14 @@ app.get('/style/:question', function(req, res) {
     async.waterfall(waterfall);
 });
 
-app.get('/map', function(req, res) {
-  var default_layers = {
-      'controls': [
-          {
-              '_type': 'OpenLayers.Control.Navigation',
-              '_value': []
-          }
-      ],
-      'layers': [
-          {
-              '_type': 'OpenLayers.Layer.MapBox',
-              '_value': [
-                'blah',
-                {
-                  'projection': {
-                    '_type': 'OpenLayers.Projection',
-                    '_value': 'EPSG:900913'
-                  },
-                  'type': 'jpg',
-                  'layername': 'afghanistan-landcover-fa'
-                }
-              ]
-          }
-      ]
-  };
-  res.send(default_layers);
+app.get('/map/:question', function(req, res) {
+    var fs = require('fs');
+    var map_template = JSON.parse(fs.readFileSync('map_defaults.json', 'utf-8'));
+    var question_layer = map_template.layers.stylewriter;
+    question_layer._value[1].mapfile = '/style/' + req.params.question;
+    res.send({
+        'layers': [question_layer],
+        'controls': [map_template.controls.navigation]});
 });
 
 // Database setup
