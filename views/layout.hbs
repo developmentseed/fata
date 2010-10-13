@@ -15,23 +15,17 @@
     <script src="/js/flot/jquery.flot.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <div id="branding">
-        <h1 class="site-name">{{ siteTitle }}</h1>
-        <ul class="primary-navigation">
-            {{#primaryNavigation}}
-                {{#active}}
-                    <li class="active"><a href="{{url}}">{{title}}</a></li>
-                {{/active}}
-                {{^active}}
-                    <li><a href="{{url}}">{{title}}</a></li>
-                {{/active}}
-            {{/primaryNavigation}}
-        </ul>
-    </div>
-    <h2 class="page-title">{{pageTitle}}</h2>
-    {{{ body }}}
-    <div id="footer">
-        {{footerMessage}}
+    <div id='global'><div class='limiter'>
+      <a class='new-america' href='http://www.newamerica.net'>New American Foundation</a>
+    </div></div>
+    <div class='limiter'>
+        <div id="branding">
+            <h1 class="site-name"><a href='/'>{{ siteTitle }}</a></h1>
+        </div>
+        {{{ body }}}
+        <div id="footer">
+            {{footerMessage}}
+        </div>
     </div>
 </body>
 </html>
