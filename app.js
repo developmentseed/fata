@@ -69,10 +69,11 @@ app.get('/', function(req, res) {
 });
 
 // Handle agency page
-app.get('/agency/:id', function(req, res) {
+app.get('/agency/:id/:filter?', function(req, res) {
     var async = require('async'),
         parallel = [],
         view = {},
+        agenciesView = {},
         pageTitle = '',
         dataHandler = app.dataHandler;
 
@@ -86,6 +87,18 @@ app.get('/agency/:id', function(req, res) {
     });
 
     parallel.push(function(callback) {
+        dataHandler.field('agencies', {}, function(data) {
+            data.forEach(function(agency) {
+                if ('/agency/' + agency.ID == req.url) {
+                    agency.active = true;
+                }
+            });
+            agenciesView = data;
+            callback(null);
+        });
+    });
+
+    parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
             pageTitle = data[0].Human
             callback(null);
@@ -93,17 +106,17 @@ app.get('/agency/:id', function(req, res) {
     });
 
     async.parallel(parallel, function(error) {
-        console.log(view);
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
+                agencies: agenciesView,
             }
         });
     });
 });
 
 // Handle question page
-app.get('/question/:id', function(req, res) {
+app.get('/question/:id/:filter?', function(req, res) {
     if (settings.questions.indexOf(req.params.id) !== -1) {
         var question = req.params.id,
             dataHandler = app.dataHandler;
@@ -139,6 +152,32 @@ app.get('/about', function(req, res) {
                 contentText: markdown.Markdown(data)
             }
         });
+    });
+});
+
+app.get('/style', function(req, res) {
+    res.render('style', {
+        layout: false,
+        locals: {
+            rules: [
+                {
+                    selector: '#data[Province_ID = 5]',
+                    properties: [
+                        {
+                            property: 'polygon-fill',
+                            value: '#000'
+                        }
+                    ]
+                }
+            ],
+            layers: [
+                {
+                    file: 'test.shp',
+                    type: 'shape',
+                    id: 'data',
+                }
+            ]
+        }
     });
 });
 
