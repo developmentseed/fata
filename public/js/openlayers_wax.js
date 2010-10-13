@@ -36,6 +36,10 @@ var Wax = {
         }
     },
 
+    /**
+     * Instantiate a map on an element
+     * @param {element} element to instantiate a map on.
+     */
     bind: function() {
         var element = _(arguments).last();
         $.getJSON($(element).attr('src'), function(data) {

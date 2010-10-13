@@ -163,11 +163,14 @@ app.get('/about', function(req, res) {
 
 app.get('/style/:question', function(req, res) {
     var async = require('async'),
+        style = require('./style'),
         dataHandler = app.dataHandler,
         waterfall = [],
         parallel = [],
         view = [],
-        supportFields = ['Somewhat Support', 'Strongly Support'];
+        supportFields = ['Somewhat Support', 'Strongly Support'],
+        color_start = style.Color('000000'),
+        color_end = style.Color('111111');
         question = req.params.question;
     waterfall.push(function(callback) {
         // Load list of agencies
@@ -200,20 +203,25 @@ app.get('/style/:question', function(req, res) {
             });
         });
         async.parallel(parallel, function(err) {
+            var list_normalize = function(a, list) {
+                return (a - _.min(list)) / (_.max(list) - _.min(list));
+            }
             res.render('style', {
                 layout: false,
                 locals: {
-                    rules: [
-                        {
-                            selector: '#data[Province_ID = 5]',
-                            properties: [
-                                {
-                                    property: 'polygon-fill',
-                                    value: '#000'
-                                }
-                            ]
-                        }
-                    ],
+                    rules: _.map(view, function(record) {
+                            return {
+                                selector: '#data[ID = "' + record.agency + '"]',
+                                properties: [
+                                    {
+                                        property: 'polygon-fill',
+                                        value: color_start.blend(color_end, 
+                                            list_normalize(record.percent, _.pluck(view, 'percent')))
+                                    }
+                                ]
+                            }
+                        })
+                    ,
                     layers: [
                         {
                             property: 'polygon-fill',
