@@ -69,7 +69,8 @@ app.get('/', function(req, res) {
 });
 
 // Handle agency page
-app.get('/agency/:id/:filter?', function(req, res) {
+app.get('/agency/:id/:filter?', function(req, res, next) {
+
     var async = require('async'),
         parallel = [],
         agencies = {},
@@ -100,7 +101,12 @@ app.get('/agency/:id/:filter?', function(req, res) {
 
     parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
-            pageTitle = data[0].Human;
+            if (data && data[0] && data[0].Human) {
+                pageTitle = data[0].Human;
+            }
+            else {
+                next();
+            }
             callback(null);
         });
     });
@@ -224,20 +230,30 @@ app.get('/style/:question', function(req, res) {
     async.waterfall(waterfall);
 });
 
-app.get('/layers', function(req, res) {
+app.get('/map', function(req, res) {
   var default_layers = {
-    '_type': 'OpenLayers.Layer.MapBox',
-    '_value': [
-      'blah',
-      {
-        'projection': {
-          '_type': 'OpenLayers.Projection',
-          '_value': 'EPSG:900913'
-        },
-        'type': 'jpg',
-        'layername': 'afghanistan-landcover-fa'
-      }
-    ]
+      'controls': [
+          {
+              '_type': 'OpenLayers.Control.Navigation',
+              '_value': []
+          }
+      ],
+      'layers': [
+          {
+              '_type': 'OpenLayers.Layer.MapBox',
+              '_value': [
+                'blah',
+                {
+                  'projection': {
+                    '_type': 'OpenLayers.Projection',
+                    '_value': 'EPSG:900913'
+                  },
+                  'type': 'jpg',
+                  'layername': 'afghanistan-landcover-fa'
+                }
+              ]
+          }
+      ]
   };
   res.send(default_layers);
 });
@@ -246,11 +262,11 @@ app.get('/layers', function(req, res) {
 if (settings.mongodb) {
     var mongo = require('node-mongodb-native/lib/mongodb');
     var DataHandler = require('./data');
-    var db = new mongo.Db(settings.mongodb.db, 
+    var db = new mongo.Db(settings.mongodb.db,
         new mongo.Server(
-            settings.mongodb.host, 
+            settings.mongodb.host,
             mongo.Connection.DEFAULT_PORT,
-            {}), 
+            {}),
         {});
     app.db = db;
     app.dataHandler = new DataHandler(db);
