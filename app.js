@@ -268,7 +268,8 @@ app.get('/style/:question', function(req, res) {
                                     {
                                         property: 'polygon-fill',
                                         value: color_start.blend(color_end, 
-                                            list_normalize(record.percent, _.pluck(view, 'percent')))
+                                            list_normalize(record.percent, 
+                                            _.pluck(view, 'percent')))
                                     }
                                 ]
                             }
