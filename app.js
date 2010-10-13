@@ -142,6 +142,32 @@ app.get('/about', function(req, res) {
     });
 });
 
+app.get('/style', function(req, res) {
+    res.render('style', {
+        layout: false,
+        locals: {
+            rules: [
+                {
+                    selector: '#data[Province_ID = 5]',
+                    properties: [
+                        {
+                            property: 'polygon-fill',
+                            value: '#000'
+                        }
+                    ]
+                }
+            ],
+            layers: [
+                {
+                    file: 'test.shp',
+                    type: 'shape',
+                    id: 'data',
+                }
+            ]
+        }
+    });
+});
+
 app.get('/layers', function(req, res) {
   var default_layers = {
     '_type': 'OpenLayers.Layer.MapBox',
