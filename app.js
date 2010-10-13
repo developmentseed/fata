@@ -34,8 +34,14 @@ app.dynamicHelpers({
 
 // Handle home page
 app.get('/', function(req, res) {
-    res.render('index', {
-        locals: { pageTitle: 'Home' }
+    var dataHandler = app.dataHandler;
+    dataHandler.field('agencies', {}, function(data) {
+        res.render('index', {
+            locals: {
+                pageTitle: 'Home',
+                agencies: data,
+            }
+        });
     });
 });
 
@@ -45,18 +51,11 @@ app.get('/agency/:id', function(req, res) {
         parallel = [],
         view = {},
         dataHandler = app.dataHandler;
-    settings.questions.forEach(function(question) {
-        parallel.push(function(callback) {
-            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
-                view[question] = result[question];
-                callback(null);
-            });
-        });
-    });
-    async.parallel(parallel, function(error) {
-        console.log(view);
+    dataHandler.field('agencies', {URL: req.params.id}, function(data) {
         res.render('agency', {
-            locals: { pageTitle: 'Agency' }
+            locals: {
+                pageTitle: data[0].Human,
+            }
         });
     });
 });
