@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 });
 
 // Handle agency page
-app.get('/agency/:id', function(req, res) {
+app.get('/agency/:id/:filter?', function(req, res) {
     var async = require('async'),
         parallel = [],
         view = {},
@@ -116,7 +116,7 @@ app.get('/agency/:id', function(req, res) {
 });
 
 // Handle question page
-app.get('/question/:id', function(req, res) {
+app.get('/question/:id/:filter?', function(req, res) {
     if (settings.questions.indexOf(req.params.id) !== -1) {
         var question = req.params.id,
             dataHandler = app.dataHandler;
