@@ -1,22 +1,21 @@
-<div id="page">
-    <div id="left" class="sidebar">
-        <div class="block">
-            <h2 class="block-title">Administrative Agencies</h2>
-            <div class="block-content">
+<div id='page'>
+    <div id='left' class='sidebar'>
+        <div class='block'>
+            <h2 class='block-title'>Administrative Agencies</h2>
+            <div class='block-content'>
                 <ul>
                     {{#agencies}}
                         {{#active}}
-                            <li class="active"><a href="/agency/{{ID}}">{{Human}}</a></li>
+                            <li class='active'><a href='/agency/{{ID}}'>{{Human}}</a></li>
                         {{/active}}
                         {{^active}}
-                            <li><a href="/agency/{{ID}}">{{Human}}</a></li>
+                            <li><a href='/agency/{{ID}}'>{{Human}}</a></li>
                         {{/active}}
                     {{/agencies}}
                 </ul>
             </div>
         </div>
     </div>
-    <div id="main">
-        <div id='map'></div>
+    <div id='main'>
     </div>
 </div>
