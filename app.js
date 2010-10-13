@@ -16,6 +16,9 @@ app.dynamicHelpers({
     siteTitle: function(req, res) {
         return settings.siteTitle;
     },
+    footerMessage: function() {
+        return settings.footerMessage;
+    },
     primaryNavigation: function(req) {
         items = [
             {title:'Home', url:'/'},

@@ -16,5 +16,6 @@ module.exports = {
         }
     },
     siteTitle: 'FATA Sentiment Survey',
+    footerMessage: 'Copyright © New America Foundation',
     questions: ['Q1a', 'Q1b', 'Q1c', 'Q1d', 'Q1e', 'Q1f', 'Q1g'],
 };
