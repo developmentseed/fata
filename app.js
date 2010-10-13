@@ -155,30 +155,73 @@ app.get('/about', function(req, res) {
     });
 });
 
-app.get('/style', function(req, res) {
-    res.render('style', {
-        layout: false,
-        locals: {
-            rules: [
-                {
-                    selector: '#data[Province_ID = 5]',
-                    properties: [
+app.get('/style/:question', function(req, res) {
+    var async = require('async'),
+        dataHandler = app.dataHandler,
+        waterfall = [],
+        parallel = [],
+        view = [],
+        supportFields = ['Somewhat Support', 'Strongly Support'];
+        question = req.params.question;
+    waterfall.push(function(callback) {
+        dataHandler.field('agencies', {}, function(agencies) {
+            callback(null, agencies);
+        });
+    });
+    waterfall.push(function(agencies, callback) {
+        agencies.forEach(function(agency) {
+            parallel.push(function (callback) {
+                dataHandler.countField('responses', question, {Agency:agency.ID}, function(result) {
+                    var totalResponses = _.reduce(result, function(memo, num){
+                        return memo + num.value.count;
+                    }, 0);
+                    var support = 0;
+                    supportFields.forEach(function(field) {
+                        result.forEach(function(row) {
+                            if (row._id == field && row.value.count) {
+                                support += row.value.count;
+                            }
+                        });
+                    });
+                    var percent = support / totalResponses * 100;
+                    view.push({
+                        agency: agency.ID,
+                        percent: percent,
+                    });
+                    callback(null);
+                });
+            });
+        });
+        async.parallel(parallel, function(err) {
+            console.log(view);
+            res.render('style', {
+                layout: false,
+                locals: {
+                    rules: [
+                        {
+                            selector: '#data[Province_ID = 5]',
+                            properties: [
+                                {
+                                    property: 'polygon-fill',
+                                    value: '#000'
+                                }
+                            ]
+                        }
+                    ],
+                    layers: [
                         {
                             property: 'polygon-fill',
                             value: '#000'
+                            file: 'test.shp',
+                            type: 'shape',
+                            id: 'data',
                         }
                     ]
                 }
-            ],
-            layers: [
-                {
-                    file: 'test.shp',
-                    type: 'shape',
-                    id: 'data'
-                }
-            ]
-        }
+            });
+        });
     });
+    async.waterfall(waterfall);
 });
 
 app.get('/layers', function(req, res) {
