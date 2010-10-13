@@ -73,6 +73,7 @@ app.get('/agency/:id', function(req, res) {
     var async = require('async'),
         parallel = [],
         view = {},
+        agenciesView = {},
         pageTitle = '',
         dataHandler = app.dataHandler;
 
@@ -86,6 +87,18 @@ app.get('/agency/:id', function(req, res) {
     });
 
     parallel.push(function(callback) {
+        dataHandler.field('agencies', {}, function(data) {
+            data.forEach(function(agency) {
+                if ('/agency/' + agency.ID == req.url) {
+                    agency.active = true;
+                }
+            });
+            agenciesView = data;
+            callback(null);
+        });
+    });
+
+    parallel.push(function(callback) {
         dataHandler.field('agencies', {ID: req.params.id}, function(data) {
             pageTitle = data[0].Human
             callback(null);
@@ -93,10 +106,10 @@ app.get('/agency/:id', function(req, res) {
     });
 
     async.parallel(parallel, function(error) {
-        console.log(view);
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
+                agencies: agenciesView,
             }
         });
     });
