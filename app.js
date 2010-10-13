@@ -7,7 +7,7 @@ var connect = require('connect'),
 
 // Initialize core object.
 var app = module.exports = new express.Server([
-    connect.logger(),
+    connect.logger({ format: '- [:response-timems] :date - :method :status' }),
     connect.staticProvider(__dirname + '/public')
 ]);
 
@@ -99,6 +99,29 @@ app.get('/about', function(req, res) {
             }
         });
     });
+});
+
+app.get('/layers', function(req, res) {
+  var default_layers = {
+    'afghanistan-landcover-fa': {
+      '_type': 'OpenLayers.Layer.MapBox',
+      'value': {
+        'options': {
+          'projection': {
+            '_type': 'OpenLayers.Projection',
+            'value': 'EPSG:900913'
+          },
+          'maxExtent': {
+            '_type': 'OpenLayers.Bounds',
+            'value': [-20037508, -20037508, 20037508, 20037508]
+          },
+          'type': 'png',
+          'layername': 'afghanistan-landcover-fa'
+        }
+      }
+    }
+  };
+  res.send(default_layers);
 });
 
 if (settings.mongodb) {
