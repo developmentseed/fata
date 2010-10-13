@@ -67,11 +67,33 @@ app.get('/', function(req, res) {
 
 // Handle agency page
 app.get('/agency/:id', function(req, res) {
-    var dataHandler = app.dataHandler;
-    dataHandler.field('agencies', {URL: req.params.id}, function(data) {
+    var async = require('async'),
+        parallel = [],
+        view = {},
+        pageTitle = '',
+        dataHandler = app.dataHandler;
+
+    settings.questions.forEach(function(question) {
+        parallel.push(function(callback) {
+            dataHandler.countField('responses', question, {Agency: req.params.id}, function(result) {
+                view[question] = result[question];
+                callback(null);
+            });
+        });
+    });
+
+    parallel.push(function(callback) {
+        dataHandler.field('agencies', {ID: req.params.id}, function(data) {
+            pageTitle = data[0].Human
+            callback(null);
+        });
+    });
+
+    async.parallel(parallel, function(error) {
+        console.log(view);
         res.render('agency', {
             locals: {
-                pageTitle: data[0].Human,
+                pageTitle: pageTitle,
             }
         });
     });
