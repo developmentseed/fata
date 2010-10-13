@@ -37,12 +37,29 @@ app.dynamicHelpers({
 
 // Handle home page
 app.get('/', function(req, res) {
-    var dataHandler = app.dataHandler;
-    dataHandler.field('agencies', {}, function(data) {
+    var async = require('async'),
+        parallel = [],
+        agenciesView = {},
+        questionsView = {},
+        dataHandler = app.dataHandler;
+    parallel.push(function(callback) {
+        dataHandler.field('agencies', {}, function(data) {
+            agenciesView = data;
+            callback(null);
+        });
+    });
+    parallel.push(function(callback) {
+        dataHandler.field('questions', {}, function(data) {
+            questionsView = data;
+            callback(null);
+        });
+    });
+    async.parallel(parallel, function(error) {
         res.render('index', {
             locals: {
                 pageTitle: 'Home',
-                agencies: data,
+                agencies: agenciesView,
+                questions: questionsView
             }
         });
     });
@@ -50,10 +67,7 @@ app.get('/', function(req, res) {
 
 // Handle agency page
 app.get('/agency/:id', function(req, res) {
-    var async = require('async'),
-        parallel = [],
-        view = {},
-        dataHandler = app.dataHandler;
+    var dataHandler = app.dataHandler;
     dataHandler.field('agencies', {URL: req.params.id}, function(data) {
         res.render('agency', {
             locals: {
