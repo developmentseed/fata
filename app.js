@@ -211,7 +211,7 @@ app.get('/style/:question', function(req, res) {
                     layers: [
                         {
                             property: 'polygon-fill',
-                            value: '#000'
+                            value: '#000',
                             file: 'test.shp',
                             type: 'shape',
                             id: 'data',
