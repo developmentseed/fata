@@ -178,10 +178,14 @@ app.get('/question/:group/:filter?', function(req, res) {
     var group = req.params.group,
         dataHandler = req.dataHandler,
         async = require('async'),
-        waterfall = [];
+        waterfall = [],
+        pageTitle = '',
+        subTitle = '';
     // Load the question group
     waterfall.push(function (callback) {
         dataHandler.field('questions', {id:group}, function(groups) {
+            pageTitle = groups[0].shortname;
+            subTitle = groups[0].text;
             callback(null, groups[0]);
         });
     });
@@ -232,7 +236,8 @@ app.get('/question/:group/:filter?', function(req, res) {
         console.log(results);
         res.render('question', {
             locals: {
-                pageTitle: 'Question',
+                pageTitle: pageTitle,
+                subTitle: subTitle,
                 questions: results
             }
         });
