@@ -21,11 +21,14 @@ var Wax = {
             if (waxed.length == 1) {
               return new fn(waxed);
             }
-            else {
+            else if (waxed.length == 2) {
               return new fn(waxed[0], waxed[1]);
             }
+            else if (waxed.length == 3) {
+              return new fn(waxed[0], waxed[1], waxed[2]);
+            }
         }
-        else if (_.isString(json_object) || _.isNumber(json_object)) {
+        else if (_.isString(json_object) || _.isNumber(json_object) || _.isBoolean(json_object)) {
           return json_object;
         }
         else {
