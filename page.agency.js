@@ -14,6 +14,7 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
         agencies = [],
         groups = [],
         demographics = [],
+        drone_info = {},
         activeFilter = {},
         profile = '',
         pageTitle = '';
@@ -111,6 +112,14 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
         });
     });
 
+    // Load drone_aggregate info
+    parallel.push(function(callback) {
+        dataHandler.find({collection: 'drones_aggregate', conditions: {agency: req.params.id}}, function(data) {
+            drone_info = data[0],
+            callback(null);
+        });
+    });
+
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
         res.render('agency', {
@@ -120,7 +129,8 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
                 agencyid: req.params.id,
                 agencies: agencies,
                 groups: groups,
-                demographics: demographics
+                demographics: demographics,
+                drone_info: drone_info
             }
         });
     });
