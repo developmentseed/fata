@@ -226,7 +226,7 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
                 render.push(group.questions[i]);
             }
         }
-        group.questions = render;
+        group.renderedQuestions = render;
 
         callback(group);
     });
