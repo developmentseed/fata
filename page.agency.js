@@ -1,7 +1,7 @@
 /**
  * Agency page handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/agency/:id/:filter?', function(req, res, next) {
     var async = require('async'),
@@ -12,7 +12,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
         // Variables to populate.
         agencies = [],
-        questions = [],
+        groups = [],
         profile = '',
         pageTitle = '';
 
@@ -29,39 +29,22 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         });
         waterfall.push(function(result, callback) {
             var series = [];
-            result.forEach(function(question) {
-                questions.push(question);
-
-                // Filter questions down to those that should be displayed in
-                // this context.
-                var display = [];
-                for (var q in question.questions) {
-                    if (question.questions[q].display.indexOf('agency') !== -1) {
-                        display.push(q);
-                    }
-                }
-                display.forEach(function(q) {
-                    var responses = [];
-                    question.questions[q].responses = responses;
-                    series.push(function(responseCallback) {
-                        dataHandler.countField({collection: 'responses', field: q, conditions: {Agency: req.params.id}}, function(result) {
-                            var graph = require('graph');
-                            graph.process({answers:question.answers}, result.pop().value).forEach(function(bar) {
-                                responses.push(bar);
-                            });
-                            responseCallback(null);
-                        });
+            result.forEach(function(group) {
+                series.push(function(responseCallback) {
+                    dataHandler.loadQuestion({group: group, context: 'agency', conditions: {Agency: req.params.id}}, function(result) {
+                        groups.push(result);
+                        responseCallback(null);
                     });
                 });
             });
             async.series(series, function(error) {
                 // Gross. Convert objects to arrays for templating.
-                questions.forEach(function(question) {
+                groups.forEach(function(group) {
                     var render = [];
-                    for (var i in question.questions) {
-                        render.push(question.questions[i]);
+                    for (var i in group.questions) {
+                        render.push(group.questions[i]);
                     }
-                    question.questions = render;
+                    group.questions = render;
                 });
                 callback(error);
             });
@@ -113,7 +96,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 profile: profile,
                 agencyid: req.params.id,
                 agencies: agencies,
-                questions: questions,
+                groups: groups,
             }
         });
     });

@@ -176,3 +176,48 @@ DataHandler.prototype.markdown = function(params, callback) {
         callback(markdown.Markdown(data));
     });
 };
+
+/**
+ * @param {Object} params
+ *   Parameters:
+ *   - group {Object}
+ *   - context {String}
+ *   - conditions {Object}
+ *     Query conditions. Use {} to return all documents.
+ *     Example: { name: 'foobar' } // Find documents where name = 'foobar'.
+ * @param {Function} callback
+ *   Callback function to use once query is complete.
+ */
+DataHandler.prototype.loadQuestion = function(params, callback) {
+    // console.log(params);
+    var self = this,
+        group = params.group,
+        context = params.context,
+        conditions = params.conditions;
+    // Filter questions down to those that should be displayed in
+    // this context.
+    var display = [];
+    for (var q in group.questions) {
+        if (group.questions[q].display.indexOf(context) !== -1) {
+            display.push(q);
+        }
+    }
+    var series = [];
+    display.forEach(function(q) {
+        var responses = [];
+        group.questions[q].responses = responses;
+        series.push(function(responseCallback) {
+            self.countField({collection: 'responses', field: q, conditions: conditions}, function(result) {
+                var graph = require('graph');
+                graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
+                    responses.push(bar);
+                });
+                responseCallback(null);
+            });
+        });
+    });
+    async = require('async');
+    async.series(series, function() {
+        callback(group);
+    });
+}

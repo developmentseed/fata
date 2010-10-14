@@ -1,7 +1,7 @@
 /**
  * Map JSON handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/map/question/:question', function(req, res) {
     var fs = require('fs');
