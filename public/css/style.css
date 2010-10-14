@@ -283,6 +283,16 @@ div.question { /* use div. here to avoid conflict with body.question */
   position:relative;
   }
 
+.graph .empty {
+  height:14px;
+  line-height:14px;
+  font-size:10px;
+  text-align:center;
+  display:block;
+  color:#887;
+  background:#585848;
+  }
+
 .graph .bar {
   height:14px;
   position:absolute;
