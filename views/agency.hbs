@@ -42,7 +42,25 @@
         <h2>{{pageTitle}}</h2>
         <div class='profile prose'>{{{profile}}}</div>
     </div>
-    <div class='content'>
+    <div class='content' id='content'>
+        <div class='demographics'>
+            <div class='filter'>
+                <h2>Filter by demographics</h2>
+                <div class='facets clearfix'>
+                    <a href='/agency/{{agencyid}}}#content'>All results</a>
+                </div>
+            </div>
+            {{#demographics}}
+            <div class='filter'>
+                <label>{{name}}</label>
+                <div class='facets clearfix'>
+                    {{#facets}}
+                        <a href='/agency/{{../../agencyid}}/{{../id}}/{{id}}#content'>{{name}}</a>
+                    {{/facets}}
+                </div>
+            </div>
+            {{/demographics}}
+        </div>
         {{#groups}}
         <div class='group clearfix'>
             <h2 class='group-shortname'>{{shortname}}</h2>
