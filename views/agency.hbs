@@ -3,10 +3,10 @@
     <ul class='menu'>
         {{#agencies}}
             {{#active}}
-                <li class='active'><a href='/agency/{{ID}}'>{{Human}}</a></li>
+                <li class='active'><a href='/agency/{{id}}'>{{name}}</a></li>
             {{/active}}
             {{^active}}
-                <li><a href='/agency/{{ID}}'>{{Human}}</a></li>
+                <li><a href='/agency/{{id}}'>{{name}}</a></li>
             {{/active}}
         {{/agencies}}
     </ul>

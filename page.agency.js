@@ -23,7 +23,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // 2. For each question, load all responses
         var waterfall = [];
         waterfall.push(function(callback) {
-            dataHandler.find({collection:'questions'}, function(result) {
+            dataHandler.find({collection: 'groups'}, function(result) {
                 callback(null, result);
             });
         });
@@ -75,7 +75,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
     parallel.push(function(callback) {
         dataHandler.find({collection: 'agencies'}, function(data) {
             data.forEach(function(agency) {
-                if (agency.ID == req.params.id) {
+                if (agency.id == req.params.id) {
                     agency.active = true;
                 }
                 agencies.push(agency);
@@ -86,9 +86,9 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
     // Load the current agency's information.
     parallel.push(function(callback) {
-        dataHandler.find({collection: 'agencies', conditions: {ID: req.params.id}}, function(data) {
-            if (data && data[0] && data[0].Human) {
-                pageTitle = data[0].Human;
+        dataHandler.find({collection: 'agencies', conditions: {id: req.params.id}}, function(data) {
+            if (data && data[0] && data[0].name) {
+                pageTitle = data[0].name;
             }
             else {
                 next();
