@@ -35,6 +35,7 @@ a {
  * Branding (right column)
  */
 #branding {
+  background:url(../images/page.png) -960px -80px no-repeat;
   float:right;
   width:150px;
   padding:20px 0px 20px 10px;
@@ -58,12 +59,16 @@ a {
   }
 
 .sidebar h2 {
-  background:#4c4c40;
+  background:#4c4c40 url(../images/page.png) 0px -80px no-repeat;
   color:#fff;
   padding:30px 20px 9px;
   margin:0px 0px 1px;
   }
 
+.sidebar .ender {
+  height:120px;
+  background:url(../images/page.png) 0px -320px no-repeat;
+  }
 
 .menu a {
   font-size:12px;
@@ -74,12 +79,18 @@ a {
   }
 
 .sidebar .menu a {
-  background:#4c4c40;
+  background:#4c4c40 url(../images/page.png) 0px -80px no-repeat;
   padding:5px 10px 4px 20px;
   margin:0px 0px 1px;
   }
 
 .sidebar .menu a:hover { background:#383830; }
+
+.sidebar .menu .active a {
+  background:#8ba644 url(../images/page.png) 0px -200px no-repeat;
+  color:#333;
+  text-shadow:#b9cd78 0px 1px 0px;
+  }
 
 .navigation h2,
 .navigation .menu a {
@@ -93,11 +104,15 @@ a {
  * Main column
  */
 #main {
+  background:url(../images/page.png) -320px -80px no-repeat;
   float:left;
   width:640px;
   }
 
-.front #main { width:800px; }
+.front #main {
+  width:800px;
+  background-position:-160px -80px;
+  }
 
 /**
  * Main page sections
@@ -306,12 +321,12 @@ div.question { /* use div. here to avoid conflict with body.question */
 .graph .bar label {
   font-size:10px;
   line-height:15px;
-  padding:5px 10px;
-  background:#383830;
+  padding:5px 10px 15px;
+  background:url(../images/sprite.png) 100% 100% no-repeat;
   display:none;
   width:140px;
   position:absolute;
-  bottom:20px;
+  bottom:10px;
   left:50%;
   margin-left:-80px;
   }
@@ -332,23 +347,37 @@ div.question { /* use div. here to avoid conflict with body.question */
 .strongly-support,
 .a-great-deal,
 .very-favorable,
-.very-important { background-color:#696; }
+.very-important { background:#694 url(../images/page.png) 100% 0px no-repeat; }
 
 .rarely-justified,
 .somewhat-support,
 .some-what,
 .somewhat-favorable,
-.somewhat-important { background-color:#886; }
+.somewhat-important { background:#ab5 url(../images/page.png) 100% -20px no-repeat; }
 
 .sometimes-justified,
 .somewhat-oppose,
 .not-significantly,
 .somewhat-unfavorable,
-.somewhat-unimportant { background-color:#866; }
+.somewhat-unimportant { background:#a96 url(../images/page.png) 100% -40px no-repeat; }
 
 .not-negotiate-and-fight,
 .often-justified,
 .strongly-oppose,
 .not-at-all,
 .very-unfavorable,
-.not-at-all-important { background-color:#864; }
+.not-at-all-important { background:#d73 url(../images/page.png) 100% -60px no-repeat; }
+
+.autogen { background:transparent url(../images/page.png) -560px 0px no-repeat; }
+.autogen-1 { background-color:#ccc; }
+.autogen-2 { background-color:#aaa; }
+.autogen-3 { background-color:#888; }
+.autogen-4 { background-color:#666; }
+.autogen-5 { background-color:#456; }
+.autogen-6 { background-color:#678; }
+.autogen-7 { background-color:#89a; }
+.autogen-8 { background-color:#abc; }
+.autogen-9 { background-color:#caa; }
+.autogen-10 { background-color:#a88; }
+.autogen-11 { background-color:#866; }
+.autogen-12 { background-color:#644; }
