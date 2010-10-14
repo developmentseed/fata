@@ -805,29 +805,6 @@
                 ] 
             } 
         },
-        "answers": [
-            {
-                "name": "Al Qaeda and other Arab and foreign fighters" 
-            },
-            {
-                "name": "Pakistani military and ISI" 
-            },
-            {
-                "name": "India" 
-            },
-            {
-                "name": "The United States" 
-            },
-            {
-                "name": "Afghan Taliban" 
-            },
-            {
-                "name": "Pakistani Taliban" 
-            },
-            {
-                "name": "Israel" 
-            } 
-        ] 
     },
     {
         "group": "Q13",
@@ -887,29 +864,6 @@
                 ] 
             } 
         },
-        "answers": [
-            {
-                "name": "Pakistani military and ISI" 
-            },
-            {
-                "name": "The United States" 
-            },
-            {
-                "name": "India" 
-            },
-            {
-                "name": "Al Qaeda and other Arab and foreign fighters" 
-            },
-            {
-                "name": "Pakistani Taliban" 
-            },
-            {
-                "name": "Afghan Taliban" 
-            },
-            {
-                "name": "Israel" 
-            } 
-        ] 
     },
     {
         "group": "Q15",
@@ -925,38 +879,6 @@
                 ] 
             } 
         },
-        "answers": [
-            {
-                "name": "Pakistani People's Party (PPP)" 
-            },
-            {
-                "name": "Pakistan Muslim League (PML-N)" 
-            },
-            {
-                "name": "Pakistan Muslim League (PML-Q)" 
-            },
-            {
-                "name": "Muttahida Qaumi Movement (MQM)" 
-            },
-            {
-                "name": "Jamiat Ulema-e-Islam (JUI)" 
-            },
-            {
-                "name": "Awami National Party (ANP)" 
-            },
-            {
-                "name": "Jamaat-e-Islami (JI)" 
-            },
-            {
-                "name": "Pakistan Tehreek-e-Insaf (PTI)" 
-            },
-            {
-                "name": "Tehrik-i-Taliban Pakistan (TTP) (Pakistani Taliban)" 
-            },
-            {
-                "name": "Al Qaeda" 
-            } 
-        ] 
     },
     {
         "group": "Q16",
@@ -1267,19 +1189,5 @@
                 ] 
             } 
         },
-        "answers": [
-            {
-                "name": "To weaken and divide the Islamic world" 
-            },
-            {
-                "name": "To defeat Al Qaeda and its allies" 
-            },
-            {
-                "name": "To ensure American domination" 
-            },
-            {
-                "name": "To defeat terrorists around the world" 
-            } 
-        ] 
     }
 ]
