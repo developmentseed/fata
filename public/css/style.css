@@ -37,17 +37,23 @@ a {
 #branding {
   background:url(../images/page.png) -960px -80px no-repeat;
   float:right;
-  width:150px;
-  padding:20px 0px 20px 10px;
+  width:140px;
+  padding:20px 0px 20px 20px;
   }
+
+.site-name { margin:0px 0px 20px; }
 
 .site-name a {
   display:block;
-  width:150px;
+  width:140px;
   height:180px;
   background:url(../images/sprite.png) 0px -60px no-repeat;
   text-indent:-9999px;
   overflow:hidden;
+  }
+
+.slogan {
+  color:#9c9c80;
   }
 
 /**
@@ -263,6 +269,17 @@ div.section {
   }
 
 /**
+* /question ============================================================
+*/
+body.question .group-shortname {
+  padding-bottom:5px;
+  }
+
+.agency-breakdown .question {
+  padding-left:25px;
+  }
+
+/**
  * demographics filters ===============================================
  */
 .demographics {
@@ -271,18 +288,25 @@ div.section {
   width:160px;
   }
 
+.filter-title,
 .filter {
   background:#4c4c40;
-  padding:5px 0px 4px;
-  margin-bottom:1px;
+  padding:9px 0px 10px;
+  margin-top:1px;
   }
 
-.filter h2 {
+.filter-title {
+  padding:10px 0px;
+  margin:0px;
+  }
+
+.filter-title h2 {
   color:#fff;
-  padding:0px 10px;
+  padding:0px 10px 10px;
   }
 
 .filter label {
+  display:block;
   padding:0px 10px;
   font-size:12px;
   font-weight:normal;
@@ -324,8 +348,8 @@ div.section {
   }
 
 div.question { /* use div. here to avoid conflict with body.question */
-  border-top:1px solid #585848;
   padding:4px 10px 5px;
+  border-top:1px solid #585848;
   }
 
 .question-name,
