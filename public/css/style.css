@@ -176,3 +176,100 @@ div.questions .menu li {
  * /agency ============================================================
  */
 .profile { font:normal 16px/25px Georgia,serif; }
+
+
+/**
+ * question & graph styles ============================================
+ */
+.group {
+  background:#4c4c40;
+  margin:0px 0px 10px;
+  }
+
+.group-shortname {
+  padding:10px 10px 0px;
+  font-size:16px;
+  color:#fff;
+  }
+
+.group-text {
+  padding:0px 10px 10px;
+  font:italic 13px/20px Georgia,serif;
+  }
+
+.question {
+  border-top:1px solid #585848;
+  padding:4px 10px 5px;
+  }
+
+.question-name {
+  font-weight:normal;
+  width:260px;
+  font-size:12px;
+  float:left;
+  }
+
+.question .graph { float:right; }
+
+.graph {
+  margin:3px 0px;
+  height:14px;
+  width:280px;
+  position:relative;
+  }
+
+.graph .bar {
+  height:14px;
+  position:absolute;
+  top:0px;
+  }
+
+.graph .bar label {
+  font-size:10px;
+  line-height:15px;
+  padding:5px 10px;
+  background:#383830;
+  display:none;
+  width:140px;
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  margin-left:-80px;
+  }
+
+  .graph .bar label strong {
+    font-size:12px;
+    color:#fff;
+    display:block;
+    }
+
+.graph .bar:hover label { display:block; }
+
+.refused { background:#999; }
+.don-t-know { background-color:#666; }
+
+.negotiate,
+.never-justified,
+.strongly-support,
+.a-great-deal,
+.very-favorable,
+.very-important { background-color:#696; }
+
+.rarely-justified,
+.somewhat-support,
+.some-what,
+.somewhat-favorable,
+.somewhat-important { background-color:#886; }
+
+.sometimes-justified,
+.somewhat-oppose,
+.not-significantly,
+.somewhat-unfavorable,
+.somewhat-unimportant { background-color:#866; }
+
+.not-negotiate-and-fight,
+.often-justified,
+.strongly-oppose,
+.not-at-all,
+.very-unfavorable,
+.not-at-all-important { background-color:#864; }

@@ -75,7 +75,6 @@ app.get('/question/:id/:filter?', function(req, res) {
     });
     // Render the page
     waterfall.push(function(callback) {
-        console.log(questions);
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,

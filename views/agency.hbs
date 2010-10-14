@@ -11,6 +11,7 @@
         {{/agencies}}
     </ul>
 </div>
+
 <div id='main'>
     <div class='map'>
         <div id='agency-map' class='waxmap' src='/map/agency/{{ID}}'></div>
@@ -20,6 +21,26 @@
         <div class='profile prose'>{{{profile}}}</div>
     </div>
     <div class='content'>
+        {{#questions}}
+        <div class='group clearfix'>
+            <h2 class='group-shortname'>{{shortname}}</h2>
+            <p class='group-text'>{{text}}</p>
+            {{#questions}}
+            <div class='question clearfix'>
+                <h2 class='question-name'>{{{name}}}</h2>
+                <div class='graph'>
+                    {{#responses}}
+                    <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                        <label>
+                            <strong>{{label}}</strong>
+                            {{percent}}% &mdash; {{number}} respondents
+                        </label>
+                    </span>
+                    {{/responses}}
+                </div>
+            </div>
+            {{/questions}}
+        </div>
+        {{/questions}}
     </div>
 </div>
-

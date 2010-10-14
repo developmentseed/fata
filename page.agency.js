@@ -12,7 +12,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
         // Variables to populate.
         agencies = [],
-        questions = {}, // @TODO make this an array.
+        questions = [],
         profile = '',
         pageTitle = '';
 
@@ -30,8 +30,10 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         waterfall.push(function(result, callback) {
             var series = [];
             result.forEach(function(question) {
-                questions[question.group] = question;
+                questions.push(question);
 
+                // Filter questions down to those that should be displayed in
+                // this context.
                 var display = [];
                 for (var q in question.questions) {
                     if (question.questions[q].display.indexOf('agency') !== -1) {
@@ -39,15 +41,29 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                     }
                 }
                 display.forEach(function(q) {
+                    var responses = [];
+                    question.questions[q].responses = responses;
                     series.push(function(responseCallback) {
                         dataHandler.countField({collection: 'responses', field: q, conditions: {Agency: req.params.id}}, function(result) {
-                            questions[question.group].questions[q].responses = result.pop().value;
+                            // @TODO: Pass params to allow for correct ordering, CSS classes.
+                            var graph = require('graph');
+                            graph.process({}, result.pop().value).forEach(function(bar) {
+                                responses.push(bar);
+                            });
                             responseCallback(null);
                         });
                     });
                 });
             });
             async.series(series, function(error) {
+                // Gross. Convert objects to arrays for templating.
+                questions.forEach(function(question) {
+                    var render = [];
+                    for (var i in question.questions) {
+                        render.push(question.questions[i]);
+                    }
+                    question.questions = render;
+                });
                 callback(error);
             });
         });
