@@ -106,6 +106,7 @@ a {
   margin:15px;
   border:1px solid #686858;
   padding:4px;
+  position:relative;
   }
 
 .header {
@@ -149,6 +150,8 @@ a {
   }
 
   div.map #block-openlayers_plus-blockswitcher.ne {
+    position:absolute;
+    z-index:5000;
     right:4px;
     top:4px;
     bottom:4px;
@@ -156,6 +159,7 @@ a {
     height:280px;
     background:#383830;
     }
+
   .map .openlayers-blockswitcher {
     width:200px;
     z-index:900;
@@ -323,6 +327,16 @@ div.question { /* use div. here to avoid conflict with body.question */
   height:14px;
   width:280px;
   position:relative;
+  }
+
+.graph .empty {
+  height:14px;
+  line-height:14px;
+  font-size:10px;
+  text-align:center;
+  display:block;
+  color:#887;
+  background:#585848;
   }
 
 .graph .bar {
