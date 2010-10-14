@@ -146,6 +146,19 @@ a {
   height:280px;
   }
 
+  div.map #block-openlayers_plus-blockswitcher.ne {
+    right:4px;
+    top:4px;
+    bottom:4px;
+    width:200px;
+    height:280px;
+    background:#383830;
+    }
+  .map .openlayers-blockswitcher {
+    width:200px;
+    z-index:900;
+    }
+
 #home-map {
   width:760px;
   height:280px;
