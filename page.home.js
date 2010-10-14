@@ -1,7 +1,8 @@
 /**
  * Homepage handler.
  */
-var app = module.parent.exports.app;
+var app = module.parent.exports.app,
+    settings = module.parent.exports.settings;
 
 app.get('/', function(req, res) {
     var async = require('async'),
@@ -40,11 +41,24 @@ app.get('/', function(req, res) {
         });
     });
 
-    var files = ['section1', 'section2', 'section3', 'section4', 'section5'];
-    files.forEach(function(section) {
+    // Build each content section.
+    settings.homeSections.forEach(function(section) {
         parallel.push(function(callback) {
-            dataHandler.markdown({path: 'content/home.'+section+'.md'}, function(data) {
-                sections.push({text: data});
+            var series = [];
+            var loaded = {};
+
+            // Load markdown text.
+            series.push(function(callback) {
+                dataHandler.markdown({path: 'content/home.'+section.content+'.md'}, function(data) {
+                    loaded.content = data;
+                    callback(null);
+                });
+            });
+            // @TODO load graphs.
+
+            // Run tasks as series.
+            async.series(series, function() {
+                sections.push(loaded);
                 callback(null);
             });
         });
