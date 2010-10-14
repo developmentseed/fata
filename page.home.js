@@ -5,28 +5,61 @@ var app = module.parent.exports;
 
 app.get('/', function(req, res) {
     var async = require('async'),
+        dataHandler = req.dataHandler,
+
+        // Async control helper.
         parallel = [],
-        agenciesView = {},
-        questionsView = {},
-        dataHandler = req.dataHandler;
+
+        // Variables to populate.
+        agencies = [],
+        groups = [],
+        sections = [],
+        intro = '';
+
+    // Agencies menu.
     parallel.push(function(callback) {
         dataHandler.find({collection: 'agencies'}, function(data) {
-            agenciesView = data;
+            agencies = data;
             callback(null);
         });
     });
+
+    // Question groups menu.
     parallel.push(function(callback) {
         dataHandler.find({collection: 'groups'}, function(data) {
-            questionsView = data;
+            groups = data;
             callback(null);
         });
     });
+
+    // Content sections.
+    parallel.push(function(callback) {
+        dataHandler.markdown({path: 'content/home.intro.md'}, function(data) {
+            intro = data;
+            callback(null);
+        });
+    });
+
+    var files = ['section1', 'section2', 'section3', 'section4', 'section5'];
+    files.forEach(function(section) {
+        parallel.push(function(callback) {
+            dataHandler.markdown({path: 'content/home.'+section+'.md'}, function(data) {
+                sections.push({text: data});
+                callback(null);
+            });
+        });
+    });
+
     async.parallel(parallel, function(error) {
-        res.render('index', {
+        console.log(intro);
+        console.log(sections);
+        res.render('home', {
             locals: {
                 pageTitle: 'Home',
-                agencies: agenciesView,
-                questions: questionsView
+                agencies: agencies,
+                groups: groups,
+                sections: sections,
+                intro: intro
             }
         });
     });

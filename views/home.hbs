@@ -14,14 +14,18 @@
         <div class='questions'>
             <h2>Sentiment Survey Questions</h2>
             <ul class='menu questions'>
-            {{#questions}}
+            {{#groups}}
                 <li><a href="/question/{{id}}">{{shortname}}</a></li>
-            {{/questions}}
+            {{/groups}}
             </ul>
         </div>
     </div>
     <div class='header'>
+        <div class='prose'>{{{intro}}}</div>
     </div>
     <div class='content'>
+        {{#sections}}
+        <div class='section prose'>{{{text}}}</div>
+        {{/sections}}
     </div>
 </div>

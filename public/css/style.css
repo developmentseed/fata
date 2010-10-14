@@ -14,8 +14,6 @@ a {
   margin:0px auto;
   }
 
-.prose { font:normal 16px/25px Georgia,serif; }
-
 /**
  * Global header
  */
@@ -172,6 +170,11 @@ div.agencies .menu li,
 div.questions .menu li {
   float:left;
   width:50%;
+  }
+
+div.section {
+  width:620px;
+  padding:0px 10px;
   }
 
 /**
