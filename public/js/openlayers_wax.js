@@ -25,7 +25,7 @@ var Wax = {
               return new fn(waxed[0], waxed[1]);
             }
         }
-        else if (_.isString(json_object)) {
+        else if (_.isString(json_object) || _.isNumber(json_object)) {
           return json_object;
         }
         else {
@@ -44,6 +44,9 @@ var Wax = {
         var element = _(arguments).last();
         $.getJSON($(element).attr('src'), function(data) {
             $(element).data('map', new OpenLayers.Map(element, Wax.reify(data)));
+            var degrees = new OpenLayers.LonLat(66.5,33.9);
+            degrees.transform(new OpenLayers.Projection('EPSG:4326'), new OpenLayers.Projection('EPSG:900913'));
+            $(element).data('map').setCenter(degrees, 2);
         });
     }
 };

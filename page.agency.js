@@ -1,7 +1,7 @@
 /**
  * Agency page handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/agency/:id/:filter?', function(req, res, next) {
     var async = require('async'),
@@ -94,6 +94,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
             locals: {
                 pageTitle: pageTitle,
                 profile: profile,
+                agencyid: req.params.id,
                 agencies: agencies,
                 groups: groups,
             }

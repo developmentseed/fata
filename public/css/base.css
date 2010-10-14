@@ -21,7 +21,7 @@
  * input filter is given the 'prose' class. We want to format it with
  * readability and nice defaults in mind.
  */
-.prose { line-height:20px; }
+.prose { font:normal 16px/25px Georgia,serif; }
 
 .prose h1,
 .prose h2,
@@ -34,16 +34,20 @@
 .prose ol,
 .prose pre,
 .prose div.codeblock,
-.prose blockquote { margin: 0px 0px 20px; }
+.prose blockquote { margin: 0px 0px 25px; }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4,
 .prose h5,
-.prose h6 { font-weight:bold; }
-.prose h1 { font-size:18px; }
-.prose h2 { font-size:15px; }
+.prose h6 {
+  font-weight:normal;
+  color:#fff;
+  }
+
+.prose h1 { font-size:20px; }
+.prose h2 { font-size:16px; }
 
 .prose pre,
 .prose code,
