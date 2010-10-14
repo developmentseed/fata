@@ -104,10 +104,18 @@ DataHandler.prototype.countField = function(params, callback) {
     // @TODO: Is there a better method to tell whether a collection has been
     // instantiated without querying it directly?
     self.find({collection: cid, conditions: {_id: params.field}}, function(data) {
-        if (data && data.length > 0) {
+        // mixreduce collection has items. Use it.
+        if (data.length > 0) {
             callback(data);
+            return;
         }
-        else {
+        // If the mixreduce collection has no items, run a test query to ensure
+        // that there are items to mixreduce to begin with.
+        self.find({collection: params.collection, conditions: params.conditions}, function(data) {
+            if (data.length === 0) {
+                callback([]);
+                return;
+            }
             self.connect(function(err) {
                 db.collection(params.collection, function(err, collection) {
                     // Map function.
@@ -151,7 +159,7 @@ DataHandler.prototype.countField = function(params, callback) {
                     });
                 });
             });
-        }
+        });
     });
 };
 
