@@ -13,6 +13,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // Variables to populate.
         agencies = [],
         questions = {}, // @TODO make this an array.
+        profile = '',
         pageTitle = '';
 
     // Load all questions
@@ -81,11 +82,20 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         });
     });
 
+    // Load the current agency's markdown content if available.
+    parallel.push(function(callback) {
+        dataHandler.markdown({path: 'content/agency.'+req.params.id+'.md'}, function(data) {
+            profile = data;
+            callback(null);
+        });
+    });
+
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
+                profile: profile,
                 agencies: agencies,
                 questions: questions,
             }

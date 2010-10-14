@@ -155,3 +155,24 @@ DataHandler.prototype.countField = function(params, callback) {
         }
     });
 };
+
+/**
+ * Asynchronous. Read a file and process its contents using markdown.
+ *
+ * @param {Object} params
+ *   Parameters:
+ *   - path {String}
+ *     Path to the file to be read. Example: 'content/foo.md'
+ * @param {Function} callback
+ *   Callback function to use once reading and markdown conversion is complete.
+ */
+DataHandler.prototype.markdown = function(params, callback) {
+    var markdown = require('markdown'),
+        fs = require('fs');
+    params.path = params.path || '';
+
+    fs.readFile(params.path, 'utf-8', function(err, data) {
+        data = data || '';
+        callback(markdown.Markdown(data));
+    });
+};
