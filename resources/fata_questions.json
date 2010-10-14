@@ -538,7 +538,7 @@
                 ] 
             },
             "Q8h": {
-                "name": "Withdrawal of U.S. military from Afghanistan",
+                "name": "U.S. brokering a comprehensive Middle East peace between Israelis and Palestinians",
                 "display": [
                     "agency",
                     "question" 
@@ -914,7 +914,7 @@
     {
         "group": "Q15",
         "id": "vote-groups",
-        "shortname": "Threat to Personal Safety",
+        "shortname": "Support of Groups",
         "text": "If you could vote for any party or group in a Pakistani election, which of the following would you vote for?",
         "questions": {
             "Q15": {
