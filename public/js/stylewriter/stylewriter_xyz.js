@@ -18,7 +18,7 @@ OpenLayers.Layer.StyleWriter = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * APIProperty: isBaseLayer
      * Default is true, as this is designed to be a base tile source. 
      */
-    isBaseLayer: true,
+    isBaseLayer: false,
     
     /**
      * APIProperty: sphericalMecator
@@ -26,7 +26,7 @@ OpenLayers.Layer.StyleWriter = OpenLayers.Class(OpenLayers.Layer.Grid, {
      *    spherical mercator. Useful for things like OpenStreetMap.
      *    Default is false, except for the OSM subclass.
      */
-    sphericalMercator: false,
+    sphericalMercator: true,
 
     urlsafe_encode_base64: function(data) {
       return this.encode_base64(data).replace('/', '_').replace('+', '-');
