@@ -10,6 +10,7 @@
             {{/active}}
         {{/agencies}}
     </ul>
+    <div class='ender'></div>
 </div>
 
 <div id='main'>
@@ -74,8 +75,8 @@
         </div>
         {{#groups}}
         <div class='group clearfix'>
-            <h2 class='group-shortname'>{{shortname}}</h2>
-            <p class='group-text'>{{text}}</p>
+            <h2 class='group-shortname'>{{{shortname}}}</h2>
+            <p class='group-text'>{{{text}}}</p>
             {{#renderedQuestions}}
             <div class='question clearfix'>
                 <h2 class='question-name'>{{{name}}}</h2>

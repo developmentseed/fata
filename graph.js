@@ -7,6 +7,7 @@ var process = function(params, data) {
     var total = 0;
     var offset = 0;
     var count = 0;
+    var autogen = false;
 
     // Generate list of usable answers (they should be in the proper order if
     // provided by caller).
@@ -17,6 +18,7 @@ var process = function(params, data) {
         }
     }
     else {
+        autogen = true;
         for (var label in data) {
             answers.push(label);
         }
@@ -36,13 +38,17 @@ var process = function(params, data) {
         if (data[answer]) {
             // Force last segment to fill in remainder of the bar.
             var value = (i === count) ? (params.width - offset) : Math.floor(data[answer] / total * params.width);
+            var class = answer.toLowerCase().replace(/[\'\"\(\) ]/g, '-');
+            if (autogen) {
+                class += ' autogen autogen-' + i;
+            }
             processed.push({
                 label: answer,
                 width: value,
                 offset: offset,
                 percent: Math.round(data[answer] / total * 100),
                 number: data[answer],
-                class: answer.toLowerCase().replace(/[\'\" ]/g, '-')
+                class: class
             });
             offset += value;
             i++;

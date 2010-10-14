@@ -9,13 +9,11 @@
     }
     {{/rules}}
     ]]></Stylesheet> 
-  {{#layers}}
-  <Layer id="data" name="data" srs="+proj=latlong +datum=WGS84"> 
+  {{#layers}}<Layer id="{{id}}" name="data" srs="+proj=latlong +datum=WGS84"> 
     <Datasource> 
       <Parameter name="file">{{file}}</Parameter> 
       <Parameter name="type">{{type}}</Parameter> 
       <Parameter name="id">{{id}}</Parameter> 
     </Datasource> 
-  </Layer> 
-  {{/layers}}
+  </Layer>{{/layers}}
 </Map> 
