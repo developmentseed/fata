@@ -47,7 +47,7 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
                 series.push(function(responseCallback) {
                     // Add query conditions based on request params.
                     var conditions = {Agency: req.params.id};
-                    if (activeFilter) {
+                    if (activeFilter && activeFilter.facets) {
                         activeFilter.facets.forEach(function(facet) {
                             if (facet.id === req.params.facet) {
                                 conditions[activeFilter.id] = {'$in': facet.values};
