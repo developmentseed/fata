@@ -45,9 +45,9 @@ app.get('/question/:id/:filter?', function(req, res) {
             if (value.display.indexOf('question') !== -1) {
                 responses[question] = {text:value.name};
                 agencies.forEach(function(agency) {
-                    responses[question][agency.ID] = [];
+                    responses[question][agency.id] = [];
                     parallel.push(function(callback) {
-                        dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.ID}}, function(results) {
+                        dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.id}}, function(results) {
                             response = {};
                             // Add a total response count
                             response.total = _.reduce(results, function(memo, num){
@@ -62,7 +62,7 @@ app.get('/question/:id/:filter?', function(req, res) {
                                     }
                                 });
                             });
-                            responses[question][agency.ID].push(response);
+                            responses[question][agency.id].push(response);
                             callback(null);
                         });
                     });
