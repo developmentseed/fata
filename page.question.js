@@ -20,7 +20,7 @@ app.get('/question/:id/:filter?', function(req, res) {
     // Load all questions and pass the active question group to the
     // next callback.
     waterfall.push(function (callback) {
-        dataHandler.find({collection: 'questions'}, function(result) {
+        dataHandler.find({collection: 'groups'}, function(result) {
             result.forEach(function(question) {
                 if (question.id === id) {
                     question.active = true;

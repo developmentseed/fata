@@ -23,7 +23,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // 2. For each question, load all responses
         var waterfall = [];
         waterfall.push(function(callback) {
-            dataHandler.find({collection:'questions'}, function(result) {
+            dataHandler.find({collection: 'groups'}, function(result) {
                 callback(null, result);
             });
         });

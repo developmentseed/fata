@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
         });
     });
     parallel.push(function(callback) {
-        dataHandler.find({collection: 'questions'}, function(data) {
+        dataHandler.find({collection: 'groups'}, function(data) {
             questionsView = data;
             callback(null);
         });
