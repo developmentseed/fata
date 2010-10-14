@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
         dataHandler = req.dataHandler,
 
         // Async control helper.
-        parallel = [],
+        series = [],
 
         // Variables to populate.
         agencies = [],
@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
         intro = '';
 
     // Agencies menu.
-    parallel.push(function(callback) {
+    series.push(function(callback) {
         dataHandler.find({collection: 'agencies'}, function(data) {
             agencies = data;
             callback(null);
@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
     });
 
     // Question groups menu.
-    parallel.push(function(callback) {
+    series.push(function(callback) {
         dataHandler.find({collection: 'groups'}, function(data) {
             groups = data;
             callback(null);
@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
     });
 
     // Content sections.
-    parallel.push(function(callback) {
+    series.push(function(callback) {
         dataHandler.markdown({path: 'content/home.intro.md'}, function(data) {
             intro = data;
             callback(null);
@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
 
     // Build each content section.
     settings.homeSections.forEach(function(section) {
-        parallel.push(function(callback) {
+        series.push(function(callback) {
             var series = [];
             var loaded = {};
 
@@ -55,6 +55,20 @@ app.get('/', function(req, res) {
                 });
             });
             // @TODO load graphs.
+            if (section.group) {
+                series.push(function(callback) {
+                    dataHandler.find({collection: 'groups', conditions: {group: section.group}}, function(result) {
+                        loaded.group = result.pop();
+                        callback(null);
+                    });
+                });
+                series.push(function(callback) {
+                    dataHandler.loadQuestion({group: loaded.group, context: 'home'}, function(result) {
+                        loaded.group = result;
+                        callback(null);
+                    });
+                });
+            }
 
             // Run tasks as series.
             async.series(series, function() {
@@ -64,7 +78,7 @@ app.get('/', function(req, res) {
         });
     });
 
-    async.parallel(parallel, function(error) {
+    async.series(series, function(error) {
         res.render('home', {
             locals: {
                 pageTitle: 'Home',

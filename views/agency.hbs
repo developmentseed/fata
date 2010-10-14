@@ -47,7 +47,7 @@
         <div class='group clearfix'>
             <h2 class='group-shortname'>{{shortname}}</h2>
             <p class='group-text'>{{text}}</p>
-            {{#questions}}
+            {{#renderedQuestions}}
             <div class='question clearfix'>
                 <h2 class='question-name'>{{{name}}}</h2>
                 <div class='graph'>
@@ -61,7 +61,7 @@
                     {{/responses}}
                 </div>
             </div>
-            {{/questions}}
+            {{/renderedQuestions}}
         </div>
         {{/groups}}
     </div>

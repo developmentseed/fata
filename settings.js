@@ -18,10 +18,10 @@ module.exports = {
     siteTitle: 'FATA Sentiment Survey',
     footerMessage: 'Copyright © New America Foundation',
     homeSections: [
-        { content: 'section1', group: 'Q1', graphs: ['Q1a'] },
-        { content: 'section2', group: 'Q1', graphs: ['Q1b'] },
-        { content: 'section3', group: 'Q1', graphs: ['Q1c'] },
-        { content: 'section4', group: 'Q1', graphs: ['Q1d'] },
-        { content: 'section5', group: 'Q1', graphs: ['Q1e'] },
+        { content: 'section1', group: 'Q16'},
+        { content: 'section2'},
+        { content: 'section3', group: 'Q8'},
+        { content: 'section4', group: 'Q10'},
+        { content: 'section5', group: 'Q1'},
     ]
 };

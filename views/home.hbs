@@ -1,6 +1,6 @@
 <div id='main'>
     <div class='map'>
-        <div id='home-map' class='waxmap' src='/map/home'></div>
+        <div id='home-map' class='waxmap' src='/map/home/{{id}}'></div>
     </div>
     <div class='navigation clearfix'>
         <div class='agencies'>
@@ -26,6 +26,27 @@
     <div class='content'>
         {{#sections}}
         <div class='section'>
+            {{#group}}
+            <div class='group clearfix'>
+                <h2 class='group-shortname'>{{shortname}}</h2>
+                <p class='group-text'>{{text}}</p>
+                {{#renderedQuestions}}
+                <div class='question clearfix'>
+                    <h2 class='question-name'>{{{name}}}</h2>
+                    <div class='graph'>
+                        {{#responses}}
+                        <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                            <label>
+                                <strong>{{label}}</strong>
+                                {{percent}}% &mdash; {{number}} respondents
+                            </label>
+                        </span>
+                        {{/responses}}
+                    </div>
+                </div>
+                {{/renderedQuestions}}
+            </div>
+            {{/group}}
             <div class='prose'>{{{content}}}</div>
         </div>
         {{/sections}}
