@@ -206,18 +206,28 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
     display.forEach(function(q) {
         var responses = [];
         group.questions[q].responses = responses;
-        series.push(function(responseCallback) {
+        series.push(function(callback) {
             self.countField({collection: 'responses', field: q, conditions: conditions}, function(result) {
                 var graph = require('graph');
                 graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
                     responses.push(bar);
                 });
-                responseCallback(null);
+                callback(null);
             });
         });
     });
     async = require('async');
     async.series(series, function() {
+        // Gross. Convert objects to arrays for templating.
+        // @TODO: Should this be an optional params flag?
+        var render = [];
+        for (var i in group.questions) {
+            if (group.questions[i].responses) {
+                render.push(group.questions[i]);
+            }
+        }
+        group.questions = render;
+
         callback(group);
     });
 }

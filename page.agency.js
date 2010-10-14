@@ -38,14 +38,6 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 });
             });
             async.series(series, function(error) {
-                // Gross. Convert objects to arrays for templating.
-                groups.forEach(function(group) {
-                    var render = [];
-                    for (var i in group.questions) {
-                        render.push(group.questions[i]);
-                    }
-                    group.questions = render;
-                });
                 callback(error);
             });
         });
