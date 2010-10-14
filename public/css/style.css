@@ -57,23 +57,37 @@ a {
   width:160px;
   }
 
-.sidebar .block-title {
+.sidebar h2 {
   background:#4c4c40;
   color:#fff;
   padding:30px 20px 9px;
   margin:0px 0px 1px;
   }
 
-.sidebar li a {
+
+.menu a {
   font-size:12px;
   text-transform:uppercase;
+  white-space:nowrap;
+  overflow:hidden;
   display:block;
+  }
+
+.sidebar .menu a {
   background:#4c4c40;
   padding:5px 10px 4px 20px;
   margin:0px 0px 1px;
   }
 
-.sidebar li a:hover { background:#383830; }
+.sidebar .menu a:hover { background:#383830; }
+
+.navigation h2,
+.navigation .menu a {
+  padding:5px 0px 4px;
+  border-bottom:1px solid #4c4c40;
+  }
+
+.navigation h2 { color:#fff; }
 
 /**
  * Main column
@@ -83,15 +97,77 @@ a {
   width:640px;
   }
 
+.front #main { width:800px; }
+
+/**
+ * Main page sections
+ */
+.map {
+  margin:15px;
+  border:1px solid #686858;
+  padding:4px;
+  }
+
+.header {
+  margin:20px 0px;
+  padding:0px 20px;
+  }
+
+.header h2 {
+  font:normal 40px/40px Georgia,serif;
+  margin:0px 0px 10px;
+  color:#fff;
+  }
+
+.header h3 {
+  font:normal 16px/20px Georgia,serif;
+  margin:0px 0px 10px;
+  }
+
+.content {
+  padding:10px;
+  }
+
 /**
  * Footer
  */
 #footer { clear:both; }
 
 /**
- * @TODO ==============================================================
+ * Map
  */
+.waxmap {
+  background:#383830;
+  }
+
+#question-map,
 #agency-map {
-  width:400px;
-  height:400px;
+  width:600px;
+  height:280px;
+  }
+
+#home-map {
+  width:760px;
+  height:280px;
+  }
+
+/**
+ * /home ==============================================================
+ */
+div.agencies {
+  float:left;
+  width:280px;
+  padding:0px 20px;
+  }
+
+div.questions {
+  float:left;
+  width:440px;
+  padding:0px 20px;
+  }
+
+div.agencies .menu li,
+div.questions .menu li {
+  float:left;
+  width:50%;
   }
