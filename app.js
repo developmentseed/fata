@@ -22,6 +22,20 @@ app.set('view engine', 'hbs');
 
 // Populate dynamicHelpers (layout template variables)
 app.dynamicHelpers({
+    bodyClasses: function(req, res) {
+        var classes = [];
+        if (req.url === '/') {
+            classes.push('front');
+        }
+        var path = [];
+        req.url.split('/').forEach(function(arg) {
+            if (arg) {
+                path.push(arg);
+                classes.push(path.join('-'));
+            }
+        });
+        return classes.join(' ');
+    },
     siteTitle: function(req, res) {
         return settings.siteTitle;
     },
