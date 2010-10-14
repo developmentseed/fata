@@ -18,12 +18,12 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
         data = [];
 
     // Build a collection id.
-    var cid = [type, field];
+    var cid = [type];
     for (var key in conditions) {
         cid.push(key, conditions[key]);
     }
-    cid = cid.join('-');
-    self.field(cid, {}, function(data) {
+    cid = cid.join('_');
+    self.field(cid, {_id: field}, function(data) {
         if (data && data.length > 0) {
             callback(data);
         }
@@ -31,17 +31,25 @@ DataHandler.prototype.countField = function(type, field, conditions, callback) {
             self.connect(function(err) {
                 db.collection(type, function(err, collection) {
                     if (collection) {
-                        var map = 'function() { emit(this.' + field + ', {count: 1}); }';
-                        var reduce = function(k, vals) {
-                            var total = 0;
-                            for (var i = 0; i < vals.length; i++) {
-                                total += vals[i].count;
+                        var map = function() {
+                            for (var field in this) {
+                                var val = {};
+                                val[this[field]] = 1;
+                                emit(field, val);
                             }
-                            return { count: total };
-                        }
+                        };
+                        var reduce = function(k, val) {
+                            var doc = {};
+                            for (var i = 0; i < val.length; i++) {
+                                for (var j in val[i]) {
+                                    doc[j] = doc[j] || 0;
+                                    doc[j] += val[i][j];
+                                }
+                            }
+                            return doc;
+                        };
                         collection.mapReduce( map, reduce, { query: conditions, out: cid }, function(err, collection) {
-                                self.collections[cid] = collection.collectionName;
-                                self.field(self.collections[cid], {}, callback);
+                                self.field(cid, {_id: field}, callback);
                         });
                     }
                     else {
