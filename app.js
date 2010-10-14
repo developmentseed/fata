@@ -11,11 +11,14 @@ var connect = require('connect'),
 // 2. Static file serving from /public directory (for CSS, JavaScript, images)
 //    @TODO: Use this in dev only, use nginx when in production.
 // 3. DB connection middleware. See db.js.
-var app = module.exports = new express.Server([
+var app = module.exports.app = new express.Server([
     connect.logger({ format: '- [:response-timems] :date - :method :status' }),
     connect.staticProvider(__dirname + '/public'),
     new dbConnection(settings.mongodb)
 ]);
+
+// Add settings to export
+module.exports.settings = settings;
 
 // Use hbs (Express wrapper around handlebars.js) as template engine.
 app.set('view engine', 'hbs');

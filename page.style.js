@@ -1,7 +1,7 @@
 /**
  * TileLite MML handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/style/:question', function(req, res) {
     var async = require('async'),

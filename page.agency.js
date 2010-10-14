@@ -1,7 +1,7 @@
 /**
  * Agency page handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/agency/:id/:filter?', function(req, res, next) {
     var async = require('async'),

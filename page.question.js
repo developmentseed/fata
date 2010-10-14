@@ -1,7 +1,7 @@
 /**
  * Agency page handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/question/:id/:filter?', function(req, res) {
     var id = req.params.id,
