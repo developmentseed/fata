@@ -60,7 +60,7 @@ app.get('/map/agency/:id', function(req, res) {
             'maxExtent': map_template.maxExtent,
             'maxResolution': 1.40625,
             'projection': map_template.spherical_mercator,
-            'displayProjection': map_template.spherical_mercator,
+            // 'displayProjection': map_template.spherical_mercator,
             'units': 'm',
             // 'controls': [map_template.controls.navigation]
         },
