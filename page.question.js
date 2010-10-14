@@ -12,8 +12,9 @@ app.get('/question/:id/:filter?', function(req, res) {
         waterfall = [],
 
         // Variables to populate.
+        agenciesData = [],
         questions = [],
-        responses = {},
+        groups = [],
         pageTitle = '',
         subTitle = '';
 
@@ -21,14 +22,14 @@ app.get('/question/:id/:filter?', function(req, res) {
     // next callback.
     waterfall.push(function (callback) {
         dataHandler.find({collection: 'groups'}, function(result) {
-            result.forEach(function(question) {
-                if (question.id === id) {
-                    question.active = true;
-                    pageTitle = question.shortname || '';
-                    subTitle = question.text || '';
-                    callback(null, question);
+            result.forEach(function(group) {
+                if (group.id === id) {
+                    group.active = true;
+                    pageTitle = group.shortname || '';
+                    subTitle = group.text || '';
+                    callback(null, group);
                 }
-                questions.push(question);
+                groups.push(group);
             });
         });
     });
@@ -40,47 +41,49 @@ app.get('/question/:id/:filter?', function(req, res) {
     });
     // Get response counts per question, per agency.
     waterfall.push(function (group, agencies, callback) {
-        var parallel = [];
-        _.each(group.questions, function(value, question) {
-            if (value.display.indexOf('question') !== -1) {
-                responses[question] = {text:value.name};
-                agencies.forEach(function(agency) {
-                    responses[question][agency.id] = [];
-                    parallel.push(function(callback) {
-                        dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.id}}, function(results) {
-                            response = {};
-                            // Add a total response count
-                            response.total = _.reduce(results, function(memo, num){
-                                return memo + num.value.count;
-                            }, 0);
-                            // Add raw count and percentage
-                            _.each(results, function(num, key) {
-                                _.each(results, function(num){
-                                    response[num._id] = {
-                                        count: num.value.count,
-                                        percent: num.value.count / response.total * 100
-                                    }
-                                });
-                            });
-                            responses[question][agency.id].push(response);
-                            callback(null);
+        var series = [];
+        agencies.forEach(function(agency) {
+            series.push(function(responseCallback) {
+                dataHandler.loadQuestion({group: group, context: 'question', conditions: {Agency: agency.id}}, function(result) {
+                    for (var q in result.questions) {
+                        if (!questions[q]) {
+                            questions[q] = {
+                                id: q,
+                                name: result.questions[q].name
+                            };
+                        }
+                        if (!questions[q]['agencies']) {
+                            questions[q]['agencies'] = [];
+                        }
+                        questions[q]['agencies'].push({
+                            id: agency.id,
+                            name: agency.name,
+                            responses: result.questions[q].responses
                         });
-                    });
+                    }
+                    agenciesData[agency.id] = result;
+                    responseCallback(null);
                 });
-            }
+            });
         });
-        async.parallel(parallel, function() {
-            callback(null);
+        async.series(series, function(err) {
+            var questionsArray = [];
+            for (var q in questions) {
+                questionsArray.push(questions[q]);
+            }
+            questions = questionsArray;
+            callback(err);
         });
     });
     // Render the page
     waterfall.push(function(callback) {
+        console.log(questions[0].agencies[0]);
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,
                 subTitle: subTitle,
-                questions: questions,
-                responses: responses
+                groups: groups,
+                questions: questions
             }
         });
     });
