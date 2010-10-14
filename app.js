@@ -268,7 +268,7 @@ app.get('/about', function(req, res) {
     var markdown = require('markdown'),
         fs = require('fs');
 
-    fs.readFile('about.md', 'utf-8', function(err, data) {
+    fs.readFile('content/about.md', 'utf-8', function(err, data) {
         if (err) throw err;
         res.render('about', {
             locals: {
