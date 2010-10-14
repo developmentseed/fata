@@ -190,17 +190,16 @@ a {
  */
 div.agencies {
   float:left;
-  width:280px;
+  width:140px;
   padding:0px 20px;
   }
 
 div.questions {
   float:left;
-  width:440px;
+  width:580px;
   padding:0px 20px;
   }
 
-div.agencies .menu li,
 div.questions .menu li {
   float:left;
   width:50%;
