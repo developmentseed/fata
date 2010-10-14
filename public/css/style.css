@@ -14,6 +14,8 @@ a {
   margin:0px auto;
   }
 
+.prose { font:normal 16px/25px Georgia,serif; }
+
 /**
  * Global header
  */
@@ -175,8 +177,6 @@ div.questions .menu li {
 /**
  * /agency ============================================================
  */
-.profile { font:normal 16px/25px Georgia,serif; }
-
 
 /**
  * question & graph styles ============================================
@@ -197,7 +197,7 @@ div.questions .menu li {
   font:italic 13px/20px Georgia,serif;
   }
 
-.question {
+div.question { /* use div. here to avoid conflict with body.question */
   border-top:1px solid #585848;
   padding:4px 10px 5px;
   }
@@ -205,7 +205,6 @@ div.questions .menu li {
 .question-name {
   font-weight:normal;
   width:260px;
-  font-size:12px;
   float:left;
   }
 
