@@ -5,6 +5,14 @@
             "_value": []
         }
     },
+    "externals": {
+        "blockswitcher": {
+            "_type": "OpenLayersPlusBlockswitcher",
+            "_value": [
+                ""
+            ]
+        }
+    },
     "maxExtent": {
         "_type": "OpenLayers.Bounds",
         "_value": [
