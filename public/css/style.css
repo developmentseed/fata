@@ -269,6 +269,17 @@ div.section {
   }
 
 /**
+* /question ============================================================
+*/
+body.question .group-shortname {
+  padding-bottom:5px;
+  }
+
+.agency-breakdown .question {
+  padding-left:25px;
+  }
+
+/**
  * demographics filters ===============================================
  */
 .demographics {
