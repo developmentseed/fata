@@ -38,13 +38,13 @@ app.get('/', function(req, res) {
         questionsView = {},
         dataHandler = req.dataHandler;
     parallel.push(function(callback) {
-        dataHandler.field('agencies', {}, function(data) {
+        dataHandler.find({collection: 'agencies'}, function(data) {
             agenciesView = data;
             callback(null);
         });
     });
     parallel.push(function(callback) {
-        dataHandler.field('questions', {}, function(data) {
+        dataHandler.find({collection: 'questions'}, function(data) {
             questionsView = data;
             callback(null);
         });
@@ -77,7 +77,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // 2. For each question, load all responses
         var waterfall = [];
         waterfall.push(function(callback) {
-            dataHandler.field('questions', {}, function(questions) {
+            dataHandler.find({collection:'questions'}, function(questions) {
                 callback(null, questions);
             });
         });
@@ -94,7 +94,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 }
                 display.forEach(function(q) {
                     series.push(function(responseCallback) {
-                        dataHandler.countField('responses', q, {Agency: req.params.id}, function(result) {
+                        dataHandler.countField({collection: 'responses', field: q, conditions: {Agency: req.params.id}}, function(result) {
                             questions[question.group].questions[q].responses = result.pop().value;
                             responseCallback(null);
                         });
@@ -112,7 +112,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
     // Load agencies for navigation.
     parallel.push(function(callback) {
-        dataHandler.field('agencies', {}, function(data) {
+        dataHandler.find({collection: 'agencies'}, function(data) {
             data.forEach(function(agency) {
                 if ('/agency/' + agency.ID == req.url) {
                     agency.active = true;
@@ -125,7 +125,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
     // Load the current agency's information.
     parallel.push(function(callback) {
-        dataHandler.field('agencies', {ID: req.params.id}, function(data) {
+        dataHandler.find({collection: 'agencies', conditions: {ID: req.params.id}}, function(data) {
             if (data && data[0] && data[0].Human) {
                 pageTitle = data[0].Human;
             }
@@ -158,7 +158,7 @@ app.get('/question/:group/:filter?', function(req, res) {
         subTitle = '';
     // Load the question group
     waterfall.push(function (callback) {
-        dataHandler.field('questions', {id:group}, function(groups) {
+        dataHandler.find({collection: 'questions', conditions: {id:group}}, function(groups) {
             pageTitle = groups[0].shortname;
             subTitle = groups[0].text;
             callback(null, groups[0]);
@@ -166,7 +166,7 @@ app.get('/question/:group/:filter?', function(req, res) {
     });
     // Load list of agencies
     waterfall.push(function(group, callback) {
-        dataHandler.field('agencies', {}, function(agencies) {
+        dataHandler.find({collection: 'agencies'}, function(agencies) {
             callback(null, group, agencies);
         });
     });
@@ -180,7 +180,7 @@ app.get('/question/:group/:filter?', function(req, res) {
                 agencies.forEach(function(agency) {
                     responses[question][agency.ID] = [];
                     parallel.push(function(callback) {
-                        dataHandler.countField('responses', question, {Agency:agency.ID}, function(results) {
+                        dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.ID}}, function(results) {
                             response = {};
                             // Add a total response count
                             response.total = _.reduce(results, function(memo, num){
@@ -265,7 +265,7 @@ app.get('/style/:question', function(req, res) {
         question = req.params.question;
     waterfall.push(function(callback) {
         // Load list of agencies
-        dataHandler.field('agencies', {}, function(agencies) {
+        dataHandler.find({collection: 'agencies'}, function(agencies) {
             callback(null, agencies);
         });
     });
@@ -273,7 +273,7 @@ app.get('/style/:question', function(req, res) {
         // Load question responses for each agency
         agencies.forEach(function(agency) {
             parallel.push(function (callback) {
-                dataHandler.countField('responses', question, {Agency:agency.ID}, function(result) {
+                dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.ID}}, function(result) {
                     var totalResponses = _.reduce(result, function(memo, num){
                         return memo + num.value.count;
                     }, 0);
