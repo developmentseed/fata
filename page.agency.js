@@ -111,6 +111,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
             locals: {
                 pageTitle: pageTitle,
                 profile: profile,
+                agencyid: req.params.id,
                 agencies: agencies,
                 questions: questions,
             }
