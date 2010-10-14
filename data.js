@@ -201,7 +201,6 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
         group = params.group,
         context = params.context,
         conditions = params.conditions;
-    params.width = params.width || 280;
     // Filter questions down to those that should be displayed in
     // this context.
     var display = [];
@@ -218,8 +217,7 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
             self.countField({collection: 'responses', field: q, conditions: conditions}, function(result) {
                 if (result.length !== 0) {
                     var graph = require('graph');
-                    params.answers = graph.answers;
-                    graph.process(params, result.pop().value).forEach(function(bar) {
+                    graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
                         responses.push(bar);
                     });
                 }
