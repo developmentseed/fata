@@ -30,7 +30,8 @@
                 "name": "Lack of jobs",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q1e": {
@@ -44,14 +45,16 @@
                 "name": "Lack of schools and education",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q1g": {
                 "name": "Lack of good roads and transportation",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q1h": {
@@ -485,21 +488,24 @@
                 "name": "U.S. business investment in FATA",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q8b": {
                 "name": "U.S. aid for school construction and teacher training in FATA",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q8c": {
                 "name": "U.S. aid for medical care and training in FATA",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q8d": {
@@ -513,7 +519,8 @@
                 "name": "U.S. increasing visas for people in FATA to work or study in the United States",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q8f": {
@@ -691,14 +698,16 @@
                 "name": "The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighers inside FATA",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q10b": {
                 "name": "The U.S. military working with the Pakistani military to pursue Taliban, Al Qaeda, and foreign fighters inside Pakistan",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q10c": {
@@ -959,7 +968,8 @@
                 "name": "Do you support or oppose United States military drone strikes by air inside FATA today?",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             } 
         },
