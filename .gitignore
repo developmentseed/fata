@@ -3,4 +3,6 @@ lib/
 modules/
 public/js/flot
 public/js/jquery.js
+public/js/openlayers_plus
 public/css/reset.css
+
