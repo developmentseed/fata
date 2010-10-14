@@ -93,7 +93,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
     var async = require('async'),
         parallel = [],
         agencies = {},
-        responses = {},
+        questions = {},
         pageTitle = '',
         dataHandler = req.dataHandler;
 
@@ -108,25 +108,27 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 callback(null, questions);
             });
         });
-        waterfall.push(function(groups, callback) {
-            var parallel = [];
-            groups.forEach(function(group) {
-                var questions = [];
-                for (var q in group.questions) {
-                    if (group.questions[q].display.indexOf('agency') !== -1) {
-                        questions.push(q);
+        waterfall.push(function(result, callback) {
+            var series = [];
+            result.forEach(function(question) {
+                questions[question.group] = question;
+
+                var display = [];
+                for (var q in question.questions) {
+                    if (question.questions[q].display.indexOf('agency') !== -1) {
+                        display.push(q);
                     }
                 }
-                questions.forEach(function(q) {
-                    parallel.push(function(responseCallback) {
+                display.forEach(function(q) {
+                    series.push(function(responseCallback) {
                         dataHandler.countField('responses', q, {Agency: req.params.id}, function(result) {
-                            responses[q] = result;
+                            questions[question.group].questions[q].responses = result.pop().value;
                             responseCallback(null);
                         });
                     });
                 });
             });
-            async.parallel(parallel, function(error) {
+            async.series(series, function(error) {
                 callback(error);
             });
         });
@@ -163,11 +165,11 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
 
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
-        // console.log(responses);
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,
-                agencies: agencies
+                agencies: agencies,
+                questions: questions,
             }
         });
     });
