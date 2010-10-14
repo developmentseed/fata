@@ -1,7 +1,7 @@
 /**
  * Homepage handler.
  */
-var app = module.parent.exports;
+var app = module.parent.exports.app;
 
 app.get('/', function(req, res) {
     var async = require('async'),
@@ -51,8 +51,6 @@ app.get('/', function(req, res) {
     });
 
     async.parallel(parallel, function(error) {
-        console.log(intro);
-        console.log(sections);
         res.render('home', {
             locals: {
                 pageTitle: 'Home',
