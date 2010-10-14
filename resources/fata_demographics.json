@@ -2,26 +2,29 @@
     {
         "id": "D1",
         "name": "Gender",
-        "facets": {
-            "male": {
+        "facets": [
+            {
+                "id": "male",
                 "name": "Male",
                 "values": [
                     "Male" 
                 ] 
             },
-            "female": {
+            {
+                "id": "female",
                 "name": "Female",
                 "values": [
                     "Female" 
                 ] 
             } 
-        } 
+        ]
     },
     {
         "id": "D2",
         "name": "Age",
-        "facets": {
-            "18_25": {
+        "facets": [
+            {
+                "id": "18_25",
                 "name": "18 - 25",
                 "values": [
                     "18",
@@ -34,7 +37,8 @@
                     "25" 
                 ] 
             },
-            "26_30": {
+            {
+                "id": "26_30",
                 "name": "26 - 30",
                 "values": [
                     "26",
@@ -44,7 +48,8 @@
                     "30" 
                 ] 
             },
-            "31_38": {
+            {
+                "id": "31_38",
                 "name": "31 - 38",
                 "values": [
                     "31",
@@ -57,7 +62,8 @@
                     "38" 
                 ] 
             },
-            "39_49": {
+            {
+                "id": "39_49",
                 "name": "39 - 49",
                 "values": [
                     "39",
@@ -73,7 +79,8 @@
                     "49" 
                 ] 
             },
-            "over_50": {
+            {
+                "id": "over_50",
                 "name": "Over 50",
                 "values": [
                     "50",
@@ -106,19 +113,21 @@
                     "88" 
                 ] 
             } 
-        } 
+        ]
     },
     {
         "id": "D3",
         "name": "Education",
-        "facets": {
-            "none": {
+        "facets": [
+            {
+                "id": "none",
                 "name": "None",
                 "values": [
                     "0" 
                 ] 
             },
-            "1_7": {
+            {
+                "id": "1_7",
                 "name": "1 - 7 years",
                 "values": [
                     "1",
@@ -130,7 +139,8 @@
                     "7" 
                 ] 
             },
-            "8_11": {
+            {
+                "id": "8_11",
                 "name": "8 - 11 years",
                 "values": [
                     "8",
@@ -139,7 +149,8 @@
                     "11" 
                 ] 
             },
-            "12_more": {
+            {
+                "id": "12_more",
                 "name": "12 or more years",
                 "values": [
                     "12",
@@ -149,39 +160,43 @@
                     "16" 
                 ] 
             } 
-        } 
+        ]
     },
     {
         "id": "D7",
         "name": "Marital Status",
-        "facets": {
-            "married": {
+        "facets": [
+            {
+                "id": "married",
                 "name": "Married",
                 "values": [
                     "Married" 
                 ] 
             },
-            "unmarried": {
+            {
+                "id": "unmarried",
                 "name": "UnMarried",
                 "values": [
                     "Single",
                     "Widowed or Divorced" 
                 ] 
             } 
-        } 
+        ]
     },
     {
         "id": "D8",
         "name": "Income level",
-        "facets": {
-            "high": {
+        "facets": [
+            {
+                "id": "high",
                 "name": "High",
                 "values": [
                     "Rs. 10,001 – 15,000",
                     "Rs. 15,001 or more" 
                 ] 
             },
-            "low": {
+            {
+                "id": "low",
                 "name": "Low",
                 "values": [
                     "Rs. 1,001 – 3,000",
@@ -190,6 +205,6 @@
                     "Rs. 7,001 – 10,000" 
                 ] 
             } 
-        } 
+        ]
     }
 ]

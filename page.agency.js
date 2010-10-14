@@ -3,7 +3,7 @@
  */
 var app = module.parent.exports.app;
 
-app.get('/agency/:id/:filter?', function(req, res, next) {
+app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
     var async = require('async'),
         dataHandler = req.dataHandler,
 
@@ -13,26 +13,49 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // Variables to populate.
         agencies = [],
         groups = [],
+        demographics = [],
+        activeFilter = {},
         profile = '',
         pageTitle = '';
 
     // Load all questions
     parallel.push(function(callback) {
-        // Set up waterfall:
+        // Set up series:
         // 1. Load all questions
-        // 2. For each question, load all responses
-        var waterfall = [];
-        waterfall.push(function(callback) {
-            dataHandler.find({collection: 'groups'}, function(result) {
-                callback(null, result);
+        // 2. Load all demographics
+        // 3. For each question, load all responses using demographics filters
+        var series = [];
+        var conditions = {};
+        series.push(function(callback) {
+            dataHandler.find({collection: 'groups'}, function(data) {
+                groups = data;
+                callback(null);
             });
         });
-        waterfall.push(function(result, callback) {
+        // Query for the current active filter
+        if (req.params.filter && req.params.facet) {
+            series.push(function(callback) {
+                dataHandler.find({collection: 'demographics', conditions: {'id': req.params.filter, 'facets.id': req.params.facet}}, function(data) {
+                    activeFilter = data.pop();
+                    callback(null);
+                });
+            });
+        }
+        series.push(function(callback) {
             var series = [];
-            result.forEach(function(group) {
+            groups.forEach(function(group) {
                 series.push(function(responseCallback) {
-                    dataHandler.loadQuestion({group: group, context: 'agency', conditions: {Agency: req.params.id}}, function(result) {
-                        groups.push(result);
+                    // Add query conditions based on request params.
+                    var conditions = {Agency: req.params.id};
+                    if (activeFilter) {
+                        activeFilter.facets.forEach(function(facet) {
+                            if (facet.id === req.params.facet) {
+                                conditions[activeFilter.id] = {'$in': facet.values};
+                            }
+                        });
+                    }
+
+                    dataHandler.loadQuestion({group: group, context: 'agency', conditions: conditions}, function(result) {
                         responseCallback(null);
                     });
                 });
@@ -41,7 +64,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 callback(error);
             });
         });
-        async.waterfall(waterfall, function(error) {
+        async.series(series, function(error) {
             callback(error);
         });
     });
@@ -80,6 +103,14 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         });
     });
 
+    // Load demographic.
+    parallel.push(function(callback) {
+        dataHandler.find({collection: 'demographics'}, function(data) {
+            demographics = data;
+            callback(null);
+        });
+    });
+
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
         res.render('agency', {
@@ -89,6 +120,7 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                 agencyid: req.params.id,
                 agencies: agencies,
                 groups: groups,
+                demographics: demographics
             }
         });
     });

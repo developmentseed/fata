@@ -94,11 +94,10 @@ DataHandler.prototype.countField = function(params, callback) {
     params.field = params.field || '';
 
     // Build the collection id.
-    var cid = ['count_' + params.collection];
-    for (var key in params.conditions) {
-        cid.push(key, params.conditions[key]);
+    var cid = 'count_' + params.collection;
+    if (params.conditions) {
+        cid += '_'+ this.sanitize(params.conditions);
     }
-    cid = cid.join('_');
 
     // Query the collection id. If it has no documents, build the mapreduce
     // collection before querying again.
@@ -208,10 +207,12 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
         group.questions[q].responses = responses;
         series.push(function(callback) {
             self.countField({collection: 'responses', field: q, conditions: conditions}, function(result) {
-                var graph = require('graph');
-                graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
-                    responses.push(bar);
-                });
+                if (result.length !== 0) {
+                    var graph = require('graph');
+                    graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
+                        responses.push(bar);
+                    });
+                }
                 callback(null);
             });
         });
@@ -230,4 +231,16 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
 
         callback(group);
     });
-}
+};
+
+/**
+ * Synchronous. Convert an object to a mongodb-friendly collection name string.
+ *
+ * @param {Object} object
+ *   The object to be converted to sanitized string.
+ */
+DataHandler.prototype.sanitize = function(object) {
+    var sanitized = JSON.stringify(object);
+    sanitized = sanitized.replace(/[\$\"\' ,\[\]\{\}:]/g, '').toLowerCase();
+    return sanitized;
+};
