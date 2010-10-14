@@ -1,5 +1,8 @@
-<ul>
-{{#results}}
-    <li>{{name}}: {{count}}</li>
-{{/results}}
-</ul>
+<h2>{{pageTitle}}</h2>
+<h3>{{subTitle}}</h3>
+{{#questions}}
+    <h2>{{text}}</h2>
+    {{#agencies}}
+        {{id}}
+    {{/agencies}}
+{{/questions}}
