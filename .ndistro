@@ -10,9 +10,8 @@ module andris9 node-markdown
 
 module christkv node-mongodb-native V0.8.0
 
-# Grab flot, jquery, css assets
+# Grab jquery, css assets
 
-! test -d public/js/flot && (wget -P public/js http://flot.googlecode.com/files/flot-0.6.tar.gz && tar -C public/js -zxvf public/js/flot-0.6.tar.gz && rm public/js/flot-0.6.tar.gz)
 ! test -f public/js/jquery.js  && wget -O public/js/jquery.js http://code.jquery.com/jquery-1.4.2.min.js
 ! test -f public/css/reset.css && wget -P public/css http://github.com/developmentseed/tao/raw/master/reset.css
 ! test -d public/js/openlayers_plus && git clone -b js git://github.com/developmentseed/openlayers_plus.git public/js/openlayers_plus/

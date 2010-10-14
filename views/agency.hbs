@@ -40,9 +40,8 @@
     </div>
     <div class='header'>
         <h2>{{pageTitle}}</h2>
-        <div class='profile prose'>{{{profile}}}</div>
         {{#drone_info}}
-        <div class='drone-info'>
+        <div id='drone-info'>
           <h3>Drone strikes in 2010</h3>
           <ul>
             {{#total}}
@@ -60,6 +59,7 @@
           </ul>
         </div>
         {{/drone_info}}
+        <div class='profile prose'>{{{profile}}}</div>
     </div>
     <div class='content' id='content'>
         <div class='demographics'>
@@ -88,6 +88,9 @@
             <div class='question clearfix'>
                 <h2 class='question-name'>{{{name}}}</h2>
                 <div class='graph'>
+                    {{^responses}}
+                        <span class='empty'>No data available</span>
+                    {{/responses}}
                     {{#responses}}
                     <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
                         <label>

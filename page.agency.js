@@ -55,7 +55,6 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
                             }
                         });
                     }
-
                     dataHandler.loadQuestion({group: group, context: 'agency', conditions: conditions}, function(result) {
                         responseCallback(null);
                     });
