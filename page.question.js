@@ -12,6 +12,7 @@ app.get('/question/:id/:filter?', function(req, res) {
         waterfall = [],
 
         // Variables to populate.
+        totals = [],
         agenciesData = [],
         questions = [],
         groups = [],
@@ -66,6 +67,13 @@ app.get('/question/:id/:filter?', function(req, res) {
                 });
             });
         });
+        // Load FATA-wide totals
+        series.push(function(callback) {
+            dataHandler.loadQuestion({group: group, context: 'question', conditions: {}}, function(result) {
+                totals = result.renderedQuestions;
+                callback(null);
+            });
+        });
         async.series(series, function(err) {
             var questionsArray = [];
             for (var q in questions) {
@@ -77,13 +85,13 @@ app.get('/question/:id/:filter?', function(req, res) {
     });
     // Render the page
     waterfall.push(function(callback) {
-        console.log(questions[0].agencies[0]);
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,
                 subTitle: subTitle,
                 groups: groups,
-                questions: questions
+                questions: questions,
+                totals: totals
             }
         });
     });

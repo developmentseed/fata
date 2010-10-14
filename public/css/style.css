@@ -268,7 +268,8 @@ div.question { /* use div. here to avoid conflict with body.question */
   padding:4px 10px 5px;
   }
 
-.question-name {
+.question-name,
+.agencey-name {
   font-weight:normal;
   width:260px;
   float:left;

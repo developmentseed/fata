@@ -20,14 +20,11 @@
         <h3>{{subTitle}}</h3>
     </div>
     <div class='content'>
-
-
-        {{#questions}}
         <div class='group clearfix'>
-            <h2 class='group-shortname'>{{name}}</h2>
-            {{#agencies}}
+            <h2 class='group-shortname'>FATA Totals</h2>
+            {{#totals}}
             <div class='question clearfix'>
-                <h2 class='agencey-name'>{{name}}</h2>
+                <h2 class='question-name'>{{name}}</h2>
                 <div class='graph'>
                 {{#responses}}
                 <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
@@ -35,28 +32,33 @@
                         <strong>{{label}}</strong>
                         {{percent}}% &mdash; {{number}} respondents
                     </label>
-                </span>                
+                </span>
                 {{/responses}}
                 </div>
             </div>
-            {{/agencies}}
+            {{/totals}}
         </div>
-        {{/questions}}
-
-
-
-
-            <h2>{{name}}</h2>
-            {{#agencies}}
-                <h3>{{name}}</h3>
-                {{#responses}}
-                    {{label}}
-                {{/responses}}
-            {{/agencies}}
-            {{#responses}}
-                foo
-                {{id}}
-            {{/responses}}
-        {{/questions}}
+        <div class=''>
+            {{#questions}}
+            <div class='group clearfix'>
+                <h2 class='group-shortname'>{{name}}</h2>
+                {{#agencies}}
+                <div class='question clearfix'>
+                    <h2 class='agencey-name'>{{name}}</h2>
+                    <div class='graph'>
+                    {{#responses}}
+                    <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                        <label>
+                            <strong>{{label}}</strong>
+                            {{percent}}% &mdash; {{number}} respondents
+                        </label>
+                    </span>
+                    {{/responses}}
+                    </div>
+                </div>
+                {{/agencies}}
+            </div>
+            {{/questions}}
+        </div>
     </div>
 </div>
