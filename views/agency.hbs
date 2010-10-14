@@ -10,6 +10,7 @@
             {{/active}}
         {{/agencies}}
     </ul>
+    <div class='ender'></div>
 </div>
 
 <div id='main'>
@@ -44,18 +45,10 @@
         <div id='drone-info'>
           <h3>Drone strikes in 2010</h3>
           <ul>
-            {{#total}}
-              <li><span class="label">Total incidents</span> <span class="value">{{.}} strikes</span></li>
-            {{/total}}
-            {{#militant_deaths_min}}
-              <li><span class="label">Militant deaths</span> <span class="value">{{.}} {{../militant_dealths_max}}</span></li>
-            {{/militant_deaths_min}}
-            {{#civilian_deaths_min}}
-              <li><span class="label">Civilians killed</span> <span class="value">{{.}} {{../civilian_deaths_max}}</span></li>
-            {{/civilian_deaths_min}}
-            {{#leader_deaths}}
-              <li><span class="label">Leaders killed</span> <span class="value">{{.}}</span></li>
-            {{/leader_deaths}}
+            <li><span class="label">Total incidents</span> <span class="value">{{total}} strikes</span></li>
+            <li><span class="label">Militant deaths</span> <span class="value">{{militant_deaths_min}} {{militant_dealths_max}}</span></li>
+            <li><span class="label">Civilians killed</span> <span class="value">{{civilian_deaths_min}} {{civilian_deaths_max}}</span></li>
+            <li><span class="label">Leaders killed</span> <span class="value">{{leader_deaths}}</span></li>
           </ul>
         </div>
         {{/drone_info}}
@@ -82,8 +75,8 @@
         </div>
         {{#groups}}
         <div class='group clearfix'>
-            <h2 class='group-shortname'>{{shortname}}</h2>
-            <p class='group-text'>{{text}}</p>
+            <h2 class='group-shortname'>{{{shortname}}}</h2>
+            <p class='group-text'>{{{text}}}</p>
             {{#renderedQuestions}}
             <div class='question clearfix'>
                 <h2 class='question-name'>{{{name}}}</h2>

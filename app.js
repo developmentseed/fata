@@ -56,6 +56,7 @@ require('page.question');
 // Map JSON and MML
 require('page.map');
 require('page.style');
+require('page.drone');
 
 // Begin HTTP server
 app.listen(settings.port);

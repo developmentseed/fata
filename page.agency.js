@@ -114,7 +114,25 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
     // Load drone_aggregate info
     parallel.push(function(callback) {
         dataHandler.find({collection: 'drones_aggregate', conditions: {agency: req.params.id}}, function(data) {
-            drone_info = data[0],
+            var cols = [
+                'total',
+                'militant_deaths_min',
+                'militant_deaths_max',
+                'civilian_deaths_min',
+                'civilian_deaths_max',
+                'leader_deaths'
+            ];
+            cols.forEach(function(k) {
+              drone_info[k] = data[0][k] || 0;
+            })
+
+            if (drone_info.militant_deaths_min === drone_info.militant_deaths_max) {
+              delete drone_info.militant_deaths_max;
+            }
+            if (drone_info.civilian_deaths_min === drone_info.civilian_deaths_max) {
+              delete drone_info.civilian_deaths_max;
+            }
+
             callback(null);
         });
     });

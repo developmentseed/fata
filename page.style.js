@@ -12,7 +12,7 @@ app.get('/style/:question', function(req, res) {
         view = [],
         supportFields = ['Somewhat Support', 'Strongly Support'],
         color_start = style.Color('000000'),
-        color_end = style.Color('111111');
+        color_end = style.Color('ffffff');
         question = req.params.question;
     waterfall.push(function(callback) {
         // Load list of agencies
@@ -24,7 +24,7 @@ app.get('/style/:question', function(req, res) {
         // Load question responses for each agency
         agencies.forEach(function(agency) {
             parallel.push(function (callback) {
-                dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.ID}}, function(result) {
+                dataHandler.countField({collection: 'responses', field: question, conditions: {Agency:agency.id}}, function(result) {
                     var totalResponses = _.reduce(result, function(memo, num){
                         return memo + num.value.count;
                     }, 0);
@@ -37,7 +37,7 @@ app.get('/style/:question', function(req, res) {
                         });
                     });
                     view.push({
-                        agency: agency.ID,
+                        agency: agency.id,
                         percent: support / totalResponses * 100
                     });
                     callback(null);
@@ -53,13 +53,16 @@ app.get('/style/:question', function(req, res) {
                 locals: {
                     rules: _.map(view, function(record) {
                             return {
-                                selector: '#data[ID = "' + record.agency + '"]',
+                                selector: '#data[adm2_id = "' + record.agency + '"]',
                                 properties: [
                                     {
                                         property: 'polygon-fill',
+                                        /*
                                         value: color_start.blend(color_end,
                                             list_normalize(record.percent,
                                             _.pluck(view, 'percent')))
+                                            */
+                                        value: color_start.blend(color_end, 0.4)
                                     }
                                 ]
                             }
@@ -67,9 +70,7 @@ app.get('/style/:question', function(req, res) {
                     ,
                     layers: [
                         {
-                            property: 'polygon-fill',
-                            value: '#000',
-                            file: 'test.shp',
+                            file: 'https://client-data.s3.amazonaws.com/naf-fata/fata.zip',
                             type: 'shape',
                             id: 'data',
                         }
