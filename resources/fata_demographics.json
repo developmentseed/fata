@@ -1,0 +1,43 @@
+[
+    {
+        "id": "D7",
+        "name": "Marital Status",
+        "facets": {
+            "married": {
+                "name": "Married",
+                "values": [
+                    "Married" 
+                ] 
+            },
+            "unmarried": {
+                "name": "UnMarried",
+                "values": [
+                    "Single",
+                    "Widowed or Divorced" 
+                ] 
+            } 
+        } 
+    },
+    {
+        "id": "D8",
+        "name": "Income level",
+        "facets": {
+            "high": {
+                "name": "High",
+                "values": [
+                    "Rs. 10,001 – 15,000",
+                    "Rs. 15,001 or more" 
+                ] 
+            },
+            "low": {
+                "name": "Low",
+                "values": [
+                    "Rs. 1,001 – 3,000",
+                    "Rs. 3,001 – 5,000",
+                    "Rs. 5,001 – 7,000",
+                    "Rs. 7,001 – 10,000" 
+                ] 
+            } 
+        } 
+    }
+]
