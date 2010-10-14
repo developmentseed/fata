@@ -45,9 +45,8 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
                     question.questions[q].responses = responses;
                     series.push(function(responseCallback) {
                         dataHandler.countField({collection: 'responses', field: q, conditions: {Agency: req.params.id}}, function(result) {
-                            // @TODO: Pass params to allow for correct ordering, CSS classes.
                             var graph = require('graph');
-                            graph.process({}, result.pop().value).forEach(function(bar) {
+                            graph.process({answers:question.answers}, result.pop().value).forEach(function(bar) {
                                 responses.push(bar);
                             });
                             responseCallback(null);
