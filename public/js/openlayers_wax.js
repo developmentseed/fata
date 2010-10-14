@@ -45,9 +45,9 @@ var Wax = {
         $.getJSON($(element).attr('src'), function(data) {
             $(element).data('map', new OpenLayers.Map(element, Wax.reify(data.map)));
             $(element).data('externals', Wax.reify(data.externals));
-            var degrees = new OpenLayers.LonLat(66.5,33.9);
+            var degrees = new OpenLayers.LonLat(70.37,33.27);
             degrees.transform(new OpenLayers.Projection('EPSG:4326'), new OpenLayers.Projection('EPSG:900913'));
-            $(element).data('map').setCenter(degrees, 2);
+            $(element).data('map').setCenter(degrees, 1);
         });
     }
 };

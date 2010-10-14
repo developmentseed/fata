@@ -30,6 +30,7 @@
             "_type": "OpenLayers.Layer.StyleWriter",
             "_value": [
               "",
+              "",
               {
                 "projection": {
                   "_type": "OpenLayers.Projection",
