@@ -4,13 +4,16 @@
 var app = module.parent.exports;
 
 app.get('/agency/:id/:filter?', function(req, res, next) {
-
     var async = require('async'),
+        dataHandler = req.dataHandler,
+
+        // Async control helper.
         parallel = [],
-        agencies = {},
-        questions = {},
-        pageTitle = '',
-        dataHandler = req.dataHandler;
+
+        // Variables to populate.
+        agencies = [],
+        questions = {}, // @TODO make this an array.
+        pageTitle = '';
 
     // Load all questions
     parallel.push(function(callback) {
@@ -19,8 +22,8 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
         // 2. For each question, load all responses
         var waterfall = [];
         waterfall.push(function(callback) {
-            dataHandler.find({collection:'questions'}, function(questions) {
-                callback(null, questions);
+            dataHandler.find({collection:'questions'}, function(result) {
+                callback(null, result);
             });
         });
         waterfall.push(function(result, callback) {
@@ -56,11 +59,11 @@ app.get('/agency/:id/:filter?', function(req, res, next) {
     parallel.push(function(callback) {
         dataHandler.find({collection: 'agencies'}, function(data) {
             data.forEach(function(agency) {
-                if ('/agency/' + agency.ID == req.url) {
+                if (agency.ID == req.params.id) {
                     agency.active = true;
                 }
+                agencies.push(agency);
             });
-            agencies = data;
             callback(null);
         });
     });

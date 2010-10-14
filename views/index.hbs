@@ -1,10 +1,15 @@
-<ul>
-{{#agencies}}
-    <li><a href="/agency/{{ID}}">{{Human}}</a></li>
-{{/agencies}}
-</ul>
-<ul>
-{{#questions}}
-    <li><a href="/question/{{id}}">{{shortname}}</a></li>
-{{/questions}}
-</ul>
+<div id='page'>
+    <div id="main">
+        <ul class='agencies'>
+        {{#agencies}}
+            <li><a href="/agency/{{ID}}">{{Human}}</a></li>
+        {{/agencies}}
+        </ul>
+        <ul class='questions'>
+        {{#questions}}
+            <li><a href="/question/{{id}}">{{shortname}}</a></li>
+        {{/questions}}
+        </ul>
+        <h2>{{pageTitle}}</h2>
+    </div>
+</div>

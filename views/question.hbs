@@ -1,8 +1,31 @@
-<h2>{{pageTitle}}</h2>
-<h3>{{subTitle}}</h3>
-{{#questions}}
-    <h2>{{text}}</h2>
-    {{#agencies}}
-        {{id}}
-    {{/agencies}}
-{{/questions}}
+<div id='page'>
+    <div id='left' class='sidebar'>
+        <div class='block'>
+            <h2 class='block-title'>Sentiment Survey Questions</h2>
+            <div class='block-content'>
+                <ul>
+                    {{#questions}}
+                        {{#active}}
+                            <li class='active'><a href='/question/{{id}}'>{{shortname}}</a></li>
+                        {{/active}}
+                        {{^active}}
+                            <li><a href='/question/{{id}}'>{{shortname}}</a></li>
+                        {{/active}}
+                    {{/questions}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id='question-map' class='waxmap' src='/map/question/{{id}}'>
+        </div>
+        <h2>{{pageTitle}}</h2>
+        <h3>{{subTitle}}</h3>
+        {{#responses}}
+            <h2>{{text}}</h2>
+            {{#agencies}}
+                {{id}}
+            {{/agencies}}
+        {{/responses}}
+    </div>
+</div>

@@ -3,19 +3,33 @@
  */
 var app = module.parent.exports;
 
-app.get('/question/:group/:filter?', function(req, res) {
-    var group = req.params.group,
-        dataHandler = req.dataHandler,
+app.get('/question/:id/:filter?', function(req, res) {
+    var id = req.params.id,
         async = require('async'),
+        dataHandler = req.dataHandler,
+
+        // Async control helper.
         waterfall = [],
+
+        // Variables to populate.
+        questions = [],
+        responses = {},
         pageTitle = '',
         subTitle = '';
-    // Load the question group
+
+    // Load all questions and pass the active question group to the
+    // next callback.
     waterfall.push(function (callback) {
-        dataHandler.find({collection: 'questions', conditions: {id:group}}, function(groups) {
-            pageTitle = groups[0].shortname;
-            subTitle = groups[0].text;
-            callback(null, groups[0]);
+        dataHandler.find({collection: 'questions'}, function(result) {
+            result.forEach(function(question) {
+                if (question.id === id) {
+                    question.active = true;
+                    pageTitle = question.shortname || '';
+                    subTitle = question.text || '';
+                    callback(null, question);
+                }
+                questions.push(question);
+            });
         });
     });
     // Load list of agencies
@@ -26,8 +40,7 @@ app.get('/question/:group/:filter?', function(req, res) {
     });
     // Get response counts per question, per agency.
     waterfall.push(function (group, agencies, callback) {
-        var parallel = [],
-            responses = {};
+        var parallel = [];
         _.each(group.questions, function(value, question) {
             if (value.display.indexOf('question') !== -1) {
                 responses[question] = {text:value.name};
@@ -57,35 +70,20 @@ app.get('/question/:group/:filter?', function(req, res) {
             }
         });
         async.parallel(parallel, function() {
-            callback(null, responses);
+            callback(null);
         });
     });
     // Render the page
-    waterfall.push(function(results, callback) {
-        console.log(results);
+    waterfall.push(function(callback) {
+        console.log(questions);
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,
                 subTitle: subTitle,
-                questions: results
+                questions: questions,
+                responses: responses
             }
         });
     });
-    // dataHandler.countField('responses', question, {}, function(result) {
-    //     data = [];
-    //     _.each(result[question], function(value, key) {
-    //         response = {
-    //             name: key,
-    //             count: value
-    //         };
-    //         data.push(response);
-    //     });
-    //     res.render('question', {
-    //         locals: {
-    //             pageTitle: 'Question',
-    //             results: data
-    //         }
-    //     });
-    // });
     async.waterfall(waterfall);
 });
