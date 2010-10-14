@@ -8,9 +8,7 @@
     "externals": {
         "blockswitcher": {
             "_type": "OpenLayersPlusBlockswitcher",
-            "_value": [
-                ""
-            ]
+            "_value": [""]
         }
     },
     "maxExtent": {
