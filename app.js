@@ -2,28 +2,15 @@ require.paths.unshift(__dirname + '/modules', __dirname + '/lib/node', __dirname
 
 var connect = require('connect'),
     express = require('express'),
-    settings = require('settings');
+    settings = require('settings'),
+    dbConnection = require('db');
     _ = require('./modules/underscore/underscore')._;
 
-// dbConnect middleware. Establishes a DataHandler with access to a single
-// db connection per HTTP request.
-var dbConnection = function dbConnection(options) {
-    return function dbConnection(req, res, next) {
-        var mongo = require('node-mongodb-native/lib/mongodb');
-        var DataHandler = require('./data');
-        var db = new mongo.Db(options.db,
-            new mongo.Server(
-                options.host,
-                mongo.Connection.DEFAULT_PORT,
-                {}),
-            {});
-        req.db = db;
-        req.dataHandler = new DataHandler(db);
-        next();
-    };
-};
-
-// Initialize core object.
+// Initialize the Express server with an array of middleware layers to use:
+// 1. Log mesage output for each request.
+// 2. Static file serving from /public directory (for CSS, JavaScript, images)
+//    @TODO: Use this in dev only, use nginx when in production.
+// 3. DB connection middleware. See db.js.
 var app = module.exports = new express.Server([
     connect.logger({ format: '- [:response-timems] :date - :method :status' }),
     connect.staticProvider(__dirname + '/public'),
@@ -40,20 +27,6 @@ app.dynamicHelpers({
     },
     footerMessage: function() {
         return settings.footerMessage;
-    },
-    primaryNavigation: function(req) {
-        items = [
-            {title: 'Home', url: '/'},
-            {title: 'Agencies', url: '/agency'},
-            {title: 'Questions', url: '/question'},
-            {title: 'About', url: '/about'}
-        ];
-        items.forEach(function(item) {
-            if (item.url == req.url) {
-                item.active = true;
-            }
-        });
-        return items;
     }
 });
 
