@@ -41,6 +41,25 @@
     <div class='header'>
         <h2>{{pageTitle}}</h2>
         <div class='profile prose'>{{{profile}}}</div>
+        {{#drone_info}}
+        <div class='drone-info'>
+          <h3>Drone strikes in 2010</h3>
+          <ul>
+            {{#total}}
+              <li><span class="label">Total incidents</span> <span class="value">{{.}} strikes</span></li>
+            {{/total}}
+            {{#militant_deaths_min}}
+              <li><span class="label">Militant deaths</span> <span class="value">{{.}} {{../militant_dealths_max}}</span></li>
+            {{/militant_deaths_min}}
+            {{#civilian_deaths_min}}
+              <li><span class="label">Civilians killed</span> <span class="value">{{.}} {{../civilian_deaths_max}}</span></li>
+            {{/civilian_deaths_min}}
+            {{#leader_deaths}}
+              <li><span class="label">Leaders killed</span> <span class="value">{{.}}</span></li>
+            {{/leader_deaths}}
+          </ul>
+        </div>
+        {{/drone_info}}
     </div>
     <div class='content' id='content'>
         <div class='demographics'>
