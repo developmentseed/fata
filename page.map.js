@@ -3,26 +3,60 @@
  */
 var app = module.parent.exports.app;
 
+function deepCopy(obj) {
+    if (Object.prototype.toString.call(obj) === '[object Array]') {
+        var out = [], i = 0, len = obj.length;
+        for ( ; i < len; i++ ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    if (typeof obj === 'object') {
+        var out = {}, i;
+        for ( i in obj ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    return obj;
+}
+
+
 app.get('/map/home', function(req, res) {
     var fs = require('fs');
     var map_template = JSON.parse(fs.readFileSync('map_defaults.json', 'utf-8'));
     var base_layer = map_template.layers.mapbox;
-    var stylewriter_layer = map_template.layers.stylewriter;
+    var drone_layer = deepCopy(map_template.layers.stylewriter);
+    var fighters_layer = deepCopy(map_template.layers.stylewriter);
+    var taliban_layer = deepCopy(map_template.layers.stylewriter);
+    var drone_opinion_layer = deepCopy(map_template.layers.stylewriter);
     var blockswitcher = map_template.externals.blockswitcher;
 
     base_layer._value[1].layername = 'pakistan-grey';
     base_layer._value[0] = 'FATA';
     base_layer._value[1].type = 'jpg';
 
-    stylewriter_layer._value[0] = 'Attacks';
-    stylewriter_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    stylewriter_layer._value[2].mapfile = 'http://localhost:8888/style/drone/mohmand';
+    drone_layer._value[0] = 'Attacks';
+    drone_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
+    drone_layer._value[2].mapfile = 'http://localhost:8888/style/drone/mohmand';
+
+    fighters_layer._value[0] = 'Opinion on Foreign Fighters';
+    fighters_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
+    fighters_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q11b/positive';
+    
+    taliban_layer._value[0] = 'Opinion on Pakistan Taliban';
+    taliban_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
+    taliban_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q11d/positive';
+    
+    drone_opinion_layer._value[0] = 'Opinion on Drones';
+    drone_opinion_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
+    drone_opinion_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q16/positive';
 
     blockswitcher._value[0] = '#home-map';
 
     res.send({
         'map': {
-            'layers': [base_layer, stylewriter_layer],
+            'layers': [base_layer,taliban_layer,drone_opinion_layer,fighters_layer,drone_layer],
             'maxExtent': map_template.maxExtent,
             'maxResolution': 1.40625,
             'projection': map_template.spherical_mercator,

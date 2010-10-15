@@ -102,6 +102,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -191,6 +197,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -245,6 +257,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -306,6 +324,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -367,6 +391,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -421,6 +451,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -531,6 +567,12 @@
             {
                 "name": "Very unfavorable",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -607,7 +649,7 @@
                 "group": "positive" 
             },
             {
-                "name": "Somewhat",
+                "name": "Some-what",
                 "group": "positive" 
             },
             {
@@ -617,6 +659,12 @@
             {
                 "name": "Not at all",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -741,13 +789,19 @@
             {
                 "name": "Very unfavorable",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q10",
         "id": "pursuing-militants",
-        "shortname": "Pursuing Militants inside FATA",
+        "shortname": "Pursuing Militants",
         "text": "Do you support or oppose each of the following?",
         "questions": {
             "Q10a": {
@@ -790,13 +844,19 @@
             {
                 "name": "Strongly oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q11",
         "id": "presence-groups",
-        "shortname": "Groups operating in FATA",
+        "shortname": "Foreign Groups",
         "text": "Do you support or oppose the presence of the following groups inside FATA today?",
         "questions": {
             "Q11a": {
@@ -844,6 +904,12 @@
             {
                 "name": "Strongly oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -903,13 +969,19 @@
             },
             {
                 "name": "Not Negotiate and Fight" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q14",
         "id": "personal-safety",
-        "shortname": "Personal Safety",
+        "shortname": "Safety",
         "text": "Which of the following groups poses the<em>greatest threat</em> to your personal safety?",
         "questions": {
             "Q14": {
@@ -939,7 +1011,7 @@
     {
         "group": "Q16",
         "id": "drone-strikes",
-        "shortname": "Support of Drone Strikes",
+        "shortname": "Drone Strikes",
         "text": "Do you support or oppose United States military drone strikes by air inside FATA today?",
         "questions": {
             "Q16": {
@@ -963,13 +1035,19 @@
             },
             {
                 "name": "Strongly Oppose" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q17",
         "id": "drone-targets",
-        "shortname": "Target of Drone Strikes",
+        "shortname": "Targets of Strikes",
         "text": "Do you think American drone strikes for the most part accurately kill militants or mostly kill civilians?",
         "questions": {
             "Q17": {
@@ -979,30 +1057,13 @@
                     "question" 
                 ] 
             } 
-        },
-        "answers": [
-            {
-                "name": "Strongly Support",
-                "group": "positive" 
-            },
-            {
-                "name": "Somewhat Support",
-                "group": "positive" 
-            },
-            {
-                "name": "Somewhat Oppose",
-                "group": "negative" 
-            },
-            {
-                "name": "Strongly Oppose",
-                "group": "negative" 
-            } 
+        }
         ] 
     },
     {
         "group": "Q18",
         "id": "pakistan-drones",
-        "shortname": "Pakistani Military's Use of Drones",
+        "shortname": "Pakistani Drones",
         "text": "Do you the Pakistani military should launch its own drone attacks by air inside FATA?",
         "questions": {
             "Q18": {
@@ -1012,14 +1073,7 @@
                     "question" 
                 ] 
             } 
-        },
-        "answers": [
-            {
-                "name": "Pakistani miltary should attack by drones in FATA" 
-            },
-            {
-                "name": "Pakistani miltary shuuld never use drones in FATA" 
-            } 
+        }
         ] 
     },
     {
@@ -1108,13 +1162,19 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q20",
         "id": "suicide-bombing-justified",
-        "shortname": "Justification of Suicide Bombings",
+        "shortname": "Suicide Bombings",
         "text": "Do you think that suicide bombings and attacks are justified?",
         "questions": {
             "Q20": {
@@ -1141,13 +1201,19 @@
             {
                 "name": "Never Justified",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q21",
         "id": "suicide-bombings",
-        "shortname": "Targets of Suicide Bombings",
+        "shortname": "Targets of Bombings",
         "text": "Are suicide bombings justified against the following targets?",
         "questions": {
             "Q21a": {
@@ -1195,13 +1261,19 @@
             {
                 "name": "Never Justified",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q22",
         "id": "war-on-terror",
-        "shortname": "Support of the War on Terror",
+        "shortname": "The War on Terror",
         "text": "Do you support or oppose the U.S.-led war on terror?",
         "questions": {
             "Q22": {
@@ -1228,13 +1300,19 @@
             {
                 "name": "Strongly Oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
     {
         "group": "Q23",
         "id": "purpose-war-on-terror",
-        "shortname": "Purpose of the War on Terror",
+        "shortname": "Purpose of War on Terror",
         "text": "What do you think is the real purpose of the US-led war on terror?",
         "questions": {
             "Q23": {
