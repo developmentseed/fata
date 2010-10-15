@@ -57,7 +57,7 @@ app.get('/map/home', function(req, res) {
     blockswitcher._value[0] = '#home-map';
 
     zoomonload._value[0] = ['#home-map'];
-    zoomonload._value[1] = 71.5;
+    zoomonload._value[1] = 71.7;
     zoomonload._value[2] = 33.4;
     zoomonload._value[3] = 2;
 
