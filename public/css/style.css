@@ -179,6 +179,17 @@ a {
   height:280px;
   }
 
+  div.map #map-slide-toggle {
+    position: absolute;
+    z-index:5002;
+    bottom:5px;
+    left:5px;
+    background-color:#383830;
+    color:#fff;
+    font-size:10px;
+    padding:2px 6px;
+    }
+
   div.map #block-openlayers_plus-blockswitcher.ne {
     position:absolute;
     z-index:5000;

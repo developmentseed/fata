@@ -15,28 +15,6 @@
 
 <div id='main'>
     <div class='map'>
-      <div id='block-openlayers_plus-blockswitcher' class='ne'>
-        <div class='openlayers-blockswitcher clear-block'>
-          <div class='layers base'>
-            <h2 class='layers-title'>Base Layers</h2>
-            <div class='layers-content'>
-            </div>
-          </div>
-          <div class='layers data'>
-            <h2 class='layers-title'>Data Layers</h2>
-            <div class='layers-content'>
-            </div>
-          </div>
-          <div style='display:none' class='factory'>
-            <div class='form-item form-option radio'>
-              <label class='option'></label>
-            </div>
-            <div class='form-item form-option checkbox'>
-              <label class='option'><span class='key'></span><input class='form-checkbox' type='checkbox' /></label>
-            </div>
-          </div>
-        </div>
-      </div>
       <div id='agency-map' class='waxmap' src='/map/agency/{{agencyid}}'></div>
     </div>
     <div class='header'>
@@ -46,9 +24,9 @@
           <h3>Drone strikes in 2010</h3>
           <ul>
             <li><span class="label">Total incidents</span> <span class="value">{{total}} strikes</span></li>
-            <li><span class="label">Militant deaths</span> <span class="value">{{militant_deaths_min}} {{militant_dealths_max}}</span></li>
             <li><span class="label">Civilians killed</span> <span class="value">{{civilian_deaths_min}} {{#civilian_deaths_max}}to {{.}}{{/civilian_deaths_max}}</span></li>
-            <li><span class="label">Leaders killed</span> <span class="value">{{leader_deaths}}</span></li>
+            <li><span class="label">Militant deaths</span> <span class="value">{{militant_deaths_min}} {{militant_dealths_max}}</span></li>
+            <li><span class="label">Militant Leaders killed</span> <span class="value">{{leader_deaths}}</span></li>
           </ul>
         </div>
         {{/drone_info}}
