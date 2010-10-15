@@ -16,14 +16,15 @@
                 "name": "Lack of security",
                 "display": [
                     "agency",
-                    "question" 
+                    "question"
                 ] 
             },
             "Q1c": {
                 "name": "Drone attacks",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home" 
                 ] 
             },
             "Q1d": {
@@ -38,7 +39,7 @@
                 "name": "Foreign fighters",
                 "display": [
                     "agency",
-                    "question" 
+                    "question"
                 ] 
             },
             "Q1f": {
@@ -586,8 +587,7 @@
                 "name": "U.S. business investment in FATA",
                 "display": [
                     "agency",
-                    "question",
-                    "home"
+                    "question"
                 ] 
             },
             "Q8b": {
@@ -602,8 +602,7 @@
                 "name": "U.S. aid for medical care and training in FATA",
                 "display": [
                     "agency",
-                    "question",
-                    "home"
+                    "question"
                 ] 
             },
             "Q8d": {
@@ -632,14 +631,16 @@
                 "name": "Withdrawal of U.S. military from Afghanistan",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home"
                 ] 
             },
             "Q8h": {
                 "name": "U.S. brokering a comprehensive Middle East peace between Israelis and Palestinians",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home" 
                 ] 
             } 
         },
@@ -805,7 +806,7 @@
         "text": "Do you support or oppose each of the following?",
         "questions": {
             "Q10a": {
-                "name": "The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighers inside FATA",
+                "name": "The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighters inside FATA",
                 "display": [
                     "agency",
                     "question",
@@ -816,15 +817,15 @@
                 "name": "The U.S. military working with the Pakistani military to pursue Taliban, Al Qaeda, and foreign fighters inside Pakistan",
                 "display": [
                     "agency",
-                    "question",
-                    "home"
+                    "question"
                 ] 
             },
             "Q10c": {
                 "name": "The U.S. military pursuing Taliban, Al Qaeda, and foreign fighters by itself inside Pakistan, without working with the Pakistani military",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home" 
                 ] 
             } 
         },
@@ -870,21 +871,23 @@
                 "name": "Arab and foreign Al Qaeda fighters",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home" 
                 ] 
             },
             "Q11c": {
                 "name": "Afghan Taliban fighters (led by Mullah Omar)",
                 "display": [
                     "agency",
-                    "question" 
+                    "question",
+                    "home" 
                 ] 
             },
             "Q11d": {
                 "name": "Pakistani Taliban fighters",
                 "display": [
                     "agency",
-                    "question" 
+                    "question"
                 ] 
             } 
         },
