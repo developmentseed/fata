@@ -15,7 +15,7 @@ app.get('/map/home', function(req, res) {
     base_layer._value[1].type = 'jpg';
 
     stylewriter_layer._value[0] = 'Attacks';
-    stylewriter_layer._value[1] = 'http://localhost:8887/tile/';
+    stylewriter_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
     stylewriter_layer._value[2].mapfile = 'http://localhost:8888/style/drone/mohmand';
 
     blockswitcher._value[0] = '#home-map';
@@ -82,7 +82,7 @@ app.get('/map/question/:id', function(req, res) {
     base_layer._value[1].type = 'jpg';
 
     choropleth_layer._value[0] = 'Choropleth Map';
-    choropleth_layer._value[1] = 'http://localhost:8887/';
+    choropleth_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
     choropleth_layer._value[2].mapfile = '/style/question/' + req.param.id;
 
     blockswitcher._value[0] = '#question-map';
