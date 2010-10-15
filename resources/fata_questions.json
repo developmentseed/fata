@@ -2,7 +2,7 @@
     {
         "group": "Q1",
         "id": "important-issues",
-        "shortname": "Important Issues",
+        "shortname": "Local Issues",
         "text": "How important are the following issues?",
         "questions": {
             "Q1a": {
@@ -108,7 +108,7 @@
     {
         "group": "Q2",
         "id": "government-goals",
-        "shortname": "Goals for the Pakistan government",
+        "shortname": "Government",
         "text": "How important are the following long-term goals for the government of Pakistan in the tribal areas?",
         "questions": {
             "Q2a": {
@@ -197,7 +197,7 @@
     {
         "group": "Q3",
         "id": "education-goals",
-        "shortname": "Goals for education",
+        "shortname": "Education",
         "text": "How important are the following long-term goals for education in the tribal areas?",
         "questions": {
             "Q3a": {
@@ -251,7 +251,7 @@
     {
         "group": "Q4",
         "id": "economy-goals",
-        "shortname": "Goals for the economy",
+        "shortname": "Economy",
         "text": "How important are the following long-term goals for the economy in the tribal areas?",
         "questions": {
             "Q4a": {
@@ -312,7 +312,7 @@
     {
         "group": "Q5",
         "id": "governance-goals",
-        "shortname": "Goals for governance",
+        "shortname": "Governing FATA",
         "text": "How important are the following long-term goals for governing in the tribal areas?",
         "questions": {
             "Q5a": {
@@ -373,7 +373,7 @@
     {
         "group": "Q6",
         "id": "justice-goals",
-        "shortname": "Goals for justice",
+        "shortname": "Justice",
         "text": "How important are the following long-term goals for justice in the tribal areas?",
         "questions": {
             "Q6a": {
@@ -431,33 +431,89 @@
         "text": "How favorable is your opinion of the following groups?",
         "questions": {
             "Q7a": {
-                "name": "The tribal areas should be governed by Pakistani government courts",
+                "name": "Arab and other foreign fighters",
                 "display": [
                     "agency",
                     "question" 
                 ] 
             },
             "Q7b": {
-                "name": "The tribal areas should be governed by local <em>jirga</em>",
+                "name": "American military",
                 "display": [
                     "agency",
                     "question" 
                 ] 
             },
             "Q7c": {
-                "name": "FATA should be governed by strict Sharia",
+                "name": "Pakistani army",
                 "display": [
                     "agency",
                     "question" 
                 ] 
             },
             "Q7d": {
-                "name": "FATA should be governed by the Pakistani military",
+                "name": "Frontier corps",
                 "display": [
                     "agency",
                     "question" 
                 ] 
-            } 
+            },
+            "Q7e": {
+                "name": "Pakistani Taliban",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7g": {
+                "name": "Aghan Taliban",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7g": {
+                "name": "Federal Pakistani Government in Islamabad",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7h": {
+                "name": "Provincial government in Peshawar",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7i": {
+                "name": "Political agent",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7j": {
+                "name": "Pakistani Police",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7k": {
+                "name": "FATA Secretariat",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            },
+            "Q7l": {
+                "name": "FATA Development Authority",
+                "display": [
+                    "agency",
+                    "question" 
+                ] 
+            }
         },
         "answers": [
             {
@@ -481,7 +537,7 @@
     {
         "group": "Q8",
         "id": "opinion-us",
-        "shortname": "Improving opinions of the U.S.",
+        "shortname": "Opinions of the U.S.",
         "text": "Would any of the following improve your opinion of the United States?",
         "questions": {
             "Q8a": {
@@ -538,7 +594,7 @@
                 ] 
             },
             "Q8h": {
-                "name": "Withdrawal of U.S. military from Afghanistan",
+                "name": "U.S. brokering a comprehensive Middle East peace between Israelis and Palestinians",
                 "display": [
                     "agency",
                     "question" 
@@ -567,7 +623,7 @@
     {
         "group": "Q9",
         "id": "opinion-individuals",
-        "shortname": "Opinions of Individuals",
+        "shortname": "Leadership",
         "text": "How favorable is your opinion of the following individuals?",
         "questions": {
             "Q9a": {
@@ -740,7 +796,7 @@
     {
         "group": "Q11",
         "id": "presence-groups",
-        "shortname": "Presence of groups inside FATA",
+        "shortname": "Groups operating in FATA",
         "text": "Do you support or oppose the presence of the following groups inside FATA today?",
         "questions": {
             "Q11a": {
@@ -794,7 +850,7 @@
     {
         "group": "Q12",
         "id": "violence-responsibility",
-        "shortname": "Responsibility for Violence",
+        "shortname": "Violence",
         "text": "Which of the following groups is <em>most responsible</em> for the violence inside FATA?",
         "questions": {
             "Q12": {
@@ -804,7 +860,7 @@
                     "question" 
                 ] 
             } 
-        },
+        }
     },
     {
         "group": "Q13",
@@ -853,22 +909,22 @@
     {
         "group": "Q14",
         "id": "personal-safety",
-        "shortname": "Threat to Personal Safety",
-        "text": "Which of the following groups poses the<em>greatest threat</em> to your personal safety",
+        "shortname": "Personal Safety",
+        "text": "Which of the following groups poses the<em>greatest threat</em> to your personal safety?",
         "questions": {
             "Q14": {
-                "name": "Which of the following groups poses the<em>greatest threat</em> to your personal safety",
+                "name": "Which of the following groups poses the<em>greatest threat</em> to your personal safety?",
                 "display": [
                     "agency",
                     "question" 
                 ] 
             } 
-        },
+        }
     },
     {
         "group": "Q15",
         "id": "vote-groups",
-        "shortname": "Threat to Personal Safety",
+        "shortname": "Elections",
         "text": "If you could vote for any party or group in a Pakistani election, which of the following would you vote for?",
         "questions": {
             "Q15": {
@@ -878,7 +934,7 @@
                     "question" 
                 ] 
             } 
-        },
+        }
     },
     {
         "group": "Q16",
@@ -1145,8 +1201,8 @@
     {
         "group": "Q22",
         "id": "war-on-terror",
-        "shortname": "Do you support or oppose the U.S.-led war on terror?",
-        "text": "Support of the War on Terror",
+        "shortname": "Support of the War on Terror",
+        "text": "Do you support or oppose the U.S.-led war on terror?",
         "questions": {
             "Q22": {
                 "name": "Do you support or oppose the U.S.-led war on terror?",
@@ -1178,8 +1234,8 @@
     {
         "group": "Q23",
         "id": "purpose-war-on-terror",
-        "shortname": "What do you think is the real purpose of the US-led war on terror?",
-        "text": "Purpose of the War on Terror",
+        "shortname": "Purpose of the War on Terror",
+        "text": "What do you think is the real purpose of the US-led war on terror?",
         "questions": {
             "Q23": {
                 "name": "What do you think is the real purpose of the US-led war on terror?",
