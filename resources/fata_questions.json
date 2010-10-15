@@ -102,6 +102,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -191,6 +197,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -245,6 +257,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -306,6 +324,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -367,6 +391,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -421,6 +451,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -531,6 +567,12 @@
             {
                 "name": "Very unfavorable",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -617,6 +659,12 @@
             {
                 "name": "Not at all",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -741,6 +789,12 @@
             {
                 "name": "Very unfavorable",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -790,6 +844,12 @@
             {
                 "name": "Strongly oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -844,6 +904,12 @@
             {
                 "name": "Strongly oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -903,6 +969,12 @@
             },
             {
                 "name": "Not Negotiate and Fight" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -963,6 +1035,12 @@
             },
             {
                 "name": "Strongly Oppose" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -979,24 +1057,7 @@
                     "question" 
                 ] 
             } 
-        },
-        "answers": [
-            {
-                "name": "Strongly Support",
-                "group": "positive" 
-            },
-            {
-                "name": "Somewhat Support",
-                "group": "positive" 
-            },
-            {
-                "name": "Somewhat Oppose",
-                "group": "negative" 
-            },
-            {
-                "name": "Strongly Oppose",
-                "group": "negative" 
-            } 
+        }
         ] 
     },
     {
@@ -1012,14 +1073,7 @@
                     "question" 
                 ] 
             } 
-        },
-        "answers": [
-            {
-                "name": "Pakistani miltary should attack by drones in FATA" 
-            },
-            {
-                "name": "Pakistani miltary shuuld never use drones in FATA" 
-            } 
+        }
         ] 
     },
     {
@@ -1108,6 +1162,12 @@
             {
                 "name": "Not at all important",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -1141,6 +1201,12 @@
             {
                 "name": "Never Justified",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -1195,6 +1261,12 @@
             {
                 "name": "Never Justified",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
@@ -1228,6 +1300,12 @@
             {
                 "name": "Strongly Oppose",
                 "group": "negative" 
+            },
+            {
+                "name": "Don't know"
+            },
+            {
+                "name": "Refused"
             } 
         ] 
     },
