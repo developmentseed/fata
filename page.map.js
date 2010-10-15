@@ -76,6 +76,7 @@ app.get('/map/agency/:id', function(req, res) {
     var map_template = JSON.parse(fs.readFileSync('map_defaults.json', 'utf-8'));
     var base_layer = map_template.layers.mapbox;
     var stylewriter_layer = map_template.layers.stylewriter;
+    var blockswitcher = map_template.externals.blockswitcher;
 
     base_layer._value[1].layername = 'pakistan-grey';
     base_layer._value[0] = 'FATA';
