@@ -154,19 +154,24 @@ app.get('/style/question/:question/:opinion', function(req, res) {
         var list_normalize = function(a, list) {
             return (a - _.min(list)) / (_.max(list) - _.min(list));
         }
-
         res.render('style', {
             layout: false,
             locals: {
                 rules: _.map(view, function(percentage, agency) {
                         return {
                             selector: '#data[adm2_id = "' + agency + '"]',
-                            properties: [{
+                            properties: [
+                                {
                                     property: 'polygon-fill',
                                     value: "#" + color_start.blend(color_end,
                                         list_normalize(percentage,
                                         view))
-                            }]
+                                },
+                                {
+                                    property: 'polygon-opacity',
+                                    value: 0.5
+                                },
+                            ]
                         }
                     })
                 ,

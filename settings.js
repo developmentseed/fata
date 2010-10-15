@@ -19,7 +19,7 @@ module.exports = {
     footerMessage: 'Copyright © New America Foundation',
     homeSections: [
         { content: 'section1', group: 'Q16'},
-        { content: 'section2'},
+        { content: 'section2', group: 'Q11'},
         { content: 'section3', group: 'Q8'},
         { content: 'section4', group: 'Q10'},
         { content: 'section5', group: 'Q1'},
