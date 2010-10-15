@@ -464,7 +464,7 @@
     {
         "group": "Q7",
         "id": "opinion-groups",
-        "shortname": "Opinions of groups",
+        "shortname": "Group Actors",
         "text": "How favorable is your opinion of the following groups?",
         "questions": {
             "Q7a": {
@@ -1054,7 +1054,7 @@
     {
         "group": "Q17",
         "id": "drone-targets",
-        "shortname": "Targets of Strikes",
+        "shortname": "Drone Targets",
         "text": "Do you think American drone strikes for the most part accurately kill militants or mostly kill civilians?",
         "questions": {
             "Q17": {
@@ -1220,7 +1220,7 @@
     {
         "group": "Q21",
         "id": "suicide-bombings",
-        "shortname": "Targets of Bombings",
+        "shortname": "Bombing Targets",
         "text": "Are suicide bombings justified against the following targets?",
         "questions": {
             "Q21a": {
