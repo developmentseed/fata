@@ -34,9 +34,9 @@ app.get('/map/home', function(req, res) {
     var blockswitcher = map_template.externals.blockswitcher;
     var zoomonload = map_template.externals.zoomonload;
 
-    base_layer._value[1].layername = 'pakistan-grey';
+    base_layer._value[1].layername = 'pakistan-fata';
     base_layer._value[0] = 'FATA';
-    base_layer._value[1].type = 'jpg';
+    base_layer._value[1].type = 'png';
 
     drone_layer._value[0] = 'Attacks';
     drone_layer._value[1] = settings.tileLiveServer;
@@ -86,9 +86,9 @@ app.get('/map/agency/:id', function(req, res) {
     var stylewriter_layer = map_template.layers.stylewriter;
     var zoomonload = map_template.externals.zoomonload;
 
-    base_layer._value[1].layername = 'pakistan-grey';
+    base_layer._value[1].layername = 'pakistan-fata';
     base_layer._value[0] = 'FATA';
-    base_layer._value[1].type = 'jpg';
+    base_layer._value[1].type = 'png';
     
     stylewriter_layer._value[0] = 'Attacks';
     stylewriter_layer._value[1] = settings.tileLiveServer;
