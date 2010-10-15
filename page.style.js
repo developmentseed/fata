@@ -3,6 +3,62 @@
  */
 var app = module.parent.exports.app;
 
+app.get('/style/drone/:agency', function(req, res) {
+    res.render('style', {
+        layout: false,
+        locals: {
+            rules: [
+                {
+                    'selector': '#data',
+                    properties: [
+                        {
+                            property: 'marker-width',
+                            value: 3
+                        },
+                        {
+                            property: 'marker-height',
+                            value: 3
+                        },
+                        {
+                            property: 'marker-fill',
+                            value: '#dd4400'
+                        },
+                        {
+                            property: 'marker-fill-opacity',
+                            value: 0.9
+                        },
+                        {
+                            property: 'marker-line-color',
+                            value: '#dd3300'
+                        },
+                        {
+                            property: 'marker-line-width',
+                            value: 3
+                        },
+                        {
+                            property: 'marker-line-opacity',
+                            value: 0.9
+                        },
+                        {
+                            property: 'marker-type',
+                            value: 'ellipse'
+                        }
+                    ]
+                }
+            ],
+            layers: [
+                {
+                    file: 'http://localhost:8888/drone/' + req.params.agency + '/drones.geojson',
+                    type: 'ogr',
+                    id: 'data',
+                    layer: 'OGRGeoJSON',
+                }
+            ]
+        }
+    });
+});
+
+
 /**
  * Produces breakdown by agency of the percentage of responses for the given
  * question given opinion.
@@ -18,7 +74,7 @@ var app = module.parent.exports.app;
  * @param opinion
  *     The opinion to produce percentages for (e.g. 'positive' or 'negative').
  */
-app.get('/style/:group/:question/:opinion', function(req, res) {
+app.get('/style/question/:question', function(req, res) {
     var async = require('async'),
         style = require('./style'),
         dataHandler = req.dataHandler,

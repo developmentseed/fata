@@ -37,17 +37,24 @@ a {
 #branding {
   background:url(../images/page.png) -960px -80px no-repeat;
   float:right;
-  width:150px;
-  padding:20px 0px 20px 10px;
+  width:140px;
+  padding:20px 0px 20px 20px;
   }
+
+.site-name { margin:0px 0px 20px; }
 
 .site-name a {
   display:block;
-  width:150px;
+  width:140px;
   height:180px;
   background:url(../images/sprite.png) 0px -60px no-repeat;
   text-indent:-9999px;
   overflow:hidden;
+  }
+
+.slogan {
+  color:#9c9c80;
+  margin:0px 0px 20px;
   }
 
 /**
@@ -109,6 +116,7 @@ a {
   width:640px;
   }
 
+.about #main,
 .front #main {
   width:800px;
   background-position:-160px -80px;
@@ -149,7 +157,14 @@ a {
 /**
  * Footer
  */
-#footer { clear:both; }
+#footer {
+  clear:both;
+  padding:20px 20px 60px;
+  font-size:12px;
+  text-transform:uppercase;
+  color:#000;
+  text-shadow:#5c5c50 0px 1px 0px;
+  }
 
 /**
  * Map
@@ -210,6 +225,8 @@ div.section {
   width:620px;
   padding:0px 10px;
   }
+
+.header div.section { padding:0px; }
 
 .section .group {
   width:300px;
@@ -282,18 +299,25 @@ body.question .group-shortname {
   width:160px;
   }
 
+.filter-title,
 .filter {
   background:#4c4c40;
-  padding:5px 0px 4px;
-  margin-bottom:1px;
+  padding:9px 0px 10px;
+  margin-top:1px;
   }
 
-.filter h2 {
+.filter-title {
+  padding:10px 0px;
+  margin:0px;
+  }
+
+.filter-title h2 {
   color:#fff;
-  padding:0px 10px;
+  padding:0px 10px 10px;
   }
 
 .filter label {
+  display:block;
   padding:0px 10px;
   font-size:12px;
   font-weight:normal;
@@ -335,8 +359,8 @@ body.question .group-shortname {
   }
 
 div.question { /* use div. here to avoid conflict with body.question */
-  border-top:1px solid #585848;
   padding:4px 10px 5px;
+  border-top:1px solid #585848;
   }
 
 .question-name,
@@ -434,3 +458,15 @@ div.question { /* use div. here to avoid conflict with body.question */
 .autogen-10 { background-color:#a88; }
 .autogen-11 { background-color:#866; }
 .autogen-12 { background-color:#644; }
+
+/**
+ * More link ==========================================================
+ */
+.more-link a {
+  padding:0px 10px 0px 20px;
+  float:right;
+  color:#fff;
+  background:#4c4c40 url(../images/sprite.png) 0px -380px no-repeat;
+  font-size:12px;
+  text-transform:uppercase;
+  }
