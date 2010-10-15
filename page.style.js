@@ -64,17 +64,15 @@ app.get('/style/drone/:agency', function(req, res) {
  * question given opinion.
  *
  * Example:
- * 'style/Q1/Q1a/positive' would produce the percent of people who think
+ * 'style/question/Q1a/positive' would produce the percent of people who think
  *     corruption of local officials is a problem broken down by agency.
  *
- * @param group
- *     The question group ID.
  * @param question
  *     The question ID.
  * @param opinion
  *     The opinion to produce percentages for (e.g. 'positive' or 'negative').
  */
-app.get('/style/question/:group/:question/:opinion', function(req, res) {
+app.get('/style/question/:question/:opinion', function(req, res) {
     var async = require('async'),
         style = require('./style'),
         dataHandler = req.dataHandler,
@@ -93,8 +91,21 @@ app.get('/style/question/:group/:question/:opinion', function(req, res) {
         color_start = style.Color('000000'),
         color_end = style.Color('ffffff');
 
+    // Determine groupId from questionId
+    var groupId = '',
+        questionId = req.params.question;
+    for (var l in questionId) {
+        if (l != 0 && isNaN(questionId[l])) {
+            groupId = questionId.substring(0, l);
+            break;
+        }
+    }
+    if (!groupId.length) {
+        groupId = questionId;
+    }
+
     series.push(function(callback) {
-        dataHandler.find({collection: 'groups', conditions: {group: req.params.group}}, function(result) {
+        dataHandler.find({collection: 'groups', conditions: {group: groupId}}, function(result) {
             group = result.pop();
             callback(null);
         });
@@ -120,7 +131,7 @@ app.get('/style/question/:group/:question/:opinion', function(req, res) {
                             }
                         });
                     }
-                    result.questions[req.params.question].responses.forEach(function(response) {
+                    result.questions[questionId].responses.forEach(function(response) {
                         if (responseLabels.indexOf(response.label) !== -1) {
                             if (!view[agency.id]) {
                                 view[agency.id] = 0;
