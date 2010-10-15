@@ -160,7 +160,7 @@ app.get('/style/question/:question/:opinion', function(req, res) {
             locals: {
                 rules: _.map(view, function(percentage, agency) {
                         return {
-                            selector: '#data[adm2_id = "' + agency + '"]',
+                            selector: '#data[ADM2_ID = "' + agency + '"]',
                             properties: [
                                 {
                                     property: 'polygon-fill',
