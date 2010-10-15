@@ -1025,16 +1025,20 @@
         },
         "answers": [
             {
-                "name": "Strongly Support" 
+                "name": "Strongly Support",
+                "group": "positive" 
             },
             {
-                "name": "Somewhat Support" 
+                "name": "Somewhat Support",
+                "group": "positive" 
             },
             {
-                "name": "Somewhat Oppose" 
+                "name": "Somewhat Oppose",
+                "group": "negative" 
             },
             {
-                "name": "Strongly Oppose" 
+                "name": "Strongly Oppose",
+                "group": "negative" 
             },
             {
                 "name": "Don't know"
