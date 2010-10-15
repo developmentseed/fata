@@ -45,9 +45,11 @@ app.get('/map/home', function(req, res) {
     fighters_layer._value[0] = 'Opinion on Foreign Fighters';
     fighters_layer._value[1] = settings.tileLiveServer;
     fighters_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11b/positive';
+    fighters_layer._value[2].visibility = false;
     
     taliban_layer._value[0] = 'Opinion on Pakistan Taliban';
     taliban_layer._value[1] = settings.tileLiveServer;
+    taliban_layer._value[2].visibility = false;
     taliban_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11d/positive';
     
     drone_opinion_layer._value[0] = 'Opinion on Drones';
@@ -63,7 +65,7 @@ app.get('/map/home', function(req, res) {
 
     res.send({
         'map': {
-            'layers': [base_layer,taliban_layer,drone_opinion_layer,fighters_layer,drone_layer],
+            'layers': [base_layer,drone_opinion_layer,drone_layer,taliban_layer,fighters_layer],
             'maxExtent': map_template.maxExtent,
             'maxResolution': 1.40625,
             'projection': map_template.spherical_mercator,
