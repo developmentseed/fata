@@ -175,7 +175,7 @@
             },
             {
                 "id": "unmarried",
-                "name": "UnMarried",
+                "name": "Unmarried",
                 "values": [
                     "Single",
                     "Widowed or Divorced" 

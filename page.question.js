@@ -3,7 +3,7 @@
  */
 var app = module.parent.exports.app;
 
-app.get('/question/:id/:filter?', function(req, res) {
+app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
     var id = req.params.id,
         async = require('async'),
         dataHandler = req.dataHandler,
@@ -16,6 +16,8 @@ app.get('/question/:id/:filter?', function(req, res) {
         agenciesData = [],
         questions = [],
         groups = [],
+        demographics = [],
+        activeFilter = {},
         pageTitle = '',
         subTitle = '';
 
@@ -23,29 +25,57 @@ app.get('/question/:id/:filter?', function(req, res) {
     // next callback.
     waterfall.push(function (callback) {
         dataHandler.find({collection: 'groups'}, function(result) {
+            var currentGroup;
             result.forEach(function(group) {
                 if (group.id === id) {
                     group.active = true;
                     pageTitle = group.shortname || '';
                     subTitle = group.text || '';
-                    callback(null, group);
+                    currentGroup = group;
                 }
                 groups.push(group);
             });
+            if (currentGroup != null) {
+                callback(null, currentGroup);
+            }
+            else {
+                next();
+            }
         });
     });
+
     // Load list of agencies
     waterfall.push(function(group, callback) {
         dataHandler.find({collection: 'agencies'}, function(agencies) {
             callback(null, group, agencies);
         });
     });
+
     // Get response counts per question, per agency.
     waterfall.push(function (group, agencies, callback) {
         var series = [];
+
+        // Query for the current active filter
+        if (req.params.filter && req.params.facet) {
+            series.push(function(callback) {
+                dataHandler.find({collection: 'demographics', conditions: {'id': req.params.filter, 'facets.id': req.params.facet}}, function(data) {
+                    activeFilter = data.pop();
+                    callback(null);
+                });
+            });
+        }
+
         agencies.forEach(function(agency) {
             series.push(function(responseCallback) {
-                dataHandler.loadQuestion({group: group, context: 'question', conditions: {Agency: agency.id}}, function(result) {
+                var conditions = {Agency: agency.id};
+                if (activeFilter && activeFilter.facets) {
+                    activeFilter.facets.forEach(function(facet) {
+                        if (facet.id === req.params.facet) {
+                            conditions[activeFilter.id] = {'$in': facet.values};
+                        }
+                    });
+                }
+                dataHandler.loadQuestion({group: group, context: 'question', conditions: conditions}, function(result) {
                     for (var q in result.questions) {
                         if (!questions[q]) {
                             questions[q] = {
@@ -83,6 +113,15 @@ app.get('/question/:id/:filter?', function(req, res) {
             callback(err);
         });
     });
+
+    // Load demographic.
+    waterfall.push(function(callback) {
+        dataHandler.find({collection: 'demographics'}, function(data) {
+            demographics = data;
+            callback(null);
+        });
+    });
+
     // Render the page
     waterfall.push(function(callback) {
         res.render('question', {
@@ -91,7 +130,9 @@ app.get('/question/:id/:filter?', function(req, res) {
                 subTitle: subTitle,
                 groups: groups,
                 questions: questions,
-                totals: totals
+                totals: totals,
+                demographics: demographics,
+                questionShortname: req.params.id,
             }
         });
     });

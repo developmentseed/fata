@@ -2,24 +2,26 @@
     "controls": {
         "navigation": {
             "_type": "OpenLayers.Control.Navigation",
-            "_value": []
+            "_value": [""]
+        },
+        "interaction": {
+            "_type": "OpenLayers.Control.StyleWriterInteraction",
+            "_value": [""]
         }
     },
     "externals": {
         "blockswitcher": {
             "_type": "OpenLayersPlusBlockswitcher",
-            "_value": [
-                ""
-            ]
+            "_value": [""]
         }
     },
     "maxExtent": {
-        "_type": "OpenLayers.Bounds",
-        "_value": [
+        "_type": "OpenLayers.Bounds.fromArray",
+        "_value": [[
             -20037508.34,
             -20037508.34,
             20037508.34,
-            20037508.34]
+            20037508.34]]
     },
     "spherical_mercator": {
         "_type": "OpenLayers.Projection",
@@ -36,8 +38,17 @@
                   "_type": "OpenLayers.Projection",
                   "_value": "EPSG:900913"
                 },
+                "maxExtent": {
+                    "_type": "OpenLayers.Bounds.fromArray",
+                    "_value": [[
+                        -20037508.34,
+                        -20037508.34,
+                        20037508.34,
+                        20037508.34]]
+                },
                 "type": "png",
-                "mapfile": ""
+                "mapfile": "",
+                "minzoom": 5
               }
             ]
         },
@@ -49,6 +60,14 @@
                 "projection": {
                   "_type": "OpenLayers.Projection",
                   "_value": "EPSG:900913"
+                },
+                "maxExtent": {
+                    "_type": "OpenLayers.Bounds.fromArray",
+                    "_value": [[
+                        -20037508.34,
+                        -20037508.34,
+                        20037508.34,
+                        20037508.34]]
                 },
                 "type": "jpg",
                 "serverResolutions": [
@@ -78,7 +97,10 @@
                     611.496226172,
                     305.748113086,
                     152.874056543,
-                    76.4370282715],
+                    76.4370282715,
+                    38.2185141357,
+                    19.1092570679
+                    ],
                 "layername": "afghanistan-landcover-fa"
               }
             ]

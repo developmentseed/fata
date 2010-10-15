@@ -1,5 +1,3 @@
-var _ = require('underscore')._;
-
 /**
  * A library of data breaks algorithms
  */

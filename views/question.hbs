@@ -10,38 +10,33 @@
             {{/active}}
         {{/groups}}
     </ul>
+    <div class='ender'></div>
 </div>
+
 <div id='main'>
-    <div class='map'>
-      <div id='question-map' class='waxmap' src='/map/question/temp'></div>
-      <div id='block-openlayers_plus-blockswitcher' class='ne'>
-        <div class='openlayers-blockswitcher clear-block'>
-          <div class='layers base'>
-            <h2 class='layers-title'>Base Layers</h2>
-            <div class='layers-content'>
-            </div>
-          </div>
-          <div class='layers data'>
-            <h2 class='layers-title'>Data Layers</h2>
-            <div class='layers-content'>
-            </div>
-          </div>
-          <div style='display:none' class='factory'>
-            <div class='form-item form-option radio'>
-              <label class='option'></label>
-            </div>
-            <div class='form-item form-option checkbox'>
-              <label class='option'><span class='key'></span><input class='form-checkbox' type='checkbox' /></label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class='header'>
         <h2>{{pageTitle}}</h2>
         <h3>{{{subTitle}}}</h3>
     </div>
-    <div class='content'>
+    <div class='content' id='content'>
+        <div class='demographics'>
+            <div class='filter filter-title'>
+                <h2>Filter by demographics</h2>
+                <div class='facets clearfix'>
+                    <a href='/agency/{{agencyid}}}#content'>All results</a>
+                </div>
+            </div>
+            {{#demographics}}
+            <div class='filter'>
+                <label>{{name}}</label>
+                <div class='facets clearfix'>
+                    {{#facets}}
+                        <a href='/question/{{../../questionShortname}}/{{../id}}/{{id}}#content'>{{name}}</a>
+                    {{/facets}}
+                </div>
+            </div>
+            {{/demographics}}
+        </div>
         <div class='group clearfix'>
             <h2 class='group-shortname'>FATA Totals</h2>
             {{#totals}}

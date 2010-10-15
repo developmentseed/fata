@@ -18,14 +18,20 @@ var Wax = {
         if (json_object.hasOwnProperty('_type')) {
             var fn = Wax.get_function(json_object._type);
             var waxed = Wax.reify(json_object._value);
+            if (waxed.length == 1 && _.isArray(waxed[0])) {
+              return new fn(waxed[0]);
+            }
             if (waxed.length == 1) {
               return new fn(waxed);
             }
-            else {
+            else if (waxed.length == 2) {
               return new fn(waxed[0], waxed[1]);
             }
+            else if (waxed.length == 3) {
+              return new fn(waxed[0], waxed[1], waxed[2]);
+            }
         }
-        else if (_.isString(json_object) || _.isNumber(json_object)) {
+        else if (_.isString(json_object) || _.isNumber(json_object) || _.isBoolean(json_object)) {
           return json_object;
         }
         else {
