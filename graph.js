@@ -25,11 +25,9 @@ var process = function(params, data) {
                 answers.push(label);
             }
         }
-        // Sort answers
+        // Sort answers, then add 'Don't know' and 'Refused' to the end
         answers.sort();
-        // Don't know and Refused
         answers.push("Don't know", "Refused");
-        console.log(answers);
     }
 
     // Loop first to get the sum, count.
