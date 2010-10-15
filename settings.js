@@ -26,5 +26,6 @@ module.exports = {
         { content: 'section5', group: 'Q1'},
     ],
     analyticsId: 'UA-19117141-1',
-    tileLiveServer: 'http://ndi1.live.mapbox.com/tile/${mapfile}/${z}/${x}/${y}.${format}'
+    tileLiveServer: 'http://ndi1.live.mapbox.com/tile/',
+    baseUrl: 'http://pakistansurvey.org/'
 };
