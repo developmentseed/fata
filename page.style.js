@@ -12,12 +12,16 @@ app.get('/style/drone/:agency', function(req, res) {
                     'selector': '#data',
                     properties: [
                         {
+                            property: 'marker-allow-overlap',
+                            value: true
+                        },
+                        {
                             property: 'marker-width',
-                            value: 3
+                            value: 2
                         },
                         {
                             property: 'marker-height',
-                            value: 3
+                            value: 2
                         },
                         {
                             property: 'marker-fill',
@@ -29,15 +33,15 @@ app.get('/style/drone/:agency', function(req, res) {
                         },
                         {
                             property: 'marker-line-color',
-                            value: '#dd3300'
+                            value: '#ffffff'
                         },
                         {
                             property: 'marker-line-width',
-                            value: 3
+                            value: 0.5
                         },
                         {
                             property: 'marker-line-opacity',
-                            value: 0.9
+                            value: 0.6
                         },
                         {
                             property: 'marker-type',
