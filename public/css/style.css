@@ -211,13 +211,13 @@ div.agencies {
 
 div.questions {
   float:left;
-  width:580px;
-  padding:0px 20px;
+  width:600px;
+  padding:0px 0px 0px 20px;
   }
 
 div.questions .menu li {
   float:left;
-  width:33%;
+  width:33.3%;
   }
 
 div.section {
