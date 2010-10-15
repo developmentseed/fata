@@ -3,7 +3,7 @@
  */
 var app = module.parent.exports.app;
 
-app.get('/question/:id/:filter?', function(req, res) {
+app.get('/question/:id/:filter?', function(req, res, next) {
     var id = req.params.id,
         async = require('async'),
         dataHandler = req.dataHandler,
@@ -23,15 +23,22 @@ app.get('/question/:id/:filter?', function(req, res) {
     // next callback.
     waterfall.push(function (callback) {
         dataHandler.find({collection: 'groups'}, function(result) {
+            var currentGroup;
             result.forEach(function(group) {
                 if (group.id === id) {
                     group.active = true;
                     pageTitle = group.shortname || '';
                     subTitle = group.text || '';
-                    callback(null, group);
+                    currentGroup = group;
                 }
                 groups.push(group);
             });
+            if (currentGroup != null) {
+                callback(null, currentGroup);
+            }
+            else {
+                next();
+            }
         });
     });
     // Load list of agencies
