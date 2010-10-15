@@ -61,7 +61,7 @@ app.get('/map/home', function(req, res) {
     zoomonload._value[0] = ['#home-map'];
     zoomonload._value[1] = 71.7;
     zoomonload._value[2] = 33.4;
-    zoomonload._value[3] = 2;
+    zoomonload._value[3] = 1;
 
     res.send({
         'map': {
@@ -108,7 +108,7 @@ app.get('/map/agency/:id', function(req, res) {
         zoomonload._value[0] = ['#agency-map'];
         zoomonload._value[1] = data[0].lon;
         zoomonload._value[2] = data[0].lat;
-        zoomonload._value[3] = 4;
+        zoomonload._value[3] = 3;
 
         res.send({
             'map': {
