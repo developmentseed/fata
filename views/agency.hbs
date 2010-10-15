@@ -47,7 +47,7 @@
           <ul>
             <li><span class="label">Total incidents</span> <span class="value">{{total}} strikes</span></li>
             <li><span class="label">Militant deaths</span> <span class="value">{{militant_deaths_min}} {{militant_dealths_max}}</span></li>
-            <li><span class="label">Civilians killed</span> <span class="value">{{civilian_deaths_min}} {{civilian_deaths_max}}</span></li>
+            <li><span class="label">Civilians killed</span> <span class="value">{{civilian_deaths_min}} {{#civilian_deaths_max}}to {{.}}{{/civilian_deaths_max}}</span></li>
             <li><span class="label">Leaders killed</span> <span class="value">{{leader_deaths}}</span></li>
           </ul>
         </div>
@@ -56,7 +56,7 @@
     </div>
     <div class='content' id='content'>
         <div class='demographics'>
-            <div class='filter'>
+            <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
                 <div class='facets clearfix'>
                     <a href='/agency/{{agencyid}}}#content'>All results</a>
