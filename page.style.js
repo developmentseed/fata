@@ -83,7 +83,7 @@ app.get('/style/question/:question/:opinion', function(req, res) {
 
         // Variables to populate.
         group = [],
-        view = [],
+        view = {},
         agencies = [],
         responseLabels = [],
 
@@ -119,10 +119,10 @@ app.get('/style/question/:question/:opinion', function(req, res) {
 
     series.push(function(callback) {
         // Set up another series
-        var series = []
+        var series_i = []
         // Load question responses for each agency
         agencies.forEach(function(agency) {
-            series.push(function (callback) {
+            series_i.push(function (callback) {
                 dataHandler.loadQuestion({group: group, context: 'question', conditions: {Agency: agency.id}}, function(result) {
                     if (responseLabels.length == 0) {
                         result.answers.forEach(function (answer) {
@@ -143,42 +143,37 @@ app.get('/style/question/:question/:opinion', function(req, res) {
                 });
             });
         });
-        async.series(series, function() {
-            console.log('done');
-            console.log(view);
-            var list_normalize = function(a, list) {
-                return (a - _.min(list)) / (_.max(list) - _.min(list));
-            }
-            res.render('style', {
-                layout: false,
-                locals: {
-                    rules: _.map(view, function(record) {
-                            return {
-                                selector: '#data[adm2_id = "' + record.agency + '"]',
-                                properties: [
-                                    {
-                                        property: 'polygon-fill',
-                                        /*
-                                        value: color_start.blend(color_end,
-                                            list_normalize(record.percent,
-                                            _.pluck(view, 'percent')))
-                                            */
-                                        value: color_start.blend(color_end, 0.4)
-                                    }
-                                ]
-                            }
-                        })
-                    ,
-                    layers: [
-                        {
-                            file: 'https://client-data.s3.amazonaws.com/naf-fata/fata.zip',
-                            type: 'shape',
-                            id: 'data',
+        async.series(series_i, function() { callback(null) });
+    });
+
+    async.series(series, function() {
+        var list_normalize = function(a, list) {
+            return (a - _.min(list)) / (_.max(list) - _.min(list));
+        }
+
+        res.render('style', {
+            layout: false,
+            locals: {
+                rules: _.map(view, function(percentage, agency) {
+                        return {
+                            selector: '#data[adm2_id = "' + agency + '"]',
+                            properties: [{
+                                    property: 'polygon-fill',
+                                    value: "#" + color_start.blend(color_end,
+                                        list_normalize(percentage,
+                                        view))
+                            }]
                         }
-                    ]
-                }
-            });
+                    })
+                ,
+                layers: [
+                    {
+                        file: 'https://client-data.s3.amazonaws.com/naf-fata/fata.zip',
+                        type: 'shape',
+                        id: 'data',
+                    }
+                ]
+            }
         });
     });
-    async.series(series);
 });
