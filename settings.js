@@ -23,5 +23,6 @@ module.exports = {
         { content: 'section3', group: 'Q8'},
         { content: 'section4', group: 'Q10'},
         { content: 'section5', group: 'Q1'},
-    ]
+    ],
+    googleAnalyticsAccount:''
 };
