@@ -3,6 +3,10 @@
         "navigation": {
             "_type": "OpenLayers.Control.Navigation",
             "_value": [""]
+        },
+        "interaction": {
+            "_type": "OpenLayers.Control.StyleWriterInteraction",
+            "_value": [""]
         }
     },
     "externals": {
