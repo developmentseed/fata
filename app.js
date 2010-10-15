@@ -46,7 +46,7 @@ app.dynamicHelpers({
         return settings.footerMessage;
     },
     analytics: function() {
-        return settings.googleAnalyticsAccount;
+        return settings.analyticsId;
     }
 });
 
