@@ -985,10 +985,10 @@
         "group": "Q14",
         "id": "personal-safety",
         "shortname": "Safety",
-        "text": "Which of the following groups poses the<em>greatest threat</em> to your personal safety?",
+        "text": "Which of the following groups poses the <em>greatest threat</em> to your personal safety?",
         "questions": {
             "Q14": {
-                "name": "Which of the following groups poses the<em>greatest threat</em> to your personal safety?",
+                "name": "Which of the following groups poses the <em>greatest threat</em> to your personal safety?",
                 "display": [
                     "agency",
                     "question" 

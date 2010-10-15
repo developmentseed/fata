@@ -18,6 +18,7 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
         groups = [],
         demographics = [],
         activeFilter = {},
+        activeConditions = {},
         pageTitle = '',
         subTitle = '';
 
@@ -60,6 +61,13 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
             series.push(function(callback) {
                 dataHandler.find({collection: 'demographics', conditions: {'id': req.params.filter, 'facets.id': req.params.facet}}, function(data) {
                     activeFilter = data.pop();
+                    if (activeFilter && activeFilter.facets) {
+                        activeFilter.facets.forEach(function(facet) {
+                            if (facet.id === req.params.facet) {
+                                activeConditions[activeFilter.id] = {'$in': facet.values};
+                            }
+                        });
+                    }
                     callback(null);
                 });
             });
@@ -68,13 +76,7 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
         agencies.forEach(function(agency) {
             series.push(function(responseCallback) {
                 var conditions = {Agency: agency.id};
-                if (activeFilter && activeFilter.facets) {
-                    activeFilter.facets.forEach(function(facet) {
-                        if (facet.id === req.params.facet) {
-                            conditions[activeFilter.id] = {'$in': facet.values};
-                        }
-                    });
-                }
+                _.extend(conditions, activeConditions);
                 dataHandler.loadQuestion({group: group, context: 'question', conditions: conditions}, function(result) {
                     for (var q in result.questions) {
                         if (!questions[q]) {
@@ -99,7 +101,7 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
         });
         // Load FATA-wide totals
         series.push(function(callback) {
-            dataHandler.loadQuestion({group: group, context: 'question', conditions: {}}, function(result) {
+            dataHandler.loadQuestion({group: group, context: 'question', conditions: activeConditions}, function(result) {
                 totals = result.renderedQuestions;
                 callback(null);
             });
