@@ -193,18 +193,23 @@ a {
   div.map #block-openlayers_plus-blockswitcher.ne {
     position:absolute;
     z-index:5000;
-    right:4px;
-    top:4px;
-    bottom:4px;
+    right:9px;
+    top:9px;
     width:200px;
-    height:280px;
+    height:auto;
     background:#383830;
+    filter:alpha(opacity=95);
+    opacity:0.95;
     }
 
   .map .openlayers-blockswitcher {
     width:200px;
     z-index:900;
+    padding:10px;
+    font-size:12px;
     }
+
+  .map .openlayers-blockswitcher label span.key { display:none; }
 
 #home-map {
   width:760px;
