@@ -15,6 +15,7 @@ $(document).ready(function() {
           }
         );
         $(this).text('Smaller Map');
+        $(this).attr('class', 'shrink-button');
       },
       // in 
       function() {
@@ -27,5 +28,6 @@ $(document).ready(function() {
           }
         );
         $(this).text('Larger Map');
+        $(this).attr('class','expand-button');
     });
 });

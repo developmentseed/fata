@@ -182,12 +182,19 @@ a {
   div.map #map-slide-toggle {
     position: absolute;
     z-index:5002;
-    bottom:5px;
-    left:5px;
-    background-color:#383830;
+    bottom:9px;
+    left:9px;
+    background:#383830 url(../images/sprite.png) 0px -378px no-repeat;
     color:#fff;
     font-size:10px;
-    padding:2px 6px;
+    padding:2px 6px 2px 20px;
+    cursor:pointer;
+    filter:alpha(opacity=95);
+    opacity:0.95;
+    }
+
+    div.map #map-slide-toggle.shrink-button {
+      background-position:0px -348px;
     }
 
   div.map #block-openlayers_plus-blockswitcher.ne {
