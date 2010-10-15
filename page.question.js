@@ -75,8 +75,8 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
 
         agencies.forEach(function(agency) {
             series.push(function(responseCallback) {
-                var conditions = activeConditions;
-                conditions['Agency'] = agency.id;
+                var conditions = {Agency: agency.id};
+                _.extend(conditions, activeConditions);
                 dataHandler.loadQuestion({group: group, context: 'question', conditions: conditions}, function(result) {
                     for (var q in result.questions) {
                         if (!questions[q]) {
