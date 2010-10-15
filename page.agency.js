@@ -122,15 +122,17 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
                 'civilian_deaths_max',
                 'leader_deaths'
             ];
-            cols.forEach(function(k) {
-              drone_info[k] = data[0][k] || 0;
-            })
+            if (data.length) {
+                cols.forEach(function(k) {
+                  drone_info[k] = data[0][k] || 0;
+                });
 
-            if (drone_info.militant_deaths_min === drone_info.militant_deaths_max) {
-              delete drone_info.militant_deaths_max;
-            }
-            if (drone_info.civilian_deaths_min === drone_info.civilian_deaths_max) {
-              delete drone_info.civilian_deaths_max;
+                if (drone_info.militant_deaths_min === drone_info.militant_deaths_max) {
+                  delete drone_info.militant_deaths_max;
+                }
+                if (drone_info.civilian_deaths_min === drone_info.civilian_deaths_max) {
+                  delete drone_info.civilian_deaths_max;
+                }
             }
 
             callback(null);
