@@ -309,6 +309,10 @@ body.question .group-shortname {
   right:-160px;
   width:160px;
   }
+  
+  body.question .demographics {
+    top: 240px;
+  }
 
 .filter-title,
 .filter {
