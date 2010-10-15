@@ -74,7 +74,7 @@ app.get('/style/drone/:agency', function(req, res) {
  * @param opinion
  *     The opinion to produce percentages for (e.g. 'positive' or 'negative').
  */
-app.get('/style/question/:question', function(req, res) {
+app.get('/style/question/:group/:question', function(req, res) {
     var async = require('async'),
         style = require('./style'),
         dataHandler = req.dataHandler,
