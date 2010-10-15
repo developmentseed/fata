@@ -64,17 +64,15 @@ app.get('/style/drone/:agency', function(req, res) {
  * question given opinion.
  *
  * Example:
- * 'style/Q1/Q1a/positive' would produce the percent of people who think
+ * 'style/question/Q1a/positive' would produce the percent of people who think
  *     corruption of local officials is a problem broken down by agency.
  *
- * @param group
- *     The question group ID.
  * @param question
  *     The question ID.
  * @param opinion
  *     The opinion to produce percentages for (e.g. 'positive' or 'negative').
  */
-app.get('/style/question/:question', function(req, res) {
+app.get('/style/question/:question/:opinion', function(req, res) {
     var async = require('async'),
         style = require('./style'),
         dataHandler = req.dataHandler,
@@ -85,7 +83,7 @@ app.get('/style/question/:question', function(req, res) {
 
         // Variables to populate.
         group = [],
-        view = [],
+        view = {},
         agencies = [],
         responseLabels = [],
 
@@ -93,8 +91,21 @@ app.get('/style/question/:question', function(req, res) {
         color_start = style.Color('000000'),
         color_end = style.Color('ffffff');
 
+    // Determine groupId from questionId
+    var groupId = '',
+        questionId = req.params.question;
+    for (var l in questionId) {
+        if (l != 0 && isNaN(questionId[l])) {
+            groupId = questionId.substring(0, l);
+            break;
+        }
+    }
+    if (!groupId.length) {
+        groupId = questionId;
+    }
+
     series.push(function(callback) {
-        dataHandler.find({collection: 'groups', conditions: {group: req.params.group}}, function(result) {
+        dataHandler.find({collection: 'groups', conditions: {group: groupId}}, function(result) {
             group = result.pop();
             callback(null);
         });
@@ -108,10 +119,10 @@ app.get('/style/question/:question', function(req, res) {
 
     series.push(function(callback) {
         // Set up another series
-        var series = []
+        var series_i = []
         // Load question responses for each agency
         agencies.forEach(function(agency) {
-            series.push(function (callback) {
+            series_i.push(function (callback) {
                 dataHandler.loadQuestion({group: group, context: 'question', conditions: {Agency: agency.id}}, function(result) {
                     if (responseLabels.length == 0) {
                         result.answers.forEach(function (answer) {
@@ -120,7 +131,7 @@ app.get('/style/question/:question', function(req, res) {
                             }
                         });
                     }
-                    result.questions[req.params.question].responses.forEach(function(response) {
+                    result.questions[questionId].responses.forEach(function(response) {
                         if (responseLabels.indexOf(response.label) !== -1) {
                             if (!view[agency.id]) {
                                 view[agency.id] = 0;
@@ -132,42 +143,37 @@ app.get('/style/question/:question', function(req, res) {
                 });
             });
         });
-        async.series(series, function() {
-            console.log('done');
-            console.log(view);
-            var list_normalize = function(a, list) {
-                return (a - _.min(list)) / (_.max(list) - _.min(list));
-            }
-            res.render('style', {
-                layout: false,
-                locals: {
-                    rules: _.map(view, function(record) {
-                            return {
-                                selector: '#data[adm2_id = "' + record.agency + '"]',
-                                properties: [
-                                    {
-                                        property: 'polygon-fill',
-                                        /*
-                                        value: color_start.blend(color_end,
-                                            list_normalize(record.percent,
-                                            _.pluck(view, 'percent')))
-                                            */
-                                        value: color_start.blend(color_end, 0.4)
-                                    }
-                                ]
-                            }
-                        })
-                    ,
-                    layers: [
-                        {
-                            file: 'https://client-data.s3.amazonaws.com/naf-fata/fata.zip',
-                            type: 'shape',
-                            id: 'data',
+        async.series(series_i, function() { callback(null) });
+    });
+
+    async.series(series, function() {
+        var list_normalize = function(a, list) {
+            return (a - _.min(list)) / (_.max(list) - _.min(list));
+        }
+
+        res.render('style', {
+            layout: false,
+            locals: {
+                rules: _.map(view, function(percentage, agency) {
+                        return {
+                            selector: '#data[adm2_id = "' + agency + '"]',
+                            properties: [{
+                                    property: 'polygon-fill',
+                                    value: "#" + color_start.blend(color_end,
+                                        list_normalize(percentage,
+                                        view))
+                            }]
                         }
-                    ]
-                }
-            });
+                    })
+                ,
+                layers: [
+                    {
+                        file: 'https://client-data.s3.amazonaws.com/naf-fata/fata.zip',
+                        type: 'shape',
+                        id: 'data',
+                    }
+                ]
+            }
         });
     });
-    async.series(series);
 });
