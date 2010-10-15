@@ -19,7 +19,7 @@ $(document).ready(function() {
       // in 
       function() {
         $('#home-map').animate(
-          { height: '280px' },
+          { height: '315px' },
           500,
           function()  {
             $('#home-map').data('map').updateSize();

@@ -1085,8 +1085,8 @@
     },
     {
         "group": "Q19",
-        "id": "importance-people",
-        "shortname": "Important People",
+        "id": "local-actors",
+        "shortname": "Local Actors",
         "text": "Are the following people important in your area?",
         "questions": {
             "Q19a": {
@@ -1319,7 +1319,7 @@
     {
         "group": "Q23",
         "id": "purpose-war-on-terror",
-        "shortname": "Purpose of War on Terror",
+        "shortname": "U.S. Goals",
         "text": "What do you think is the real purpose of the US-led war on terror?",
         "questions": {
             "Q23": {
