@@ -32,6 +32,7 @@ app.get('/map/home', function(req, res) {
     var taliban_layer = deepCopy(map_template.layers.stylewriter);
     var drone_opinion_layer = deepCopy(map_template.layers.stylewriter);
     var blockswitcher = map_template.externals.blockswitcher;
+    var zoomonload = map_template.externals.zoomonload;
 
     base_layer._value[1].layername = 'pakistan-grey';
     base_layer._value[0] = 'FATA';
@@ -55,6 +56,11 @@ app.get('/map/home', function(req, res) {
 
     blockswitcher._value[0] = '#home-map';
 
+    zoomonload._value[0] = ['#home-map'];
+    zoomonload._value[1] = 70.37;
+    zoomonload._value[2] = 33.27;
+    zoomonload._value[3] = 1;
+
     res.send({
         'map': {
             'layers': [base_layer,taliban_layer,drone_opinion_layer,fighters_layer,drone_layer],
@@ -66,17 +72,19 @@ app.get('/map/home', function(req, res) {
             'controls': [map_template.controls.navigation]
         },
         'externals': {
-            'layerswitcher': map_template.externals.blockswitcher
+            'blockswitcher': map_template.externals.blockswitcher,
+            'zoomonload': zoomonload
         }
     });
 });
 
 app.get('/map/agency/:id', function(req, res) {
     var fs = require('fs');
+    var dataHandler = req.dataHandler;
     var map_template = JSON.parse(fs.readFileSync('map_defaults.json', 'utf-8'));
     var base_layer = map_template.layers.mapbox;
     var stylewriter_layer = map_template.layers.stylewriter;
-    var blockswitcher = map_template.externals.blockswitcher;
+    var zoomonload = map_template.externals.zoomonload;
 
     base_layer._value[1].layername = 'pakistan-grey';
     base_layer._value[0] = 'FATA';
@@ -84,23 +92,34 @@ app.get('/map/agency/:id', function(req, res) {
     
     stylewriter_layer._value[0] = 'Attacks';
     stylewriter_layer._value[1] = settings.tileLiveServer;
-    stylewriter_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
+    stylewriter_layer._value[2].mapfile = settings.baseUrl + 'style/drone/' + req.params.id;
     stylewriter_layer._value[2].isBaseLayer = false;
 
-    blockswitcher._value[0] = '#agency-map';
-
-    res.send({
-        'map': {
-            'layers': [base_layer, stylewriter_layer],
-            'maxExtent': map_template.maxExtent,
-            'maxResolution': 1.40625,
-            'projection': map_template.spherical_mercator,
-            // 'displayProjection': map_template.spherical_mercator,
-            'units': 'm',
-            'controls': [map_template.controls.navigation]
-        },
-        'externals': {
-            'layerswitcher': blockswitcher
+    // Load the current agency's information.
+    dataHandler.find({collection: 'agencies', conditions: {id: req.params.id}}, function(data) {
+        if (data && data[0] && data[0].name) {
+            pageTitle = data[0].name;
         }
+        else {
+            next();
+        }
+        zoomonload._value[0] = ['#agency-map'];
+        zoomonload._value[1] = data[0].lon;
+        zoomonload._value[2] = data[0].lat;
+        zoomonload._value[3] = 4;
+
+        res.send({
+            'map': {
+                'layers': [base_layer, stylewriter_layer],
+                'maxExtent': map_template.maxExtent,
+                'maxResolution': 1.40625,
+                'projection': map_template.spherical_mercator,
+                'units': 'm',
+                'controls': [map_template.controls.navigation]
+            },
+            'externals': {
+                'zoomonload': zoomonload
+            }
+        });
     });
 });

@@ -30,6 +30,9 @@ var Wax = {
             else if (waxed.length == 3) {
               return new fn(waxed[0], waxed[1], waxed[2]);
             }
+            else if (waxed.length == 4) {
+              return new fn(waxed[0], waxed[1], waxed[2], waxed[3]);
+            }
         }
         else if (_.isString(json_object) || _.isNumber(json_object) || _.isBoolean(json_object)) {
           return json_object;
@@ -49,11 +52,11 @@ var Wax = {
     bind: function() {
         var element = _(arguments).last();
         $.getJSON($(element).attr('src'), function(data) {
-            $(element).data('map', new OpenLayers.Map(element, Wax.reify(data.map)));
-            $(element).data('externals', Wax.reify(data.externals));
-            var degrees = new OpenLayers.LonLat(70.37,33.27);
+            data.map && $(element).data('map', new OpenLayers.Map(element, Wax.reify(data.map)));
+            var degrees = new OpenLayers.LonLat(0,0);
             degrees.transform(new OpenLayers.Projection('EPSG:4326'), new OpenLayers.Projection('EPSG:900913'));
             $(element).data('map').setCenter(degrees, 1);
+            data.externals && $(element).data('externals', Wax.reify(data.externals));
         });
     }
 };

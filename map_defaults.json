@@ -13,7 +13,12 @@
         "blockswitcher": {
             "_type": "OpenLayersPlusBlockswitcher",
             "_value": [""]
+        },
+        "zoomonload": {
+            "_type": "OpenLayersWaxZoomOnLoad",
+            "_value": [[""]]
         }
+
     },
     "maxExtent": {
         "_type": "OpenLayers.Bounds.fromArray",
