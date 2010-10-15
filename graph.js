@@ -46,7 +46,11 @@ var process = function(params, data) {
             var value = (i === count) ? (params.width - offset) : Math.floor(data[answer] / total * params.width);
             var class = answer.toLowerCase().replace(/[\'\"\(\) ]/g, '-');
             if (autogen) {
-                class += ' autogen autogen-' + i;
+                hash = require('crypto').createHash('md5').update(answer).digest('hex');
+                if (hashes.hashIndex(hash) == -1) {
+                    hashes.addHash(hash);
+                }
+                class += ' autogen autogen-' + (hashes.hashIndex(hash) + 1);
             }
             processed.push({
                 label: answer,
@@ -62,5 +66,18 @@ var process = function(params, data) {
     });
     return processed;
 };
+
+// Closure for hashes
+var hashes = function() {
+    var hashes = [];
+    return {
+        addHash: function(hash) {
+            return hashes.push(hash);
+        },
+        hashIndex: function(hash) {
+            return hashes.indexOf(hash);
+        }
+    }
+}();
 
 module.exports = { process: process };
