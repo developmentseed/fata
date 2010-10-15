@@ -93,8 +93,8 @@ app.get('/style/question/:question/:opinion', function(req, res) {
         responseLabels = [],
 
         supportFields = ['Somewhat Support', 'Strongly Support'],
-        color_start = style.Color('000000'),
-        color_end = style.Color('ffffff');
+        color_start = style.Color('96de6e'),
+        color_end = style.Color('649d45');
 
     // Determine groupId from questionId
     var groupId = '',
