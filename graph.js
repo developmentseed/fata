@@ -20,8 +20,16 @@ var process = function(params, data) {
     else {
         autogen = true;
         for (var label in data) {
-            answers.push(label);
+            // Remove labels that should always be at the end
+            if (["Don't know", "Refused"].indexOf(label) === -1) {
+                answers.push(label);
+            }
         }
+        // Sort answers
+        answers.sort();
+        // Don't know and Refused
+        answers.push("Don't know", "Refused");
+        console.log(answers);
     }
 
     // Loop first to get the sum, count.
