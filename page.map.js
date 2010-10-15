@@ -2,6 +2,7 @@
  * Map JSON handler.
  */
 var app = module.parent.exports.app;
+var settings = require('./settings');
 
 function deepCopy(obj) {
     if (Object.prototype.toString.call(obj) === '[object Array]') {
@@ -37,20 +38,20 @@ app.get('/map/home', function(req, res) {
     base_layer._value[1].type = 'jpg';
 
     drone_layer._value[0] = 'Attacks';
-    drone_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    drone_layer._value[2].mapfile = 'http://localhost:8888/style/drone/mohmand';
+    drone_layer._value[1] = settings.tileLiveServer;
+    drone_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
 
     fighters_layer._value[0] = 'Opinion on Foreign Fighters';
-    fighters_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    fighters_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q11b/positive';
+    fighters_layer._value[1] = settings.tileLiveServer;
+    fighters_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11b/positive';
     
     taliban_layer._value[0] = 'Opinion on Pakistan Taliban';
-    taliban_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    taliban_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q11d/positive';
+    taliban_layer._value[1] = settings.tileLiveServer;
+    taliban_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11d/positive';
     
     drone_opinion_layer._value[0] = 'Opinion on Drones';
-    drone_opinion_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    drone_opinion_layer._value[2].mapfile = 'http://localhost:8888/style/question/Q16/positive';
+    drone_opinion_layer._value[1] = settings.tileLiveServer;
+    drone_opinion_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q16/positive';
 
     blockswitcher._value[0] = '#home-map';
 
@@ -82,8 +83,8 @@ app.get('/map/agency/:id', function(req, res) {
     base_layer._value[1].type = 'jpg';
     
     stylewriter_layer._value[0] = 'Attacks';
-    stylewriter_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    stylewriter_layer._value[2].mapfile = 'http://localhost:8888/style/drone/mohmand';
+    stylewriter_layer._value[1] = settings.tileLiveServer;
+    stylewriter_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
     stylewriter_layer._value[2].isBaseLayer = false;
 
     blockswitcher._value[0] = '#agency-map';
@@ -116,8 +117,8 @@ app.get('/map/question/:id', function(req, res) {
     base_layer._value[1].type = 'jpg';
 
     choropleth_layer._value[0] = 'Choropleth Map';
-    choropleth_layer._value[1] = 'http://localhost:8887/tile/${mapfile}/${z}/${x}/${y}.${format}';
-    choropleth_layer._value[2].mapfile = '/style/question/' + req.param.id;
+    choropleth_layer._value[1] = settings.tileLiveServer;
+    choropleth_layer._value[2].mapfile = settings.baseUrl + '/style/question/' + req.param.id;
 
     blockswitcher._value[0] = '#question-map';
 

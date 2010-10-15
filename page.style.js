@@ -2,6 +2,7 @@
  * TileLite MML handler.
  */
 var app = module.parent.exports.app;
+var settings = require('./settings');
 
 app.get('/style/drone/:agency', function(req, res) {
     res.render('style', {
@@ -52,7 +53,7 @@ app.get('/style/drone/:agency', function(req, res) {
             ],
             layers: [
                 {
-                    file: 'http://localhost:8888/drone/' + req.params.agency + '/drones.geojson',
+                    file: settings.baseUrl + 'drone/' + req.params.agency + '/drones.geojson',
                     type: 'ogr',
                     id: 'data',
                     layer: 'OGRGeoJSON',

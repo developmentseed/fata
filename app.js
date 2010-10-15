@@ -42,6 +42,9 @@ app.dynamicHelpers({
     siteTitle: function(req, res) {
         return settings.siteTitle;
     },
+    siteSlogan: function(req, res) {
+        return settings.siteSlogan;
+    },
     footerMessage: function() {
         return settings.footerMessage;
     },
