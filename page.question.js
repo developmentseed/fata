@@ -126,6 +126,7 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
 
     // Render the page
     waterfall.push(function(callback) {
+        require('graph').hashes.reset();
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,

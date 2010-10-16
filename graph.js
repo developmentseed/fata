@@ -76,8 +76,14 @@ var hashes = function() {
         },
         hashIndex: function(hash) {
             return hashes.indexOf(hash);
+        },
+        reset: function(hash) {
+            hashes = [];
         }
     }
 }();
 
-module.exports = { process: process };
+module.exports = {
+    process: process,
+    hashes: hashes
+};
