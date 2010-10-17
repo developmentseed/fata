@@ -12,7 +12,7 @@ var connect = require('connect'),
 //    @TODO: Use this in dev only, use nginx when in production.
 // 3. DB connection middleware. See db.js.
 var app = module.exports.app = new express.Server([
-    connect.logger({ format: '- [:response-timems] :date - :method :status' }),
+    connect.logger({ format: '- [:response-timems] :date - :method :status - :url' }),
     connect.staticProvider(__dirname + '/public'),
     new dbConnection(settings.mongodb)
 ]);
