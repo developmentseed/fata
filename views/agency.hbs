@@ -65,9 +65,9 @@
             {{#demographics}}
             <div class='filter'>
                 <label>{{name}}</label>
-                <div class='facets clearfix'>
+                <div class='facets facets-{{length}} clearfix'>
                     {{#facets}}
-                        <a href='/agency/{{../../agencyid}}/{{../id}}/{{id}}#content'>{{name}}</a>
+                        <a {{#active}}class='active'{{/active}} href='/agency/{{../../agencyid}}/{{../id}}/{{id}}#content'>{{name}}</a>
                     {{/facets}}
                 </div>
             </div>
