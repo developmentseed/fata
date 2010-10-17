@@ -107,6 +107,16 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
     parallel.push(function(callback) {
         dataHandler.find({collection: 'demographics'}, function(data) {
             demographics = data;
+            demographics.forEach(function(filter) {
+                filter.length = filter.facets.length;
+                if (req.params.filter && req.params.facet && filter.id === req.params.filter) {
+                    filter.facets.forEach(function(facet) {
+                        if (facet.id === req.params.facet) {
+                            facet.active = true;
+                        }
+                    });
+                }
+            });
             callback(null);
         });
     });
