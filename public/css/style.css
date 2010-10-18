@@ -223,8 +223,7 @@ a {
     filter:alpha(opacity=95);
     opacity:0.95;
     }
-
-    div.map #map-slide-toggle.shrink-button {
+  div.map #map-slide-toggle.shrink-button {
       background-position:0px -348px;
     }
 
@@ -861,12 +860,11 @@ div.olControlSaveFeaturesItemInactive {
 }
 
 .olControlZoomPanel {
-    top: 71px;
-    left: 14px;
+    top: 10px;
+    left: 10px;
 } 
 
 .olControlZoomPanel div {
-    background-image: url(img/zoom-panel.png);
     position: absolute;
     height: 18px;
     width: 18px;
@@ -876,19 +874,19 @@ div.olControlSaveFeaturesItemInactive {
 .olControlZoomPanel .olControlZoomInItemInactive {
     top: 0px;
     left: 0px;
-    background-position: 0px 0px;
+    background-image: url(../images/sprite.png);
+    background-position: 0px 18px;
 }
 
 .olControlZoomPanel .olControlZoomToMaxExtentItemInactive {
-    top: 18px;
-    left: 0px;
-    background-position: 0px -18px;
+    display: none;
 }
 
 .olControlZoomPanel .olControlZoomOutItemInactive {
-    top: 36px;
-    left: 0px;
-    background-position: 0px 18px;
+    top: 0px;
+    left: 18px;
+    background-image: url(../images/sprite.png);
+    background-position: 0px 48px;
 }
 
 .olPopupCloseBox {
