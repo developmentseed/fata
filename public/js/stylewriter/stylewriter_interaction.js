@@ -260,6 +260,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
           }
           else {
             this.callbacks['out'](feature, tiles[t].layer, sevt);
+            this.feature = null;
           }
         }
         else {
