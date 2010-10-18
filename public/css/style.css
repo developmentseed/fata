@@ -906,7 +906,8 @@ div.olControlSaveFeaturesItemInactive {
     top: 0px;
     left: 0px;
     background-image: url(../images/sprite.png);
-    background-position: 0px 18px;
+    background-position: -1px 19px;
+    background-color:#383830;
 }
 
 .olControlZoomPanel .olControlZoomToMaxExtentItemInactive {
@@ -915,9 +916,10 @@ div.olControlSaveFeaturesItemInactive {
 
 .olControlZoomPanel .olControlZoomOutItemInactive {
     top: 0px;
-    left: 18px;
+    left: 19px;
     background-image: url(../images/sprite.png);
-    background-position: 0px 48px;
+    background-position: -1px 49px;
+    background-color:#383830;
 }
 
 .olPopupCloseBox {
