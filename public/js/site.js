@@ -89,14 +89,16 @@ $(document).ready(function() {
     });
 
     // Demographics filters fixed position handling ===========================
-    var filterPosition = $('.demographics').offset().top;
-    $(window).bind('scroll', function(e) {
-        var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
-        if (scroll > filterPosition) {
-            $('body').addClass('fix-filters');
-        }
-        else {
-            $('body').removeClass('fix-filters');
-        }
-    });
+    if ($('.demographics').size()) {
+        var filterPosition = $('.demographics').offset().top;
+        $(window).bind('scroll', function(e) {
+            var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
+            if (scroll > filterPosition) {
+                $('body').addClass('fix-filters');
+            }
+            else {
+                $('body').removeClass('fix-filters');
+            }
+        });
+    }
 });
