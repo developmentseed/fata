@@ -46,7 +46,7 @@ a {
 .site-name a {
   display:block;
   width:140px;
-  height:180px;
+  height:190px;
   background:url(../images/sprite.png) 0px -60px no-repeat;
   text-indent:-9999px;
   overflow:hidden;
@@ -414,6 +414,9 @@ body.fix-filters .demographics {
   margin:0px 4px;
   height:20px;
   overflow:hidden;
+  box-shadow:#585848 0px 1px 0px;
+  -moz-box-shadow:#585848 0px 1px 0px;
+  -webkit-box-shadow:#585848 0px 1px 0px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
   }
