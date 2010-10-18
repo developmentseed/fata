@@ -12,6 +12,7 @@
     <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/OpenLayers.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/stylewriter/stylewriter_xyz.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/zoomonload.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/stylewriter/stylewriter_interaction.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/openlayers_plus/behaviors/openlayers_plus_behavior_blockswitcher.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/underscore-min.js" type="text/javascript" charset="utf-8"></script>
@@ -26,7 +27,7 @@
     <div class='limiter'>
         <div id='branding'>
             <h1 class='site-name'><a href='/'>{{ siteTitle }}</a></h1>
-            <div class='slogan'>1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan</div>
+            <div class='slogan'>{{ siteSlogan }}</div>
             <div class='more-link clearfix'><a href='/about'>About</a></div>
         </div>
         {{{ body }}}
@@ -34,5 +35,20 @@
             {{footerMessage}}
         </div>
     </div>
+    {{#analytics}}
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{.}}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    {{/analytics}}
 </body>
 </html>

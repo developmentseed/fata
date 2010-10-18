@@ -20,8 +20,14 @@ var process = function(params, data) {
     else {
         autogen = true;
         for (var label in data) {
-            answers.push(label);
+            // Remove labels that should always be at the end
+            if (["Don't know", "Refused"].indexOf(label) === -1) {
+                answers.push(label);
+            }
         }
+        // Sort answers, then add 'Don't know' and 'Refused' to the end
+        answers.sort();
+        answers.push("Don't know", "Refused");
     }
 
     // Loop first to get the sum, count.
@@ -40,7 +46,11 @@ var process = function(params, data) {
             var value = (i === count) ? (params.width - offset) : Math.floor(data[answer] / total * params.width);
             var class = answer.toLowerCase().replace(/[\'\"\(\) ]/g, '-');
             if (autogen) {
-                class += ' autogen autogen-' + i;
+                hash = require('crypto').createHash('md5').update(answer).digest('hex');
+                if (hashes.hashIndex(hash) == -1) {
+                    hashes.addHash(hash);
+                }
+                class += ' autogen autogen-' + (hashes.hashIndex(hash) + 1);
             }
             processed.push({
                 label: answer,
@@ -57,4 +67,23 @@ var process = function(params, data) {
     return processed;
 };
 
-module.exports = { process: process };
+// Closure for hashes
+var hashes = function() {
+    var hashes = [];
+    return {
+        addHash: function(hash) {
+            return hashes.push(hash);
+        },
+        hashIndex: function(hash) {
+            return hashes.indexOf(hash);
+        },
+        reset: function(hash) {
+            hashes = [];
+        }
+    }
+}();
+
+module.exports = {
+    process: process,
+    hashes: hashes
+};

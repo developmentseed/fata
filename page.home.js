@@ -72,6 +72,11 @@ app.get('/', function(req, res) {
 
             // Run tasks as series.
             async.series(series, function() {
+                // Hide the title if there is only one question to avoid the
+                // duplicate title.
+                if (loaded.group.renderedQuestions.length == 1) {
+                    loaded.group.renderedQuestions[0].name = '';
+                }
                 sections.push(loaded);
                 callback(null);
             });
