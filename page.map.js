@@ -177,9 +177,9 @@ app.get('/map/home', function(req, res) {
                 'layers': [
                     base_layer,
                     drone_opinion_layer,
-                    drone_layer,
                     taliban_layer,
-                    fighters_layer
+                    fighters_layer,
+                    drone_layer
                     ],
                 'maxExtent': map_template.maxExtent,
                 'restrictedExtent': {
