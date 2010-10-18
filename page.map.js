@@ -71,7 +71,7 @@ app.get('/map/home', function(req, res) {
             'projection': map_template.spherical_mercator,
             'displayProjection': map_template.spherical_mercator,
             'units': 'm',
-            'controls': [map_template.controls.navigation]
+            'controls': [map_template.controls.navigation,map_template.controls.attribution]
         },
         'externals': {
             'blockswitcher': map_template.externals.blockswitcher,
@@ -117,7 +117,11 @@ app.get('/map/agency/:id', function(req, res) {
                 'maxResolution': 1.40625,
                 'projection': map_template.spherical_mercator,
                 'units': 'm',
-                'controls': [map_template.controls.navigation]
+                'controls': [
+                    map_template.controls.navigation,
+                    map_template.controls.attribution,
+                    map_template.controls.interaction
+                ]
             },
             'externals': {
                 'zoomonload': zoomonload
