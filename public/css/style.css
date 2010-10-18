@@ -179,6 +179,16 @@ a {
   height:280px;
   }
 
+  div.map div.openlayers-tooltip {
+    z-index:999999;
+    position:absolute;
+    background:#383830;
+    left:10px;
+    top:10px;
+    padding:10px;
+    max-width:300px;
+    }
+
   div.map #map-slide-toggle {
     position: absolute;
     z-index:5002;
