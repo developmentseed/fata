@@ -1,3 +1,4 @@
+
 <div id='left' class='sidebar'>
     <h2>Sentiment Survey Questions</h2>
     <ul class='menu'>
@@ -14,6 +15,10 @@
 </div>
 
 <div id='main'>
+    <div class='breadcrumb clearfix'>
+        <a href='/'>Home</a><span>Sentiment Survey Questions</span>
+        <span class='last'>{{pageTitle}}</span>
+    </div>
     <div class='header'>
         <h2>{{pageTitle}}</h2>
         <h3>{{{subTitle}}}</h3>
@@ -22,7 +27,7 @@
         <div class='demographics-wrapper'><div class='demographics'>
             <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
-                <div class='facets facets-0 clearfix'>
+                <div class='facets facets-1 clearfix'>
                     <a class='ajax' id='facet-all' href='/question/{{questionShortname}}}'>All results</a>
                 </div>
             </div>

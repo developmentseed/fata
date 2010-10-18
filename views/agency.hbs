@@ -14,6 +14,11 @@
 </div>
 
 <div id='main'>
+    <div class='breadcrumb clearfix'>
+        <a href='/'>Home</a>
+        <span>Administrative Agencies</span>
+        <span class='last'>{{pageTitle}}</span>
+    </div>
     <div class='map'>
       <div id='agency-map' class='waxmap' src='/map/agency/{{agencyid}}'></div>
     </div>
@@ -36,7 +41,7 @@
         <div class='demographics-wrapper'><div class='demographics'>
             <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
-                <div class='facets facets-0 clearfix'>
+                <div class='facets facets-1 clearfix'>
                     <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}'>All results</a>
                 </div>
             </div>
@@ -54,7 +59,8 @@
         <div id='ajax-content'>
         {{#groups}}
         <div class='group clearfix'>
-            <h2 class='group-shortname'><a href="/question/{{id}}">{{{shortname}}}</a></h2>
+            <div class='more-link'><a href="/question/{{id}}">Details</a></div>
+            <h2 class='group-shortname'>{{{shortname}}}</h2>
             <p class='group-text'>{{{text}}}</p>
             {{#renderedQuestions}}
             <div class='question clearfix'>

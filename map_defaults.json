@@ -10,6 +10,10 @@
                 "zoomWheelEnabled": false
             }
         },
+        "zoompanel": {
+            "_type": "OpenLayers.Control.ZoomPanel",
+            "_value": [""]
+        },
         "interaction": {
             "_type": "OpenLayers.Control.StyleWriterInteraction",
             "_value": [""]

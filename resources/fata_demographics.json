@@ -117,18 +117,18 @@
     },
     {
         "id": "D3",
-        "name": "Education",
+        "name": "Years of Education",
         "facets": [
             {
-                "id": "none",
-                "name": "None",
+                "id": "0",
+                "name": "0",
                 "values": [
                     0 
                 ] 
             },
             {
                 "id": "1_7",
-                "name": "1 - 7 years",
+                "name": "1-7",
                 "values": [
                     1,
                     2,
@@ -141,7 +141,7 @@
             },
             {
                 "id": "8_11",
-                "name": "8 - 11 years",
+                "name": "8-11",
                 "values": [
                     8,
                     9,
@@ -151,7 +151,7 @@
             },
             {
                 "id": "12_more",
-                "name": "12 or more years",
+                "name": "12+",
                 "values": [
                     12,
                     13,
