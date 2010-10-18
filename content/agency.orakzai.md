@@ -1,1 +1,3 @@
 Orakzai is the only one of Pakistan’s seven tribal agencies that does not border Afghanistan. It was once home to Hakimullah Mehsud, the Tehrik-i-Taliban Pakistan chief who led militant operations there and in the Khyber and Peshawar regions, targeting hundreds of NATO supply vehicles in 2008 and 2009.  Orakzai is dominated by the Karagh Ghar mountains, ranging from 1,500 meters to 2,500 meters in height.  The agency was once part of the frontier region of Kohat, but after persistent demands by the Orakzai tribe, Pakistani president  Fazal Ilahi Chaudhry declared it a separate tribal agency on November 3, 1973.
+
+<div class='more-link'><a href='http://counterterrorism.newamerica.net/sites/newamerica.net/files/policydocs/orakzai.pdf'>Download full report (PDF)</a></div>

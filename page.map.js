@@ -73,6 +73,7 @@ function getKeyMap(req, layer, callb) {
             var series_i = []
             // Load question responses for each agency
             agencies.forEach(function(agency) {
+                view[agency.id] = {};
                 series_i.push(function (callback) {
                     dataHandler.loadQuestion({group: group, context: 'question', conditions: {Agency: agency.id}}, function(result) {
                         if (responseLabels.length == 0) {
@@ -85,14 +86,15 @@ function getKeyMap(req, layer, callb) {
                         result.questions[questionId].responses.forEach(function(response) {
                             if (responseLabels.indexOf(response.label) !== -1) {
                                 if (!view[agency.id]) {
-                                    view[agency.id] = 0;
+                                    view[agency.id].percent = 0;
                                 }
-                                view[agency.id] += response.percent;
+                                view[agency.id].percent = response.percent;
                             }
                         });
                         callback(null);
                     });
                 });
+                view[agency.id].name = agency.name;
             });
             async.series(series_i, function() { callback(null) });
         }
@@ -101,8 +103,8 @@ function getKeyMap(req, layer, callb) {
             var keymap = {};
             for (var k in view) {
                 keymap[k] = {
-                    'description': view[k],
-                    'name': k
+                    'description': "" + view[k].percent + "%",
+                    'name': view[k].name
                 };
             }
             layer._value[2].keymap = keymap;

@@ -306,39 +306,40 @@ div.section {
  */
 
 #drone-info {
-  float: right;
-  width: 120px;
-  color: #fff;
-  text-align: right;
-  font-family: Arial,Helvetica,sans-serif;
+  float:right;
+  width:120px;
+  color:#fff;
+  text-align:right;
+  font-family:Arial,Helvetica,sans-serif;
   }
 
-  #drone-info h3 {
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 12px;
-    padding-left: 20px;
-    background: none;
+  #drone-info h3,
+  #drone-info ul li .label { font:normal 12px/15px Arial,Helvetica,sans-serif; }
+
+  #drone-info h3 { font-weight:bold; }
+
+  #drone-info h3 .icon {
+    height:30px;
+    width:30px;
+    float:left;
+    background:url(../images/sprite.png) -370px -60px no-repeat;
     }
 
-  #drone-info ul {
-    border-bottom: 1px solid #4c4c40;
+  #drone-info ul { border-bottom: 1px solid #4c4c40; }
+
+  #drone-info ul li {
+    padding:9px 0px 10px;
+    border-top: 1px solid #4c4c40;
     }
 
-    #drone-info ul li {
-      padding: 10px 0px;
-      border-top: 1px solid #4c4c40;
+    #drone-info ul li .label {
+      display:block;
       }
 
-      #drone-info ul li .label {
-        font-size: 12px;
-        text-transform: uppercase;
-        display: block;
-        }
-
-      #drone-info ul li .value {
-        font-weight: bold;
-        font-size: 16px;
-        }
+    #drone-info ul li .value {
+      font-weight:bold;
+      font-size:16px;
+      }
 
 .agency .header h2,
 .agency .header .profile {
@@ -421,15 +422,14 @@ body.fix-filters .demographics {
   -webkit-border-radius:3px;
   }
 
-  .filter .facets-2 { background-position:-4px -20px; }
-  .filter .facets-4 { background-position:-4px -40px; }
 
 .filter .facets a {
   color:#888878;
   text-shadow:#24241c 0px 1px 0px;
-  padding:0px 6px;
+  text-align:center;
   float:left;
   overflow:hidden;
+  white-space:nowrap;
   }
 
 .filter .facets a.active {
@@ -438,10 +438,11 @@ body.fix-filters .demographics {
   text-shadow:#c8d890 0px 1px 0px;
   }
 
-.filter .facets-1 a { width:140px; }
-.filter .facets-2 a { width:64px; }
-.filter .facets-4 a { width:26px; }
-.filter .facets-5 a { width:18px; }
+.filter .facets-2 { background-position:-4px -20px; }
+.filter .facets-4 { background-position:-4px -40px; }
+.filter .facets-1 a { width:152px; }
+.filter .facets-2 a { width:76px; }
+.filter .facets-4 a { width:38px; }
 
 /**
  * question & graph styles ============================================
@@ -582,9 +583,11 @@ div.question { /* use div. here to avoid conflict with body.question */
   float:right;
   color:#fff;
   background:#4c4c40 url(../images/sprite.png) 0px -380px no-repeat;
-  font-size:12px;
+  font:normal 12px/20px Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   }
+
+.prose .more-link a { margin:0px 0px 25px; }
 
 /**
  * Tables

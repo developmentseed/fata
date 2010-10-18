@@ -38,6 +38,7 @@ StyleWriterTooltips.getToolTip = function(feature) {
 StyleWriterTooltips.select = function(feature, layer) {
   var tooltip = StyleWriterTooltips.getToolTip(feature);
   $(layer.map.div).css('cursor', 'pointer');
+  $(tooltip).data('layername', layer.name);
   $(layer.map.div).append(tooltip);
 };
 
@@ -51,5 +52,8 @@ StyleWriterTooltips.positionedSelect = function(feature, layer, evt) {
 
 StyleWriterTooltips.unselect = function(feature, layer) {
   $(layer.map.div).css('cursor', 'default');
-  $(layer.map.div).children('div.openlayers-tooltip').fadeOut('fast', function() { $(this).remove(); });
+  $(layer.map.div).children('div.openlayers-tooltip').filter(
+      function() {
+          return $(this).data('layername') == layer.name;
+      }).fadeOut('fast', function() { $(this).remove(); });
 };
