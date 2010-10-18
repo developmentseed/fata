@@ -3,7 +3,6 @@ module.exports = {
     mongodb: {
         host: 'localhost',
         db: 'fata',
-        indexes: {}
     },
     siteTitle: 'FATA Sentiment Survey',
     siteSlogan: '1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan',
