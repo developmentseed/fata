@@ -1,5 +1,9 @@
 {
     "controls": {
+        "attribution": {
+            "_type": "OpenLayers.Control.Attribution",
+            "_value": ""
+        },
         "navigation": {
             "_type": "OpenLayers.Control.Navigation",
             "_value": {

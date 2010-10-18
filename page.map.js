@@ -3,6 +3,7 @@
  */
 var app = module.parent.exports.app;
 var settings = require('./settings');
+var mapbox_attribution = '<a href="http://mapbox.com/" class="mapbox-logo">Mapbox.com</a> | <a href="http://mapbox.com/tos">Terms of Use</a> | Some data <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> <a href="http://openstreetmap.org">OpenStreetMap</a> & contributers';
 
 function deepCopy(obj) {
     if (Object.prototype.toString.call(obj) === '[object Array]') {
@@ -37,6 +38,7 @@ app.get('/map/home', function(req, res) {
     base_layer._value[1].layername = 'pakistan-fata';
     base_layer._value[0] = 'FATA';
     base_layer._value[1].type = 'png';
+    base_layer._value[1].attribution = mapbox_attribution;
 
     drone_layer._value[0] = 'Attacks';
     drone_layer._value[1] = settings.tileLiveServer;
@@ -71,7 +73,7 @@ app.get('/map/home', function(req, res) {
             'projection': map_template.spherical_mercator,
             'displayProjection': map_template.spherical_mercator,
             'units': 'm',
-            'controls': [map_template.controls.navigation]
+            'controls': [map_template.controls.navigation,map_template.controls.attribution]
         },
         'externals': {
             'blockswitcher': map_template.externals.blockswitcher,
@@ -91,6 +93,7 @@ app.get('/map/agency/:id', function(req, res) {
     base_layer._value[1].layername = 'pakistan-fata';
     base_layer._value[0] = 'FATA';
     base_layer._value[1].type = 'png';
+    base_layer._value[1].attribution = mapbox_attribution;
     
     stylewriter_layer._value[0] = 'Attacks';
     stylewriter_layer._value[1] = settings.tileLiveServer;
@@ -117,7 +120,7 @@ app.get('/map/agency/:id', function(req, res) {
                 'maxResolution': 1.40625,
                 'projection': map_template.spherical_mercator,
                 'units': 'm',
-                'controls': [map_template.controls.navigation]
+                'controls': [map_template.controls.navigation,map_template.controls.attribution]
             },
             'externals': {
                 'zoomonload': zoomonload
