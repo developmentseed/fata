@@ -36,8 +36,8 @@
         <div class='demographics'>
             <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
-                <div class='facets clearfix'>
-                    <a href='/agency/{{agencyid}}}#content'>All results</a>
+                <div class='facets facets-0 clearfix'>
+                    <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}?ajax=1#facet-all'>All results</a>
                 </div>
             </div>
             {{#demographics}}
@@ -45,12 +45,13 @@
                 <label>{{name}}</label>
                 <div class='facets facets-{{length}} clearfix'>
                     {{#facets}}
-                        <a {{#active}}class='active'{{/active}} href='/agency/{{../../agencyid}}/{{../id}}/{{id}}#content'>{{name}}</a>
+                        <a id='facet-{{../id}}-{{id}}' class='ajax{{#active}} active{{/active}}' href='/agency/{{../../agencyid}}/{{../id}}/{{id}}?ajax=1#facet-{{../id}}-{{id}}'>{{name}}</a>
                     {{/facets}}
                 </div>
             </div>
             {{/demographics}}
         </div>
+        <div id='ajax-content'>
         {{#groups}}
         <div class='group clearfix'>
             <h2 class='group-shortname'>{{{shortname}}}</h2>
@@ -75,5 +76,6 @@
             {{/renderedQuestions}}
         </div>
         {{/groups}}
+        </div>
     </div>
 </div>
