@@ -116,6 +116,7 @@ a {
   width:640px;
   }
 
+.error #main,
 .about #main,
 .front #main {
   width:800px;
@@ -169,6 +170,19 @@ a {
   position:relative;
   padding:10px;
   }
+
+.error-message {
+  padding:100px 40px;
+  line-height:50px;
+  height:100px;
+  color:#000;
+  text-shadow:#787868 0px 1px 0px;
+  letter-spacing:-1px;
+  font-size:32px;
+  text-align:center;
+  }
+
+.error-message h2 { font-size:48px; }
 
 /**
  * Footer

@@ -4,6 +4,8 @@ module.exports = {
         host: 'localhost',
         db: 'fata',
     },
+    // These strings are hardcoded into public/404.html and public/50x.html.
+    // If you change them, please update these files as well.
     siteTitle: 'FATA Sentiment Survey',
     siteSlogan: '1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan',
     footerMessage: 'Copyright © <a href="http://newamerica.net/about/copyright">New America Foundation</a><br/>Background photo by <a href="http://www.flickr.com/photos/aamerjaved/2914342056/">AamerJaved</a> Creative Commons (<a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">by-nc-nd 2.0</a>)',
