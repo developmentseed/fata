@@ -17,7 +17,7 @@ $(document).ready(function() {
         $(this).text('Smaller Map');
         $(this).attr('class', 'shrink-button');
       },
-      // in 
+      // in
       function() {
         $('#home-map').animate(
           { height: '315px' },
@@ -28,7 +28,7 @@ $(document).ready(function() {
           }
         );
         $(this).text('Larger Map');
-        $(this).attr('class','expand-button');
+        $(this).attr('class', 'expand-button');
       });
 
     // AJAX page content loading ==============================================
@@ -42,14 +42,14 @@ $(document).ready(function() {
         // Strip off any additional hashes before proceeding.
         url = url.replace(/[#]/g, '');
         var self = this;
-        var link = $('a.ajax[href='+url+']');
+        var link = $('a.ajax[href=' + url + ']');
         var target = $('#ajax-content');
 
         // Set classes.
         $('a.ajax.active').removeClass('active');
         link.addClass('active');
 
-        target.animate({opacity:.25}, 'fast', function() {
+        target.animate({opacity: .25}, 'fast', function() {
             // Data is cached. Use it.
             if (self.cache[url]) {
                 self.renderData(url);
@@ -65,11 +65,11 @@ $(document).ready(function() {
     };
 
     ajaxHandler.prototype.renderData = function(url) {
-        var data = $(this.cache[url]).css({opacity:.25});
+        var data = $(this.cache[url]).css({opacity: .25});
         var target = $('#ajax-content');
 
         target.replaceWith(data);
-        data.animate({opacity:1}, 'fast');
+        data.animate({opacity: 1}, 'fast');
     };
 
     var ajax = new ajaxHandler();
