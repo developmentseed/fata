@@ -120,6 +120,19 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
     waterfall.push(function(callback) {
         dataHandler.find({collection: 'demographics'}, function(data) {
             demographics = data;
+
+            // This code is also used verbatim on page.agency.js.
+            // @TODO: Consolidate.
+            demographics.forEach(function(filter) {
+                filter.length = filter.facets.length;
+                if (req.params.filter && req.params.facet && filter.id === req.params.filter) {
+                    filter.facets.forEach(function(facet) {
+                        if (facet.id === req.params.facet) {
+                            facet.active = true;
+                        }
+                    });
+                }
+            });
             callback(null);
         });
     });
@@ -130,7 +143,9 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
         dataHandler.close();
 
         require('graph').hashes.reset();
-        res.render('question', {
+
+        var template = req.param('ajax') ? 'question-ajax' : 'question';
+        var options = {
             locals: {
                 pageTitle: pageTitle,
                 subTitle: subTitle,
@@ -139,8 +154,10 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
                 totals: totals,
                 demographics: demographics,
                 questionShortname: req.params.id,
-            }
-        });
+            },
+            layout: req.param('ajax') ? 'ajax' : 'layout',
+        };
+        res.render(template, options);
     });
     async.waterfall(waterfall);
 });

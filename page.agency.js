@@ -108,6 +108,9 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
     parallel.push(function(callback) {
         dataHandler.find({collection: 'demographics'}, function(data) {
             demographics = data;
+
+            // This code is also used verbatim on page.question.js.
+            // @TODO: Consolidate.
             demographics.forEach(function(filter) {
                 filter.length = filter.facets.length;
                 if (req.params.filter && req.params.facet && filter.id === req.params.filter) {
@@ -155,19 +158,19 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
         // Close the DB connection.
         dataHandler.close();
 
-        var template = req.param('ajax') ? 'agency-ajax' : 'agency',
-            options = {
-                locals: {
-                    pageTitle: pageTitle,
-                    profile: profile,
-                    agencyid: req.params.id,
-                    agencies: agencies,
-                    groups: groups,
-                    demographics: demographics,
-                    drone_info: drone_info
-                },
-                layout: req.param('ajax') ? 'ajax' : 'layout',
-            };
+        var template = req.param('ajax') ? 'agency-ajax' : 'agency';
+        var options = {
+            locals: {
+                pageTitle: pageTitle,
+                profile: profile,
+                agencyid: req.params.id,
+                agencies: agencies,
+                groups: groups,
+                demographics: demographics,
+                drone_info: drone_info
+            },
+            layout: req.param('ajax') ? 'ajax' : 'layout',
+        };
         res.render(template, options);
     });
 });
