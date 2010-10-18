@@ -101,7 +101,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
           'over': StyleWriterTooltips.select
       };
     },
-    
+
     setMap: function(map) {
       this.handlers.hover.setMap(map);
       this.handlers.click.setMap(map);
@@ -204,7 +204,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
 
     // Get all interactable layers
     viableLayers: function() {
-      var overlays = this.map.getLayersBy('isBaseLayer', false); 
+      var overlays = this.map.getLayersBy('isBaseLayer', false);
       return $(overlays).filter(
         function(i) {
           return (overlays[i].visibility === true) &&
@@ -280,7 +280,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
 
     readDone: function(data) {
       if (typeof data.features === 'string') { // Grid
-        this.archive[data.code_string] = 
+        this.archive[data.code_string] =
           StyleWriterUtil.decompressRLE(data.features);
       }
       else { // GeoJSON

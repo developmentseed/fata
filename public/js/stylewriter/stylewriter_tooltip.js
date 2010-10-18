@@ -26,12 +26,12 @@ StyleWriterTooltips.click = function(feature) {
 StyleWriterTooltips.getToolTip = function(feature) {
   var text = "<div class='openlayers-tooltip'>";
   if (feature.name) {
-    text += "<div class='openlayers-tooltip-name'>" + feature.name + "</div>";
+    text += "<div class='openlayers-tooltip-name'>" + feature.name + '</div>';
   }
   if (feature.description) {
-    text += "<div class='openlayers-tooltip-description'>" + feature.description + "</div>";
+    text += "<div class='openlayers-tooltip-description'>" + feature.description + '</div>';
   }
-  text += "</div>";
+  text += '</div>';
   return $(text);
 };
 
