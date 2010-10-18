@@ -422,15 +422,14 @@ body.fix-filters .demographics {
   -webkit-border-radius:3px;
   }
 
-  .filter .facets-2 { background-position:-4px -20px; }
-  .filter .facets-4 { background-position:-4px -40px; }
 
 .filter .facets a {
   color:#888878;
   text-shadow:#24241c 0px 1px 0px;
-  padding:0px 6px;
+  text-align:center;
   float:left;
   overflow:hidden;
+  white-space:nowrap;
   }
 
 .filter .facets a.active {
@@ -439,10 +438,11 @@ body.fix-filters .demographics {
   text-shadow:#c8d890 0px 1px 0px;
   }
 
-.filter .facets-1 a { width:140px; }
-.filter .facets-2 a { width:64px; }
-.filter .facets-4 a { width:26px; }
-.filter .facets-5 a { width:18px; }
+.filter .facets-2 { background-position:-4px -20px; }
+.filter .facets-4 { background-position:-4px -40px; }
+.filter .facets-1 a { width:152px; }
+.filter .facets-2 a { width:76px; }
+.filter .facets-4 a { width:38px; }
 
 /**
  * question & graph styles ============================================
