@@ -3,21 +3,10 @@ module.exports = {
     mongodb: {
         host: 'localhost',
         db: 'fata',
-        indexes: {
-            responses: [
-                [['Q1a', 1]],
-                [['Q1b', 1]],
-                [['Q1c', 1]],
-                [['Q1d', 1]],
-                [['Q1e', 1]],
-                [['Q1f', 1]],
-                [['Q1g', 1]],
-            ]
-        }
     },
     siteTitle: 'FATA Sentiment Survey',
     siteSlogan: '1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan',
-    footerMessage: '<a href="http://newamerica.net/about/copyright">Copyright © New America Foundation</a>',
+    footerMessage: 'Copyright © <a href="http://newamerica.net/about/copyright">New America Foundation</a><br/>Background photo by <a href="http://www.flickr.com/photos/aamerjaved/2914342056/">AamerJaved</a> Creative Commons (<a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">by-nc-nd 2.0</a>)',
     homeSections: [
         { content: 'section1', group: 'Q16'},
         { content: 'section2', group: 'Q11'},
