@@ -2,7 +2,9 @@
     "controls": {
         "navigation": {
             "_type": "OpenLayers.Control.Navigation",
-            "_value": [""]
+            "_value": {
+                "zoomWheelEnabled": false
+            }
         },
         "interaction": {
             "_type": "OpenLayers.Control.StyleWriterInteraction",

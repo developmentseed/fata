@@ -1,0 +1,26 @@
+<div id='ajax-content'>
+{{#groups}}
+<div class='group clearfix'>
+    <h2 class='group-shortname'>{{{shortname}}}</h2>
+    <p class='group-text'>{{{text}}}</p>
+    {{#renderedQuestions}}
+    <div class='question clearfix'>
+        <h2 class='question-name'>{{{name}}}</h2>
+        <div class='graph'>
+            {{^responses}}
+                <span class='empty'>No data available</span>
+            {{/responses}}
+            {{#responses}}
+            <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                <label>
+                    <strong>{{label}}</strong>
+                    {{percent}}% &mdash; {{number}} respondents
+                </label>
+            </span>
+            {{/responses}}
+        </div>
+    </div>
+    {{/renderedQuestions}}
+</div>
+{{/groups}}
+</div>

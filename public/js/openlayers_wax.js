@@ -33,6 +33,7 @@ var Wax = {
             else if (waxed.length == 4) {
               return new fn(waxed[0], waxed[1], waxed[2], waxed[3]);
             }
+            return new fn(waxed);
         }
         else if (_.isString(json_object) || _.isNumber(json_object) || _.isBoolean(json_object)) {
           return json_object;
