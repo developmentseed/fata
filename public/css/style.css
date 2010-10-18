@@ -125,6 +125,22 @@ a {
 /**
  * Main page sections
  */
+.breadcrumb {
+  border-bottom:1px solid #585848;
+  padding:5px 20px 4px;
+  font-size:12px;
+  text-transform:uppercase;
+  }
+
+.breadcrumb a,
+.breadcrumb span {
+  background:url(../images/sprite.png) 100% -290px no-repeat;
+  float:left;
+  padding-right:20px;
+  }
+
+  .breadcrumb .last { background:transparent; }
+
 .map {
   margin:15px;
   border:1px solid #686858;
