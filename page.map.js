@@ -69,6 +69,11 @@ app.get('/map/home', function(req, res) {
         'map': {
             'layers': [base_layer,drone_opinion_layer,drone_layer,taliban_layer,fighters_layer],
             'maxExtent': map_template.maxExtent,
+            'restrictedExtent': {
+                "_type": "OpenLayers.Bounds.fromArray",
+                "_value": [[
+                    6540922.379903,2840487.264725,9329345.171249,5041873.678946]]
+                },
             'maxResolution': 1.40625,
             'projection': map_template.spherical_mercator,
             'displayProjection': map_template.spherical_mercator,
@@ -123,11 +128,17 @@ app.get('/map/agency/:id', function(req, res) {
                 'layers': [base_layer, stylewriter_layer],
                 'maxExtent': map_template.maxExtent,
                 'maxResolution': 1.40625,
+                'restrictedExtent': {
+                    "_type": "OpenLayers.Bounds.fromArray",
+                    "_value": [[
+                        6540922.379903,2840487.264725,9329345.171249,5041873.678946]]
+                },
                 'projection': map_template.spherical_mercator,
                 'units': 'm',
                 'controls': [
                     map_template.controls.navigation,
                     map_template.controls.attribution,
+                    map_template.controls.zoompanel,
                     map_template.controls.interaction
                 ]
             },
