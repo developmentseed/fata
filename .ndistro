@@ -3,7 +3,7 @@ node 0.2.1
 # Tagged
 
 module senchalabs connect 0.2.5
-module visionmedia express 1.0.0beta2
+module visionmedia express 1.0.0rc4
 module caolan async v0.1.5
 module documentcloud underscore 1.1.1
 module andris9 node-markdown

@@ -155,16 +155,19 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
         // Close the DB connection.
         dataHandler.close();
 
-        res.render('agency', {
-            locals: {
-                pageTitle: pageTitle,
-                profile: profile,
-                agencyid: req.params.id,
-                agencies: agencies,
-                groups: groups,
-                demographics: demographics,
-                drone_info: drone_info
-            }
-        });
+        var template = req.param('ajax') ? 'agency-ajax' : 'agency',
+            options = {
+                locals: {
+                    pageTitle: pageTitle,
+                    profile: profile,
+                    agencyid: req.params.id,
+                    agencies: agencies,
+                    groups: groups,
+                    demographics: demographics,
+                    drone_info: drone_info
+                },
+                layout: req.param('ajax') ? 'ajax' : 'layout',
+            };
+        res.render(template, options);
     });
 });
