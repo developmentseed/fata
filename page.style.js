@@ -27,14 +27,78 @@ app.get('/style/drone/:agency', function(req, res) {
                         'marker-allow-overlap': true,
                         'marker-width': 2,
                         'marker-height': 2,
-                        'marker-fill': '#dd4400',
-                        'marker-fill-opacity': 0.9,
-                        'marker-line-color': '#ffffff',
-                        'marker-line-width': 0.5,
-                        'marker-line-opacity': 0.6,
+                        'marker-fill': '#f0ff01',
+                        'marker-fill-opacity': 0.75,
+                        'marker-line-color': '#f0ff01',
+                        'marker-line-width': 0,
+                        'marker-line-opacity': 0,
                         'marker-type': 'ellipse',
                         'marker-meta-writer': '"meta1"',
-                        'marker-meta-output': '"assumed_target, date, location"'
+                        'marker-meta-output': '"assumed_target, date, year, location"'
+                    })
+                },
+                {
+                    'selector': '#data[year=2009]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ffd201',
+                    })
+                },
+                {
+                    'selector': '#data[year=2008]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ff9601',
+                    })
+                },
+                {
+                    'selector': '#data[year=2007]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ff5b01',
+                    })
+                },
+                {
+                    'selector': '#data[year=2006]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ff1f01',
+                    })
+                },
+                {
+                    'selector': '#data[year=2005]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ff011f',
+                    })
+                },
+                {
+                    'selector': '#data[year=2004]',
+                    'properties': mssRotate({
+                        'marker-fill': '#ff015b',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=5][deaths_min\<10]',
+                    'properties': mssRotate({
+                        'marker-width': '3',
+                        'marker-height': '3',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=10][deaths_min\<20]',
+                    'properties': mssRotate({
+                        'marker-width': '5',
+                        'marker-height': '5',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=20][deaths_min\<30]',
+                    'properties': mssRotate({
+                        'marker-width': '7',
+                        'marker-height': '7',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=30]',
+                    'properties': mssRotate({
+                        'marker-width': '9',
+                        'marker-height': '9',
                     })
                 }
             ],

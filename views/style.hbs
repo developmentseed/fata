@@ -5,7 +5,7 @@
         only-nonempty="false"
         type="json" 
         file="[tile_dir]/[z]/[x]/[y].json" /> 
-    <Stylesheet><![CDATA[
+    <Stylesheet>
     {{#rules}}
     {{selector}} {
       {{#properties}}
@@ -13,7 +13,7 @@
       {{/properties}}
     }
     {{/rules}}
-    ]]></Stylesheet> 
+    </Stylesheet> 
   {{#layers}}<Layer id="{{id}}" name="data" srs="+proj=latlong +datum=WGS84"> 
     <Datasource> 
       <Parameter name="file">{{file}}</Parameter> 
