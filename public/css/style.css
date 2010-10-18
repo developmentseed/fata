@@ -552,16 +552,18 @@ div.olLayerDiv {
 }
 .olControlAttribution {
     color:#eee;
-    font-size: smaller; 
+    font-size:10px; 
     left: 5px; 
     bottom: 2px; 
     position: absolute; 
     display: block;
     text-shadow:#383830 0px 1px 0px;
+    vertical-align:bottom;
 }
 .olControlAttribution a {
     color:#fff;
     border-bottom:1px solid #686860;
+    vertical-align:bottom;
 }
 .olControlScale {
     right: 3px;
