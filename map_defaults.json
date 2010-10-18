@@ -2,7 +2,7 @@
     "controls": {
         "attribution": {
             "_type": "OpenLayers.Control.Attribution",
-            "_value": "Mapbox Attribution Test"
+            "_value": ""
         },
         "navigation": {
             "_type": "OpenLayers.Control.Navigation",
