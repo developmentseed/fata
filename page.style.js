@@ -27,50 +27,26 @@ app.get('/style/drone/:agency', function(req, res) {
                         'marker-allow-overlap': true,
                         'marker-width': 2,
                         'marker-height': 2,
-                        'marker-fill': '#f0ff01',
                         'marker-fill-opacity': 0.75,
-                        'marker-line-color': '#f0ff01',
-                        'marker-line-width': 0,
-                        'marker-line-opacity': 0,
+                        'marker-line-width': 1,
+                        'marker-line-opacity': 0.2,
                         'marker-type': 'ellipse',
                         'marker-meta-writer': '"meta1"',
                         'marker-meta-output': '"assumed_target, date, year, location"'
                     })
                 },
                 {
-                    'selector': '#data[year=2009]',
+                    'selector': '#data[year>=2009]',
                     'properties': mssRotate({
-                        'marker-fill': '#ffd201',
+                        'marker-fill': '#e9eb25',
+                        'marker-line-color': '#e9eb25',
                     })
                 },
                 {
-                    'selector': '#data[year=2008]',
+                    'selector': '#data[year<=2008]',
                     'properties': mssRotate({
-                        'marker-fill': '#ff9601',
-                    })
-                },
-                {
-                    'selector': '#data[year=2007]',
-                    'properties': mssRotate({
-                        'marker-fill': '#ff5b01',
-                    })
-                },
-                {
-                    'selector': '#data[year=2006]',
-                    'properties': mssRotate({
-                        'marker-fill': '#ff1f01',
-                    })
-                },
-                {
-                    'selector': '#data[year=2005]',
-                    'properties': mssRotate({
-                        'marker-fill': '#ff011f',
-                    })
-                },
-                {
-                    'selector': '#data[year=2004]',
-                    'properties': mssRotate({
-                        'marker-fill': '#ff015b',
+                        'marker-fill': '#eb6e25',
+                        'marker-line-color': '#eb6e25',
                     })
                 },
                 {
