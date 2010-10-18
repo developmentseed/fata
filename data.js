@@ -88,7 +88,8 @@ DataHandler.prototype.find = function(params, callback) {
 DataHandler.prototype.countField = function(params, callback) {
     var self = this,
         db = this.db,
-        data = [];
+        data = [],
+        fieldConditions = {};
     params.collection = params.collection || '';
     params.conditions = params.conditions || {};
     params.field = params.field || '';
@@ -99,11 +100,20 @@ DataHandler.prototype.countField = function(params, callback) {
         cid += '_'+ this.sanitize(params.conditions);
     }
 
+    // Field find() condition. If params.field is a list of fields, build the
+    // conditions accordingly (using mongodb '$in').
+    if (typeof params.field === 'object') {
+        fieldConditions._id = {'$in': params.field};
+    }
+    else {
+        fieldConditions._id = params.field;
+    }
+
     // Query the collection id. If it has no documents, build the mapreduce
     // collection before querying again.
     // @TODO: Is there a better method to tell whether a collection has been
     // instantiated without querying it directly?
-    self.find({collection: cid, conditions: {_id: params.field}}, function(data) {
+    self.find({collection: cid, conditions: fieldConditions}, function(data) {
         // mixreduce collection has items. Use it.
         if (data.length > 0) {
             callback(data);
@@ -155,7 +165,7 @@ DataHandler.prototype.countField = function(params, callback) {
                         return doc;
                     };
                     collection.mapReduce( map, reduce, { query: params.conditions, out: cid }, function(err, collection) {
-                        self.find({collection: cid, conditions: {_id: params.field}}, callback);
+                        self.find({collection: cid, conditions: fieldConditions}, callback);
                     });
                 });
             });
@@ -196,7 +206,6 @@ DataHandler.prototype.markdown = function(params, callback) {
  *   Callback function to use once query is complete.
  */
 DataHandler.prototype.loadQuestion = function(params, callback) {
-    // console.log(params);
     var self = this,
         group = params.group,
         context = params.context,
@@ -210,21 +219,20 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
         }
     }
     var series = [];
-    display.forEach(function(q) {
-        var responses = [];
-        group.questions[q].responses = responses;
-        series.push(function(callback) {
-            self.countField({collection: 'responses', field: q, conditions: conditions}, function(result) {
-                if (result.length !== 0) {
-                    var graph = require('graph');
-                    graph.process({answers:group.answers}, result.pop().value).forEach(function(bar) {
-                        responses.push(bar);
-                    });
-                }
-                callback(null);
+    series.push(function(callback) {
+        self.countField({collection: 'responses', field: display, conditions: conditions}, function(result) {
+            result.forEach(function(response) {
+                var responses = [];
+                var graph = require('graph');
+                group.questions[response._id].responses = responses;
+                graph.process({answers:group.answers}, response.value).forEach(function(bar) {
+                    responses.push(bar);
+                });
             });
+            callback(null);
         });
     });
+
     async = require('async');
     async.series(series, function() {
         // Gross. Convert objects to arrays for templating.
