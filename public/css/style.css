@@ -434,6 +434,13 @@ body.fix-filters .demographics {
   margin:0px 0px 10px;
   }
 
+.group .more-link {
+  padding:10px 10px 0px 0px;
+  float:right;
+  }
+
+.group .more-link a { background-color:#3c3c30; }
+
 .group-shortname {
   padding:10px 10px 0px;
   font-size:16px;
