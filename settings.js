@@ -17,7 +17,7 @@ module.exports = {
     },
     siteTitle: 'FATA Sentiment Survey',
     siteSlogan: '1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan',
-    footerMessage: 'Copyright © New America Foundation',
+    footerMessage: '<a href="http://newamerica.net/about/copyright">Copyright © New America Foundation</a>',
     homeSections: [
         { content: 'section1', group: 'Q16'},
         { content: 'section2', group: 'Q11'},
