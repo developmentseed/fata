@@ -1,3 +1,4 @@
+
 <div id='left' class='sidebar'>
     <h2>Sentiment Survey Questions</h2>
     <ul class='menu'>
@@ -14,6 +15,10 @@
 </div>
 
 <div id='main'>
+    <div class='breadcrumb clearfix'>
+        <a href='/'>Home</a><span>Sentiment Survey Questions</span>
+        <span class='last'>{{pageTitle}}</span>
+    </div>
     <div class='header'>
         <h2>{{pageTitle}}</h2>
         <h3>{{{subTitle}}}</h3>
@@ -65,10 +70,10 @@
                 <h2 class='group-shortname'>{{{name}}}</h2>
                 {{#agencies}}
                 <div class='question clearfix'>
-                    <h2 class='agencey-name'>{{name}}</h2>
+                    <h2 class='agencey-name'><a href="/agency/{{id}}">{{name}}</a></h2>
                     <div class='graph'>
-                            <span class='empty'>No data available</span>
                         {{^responses}}
+                            <span class='empty'>No data available</span>
                         {{/responses}}
                         {{#responses}}
                         <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
