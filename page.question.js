@@ -77,11 +77,6 @@ app.get('/question/:id/:filter?/:facet?', function(req, res, next) {
             series.push(function(responseCallback) {
                 var conditions = {Agency: agency.id};
                 _.extend(conditions, activeConditions);
-                // Reset responses
-                delete group.renderedQuestions;
-                for (var q in group.questions) {
-                    delete group.questions[q].responses;
-                }
                 dataHandler.loadQuestion({group: group, context: 'question', conditions: conditions}, function(result) {
                     for (var q in result.questions) {
                         if (!questions[q]) {
