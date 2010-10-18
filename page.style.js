@@ -160,7 +160,7 @@ app.get('/style/question/:question/:opinion', function(req, res) {
                 ,
                 layers: [
                     {
-                        file: 'https://client-data.s3.amazonaws.com/naf-fata/fata_v1.zip',
+                        file: 'https://client-data.s3.amazonaws.com/naf-fata/fata_v2.zip',
                         type: 'shape',
                         id: 'data',
                     }
