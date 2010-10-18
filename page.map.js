@@ -134,6 +134,7 @@ app.get('/map/home', function(req, res) {
     drone_layer._value[0] = 'Attacks';
     drone_layer._value[1] = settings.tileLiveServer;
     drone_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
+    drone_layer._value[2].displayInLayerSwitcher = false;
 
     fighters_layer._value[0] = 'Opinion on Foreign Fighters';
     fighters_layer._value[1] = settings.tileLiveServer;
