@@ -8,18 +8,6 @@ if (settings.mongodb) {
     db.open(function(err, db) {
         var async = require('async');
         var parallel = [];
-        for (collection_name in settings.mongodb.indexes) {
-            console.log('Creating indexes for %s', collection_name);
-            settings.mongodb.indexes[collection_name].forEach(function(index) {
-                parallel.push(function(callback) {
-                    db.collection(collection_name, function(err, collection) {
-                        collection.createIndex(index, function(err, indexName) {
-                            callback();
-                        });
-                    });
-                });
-            });
-        }
         async.parallel(parallel, function() {
             process.exit(0);
         });
