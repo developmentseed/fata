@@ -76,6 +76,7 @@ app.get('/map/home', function(req, res) {
             'controls': [
                 map_template.controls.navigation,
                 map_template.controls.attribution,
+                map_template.controls.zoompanel,
                 map_template.controls.interaction
             ]
         },
