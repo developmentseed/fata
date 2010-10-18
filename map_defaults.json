@@ -58,6 +58,9 @@
                         20037508.34]]
                 },
                 "type": "png",
+                "symbolizer": "point",
+                "value_field": "date",
+                "name_field": "assumed_target",
                 "mapfile": "",
                 "minzoom": 6
               }
@@ -105,9 +108,7 @@
                     2445.98490469,
                     1222.99245234,
                     611.496226172,
-                    305.748113086,
-                    152.874056543,
-                    76.4370282715
+                    305.748113086
                     ],
                 "layername": "afghanistan-landcover-fa"
               }

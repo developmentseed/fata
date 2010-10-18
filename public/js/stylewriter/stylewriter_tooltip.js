@@ -36,16 +36,16 @@ StyleWriterTooltips.getToolTip = function(feature) {
 };
 
 StyleWriterTooltips.select = function(feature, layer) {
-  var tooltip = Drupal.StyleWriterTooltips.getToolTip(feature);
+  var tooltip = StyleWriterTooltips.getToolTip(feature);
   $(layer.map.div).css('cursor', 'pointer');
   $(layer.map.div).append(tooltip);
 };
 
 StyleWriterTooltips.positionedSelect = function(feature, layer, evt) {
-  var tooltip = Drupal.StyleWriterTooltips.getToolTip(feature);
+  var tooltip = StyleWriterTooltips.getToolTip(feature);
   // var point  = new OpenLayers.LonLat(feature.geometry.x, feature.geometry.y);
   // var offset = feature.layer.getViewPortPxFromLonLat(point);
-  $(tooltip).css({zIndex: '1000', position: 'absolute', left: evt.pageX, top: evt.pageY});
+  // $(tooltip).css({zIndex: '1000', position: 'absolute', left: evt.pageX, top: evt.pageY});
   $('body').append(tooltip);
 };
 
