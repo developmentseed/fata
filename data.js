@@ -228,14 +228,21 @@ DataHandler.prototype.loadQuestion = function(params, callback) {
     var series = [];
     series.push(function(callback) {
         self.countField({collection: 'responses', field: display, conditions: conditions}, function(result) {
-            result.forEach(function(response) {
-                var responses = [];
-                var graph = require('graph');
-                group.questions[response._id].responses = responses;
-                graph.process({answers:group.answers}, response.value).forEach(function(bar) {
-                    responses.push(bar);
+            if (result.length === 0) {
+                display.forEach(function(q) {
+                    group.questions[q].responses = [];
                 });
-            });
+            }
+            else {
+                result.forEach(function(response) {
+                    var responses = [];
+                    var graph = require('graph');
+                    group.questions[response._id].responses = responses;
+                    graph.process({answers:group.answers}, response.value).forEach(function(bar) {
+                        responses.push(bar);
+                    });
+                });
+            }
             callback(null);
         });
     });
