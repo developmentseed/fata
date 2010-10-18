@@ -120,7 +120,11 @@ app.get('/map/agency/:id', function(req, res) {
                 'maxResolution': 1.40625,
                 'projection': map_template.spherical_mercator,
                 'units': 'm',
-                'controls': [map_template.controls.navigation,map_template.controls.attribution]
+                'controls': [
+                    map_template.controls.navigation,
+                    map_template.controls.attribution,
+                    map_template.controls.interaction
+                ]
             },
             'externals': {
                 'zoomonload': zoomonload

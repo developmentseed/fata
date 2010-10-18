@@ -27,16 +27,75 @@ The survey was conducted in Federally Administered Tribal Areas (FATA). The targ
 
 ## Proportion Stratified Sample Size 
 
-Agency | Population | Sample | Leaders Sample | Total  
--- | --
-Bajaur | 595,227 | 202 | 40 | 242 
-Mohmand | 334,453 | 114 | 23 | 137 
-Khyber | 546,730 | 186 | 37 | 223 
-Orkzia | 225,441 | 77 | 15 | 92 
-Kurram | 448,310 | 152 | 31 | 183 
-North Waziristan | 361,246 | 123 | 25 | 148   
-South Waziristan | 429,841 | 146 | 29 | 175
-**Total** | 2,941,248 | 1,000 | 200 | 1,200 
+<table>
+<thead>
+<tr>
+  <th>Agency</th>
+  <th>Population</th>
+  <th>Sample</th>
+  <th>Leaders Sample</th>
+  <th>Total</th>
+</tr>
+</thead>
+
+<tbody><tr>
+  <td>Bajaur</td>
+  <td>595,227</td>
+  <td>202</td>
+  <td>40</td>
+  <td>242</td>
+</tr>
+<tr>
+  <td>Mohmand</td>
+  <td>334,453</td>
+  <td>114</td>
+  <td>23</td>
+  <td>137</td>
+</tr>
+<tr>
+  <td>Khyber</td>
+  <td>546,730</td>
+  <td>186</td>
+  <td>37</td>
+  <td>223</td>
+</tr>
+<tr>
+  <td>Orkzia</td>
+  <td>225,441</td>
+  <td>77</td>
+  <td>15</td>
+  <td>92</td>
+</tr>
+<tr>
+  <td>Kurram</td>
+  <td>448,310</td>
+  <td>152</td>
+  <td>31</td>
+  <td>183</td>
+</tr>
+<tr>
+  <td>North Waziristan</td>
+  <td>361,246</td>
+  <td>123</td>
+  <td>25</td>
+  <td>148</td>
+</tr>
+<tr>
+  <td>South Waziristan</td>
+  <td>429,841</td>
+  <td>146</td>
+  <td>29</td>
+  <td>175</td>
+</tr>
+<tr>
+  <td><strong>Total</strong></td>
+  <td>2,941,248</td>
+  <td>1,000</td>
+  <td>200</td>
+  <td>1,200</td>
+</tr>
+
+</tbody></table>
 
 The National Census data from 1998 are used as the universe for this sample. The national census classifies villages as the primary unit in the rural areas. We used a multi-stage random stratified sampling method, selected over 120 primary sampling units, comprising villages in all the seven Agencies of FATA. The completed primary sample contains 120 sampling points; in which approximately 8 interviews were carried out in households selected in each village using a random walk. A total of 1,000 men and women from a scientific cross-section of FATA in terms of gender, age and other socio-economic characteristics are represented in the sample. For South and North Waziristan, however, local conditions only permitted CAMP personnel to sample men.
 

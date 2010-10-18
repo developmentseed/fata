@@ -95,12 +95,18 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
             'click': this.getInfoForClick
         })
       };
+
+      this.callbacks = {
+          'out': StyleWriterTooltips.unselect,
+          'over': StyleWriterTooltips.select
+      };
     },
     
     setMap: function(map) {
       this.handlers.hover.setMap(map);
       this.handlers.click.setMap(map);
       OpenLayers.Control.prototype.setMap.apply(this, arguments);
+      this.activate();
     },
 
     activate: function() {
@@ -197,7 +203,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
 
     // Get all interactable layers
     viableLayers: function() {
-      var overlays = this.map.getLayersBy('baselayer', 0); 
+      var overlays = this.map.getLayersBy('isBaseLayer', false); 
       return $(overlays).filter(
         function(i) {
           return (overlays[i].visibility === true) &&
