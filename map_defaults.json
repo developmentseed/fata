@@ -58,6 +58,9 @@
                         20037508.34]]
                 },
                 "type": "png",
+                "symbolizer": "point",
+                "value_field": "date",
+                "name_field": "assumed_target",
                 "mapfile": "",
                 "minzoom": 6
               }

@@ -150,6 +150,7 @@ OpenLayers.Control.StyleWriterInteraction = OpenLayers.Class(OpenLayers.Control,
         if (grid[i].geometry.containsPoint(here)) {
           var a = grid[i].attributes;
           a.description = a[tile.layer.options.value_field];
+          a.name = a[tile.layer.options.name_field];
           return a;
         }
       }

@@ -8,14 +8,14 @@ var mapbox_attribution = '<a href="http://mapbox.com/" class="mapbox-logo">Mapbo
 function deepCopy(obj) {
     if (Object.prototype.toString.call(obj) === '[object Array]') {
         var out = [], i = 0, len = obj.length;
-        for ( ; i < len; i++ ) {
+        for (; i < len; i++) {
             out[i] = arguments.callee(obj[i]);
         }
         return out;
     }
     if (typeof obj === 'object') {
         var out = {}, i;
-        for ( i in obj ) {
+        for (i in obj) {
             out[i] = arguments.callee(obj[i]);
         }
         return out;
@@ -73,7 +73,11 @@ app.get('/map/home', function(req, res) {
             'projection': map_template.spherical_mercator,
             'displayProjection': map_template.spherical_mercator,
             'units': 'm',
-            'controls': [map_template.controls.navigation,map_template.controls.attribution]
+            'controls': [
+                map_template.controls.navigation,
+                map_template.controls.attribution,
+                map_template.controls.interaction
+            ]
         },
         'externals': {
             'blockswitcher': map_template.externals.blockswitcher,
