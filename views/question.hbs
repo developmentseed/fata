@@ -22,21 +22,22 @@
         <div class='demographics'>
             <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
-                <div class='facets clearfix'>
-                    <a href='/question/{{questionShortname}}}#content'>All results</a>
+                <div class='facets facets-0 clearfix'>
+                    <a class='ajax' id='facet-all' href='/question/{{questionShortname}}}?ajax=1#facet-all'>All results</a>
                 </div>
             </div>
             {{#demographics}}
             <div class='filter'>
                 <label>{{name}}</label>
-                <div class='facets clearfix'>
+                <div class='facets facets-{{length}} clearfix'>
                     {{#facets}}
-                        <a href='/question/{{../../questionShortname}}/{{../id}}/{{id}}#content'>{{name}}</a>
+                        <a id='facet-{{../id}}-{{id}}' class='ajax{{#active}} active{{/active}}' href='/question/{{../../questionShortname}}/{{../id}}/{{id}}?ajax=1#facet-{{../id}}-{{id}}'>{{name}}</a>
                     {{/facets}}
                 </div>
             </div>
             {{/demographics}}
         </div>
+        <div id='ajax-content'>
         <div class='group clearfix'>
             <h2 class='group-shortname'>FATA Totals</h2>
             {{#totals}}
@@ -76,6 +77,7 @@
                 {{/agencies}}
             </div>
             {{/questions}}
+        </div>
         </div>
     </div>
 </div>
