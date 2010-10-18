@@ -583,9 +583,11 @@ div.question { /* use div. here to avoid conflict with body.question */
   float:right;
   color:#fff;
   background:#4c4c40 url(../images/sprite.png) 0px -380px no-repeat;
-  font-size:12px;
+  font:normal 12px/20px Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   }
+
+.prose .more-link a { margin:0px 0px 25px; }
 
 /**
  * Tables
