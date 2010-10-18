@@ -27,14 +27,54 @@ app.get('/style/drone/:agency', function(req, res) {
                         'marker-allow-overlap': true,
                         'marker-width': 2,
                         'marker-height': 2,
-                        'marker-fill': '#dd4400',
-                        'marker-fill-opacity': 0.9,
-                        'marker-line-color': '#ffffff',
-                        'marker-line-width': 0.5,
-                        'marker-line-opacity': 0.6,
+                        'marker-fill-opacity': 0.75,
+                        'marker-line-width': 1,
+                        'marker-line-opacity': 0.2,
                         'marker-type': 'ellipse',
                         'marker-meta-writer': '"meta1"',
-                        'marker-meta-output': '"assumed_target, date, location"'
+                        'marker-meta-output': '"assumed_target, date, year, location"'
+                    })
+                },
+                {
+                    'selector': '#data[year>=2009]',
+                    'properties': mssRotate({
+                        'marker-fill': '#e9eb25',
+                        'marker-line-color': '#e9eb25',
+                    })
+                },
+                {
+                    'selector': '#data[year<=2008]',
+                    'properties': mssRotate({
+                        'marker-fill': '#eb6e25',
+                        'marker-line-color': '#eb6e25',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=5][deaths_min\<10]',
+                    'properties': mssRotate({
+                        'marker-width': '3',
+                        'marker-height': '3',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=10][deaths_min\<20]',
+                    'properties': mssRotate({
+                        'marker-width': '5',
+                        'marker-height': '5',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=20][deaths_min\<30]',
+                    'properties': mssRotate({
+                        'marker-width': '7',
+                        'marker-height': '7',
+                    })
+                },
+                {
+                    'selector': '#data[deaths_min\>=30]',
+                    'properties': mssRotate({
+                        'marker-width': '9',
+                        'marker-height': '9',
                     })
                 }
             ],
