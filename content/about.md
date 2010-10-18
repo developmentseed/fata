@@ -9,6 +9,12 @@ This project aims to help bridge that knowledge gap, by combining three streams 
 
 3. A series of in-depth analyses on politics and militancy in Pakistan’s tribal areas, written by local Pakistani researchers and other regional experts.  These papers, published in mid-2010, provide invaluable context for the data mapped here, and are available on the agency-specific pages of this site.  This series was made possible by a grant from the [Smith Richardson Foundation](http://www.srf.org/). 
 
+# About the Maps
+
+The maps on this site combine data from a number of sources. The datasource used for national and sub-national administrative boundaries and labels in Pakistan and Jammu & Kashmir is GAUL - the Global Administrative Units Layers. This is the primary datasource used and recommended by NGOs working in Pakistan. Other international boundaries come from Natural Earth, and water bodies are from [OpenStreetMap](http://openstreetmap.org/). The drone strike overlay displays information compiled by [Year of the Drone](http://www.newamerica.net/drones).
+
+The base map tiles are hosted by [Mapbox.com](http://mapbox.com/) and were created using open-source tools like [Mapnik](http://mapnik.org).
+
 # About the New America Foundation
 
 [The New America Foundation](http://newamerica.net/) is a nonprofit, nonpartisan public policy institute that invests in new thinkers and new ideas to address the next generation of challenges facing the United States. Launched in 1999, the institute is now led by President Steve Coll and a Board of Directors chaired by Eric Schmidt, Chairman and CEO of Google. The New America Foundation’s Counterterrorism Strategy Initiative, which is co-directed by New America senior fellow Peter Bergen and Steve Coll and advised by Patrick Doherty, aims to provide data-based analysis of Afghanistan, Pakistan, and international terrorism. To learn more, please visit http://counterterrorism.newamerica.net
