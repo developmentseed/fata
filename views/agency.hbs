@@ -37,7 +37,7 @@
             <div class='filter filter-title'>
                 <h2>Filter by demographics</h2>
                 <div class='facets facets-0 clearfix'>
-                    <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}?ajax=1#facet-all'>All results</a>
+                    <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}'>All results</a>
                 </div>
             </div>
             {{#demographics}}
@@ -45,7 +45,7 @@
                 <label>{{name}}</label>
                 <div class='facets facets-{{length}} clearfix'>
                     {{#facets}}
-                        <a id='facet-{{../id}}-{{id}}' class='ajax{{#active}} active{{/active}}' href='/agency/{{../../agencyid}}/{{../id}}/{{id}}?ajax=1#facet-{{../id}}-{{id}}'>{{name}}</a>
+                        <a id='facet-{{../id}}-{{id}}' class='ajax{{#active}} active{{/active}}' href='/agency/{{../../agencyid}}/{{../id}}/{{id}}'>{{name}}</a>
                     {{/facets}}
                 </div>
             </div>
