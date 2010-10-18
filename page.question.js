@@ -85,6 +85,9 @@ app.get('/question/:id/:filter?', function(req, res) {
     });
     // Render the page
     waterfall.push(function(callback) {
+        // Close the DB connection.
+        dataHandler.close();
+
         res.render('question', {
             locals: {
                 pageTitle: pageTitle,

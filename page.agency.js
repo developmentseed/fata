@@ -149,6 +149,9 @@ app.get('/agency/:id/:filter?/:facet?', function(req, res, next) {
 
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
+        // Close the DB connection.
+        dataHandler.close();
+
         res.render('agency', {
             locals: {
                 pageTitle: pageTitle,

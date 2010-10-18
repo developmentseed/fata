@@ -101,6 +101,9 @@ app.get('/style/question/:question', function(req, res) {
             });
         });
         async.parallel(parallel, function(err) {
+            // Close the DB connection.
+            dataHandler.close();
+
             var list_normalize = function(a, list) {
                 return (a - _.min(list)) / (_.max(list) - _.min(list));
             }

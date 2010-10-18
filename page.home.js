@@ -79,6 +79,9 @@ app.get('/', function(req, res) {
     });
 
     async.series(series, function(error) {
+        // Close the DB connection.
+        dataHandler.close();
+
         res.render('home', {
             locals: {
                 pageTitle: 'Home',

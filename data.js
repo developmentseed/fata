@@ -22,6 +22,13 @@ DataHandler.prototype.connect = function(callback) {
 };
 
 /**
+ * Asynchronous. Close the database connection.
+ */
+DataHandler.prototype.close = function() {
+    this.db.close();
+};
+
+/**
  * Asynchronous. Perform a mongodb find query against a collection.
  *
  * @param {Object} params

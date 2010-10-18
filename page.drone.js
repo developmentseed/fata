@@ -34,11 +34,13 @@ app.get('/drone/:agency/drones.geojson', function(req, res) {
 
     // Run all tasks and render.
     async.parallel(parallel, function(error) {
+        // Close the DB connection.
+        dataHandler.close();
+
         res.send({
             'type': 'FeatureCollection',
             'features': _(drones).map(drone_geojson)
-        }
-        );
+        });
     });
 
 });
