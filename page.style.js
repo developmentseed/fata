@@ -4,6 +4,18 @@
 var app = module.parent.exports.app;
 var settings = require('./settings');
 
+function mssRotate(styles) {
+    var out = [];
+    for (var i in styles) {
+        out.push({
+            'property': i,
+            'value': styles[i]
+        });
+    }
+    return out;
+}
+        
+
 app.get('/style/drone/:agency', function(req, res) {
     res.render('style', {
         layout: false,
@@ -11,44 +23,19 @@ app.get('/style/drone/:agency', function(req, res) {
             rules: [
                 {
                     'selector': '#data',
-                    properties: [
-                        {
-                            property: 'marker-allow-overlap',
-                            value: true
-                        },
-                        {
-                            property: 'marker-width',
-                            value: 2
-                        },
-                        {
-                            property: 'marker-height',
-                            value: 2
-                        },
-                        {
-                            property: 'marker-fill',
-                            value: '#dd4400'
-                        },
-                        {
-                            property: 'marker-fill-opacity',
-                            value: 0.9
-                        },
-                        {
-                            property: 'marker-line-color',
-                            value: '#ffffff'
-                        },
-                        {
-                            property: 'marker-line-width',
-                            value: 0.5
-                        },
-                        {
-                            property: 'marker-line-opacity',
-                            value: 0.6
-                        },
-                        {
-                            property: 'marker-type',
-                            value: 'ellipse'
-                        }
-                    ]
+                    'properties': mssRotate({
+                        'marker-allow-overlap': true,
+                        'marker-width': 2,
+                        'marker-height': 2,
+                        'marker-fill': '#dd4400',
+                        'marker-fill-opacity': 0.9,
+                        'marker-line-color': '#ffffff',
+                        'marker-line-width': 0.5,
+                        'marker-line-opacity': 0.6,
+                        'marker-type': 'ellipse',
+                        'marker-meta-writer': '"meta1"',
+                        'marker-meta-output': '"assumed_target, date, location"'
+                    })
                 }
             ],
             layers: [
@@ -161,18 +148,13 @@ app.get('/style/question/:question/:opinion', function(req, res) {
                 rules: _.map(view, function(percentage, agency) {
                         return {
                             selector: '#data[ADM2_ID = "' + agency + '"]',
-                            properties: [
-                                {
-                                    property: 'polygon-fill',
-                                    value: "#" + color_start.blend(color_end,
+                            properties: 
+                                mssRotate({
+                                    'polygon-fill': "#" + color_start.blend(color_end,
                                         list_normalize(percentage,
-                                        view))
-                                },
-                                {
-                                    property: 'polygon-opacity',
-                                    value: 0.5
-                                },
-                            ]
+                                        view)),
+                                    'polygon-opacity': 0.5
+                                }),
                         }
                     })
                 ,
