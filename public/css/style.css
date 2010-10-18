@@ -513,6 +513,18 @@ div.question { /* use div. here to avoid conflict with body.question */
   }
 
 /**
+ * Tables
+ */
+table {
+  width:100%;
+  margin:0px 0px 25px;
+}
+
+table th {
+  text-align:left;
+}
+
+/**
  * OpenLayers...
  */
 div.olMap {
