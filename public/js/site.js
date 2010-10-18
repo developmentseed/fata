@@ -38,6 +38,9 @@ $(document).ready(function() {
     };
 
     ajaxHandler.prototype.get = function(url) {
+        // Sometimes a URL can have multiple hashes, e.g. foo#bar#
+        // Strip off any additional hashes before proceeding.
+        url = url.replace(/[#]/g, '');
         var self = this;
         var link = $('a.ajax[href='+url+']');
         var target = $('#ajax-content');
