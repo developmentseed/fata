@@ -183,7 +183,7 @@ a {
     position: absolute;
     z-index:5002;
     bottom:9px;
-    left:9px;
+    right:9px;
     background:#383830 url(../images/sprite.png) 0px -378px no-repeat;
     color:#fff;
     font-size:10px;
@@ -551,11 +551,19 @@ div.olLayerDiv {
     bottom: 15px;   
 }
 .olControlAttribution {
-    font-size: smaller; 
-    right: 3px; 
-    bottom: 4.5em; 
+    color:#eee;
+    font-size:10px; 
+    left: 5px; 
+    bottom: 2px; 
     position: absolute; 
     display: block;
+    text-shadow:#383830 0px 1px 0px;
+    vertical-align:bottom;
+}
+.olControlAttribution a {
+    color:#fff;
+    border-bottom:1px solid #686860;
+    vertical-align:bottom;
 }
 .olControlScale {
     right: 3px;
@@ -857,6 +865,16 @@ div.olControlSaveFeaturesItemInactive {
     background-color: transparent;
     opacity: 0.5;
     filter: alpha(opacity=50); /* IE */
+}
+
+.olControlAttribution a.mapbox-logo {
+    border:none;
+    display:inline-block;
+    text-indent:-9999px;
+    overflow:hidden;
+    width:80px;
+    height:22px;
+    background:transparent url(../images/sprite.png) 0px -310px no-repeat;
 }
 
 /**
