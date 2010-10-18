@@ -321,15 +321,28 @@ body.question .group-shortname {
   right:-160px;
   width:160px;
   }
-  
-  body.question .demographics {
-    top: 240px;
+
+body.question .demographics { top: 240px; }
+
+body.fix-filters .demographics-wrapper {
+  position:fixed;
+  width:960px;
+  left:50%;
+  margin-left:-480px;
+  top:0px;
+  height:0px;
+  }
+
+body.fix-filters .demographics {
+  position:absolute;
+  right:0px;
+  top:0px;
   }
 
 .filter-title,
 .filter {
   background:#4c4c40;
-  padding:9px 0px 10px;
+  padding:4px 0px 5px;
   margin-top:1px;
   }
 

@@ -31,7 +31,7 @@ $(document).ready(function() {
         $(this).attr('class','expand-button');
       });
 
-    // AJAX page content loading, used for demographic filters.
+    // AJAX page content loading ==============================================
     // Requires jQuery BBQ (http://benalman.com/projects/jquery-bbq-plugin).
     var ajaxHandler = function ajaxHandler() {
         this.cache = {};
@@ -83,5 +83,17 @@ $(document).ready(function() {
     $('a.ajax').click(function() {
         $.bbq.pushState({url: $(this).attr('href')});
         return false;
+    });
+
+    // Demographics filters fixed position handling ===========================
+    var filterPosition = $('.demographics').offset().top;
+    $(window).bind('scroll', function(e) {
+        var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
+        if (scroll > filterPosition) {
+            $('body').addClass('fix-filters');
+        }
+        else {
+            $('body').removeClass('fix-filters');
+        }
     });
 });
