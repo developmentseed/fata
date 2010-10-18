@@ -3,17 +3,7 @@ module.exports = {
     mongodb: {
         host: 'localhost',
         db: 'fata',
-        indexes: {
-            responses: [
-                [['Q1a', 1]],
-                [['Q1b', 1]],
-                [['Q1c', 1]],
-                [['Q1d', 1]],
-                [['Q1e', 1]],
-                [['Q1f', 1]],
-                [['Q1g', 1]],
-            ]
-        }
+        indexes: {}
     },
     siteTitle: 'FATA Sentiment Survey',
     siteSlogan: '1,000 Interviews across 120 villages in all seven tribal Agencies of FATA-Pakistan',
