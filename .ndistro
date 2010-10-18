@@ -37,3 +37,6 @@ mongoimport --drop --type json --db fata --collection groups --jsonArray --file 
 mongoimport --drop --type json --db fata --collection demographics --jsonArray --file resources/fata_demographics.json
 mongoimport --drop --type csv --db fata --collection drones --ignoreBlanks --headerline resources/fata_drones.csv
 mongoimport --drop --type csv --db fata --collection drones_aggregate --ignoreBlanks --headerline resources/fata_drone_aggregates.csv
+
+# Run install tasks
+./bin/node install.js
