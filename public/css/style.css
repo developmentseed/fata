@@ -74,7 +74,7 @@ a {
 
 .sidebar .ender {
   height:120px;
-  background:url(../images/page.png) 0px -320px no-repeat;
+  background:url(../images/page.png) 0px -280px no-repeat;
   }
 
 .menu a {
@@ -94,7 +94,7 @@ a {
 .sidebar .menu a:hover { background:#383830; }
 
 .sidebar .menu .active a {
-  background:#8ba644 url(../images/page.png) 0px -200px no-repeat;
+  background:#8ba644 url(../images/page.png) 0px -180px no-repeat;
   color:#333;
   text-shadow:#b9cd78 0px 1px 0px;
   }
@@ -395,7 +395,7 @@ body.fix-filters .demographics {
   }
 
 .filter .facets {
-  background:#3e3e34;
+  background:#3e3e34 url(../images/page.png) -4px 0px no-repeat;
   font-size:10px;
   margin:0px 4px;
   height:20px;
@@ -404,17 +404,24 @@ body.fix-filters .demographics {
   -webkit-border-radius:3px;
   }
 
+  .filter .facets-2 { background-position:-4px -20px; }
+  .filter .facets-4 { background-position:-4px -40px; }
+
 .filter .facets a {
+  color:#888878;
+  text-shadow:#24241c 0px 1px 0px;
   padding:0px 6px;
   float:left;
   overflow:hidden;
   }
 
 .filter .facets a.active {
-  background-color:#b8d070;
+  background:#b8d070 url(../images/page.png) -160px 0px no-repeat;
   color:#222;
+  text-shadow:#c8d890 0px 1px 0px;
   }
 
+.filter .facets-1 a { width:140px; }
 .filter .facets-2 a { width:64px; }
 .filter .facets-4 a { width:26px; }
 .filter .facets-5 a { width:18px; }
