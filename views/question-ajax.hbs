@@ -23,15 +23,18 @@
         <h2 class='group-shortname'>{{{name}}}</h2>
         {{#agencies}}
         <div class='question clearfix'>
-            <h2 class='agencey-name'>{{name}}</h2>
+            <h2 class='agencey-name'><a href="/agency/{{id}}">{{name}}</a></h2>
             <div class='graph'>
-            {{#responses}}
-            <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
-                <label>
-                    <strong>{{label}}</strong>
-                    {{percent}}% &mdash; {{number}} respondents
-                </label>
-            </span>
+                {{^responses}}
+                    <span class='empty'>No data available</span>
+                {{/responses}}
+                {{#responses}}
+                <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                    <label>
+                        <strong>{{label}}</strong>
+                        {{percent}}% &mdash; {{number}} respondents
+                    </label>
+                </span>
             {{/responses}}
             </div>
         </div>
