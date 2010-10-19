@@ -6,7 +6,7 @@ module senchalabs connect 0.2.5
 module visionmedia express 1.0.0rc4
 module caolan async v0.1.5
 module documentcloud underscore 1.1.1
-module andris9 node-markdown
+module andris9 node-markdown v0.1.0
 
 module christkv node-mongodb-native V0.8.0
 
@@ -15,7 +15,7 @@ module christkv node-mongodb-native V0.8.0
 ! test -f public/js/jquery.js && wget -O public/js/jquery.js http://code.jquery.com/jquery-1.4.2.min.js
 ! test -f public/js/jquery.ba-bbq-min.js && wget -O public/js/jquery.ba-bbq-min.js http://github.com/cowboy/jquery-bbq/raw/v1.2.1/jquery.ba-bbq.min.js
 ! test -f public/css/reset.css && wget -P public/css http://github.com/developmentseed/tao/raw/master/reset.css
-! test -d public/js/openlayers_plus && git clone -b js git://github.com/developmentseed/openlayers_plus.git public/js/openlayers_plus/
+! test -d public/js/openlayers_plus && mkdir -p public/js/openlayers_plus && (wget -O- http://github.com/developmentseed/openlayers_plus/tarball/v0.1-alpha1-js | tar xz --strip 1 -C public/js/openlayers_plus)
 
 # Untagged
 
@@ -23,7 +23,7 @@ module donpark hbs
 
 # Submodule workarounds, see:
 # http://blog.iclutton.com/2010/09/nodejs-ndistro-and-git-submodules.html
-! test -d modules/hbs/support/handlebars/handlebars.js && (module wycats handlebars.js && rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars)
+! test -d modules/hbs/support/handlebars/handlebars.js && (module developmentseed handlebars.js ds-v0.1 && rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars)
 
 # Clear out existing db
 

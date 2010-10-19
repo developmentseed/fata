@@ -1,3 +1,7 @@
+<p class='pull-quote'>
+In-depth, agency-specific analysis from regional experts with data from 1,000 interviews across 120 villages in all seven tribal agencies and mapping of 142 reported drone strikes in FATA through July 2010.
+</p>
+
 Few places in the world have assumed as much importance for the United States and its allies since 2001 as Pakistan’s northwestern tribal regions, which have served as a base for the mix of militants seeking to attack the governments, militaries and civilians of the United States, Afghanistan, Pakistan and others. Yet our understanding of this region – its politics and history, U.S. involvement there, and the opinions of those who call it home – is painfully limited.
 
 This project aims to help bridge that knowledge gap, by combining three streams of work from the [New America Foundation’s Counterterrorism Strategy Initiative](http://counterterrorism.newamerica.net): A first-ever poll of sensitive political issues in the Federally Administered Tribal Areas of Pakistan (FATA); New America's on-going monitoring of U.S. drone strikes in Pakistan, and our series of of in-depth analyses on politics and militancy in Pakistan’s tribal areas, written by local Pakistani researchers and other regional experts.

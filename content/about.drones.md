@@ -4,7 +4,7 @@ This year has been the busiest yet for the United States' covert drones program 
 
 In the busiest year of the program, September was the busiest month, with 22 reported strikes targeting militants in North Waziristan, a viper's nest of Haqqani network insurgents, Pakistani Taliban fighters, members of al-Qaeda and other local militants. The flurry of attacks was [reportedly](http://online.wsj.com/article/SB10001424052748704116004575522260688019730.html) aimed at interrupting a Pakistan-based plot, linked to al-Qaeda, involving plans to [carry out](http://articles.cnn.com/2010-09-29/world/us.europe.terror.plot_1_terror-plot-law-enforcement-counterterrorism?_s=PM:WORLD) "Mumbai-style" attacks in major European cities.  
 
-<img src="http://chart.apis.google.com/chart?chxs=0,676767,0,0,lt,676767&chxt=y&chbh=a&chs=300x225&cht=bvg&chco=FCFCFC,3D7930&chd=s1:FVgc,&chg=-1,0,70,4" width="300" height="225" alt="" />
+<img src="http://chart.apis.google.com/chart?chf=bg,s,4C4C40&chxl=1:|2004-2007|2008|2009|2010+(10%2F15)&chxs=0,A8A088,10,0,l,A8A088|1,A8A088,10,0,lt,A8A088&chxt=y,x&chbh=20,0,120&chs=600x200&cht=bvg&chco=A8A088&chd=s:FVg1&chg=-1,20,0,0&chma=30,20,20,20&chtt=Number+of+drone+strikes&chts=FFFFFF,12" width="600" height="200" alt="Number of drone strikes" />
 
 Given the evident importance of the drones program to the Obama administration -- which has in 20 months more than tripled the number of strikes carried out by the Bush administration -- and Pakistan's continued public objections to the strikes, which officials decry on the grounds that they violate Pakistan's sovereignty, it is important to consider the opinions of those the strikes are impacting the most: residents of the Federally Administered Tribal Areas. 
 

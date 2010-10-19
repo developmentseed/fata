@@ -330,6 +330,11 @@ div.section {
   .front div.section { width:620px; }
   .header div.section { padding-left:0px; }
 
+.section .pull-quote {
+  font-style:italic;
+  color:#fff;
+  }
+
 .section .partners,
 .section .group {
   width:300px;
@@ -642,9 +647,14 @@ div.question { /* use div. here to avoid conflict with body.question */
 /**
  * More link ==========================================================
  */
+.prose a { border-bottom:1px solid #686858; }
+.prose a:hover { color:#fff; }
+.prose .more-link { margin-bottom:25px; }
+
 .more-link { height:20px; }
 
 .more-link a {
+  border:0px;
   padding:0px 10px 0px 20px;
   float:right;
   color:#fff;
@@ -652,8 +662,6 @@ div.question { /* use div. here to avoid conflict with body.question */
   font:normal 12px/20px Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   }
-
-.prose .more-link { margin-bottom:25px; }
 
 /**
  * Tables
