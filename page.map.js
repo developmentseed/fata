@@ -87,7 +87,9 @@ function getKeyMap(req, layer, callb) {
                             if (responseLabels.indexOf(response.label) !== -1) {
                                 if (!view[agency.id]) {
                                     view[agency.id].percent = 0;
+                                    view[agency.id].number = 0;
                                 }
+                                view[agency.id].number = response.number;
                                 view[agency.id].percent = response.percent;
                             }
                         });
@@ -103,7 +105,7 @@ function getKeyMap(req, layer, callb) {
             var keymap = {};
             for (var k in view) {
                 keymap[k] = {
-                    'description': "" + view[k].percent + "%",
+                    'description': "" + view[k].percent + "% - " + view[k].number + " respondents",
                     'name': view[k].name
                 };
             }
