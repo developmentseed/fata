@@ -18,8 +18,10 @@ module.exports = {
     ],
     aboutPages: [
         { id: 'site', name: 'This site', file: 'about.md' },
-        { id: 'maps', name: 'Maps', file: 'about.maps.md' },
-        { id: 'drones', name: 'Drones', file: 'about.drones.md' }
+        { id: 'methodology', name: 'Methodology', file: 'about.methodology.md' },
+        { id: 'drones', name: 'Drones', file: 'about.drones.md' },
+		{ id: 'maps', name: 'Maps', file: 'about.maps.md' },
+		{ id: 'contact', name: 'Contact', file: 'about.contact.md' }
     ],
     partners: [
         { name: 'Terror Free Tomorrow', url: 'http://www.terrorfreetomorrow.org' },
