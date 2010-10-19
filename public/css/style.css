@@ -329,13 +329,36 @@ div.section {
   padding:0px 10px;
   }
 
-.header div.section { padding:0px; }
+.header div.section { padding-left:0px; }
 
+.section .partners,
 .section .group {
   width:300px;
   position:absolute;
   right:-300px;
   }
+
+/* Partners */
+.section .partners h3,
+.section .partners a {
+  display:block;
+  padding:0px 0px 0px 9px;
+  border-left:1px solid #686858;
+  margin:0px;
+  }
+
+.section .partners h3 {
+  font:normal 12px/25px Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
+  }
+
+.section .partners a {
+  color:#fff;
+  font:normal 13px/25px Georgia,serif;
+  }
+
+.section .partners a:hover { background:#4c4c40; }
+
 
 /**
  * /agency ============================================================
