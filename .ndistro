@@ -23,7 +23,7 @@ module donpark hbs
 
 # Submodule workarounds, see:
 # http://blog.iclutton.com/2010/09/nodejs-ndistro-and-git-submodules.html
-! test -d modules/hbs/support/handlebars/handlebars.js && (module wycats handlebars.js && rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars)
+! test -d modules/hbs/support/handlebars/handlebars.js && (module developmentseed handlebars.js ds-v0.1 && rmdir modules/hbs/support/handlebars && mv modules/handlebars.js modules/hbs/support/handlebars)
 
 # Clear out existing db
 
