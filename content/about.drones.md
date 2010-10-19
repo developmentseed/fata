@@ -18,6 +18,6 @@ And opposition to the drones in North Waziristan remains high no matter who oper
 
 Perhaps indicative of the regions’ roles as home base for Pakistani Taliban chiefs like the late Baitullah Mehsud and Hakimullah Mehsud, support for the Pakistani Taliban in North and South Waziristan is higher than across the rest of the FATA, at 34.2 percent and 45.2 percent respectively. In the FATA as a whole, only 19 percent support the TTP, and [across Pakistan](http://pewglobal.org/files/pdf/Pew-Global-Attitudes-2010-Pakistan-Report.pdf), 18 percent. Al-Qaeda and foreign fighters are unpopular across the agencies, receiving the most support at 18 percent in Mohmand and the least in Orakzai with a mere four percent. As a whole, 8.6 percent of FATA residents support the presence of al-Qaeda in their areas, less than half of the group’s favorability ratings in the rest of Pakistan (18 percent), according to Pew polling from earlier this year. 
 
-Peter Bergen, CNN's national security analyst and author of The Osama bin Laden I Know, is a senior fellow at the New America Foundation and the co-director of its Counterterrorism Strategy Initiative, where Katherine Tiedemann is a research fellow.
+_Peter Bergen, CNN's national security analyst and author of The Osama bin Laden I Know, is a senior fellow at the New America Foundation and the co-director of its Counterterrorism Strategy Initiative, where Katherine Tiedemann is a research fellow._
 
 

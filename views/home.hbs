@@ -39,7 +39,17 @@
         </div>
     </div>
     <div class='header'>
-        <div class='section'><div class='prose'>{{{intro}}}</div></div>
+        <div class='section'>
+            <div class='partners clearfix'>
+                <h3>In Partnership With</h3>
+                <ul>
+                    {{#partners}}
+                        <li><a href='{{url}}'>{{name}}</a></li>
+                    {{/partners}}
+                </ul>
+            </div>
+            <div class='prose'>{{{intro}}}</div>
+        </div>
     </div>
     <div class='content'>
         {{#sections}}

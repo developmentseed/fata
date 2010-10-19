@@ -231,6 +231,14 @@ a {
 
   .openlayers-tooltip-description { font-size:11px; }
 
+  div.map #block-openlayers_plus-blockswitcher.ne,
+  div.map #map-slide-toggle,
+  div.map .openlayers-legends {
+    background:#383830;
+    filter:alpha(opacity=95);
+    opacity:0.95;
+    }
+
   div.map #map-slide-toggle {
     position: absolute;
     z-index:5002;
@@ -241,33 +249,54 @@ a {
     font-size:10px;
     padding:2px 6px 2px 20px;
     cursor:pointer;
-    filter:alpha(opacity=95);
-    opacity:0.95;
     }
-  div.map #map-slide-toggle.shrink-button {
-      background-position:0px -348px;
-    }
+
+  div.map #map-slide-toggle.shrink-button { background-position:0px -348px; }
 
   div.map #block-openlayers_plus-blockswitcher.ne {
     position:absolute;
     z-index:5000;
     right:9px;
     top:9px;
-    width:200px;
+    width:240px;
     height:auto;
-    background:#383830;
-    filter:alpha(opacity=95);
-    opacity:0.95;
     }
 
   .map .openlayers-blockswitcher {
-    width:200px;
+    width:230px;
     z-index:900;
     padding:5px;
-    font-size:12px;
+    font-size:11px;
     }
 
   .map .openlayers-blockswitcher label span.key { display:none; }
+
+.map .openlayers-legends {
+  width:220px;
+  right:9px;
+  bottom:39px;
+  left:auto;
+  padding:10px;
+  font-size:11px;
+  line-height:15px;
+  }
+
+.map .openlayers-legend li {
+  position:relative;
+  padding-left:15px;
+  }
+
+.map .openlayers-legend .swatch {
+  position:absolute;
+  left:0px;
+  top:2px;
+  width:10px;
+  height:10px;
+  }
+
+.openlayers-legend .swatch-red { background:#c62; }
+.openlayers-legend .swatch-yellow { background:#dd1; }
+.openlayers-legend .swatch-green { background:#98c050; }
 
 #home-map {
   width:760px;
@@ -300,13 +329,36 @@ div.section {
   padding:0px 10px;
   }
 
-.header div.section { padding:0px; }
+.header div.section { padding-left:0px; }
 
+.section .partners,
 .section .group {
   width:300px;
   position:absolute;
   right:-300px;
   }
+
+/* Partners */
+.section .partners h3,
+.section .partners a {
+  display:block;
+  padding:0px 0px 0px 9px;
+  border-left:1px solid #686858;
+  margin:0px;
+  }
+
+.section .partners h3 {
+  font:normal 12px/25px Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
+  }
+
+.section .partners a {
+  color:#fff;
+  font:normal 13px/25px Georgia,serif;
+  }
+
+.section .partners a:hover { background:#4c4c40; }
+
 
 /**
  * /agency ============================================================
