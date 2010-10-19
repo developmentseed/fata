@@ -117,7 +117,6 @@ a {
   }
 
 .error #main,
-.about #main,
 .front #main {
   width:800px;
   background-position:-160px -80px;
@@ -325,11 +324,11 @@ div.questions .menu li {
 
 div.section {
   position:relative;
-  width:620px;
   padding:0px 10px;
   }
 
-.header div.section { padding-left:0px; }
+  .home div.section { width:620px; }
+  .header div.section { padding-left:0px; }
 
 .section .partners,
 .section .group {
