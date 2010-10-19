@@ -1,11 +1,24 @@
+<div id='left' class='sidebar'>
+    <h2>About</h2>
+    <ul class='menu'>
+        {{#pages}}
+            {{#active}}
+                <li class='active'><a href='/about/{{id}}'>{{name}}</a></li>
+            {{/active}}
+            {{^active}}
+                <li><a href='/about/{{id}}'>{{name}}</a></li>
+            {{/active}}
+        {{/pages}}
+    </ul>
+    <div class='ender'></div>
+</div>
 <div id='main'>
     <div class='breadcrumb clearfix'>
         <a href='/'>Home</a>
+        <span>About</span>
         <span class='last'>{{pageTitle}}</span>
     </div>
-    <div class='header'>
-        <h2>{{pageTitle}}</h2>
-    </div>
+    <div class='header'></div>
     <div class='content'>
         <div class='section'>
             <div class='prose'>{{{contentText}}}</div>

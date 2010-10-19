@@ -26,6 +26,9 @@ app.get('/drone/:agency/drones.geojson', function(req, res) {
             },
             'properties': {
                 'date': d.Date,
+                'description': (d.deaths_min == d.deaths_max) ? 
+                    "" + d.deaths_max + " deaths - " +  d.Date :
+                    "" + d.deaths_min + "-" + d.deaths_max + " deaths - " +  d.Date,
                 'year': d.Year,
                 'deaths_min': d.deaths_min,
                 'assumed_target': d['Assumed Target'],

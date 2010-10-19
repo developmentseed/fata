@@ -67,7 +67,7 @@
                 },
                 "type": "png",
                 "symbolizer": "point",
-                "value_field": "date",
+                "value_field": "description",
                 "name_field": "assumed_target",
                 "mapfile": "",
                 "minzoom": 6

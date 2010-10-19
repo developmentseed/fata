@@ -32,7 +32,7 @@ app.get('/style/drone/:agency', function(req, res) {
                         'marker-line-opacity': 0.2,
                         'marker-type': 'ellipse',
                         'marker-meta-writer': '"meta1"',
-                        'marker-meta-output': '"assumed_target, date, year, location"'
+                        'marker-meta-output': '"assumed_target, description, date, year, location"'
                     })
                 },
                 {

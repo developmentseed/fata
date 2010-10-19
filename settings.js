@@ -16,6 +16,11 @@ module.exports = {
         { content: 'section4', group: 'Q10'},
         { content: 'section5', group: 'Q1'},
     ],
+    aboutPages: [
+        { id: 'site', name: 'This site', file: 'about.md' },
+        { id: 'maps', name: 'Maps', file: 'about.maps.md' },
+        { id: 'drones', name: 'Drones', file: 'about.drones.md' }
+    ],
     partners: [
         { name: 'Terror Free Tomorrow', url: 'http://www.terrorfreetomorrow.org' },
         { name: 'Community Appraisal & Motivation Programme', url: 'http://www.camp.org.pk' },
