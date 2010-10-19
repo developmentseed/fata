@@ -320,7 +320,7 @@ div.section {
   font-family:Arial,Helvetica,sans-serif;
   }
 
-  #drone-info h3,
+  #drone-info h3 { font:normal 12px/30px Arial,Helvetica,sans-serif; }
   #drone-info ul li .label { font:normal 12px/15px Arial,Helvetica,sans-serif; }
 
   #drone-info h3 { font-weight:bold; }
