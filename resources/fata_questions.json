@@ -66,7 +66,7 @@
                 ] 
             },
             "Q1i": {
-                "name": "Taliban fighers",
+                "name": "Taliban fighters",
                 "display": [
                     "agency",
                     "question" 
@@ -725,7 +725,7 @@
                 ] 
             },
             "Q9h": {
-                "name": "Monmohan Singh",
+                "name": "Manmohan Singh",
                 "display": [
                     "agency",
                     "question" 
@@ -959,7 +959,7 @@
                 ] 
             },
             "Q13d": {
-                "name": "Other militant groups (e.g. Mangal Baghs's faction, etc)",
+                "name": "Other militant groups (e.g. Mangal Bagh's faction, etc)",
                 "display": [
                     "agency",
                     "question" 
