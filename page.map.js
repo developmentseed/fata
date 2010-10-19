@@ -136,7 +136,7 @@ app.get('/map/home', function(req, res) {
     drone_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
     drone_layer._value[2].displayInLayerSwitcher = false;
 
-    fighters_layer._value[0] = 'Opinion on Foreign Fighters';
+    fighters_layer._value[0] = 'Support Arab and foreign Al Qaeda fighters';
     fighters_layer._value[1] = settings.tileLiveServer;
     fighters_layer._value[2].visibility = false;
     fighters_layer._value[2].symbolizer = 'polygon';
@@ -145,7 +145,7 @@ app.get('/map/home', function(req, res) {
     fighters_layer.opinion = 'positive';
     fighters_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11b/positive';
     
-    taliban_layer._value[0] = 'Opinion on Pakistan Taliban';
+    taliban_layer._value[0] = 'Support Pakistani Taliban fighters';
     taliban_layer._value[1] = settings.tileLiveServer;
     taliban_layer._value[2].visibility = false;
     taliban_layer._value[2].symbolizer = 'polygon';
@@ -154,7 +154,7 @@ app.get('/map/home', function(req, res) {
     taliban_layer.opinion = 'positive';
     taliban_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11d/positive';
     
-    drone_opinion_layer._value[0] = 'Opinion on Drones';
+    drone_opinion_layer._value[0] = 'Support US drone strikes';
     drone_opinion_layer._value[1] = settings.tileLiveServer;
     drone_opinion_layer._value[2].symbolizer = 'polygon';
     drone_opinion_layer._value[2].join_field = 'ADM2_ID';
