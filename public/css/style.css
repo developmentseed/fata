@@ -325,8 +325,6 @@ div.section {
     background:url(../images/sprite.png) -370px -60px no-repeat;
     }
 
-  #drone-info ul { border-bottom: 1px solid #4c4c40; }
-
   #drone-info ul li {
     padding:9px 0px 10px;
     border-top: 1px solid #4c4c40;
@@ -340,6 +338,12 @@ div.section {
       font-weight:bold;
       font-size:16px;
       }
+
+  #drone-info small {
+    display:block;
+    font-size:11px;
+    line-height:15px;
+    }
 
 .agency .header h2,
 .agency .header .profile {

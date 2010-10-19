@@ -26,12 +26,13 @@
         <h2>{{pageTitle}}</h2>
         {{#drone_info}}
         <div id='drone-info'>
-          <h3><span class='icon'></span>Drone strikes<br/>in 2010</h3>
+          <h3><span class='icon'></span>Drone strikes<br/>in 2010*</h3>
           <ul>
             <li><span class="label">Total incidents</span> <span class="value">{{total}} strikes</span></li>
             <li><span class="label">Non-militants killed</span> <span class="value">{{civilian_deaths_min}} {{#civilian_deaths_max}}to {{.}}{{/civilian_deaths_max}}</span></li>
             <li><span class="label">Militant deaths</span> <span class="value">{{militant_deaths_min}} {{#militant_deaths_max}}to {{.}}{{/militant_deaths_max}}</span></li>
             <li><span class="label">Militant Leaders killed</span> <span class="value">{{leader_deaths}}</span></li>
+            <li><small>* Includes data through July 2010</small></li>
           </ul>
         </div>
         {{/drone_info}}
