@@ -93,6 +93,7 @@ app.get('/', function(req, res) {
                 agencies: agencies,
                 groups: groups,
                 sections: sections,
+                partners: settings.partners,
                 intro: intro
             }
         });

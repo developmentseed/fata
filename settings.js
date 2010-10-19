@@ -16,6 +16,14 @@ module.exports = {
         { content: 'section4', group: 'Q10'},
         { content: 'section5', group: 'Q1'},
     ],
+    partners: [
+        { name: 'Terror Free Tomorrow', url: 'http://www.terrorfreetomorrow.org' },
+        { name: 'Community Appraisal & Motivation Programme', url: 'http://www.camp.org.pk' },
+        { name: 'U.S. Institute of Peace', url: 'http://www.usip.org' },
+        { name: 'Open Society Foundations', url: 'http://www.soros.org' },
+        { name: 'Smith Richardson Foundation', url: 'http://www.srf.org' },
+        { name: 'Development Seed', url: 'http://www.developmentseed.org' }
+    ],
     analyticsId: 'UA-19117141-1',
     tileLiveServer: 'http://ndi1.live.mapbox.com/tile/${mapfile}/${z}/${x}/${y}.${format}',
     baseUrl: 'http://www.pakistansurvey.org/'
