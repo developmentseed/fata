@@ -224,16 +224,18 @@ app.get('/map/agency/:id', function(req, res) {
     var base_layer = map_template.layers.mapbox;
     var stylewriter_layer = map_template.layers.stylewriter;
     var zoomonload = map_template.externals.zoomonload;
+    var legend = map_template.externals.legend;
 
     base_layer._value[1].layername = 'pakistan-fata';
     base_layer._value[0] = 'FATA';
     base_layer._value[1].type = 'png';
     base_layer._value[1].attribution = mapbox_attribution;
-    
+
     stylewriter_layer._value[0] = 'Attacks';
     stylewriter_layer._value[1] = settings.tileLiveServer;
     stylewriter_layer._value[2].mapfile = settings.baseUrl + 'style/drone/' + req.params.id;
     stylewriter_layer._value[2].isBaseLayer = false;
+    stylewriter_layer._value[2].legend = '<ul><li><span class="swatch swatch-red"></span>Drone strikes under Bush</li><li><span class="swatch swatch-yellow"></span>Drone strikes under Obama</li></ul>';
 
     // Load the current agency's information.
     dataHandler.find({collection: 'agencies', conditions: {id: req.params.id}}, function(data) {
@@ -247,6 +249,8 @@ app.get('/map/agency/:id', function(req, res) {
         zoomonload._value[1] = data[0].lon;
         zoomonload._value[2] = data[0].lat;
         zoomonload._value[3] = 3;
+
+        legend._value[0] = ['#agency-map'];
 
         res.send({
             'map': {
@@ -268,6 +272,7 @@ app.get('/map/agency/:id', function(req, res) {
                 ]
             },
             'externals': {
+                'legend': legend,
                 'zoomonload': zoomonload
             }
         });
