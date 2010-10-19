@@ -24,6 +24,10 @@
             "_type": "OpenLayersPlusBlockswitcher",
             "_value": [""]
         },
+        "legend": {
+            "_type": "OpenLayersPlusLegend",
+            "_value": [""]
+        },
         "zoomonload": {
             "_type": "OpenLayersWaxZoomOnLoad",
             "_value": [[""]]

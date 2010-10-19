@@ -126,6 +126,7 @@ app.get('/map/home', function(req, res) {
     var taliban_layer = deepCopy(map_template.layers.stylewriter);
     var drone_opinion_layer = deepCopy(map_template.layers.stylewriter);
     var blockswitcher = map_template.externals.blockswitcher;
+    var legend = map_template.externals.legend;
     var zoomonload = map_template.externals.zoomonload;
 
     base_layer._value[1].layername = 'pakistan-fata';
@@ -137,8 +138,9 @@ app.get('/map/home', function(req, res) {
     drone_layer._value[1] = settings.tileLiveServer;
     drone_layer._value[2].mapfile = settings.baseUrl + 'style/drone/mohmand';
     drone_layer._value[2].displayInLayerSwitcher = false;
+    drone_layer._value[2].legend = '<ul><li><span class="swatch swatch-red"></span>Drone strikes under Bush</li><li><span class="swatch swatch-yellow"></span>Drone strikes under Obama</li></ul>';
 
-    fighters_layer._value[0] = 'Support Arab and foreign Al Qaeda fighters';
+    fighters_layer._value[0] = 'Support for Arab and foreign Al Qaeda fighters';
     fighters_layer._value[1] = settings.tileLiveServer;
     fighters_layer._value[2].visibility = false;
     fighters_layer._value[2].symbolizer = 'polygon';
@@ -146,8 +148,9 @@ app.get('/map/home', function(req, res) {
     fighters_layer.question = 'Q11b';
     fighters_layer.opinion = 'positive';
     fighters_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11b/positive';
-    
-    taliban_layer._value[0] = 'Support Pakistani Taliban fighters';
+    fighters_layer._value[2].legend = '<ul><li><span class="swatch swatch-green"></span>Surveyed respondents that support Arab and foreign Al Qaeda Fighters</li></ul>';
+
+    taliban_layer._value[0] = 'Support for Pakistani Taliban fighters';
     taliban_layer._value[1] = settings.tileLiveServer;
     taliban_layer._value[2].visibility = false;
     taliban_layer._value[2].symbolizer = 'polygon';
@@ -155,16 +158,20 @@ app.get('/map/home', function(req, res) {
     taliban_layer.question = 'Q11d';
     taliban_layer.opinion = 'positive';
     taliban_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q11d/positive';
-    
-    drone_opinion_layer._value[0] = 'Support US drone strikes';
+    taliban_layer._value[2].legend = '<ul><li><span class="swatch swatch-green"></span>Surveyed respondents that support Pakistani Taliban fighters</li></ul>';
+
+    drone_opinion_layer._value[0] = 'Support for US drone strikes';
     drone_opinion_layer._value[1] = settings.tileLiveServer;
     drone_opinion_layer._value[2].symbolizer = 'polygon';
     drone_opinion_layer._value[2].join_field = 'ADM2_ID';
     drone_opinion_layer.question = 'Q16';
     drone_opinion_layer.opinion = 'positive';
     drone_opinion_layer._value[2].mapfile = settings.baseUrl + 'style/question/Q16/positive';
+    drone_opinion_layer._value[2].legend = '<ul><li><span class="swatch swatch-green"></span>Surveyed respondents that support US drone strikes</li></ul>';
 
-    blockswitcher._value[0] = '#home-map';
+    blockswitcher._value[0] = ['#home-map'];
+
+    legend._value[0] = ['#home-map'];
 
     zoomonload._value[0] = ['#home-map'];
     zoomonload._value[1] = 71.7;
@@ -203,6 +210,7 @@ app.get('/map/home', function(req, res) {
             },
             'externals': {
                 'blockswitcher': map_template.externals.blockswitcher,
+                'legend': map_template.externals.legend,
                 'zoomonload': zoomonload
             }
         });
