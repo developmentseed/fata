@@ -1,5 +1,5 @@
 <p class='pull-quote'>
-In-depth, agency-specific analysis from regional experts with data from 1,000 interviews across 120 villages in all seven tribal agencies and mapping of 142 reported drone strikes in FATA through July 2010.
+In-depth, agency-specific analysis from regional experts with data from 1,000 interviews across 120 villages in all seven tribal agencies and mapping of <a href="http://www.pakistansurvey.org/about/drones">142 reported drone strikes in FATA through July 2010</a>.
 </p>
 
 Few places in the world have assumed as much importance for the United States and its allies since 2001 as Pakistan’s northwestern tribal regions, which have served as a base for the mix of militants seeking to attack the governments, militaries and civilians of the United States, Afghanistan, Pakistan and others. Yet our understanding of this region – its politics and history, U.S. involvement there, and the opinions of those who call it home – is painfully limited.
