@@ -4,7 +4,7 @@ Details about this project's underlying opinion and drone-strike data are [avail
 
 # Media Inquiries
 
-Please direct all interview requests to Media Relations Manager [Kate Brown](brown@newamerica.net), or see our online Press Room for additional information and contact details.
+Please direct all interview requests to Media Relations Manager Kate Brown, at 202-596-3365 or <a  href="mailto:brown@newamerica.net">brown@newamerica.net</a>.
 
 # E-Mailing New America Staff & Fellows
 
