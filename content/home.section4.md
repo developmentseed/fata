@@ -1,4 +1,4 @@
-# FATA Residents Decisively Back the Pakistani Arm
+# FATA Residents Decisively Back the Pakistani Army
 
 While the United States’ military, as well as Taliban and Al-Qaeda fighters, enjoy little popular support in the region, the people overwhelmingly support the Pakistani Army. Nearly 70 percent back the Pakistani military pursuing Al-Qaeda and Taliban fighters in the Tribal Areas. By a significant margin, the most popular individual among the people of FATA is General Ashfaq Parvez Kayani, the Pakistani Army Chief of Staff. 
 
