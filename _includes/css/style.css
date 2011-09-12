@@ -570,10 +570,18 @@ div.question { /* use div. here to avoid conflict with body.question */
   background:#585848;
   }
 
-.graph .bar {
+.graph .fill {
   height:14px;
   position:absolute;
-  top:0px;
+  left:0px;
+  right:0px;
+  }
+
+.graph .bar {
+  height:14px;
+  float:left;
+  position:relative;
+  z-index:1;
   }
 
 .graph .bar label {
@@ -598,7 +606,7 @@ div.question { /* use div. here to avoid conflict with body.question */
 .graph .bar:hover label { display:block; }
 
 .refused { background:#999; }
-.don-t-know { background-color:#666; }
+.dont-know { background-color:#666; }
 
 .negotiate,
 .never-justified,

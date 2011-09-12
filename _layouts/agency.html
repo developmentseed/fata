@@ -2,7 +2,6 @@
 layout: default
 ---
 {% assign data = site.categories.data[0][page.key] %}
-
 <div id='left' class='sidebar'>
   <h2>Administrative Agencies</h2>
   <ul class='menu'>
@@ -99,17 +98,16 @@ layout: default
         <h2 class='question-name'>{{item.title}}</h2>
         <div class='graph'>
           {% assign total = data.All[item.key].total %}
-          {% assign offset = 0 %}
           {% if data.All[item.key] %}{% for answer in group.answers %}
             {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
             {% capture width %}{{data.All[item.key][answer] | times:280 | divided_by:total}}{% endcapture %}
-            <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+            <span class='bar {{class}}' style='width:{{width}}px;'>
             <label>
-              <strong>{{bar[0]}}</strong>
+              <strong>{{answer}}</strong>
               {{data.All[item.key][answer] | times:100 | divided_by:total}}% &mdash; {{data.All[item.key][answer]}} respondents
             </label>
             </span>
-            {% capture offset %}{{offset | plus:width}}{% endcapture %}
+            {% if forloop.last %}<span class='fill {{class}}'></span>{% endif %}
           {% endfor %}{% else %}
             <span class='empty'>No data available</span>
           {% endif %}
