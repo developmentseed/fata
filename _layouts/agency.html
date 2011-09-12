@@ -1,5 +1,25 @@
 ---
 layout: default
+demographics:
+  Gender:
+    - Male
+    - Female
+  Age:
+    - 18-25
+    - 26-39
+    - 40-54
+    - 55+
+  Years of Education:
+    - 0
+    - 1-7
+    - 8-11
+    - 12+
+  Marital Status:
+    - Married
+    - Unmarried
+  Income Level:
+    - High
+    - Low
 ---
 <div id='left' class='sidebar'>
   <h2>Administrative Agencies</h2>
@@ -71,24 +91,7 @@ layout: default
     <div class='profile prose'>{{content}}</div>
   </div>
   <div class='content' id='content'>
-    <div class='demographics-wrapper'><div class='demographics'>
-      <div class='filter filter-title'>
-        <h2>Filter by demographics</h2>
-        <div class='facets facets-1 clearfix'>
-          <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}'>All results</a>
-        </div>
-      </div>
-      {% for item in data.Q1a %}
-      <div class='filter'>
-        <label>{{item[0]}}</label>
-        <div class='facets facets-{{item[1].size}} clearfix'>
-          {% for item in item[1] %}
-          <a id='facet-{{../id}}-{{id}}' class='ajax {% comment %}active{% endcomment %}' href='/agency/{{../../agencyid}}/{{../id}}/{{id}}'>{{item[0]}}</a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endfor %}
-    </div></div>
+    {% include filter.html %}
     <div id='ajax-content'>
     {% for group in site.categories.questions reversed %}
     <div class='group clearfix'>

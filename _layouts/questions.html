@@ -1,6 +1,26 @@
 ---
 layout: default
 classes: question
+demographics:
+  Gender:
+    - Male
+    - Female
+  Age:
+    - 18-25
+    - 26-39
+    - 40-54
+    - 55+
+  Years of Education:
+    - 0
+    - 1-7
+    - 8-11
+    - 12+
+  Marital Status:
+    - Married
+    - Unmarried
+  Income Level:
+    - High
+    - Low
 ---
 <div id='left' class='sidebar'>
   <h2>Sentiment Survey Questions</h2>
@@ -22,24 +42,7 @@ classes: question
     <h3>{{page.content}}</h3>
   </div>
   <div class='content' id='content'>
-    <div class='demographics-wrapper'><div class='demographics'>
-      <div class='filter filter-title'>
-        <h2>Filter by demographics</h2>
-        <div class='facets facets-1 clearfix'>
-          <a class='ajax' id='facet-all' href='/question/{{questionShortname}}}'>All results</a>
-        </div>
-      </div>
-      {{#demographics}}
-      <div class='filter'>
-        <label>{{name}}</label>
-        <div class='facets facets-{{length}} clearfix'>
-          {{#facets}}
-            <a id='facet-{{../id}}-{{id}}' class='ajax{{#active}} active{{/active}}' href='/question/{{../../questionShortname}}/{{../id}}/{{id}}'>{{name}}</a>
-          {{/facets}}
-        </div>
-      </div>
-      {{/demographics}}
-    </div></div>
+    {% include filter.html %}
     <div id='ajax-content'>
     <div class='group clearfix'>
       <h2 class='group-shortname'>FATA Totals</h2>
