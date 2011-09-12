@@ -2,4 +2,4 @@ auto: true
 server: true
 exclude: [README.md, _data, import.rb]
 permalink: /:categories/:title/
-baseurl: 
+baseurl: /fata

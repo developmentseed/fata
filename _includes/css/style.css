@@ -1,6 +1,6 @@
 body {
   font:normal 13px/20px Arial,sans-serif;
-  background:#585848 url(../images/bg.jpg) 50% 100% no-repeat fixed;
+  background:#585848 url(images/bg.jpg) 50% 100% no-repeat fixed;
   color:#d8d098;
   }
 
@@ -18,7 +18,7 @@ a {
  * Global header
  */
 #global {
-  background:url(../images/sprite.png) 0px 0px repeat-x;
+  background:url(images/sprite.png) 0px 0px repeat-x;
   height:30px;
   }
 
@@ -28,14 +28,14 @@ a {
   height:30px;
   text-indent:-9999px;
   overflow:hidden;
-  background:url(../images/sprite.png) 0px -30px no-repeat;
+  background:url(images/sprite.png) 0px -30px no-repeat;
   }
 
 /**
  * Branding (right column)
  */
 #branding {
-  background:url(../images/page.png) -960px -80px no-repeat;
+  background:url(images/page.png) -960px -80px no-repeat;
   float:right;
   width:140px;
   padding:20px 0px 20px 20px;
@@ -47,7 +47,7 @@ a {
   display:block;
   width:140px;
   height:190px;
-  background:url(../images/sprite.png) 0px -60px no-repeat;
+  background:url(images/sprite.png) 0px -60px no-repeat;
   text-indent:-9999px;
   overflow:hidden;
   }
@@ -66,7 +66,7 @@ a {
   }
 
 .sidebar h2 {
-  background:#4c4c40 url(../images/page.png) 0px -80px no-repeat;
+  background:#4c4c40 url(images/page.png) 0px -80px no-repeat;
   color:#fff;
   padding:30px 20px 9px;
   margin:0px 0px 1px;
@@ -74,7 +74,7 @@ a {
 
 .sidebar .ender {
   height:120px;
-  background:url(../images/page.png) 0px -280px no-repeat;
+  background:url(images/page.png) 0px -280px no-repeat;
   }
 
 .menu a {
@@ -86,7 +86,7 @@ a {
   }
 
 .sidebar .menu a {
-  background:#4c4c40 url(../images/page.png) 0px -80px no-repeat;
+  background:#4c4c40 url(images/page.png) 0px -80px no-repeat;
   padding:5px 10px 4px 20px;
   margin:0px 0px 1px;
   }
@@ -94,7 +94,7 @@ a {
 .sidebar .menu a:hover { background:#383830; }
 
 .sidebar .menu .active a {
-  background:#8ba644 url(../images/page.png) 0px -180px no-repeat;
+  background:#8ba644 url(images/page.png) 0px -180px no-repeat;
   color:#333;
   text-shadow:#b9cd78 0px 1px 0px;
   }
@@ -111,7 +111,7 @@ a {
  * Main column
  */
 #main {
-  background:url(../images/page.png) -320px -80px no-repeat;
+  background:url(images/page.png) -320px -80px no-repeat;
   float:left;
   width:640px;
   }
@@ -134,7 +134,7 @@ a {
 
 .breadcrumb a,
 .breadcrumb span {
-  background:url(../images/sprite.png) 100% -290px no-repeat;
+  background:url(images/sprite.png) 100% -290px no-repeat;
   float:left;
   padding-right:20px;
   }
@@ -243,7 +243,7 @@ a {
     z-index:5002;
     bottom:9px;
     right:9px;
-    background:#383830 url(../images/sprite.png) 0px -378px no-repeat;
+    background:#383830 url(images/sprite.png) 0px -378px no-repeat;
     color:#fff;
     font-size:10px;
     padding:2px 6px 2px 20px;
@@ -385,7 +385,7 @@ div.section {
     height:30px;
     width:30px;
     float:left;
-    background:url(../images/sprite.png) -370px -60px no-repeat;
+    background:url(images/sprite.png) -370px -60px no-repeat;
     }
 
   #drone-info ul li {
@@ -477,7 +477,7 @@ body.fix-filters .demographics {
   }
 
 .filter .facets {
-  background:#3e3e34 url(../images/page.png) -4px 0px no-repeat;
+  background:#3e3e34 url(images/page.png) -4px 0px no-repeat;
   font-size:10px;
   margin:0px 4px;
   height:20px;
@@ -500,7 +500,7 @@ body.fix-filters .demographics {
   }
 
 .filter .facets a.active {
-  background:#b8d070 url(../images/page.png) -160px 0px no-repeat;
+  background:#b8d070 url(images/page.png) -160px 0px no-repeat;
   color:#222;
   text-shadow:#c8d890 0px 1px 0px;
   }
@@ -580,7 +580,7 @@ div.question { /* use div. here to avoid conflict with body.question */
   font-size:10px;
   line-height:15px;
   padding:5px 10px 15px;
-  background:url(../images/sprite.png) 100% 100% no-repeat;
+  background:url(images/sprite.png) 100% 100% no-repeat;
   display:none;
   width:140px;
   position:absolute;
@@ -605,28 +605,28 @@ div.question { /* use div. here to avoid conflict with body.question */
 .strongly-support,
 .a-great-deal,
 .very-favorable,
-.very-important { background:#694 url(../images/page.png) 100% 0px no-repeat; }
+.very-important { background:#694 url(images/page.png) 100% 0px no-repeat; }
 
 .rarely-justified,
 .somewhat-support,
 .some-what,
 .somewhat-favorable,
-.somewhat-important { background:#ab5 url(../images/page.png) 100% -20px no-repeat; }
+.somewhat-important { background:#ab5 url(images/page.png) 100% -20px no-repeat; }
 
 .sometimes-justified,
 .somewhat-oppose,
 .not-significantly,
 .somewhat-unfavorable,
-.somewhat-unimportant { background:#a96 url(../images/page.png) 100% -40px no-repeat; }
+.somewhat-unimportant { background:#a96 url(images/page.png) 100% -40px no-repeat; }
 
 .not-negotiate-and-fight,
 .often-justified,
 .strongly-oppose,
 .not-at-all,
 .very-unfavorable,
-.not-at-all-important { background:#d73 url(../images/page.png) 100% -60px no-repeat; }
+.not-at-all-important { background:#d73 url(images/page.png) 100% -60px no-repeat; }
 
-.autogen { background:transparent url(../images/page.png) -560px 0px no-repeat; }
+.autogen { background:transparent url(images/page.png) -560px 0px no-repeat; }
 .autogen-1 { background-color:#ccc; }
 .autogen-2 { background-color:#aaa; }
 .autogen-3 { background-color:#888; }
@@ -658,7 +658,7 @@ div.question { /* use div. here to avoid conflict with body.question */
   padding:0px 10px 0px 20px;
   float:right;
   color:#fff;
-  background:#4c4c40 url(../images/sprite.png) 0px -380px no-repeat;
+  background:#4c4c40 url(images/sprite.png) 0px -380px no-repeat;
   font:normal 12px/20px Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   }
@@ -982,7 +982,7 @@ div.olControlSaveFeaturesItemInactive {
 .olControlZoomPanel .olControlZoomInItemInactive {
     top: 0px;
     left: 0px;
-    background-image: url(../images/sprite.png);
+    background-image: url(images/sprite.png);
     background-position: -1px 19px;
     background-color:#383830;
 }
@@ -994,7 +994,7 @@ div.olControlSaveFeaturesItemInactive {
 .olControlZoomPanel .olControlZoomOutItemInactive {
     top: 0px;
     left: 19px;
-    background-image: url(../images/sprite.png);
+    background-image: url(images/sprite.png);
     background-position: -1px 49px;
     background-color:#383830;
 }
@@ -1026,7 +1026,7 @@ div.olControlSaveFeaturesItemInactive {
     overflow:hidden;
     width:80px;
     height:22px;
-    background:transparent url(../images/sprite.png) 0px -310px no-repeat;
+    background:transparent url(images/sprite.png) 0px -310px no-repeat;
 }
 
 /**
