@@ -566,9 +566,9 @@ div.question { /* use div. here to avoid conflict with body.question */
   display:block;
   position:relative;
   z-index:1;
-  transition: width .1s linear;
-  -moz-transition: width .1s linear;
-  -webkit-transition: width .1s linear;
+  transition: width .25s linear;
+  -moz-transition: width .25s linear;
+  -webkit-transition: width .25s linear;
   }
 
 .graph a.empty {
