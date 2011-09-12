@@ -96,7 +96,12 @@ layout: default
       <h2 class='group-shortname'>{{group.title}}</h2>
       <p class='group-text'>{{group.content}}</p>
       {% assign data = site.categories.data[0][page.key].All %}
-      {% for question in group.questions %}{% include question.html %}{% endfor %}
+      {% for question in group.questions %}
+      <div class='question clearfix'>
+        <h2 class='question-name'>{{question.title}}</h2>
+        {% include graph.html %}
+      </div>
+      {% endfor %}
     </div>
     {% endfor %}
     </div>
