@@ -8,20 +8,22 @@ $('a', demographics).click(function() {
 
   // TODO: handle no data message.
   $('.graph').each(function() {
-    var total = 0;
-    $('a:not(.fill)', this).each(function() {
-      total += parseInt($(this).data()[facet] || 0, 10);
-    });
-    $('a:not(.fill)', this).each(function() {
-      var val = parseInt($(this).data()[facet] || 0, 10);
-      var values = {
-        width: Math.floor(280 * val / total),
-        pct: Math.floor(100 * val / total),
-        num: val
-      };
-      $(this).css({width: values.width + 'px'});
-      $('i', this).html(template(values));
-    });
+    _.defer(_(function() {
+      var total = 0;
+      $('a:not(.fill)', this).each(function() {
+        total += parseInt($(this).data()[facet] || 0, 10);
+      });
+      $('a:not(.fill)', this).each(function() {
+        var val = parseInt($(this).data()[facet] || 0, 10);
+        var values = {
+          width: Math.floor(280 * val / total),
+          pct: Math.floor(100 * val / total),
+          num: val
+        };
+        $(this).css({width: values.width + 'px'});
+        $('i', this).html(template(values));
+      });
+    }).bind(this));
   });
 
   $('a.active', demographics).removeClass('active');
