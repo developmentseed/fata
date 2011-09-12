@@ -110,3 +110,16 @@ demographics:
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+var data = {};
+{% assign key = 'All' %}
+{% assign data = site.categories.data[0][page.key][key] %}
+{% include scope.json %}
+
+{% for demographic in page.demographics %}{% for facet in demographic[1] %}
+{% capture key %}{{demographic[0]}}/{{facet}}{% endcapture %}
+{% assign data = site.categories.data[0][page.key][key] %}
+{% include scope.json %}
+{% endfor %}{% endfor %}
+</script>

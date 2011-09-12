@@ -560,31 +560,37 @@ div.question { /* use div. here to avoid conflict with body.question */
   position:relative;
   }
 
-.graph .empty {
+.graph a {
   height:14px;
+  float:left;
+  display:block;
+  position:relative;
+  z-index:1;
+  transition: width .1s linear;
+  -moz-transition: width .1s linear;
+  -webkit-transition: width .1s linear;
+  }
+
+.graph a.empty {
+  float:none; z-index:0;
   line-height:14px;
   font-size:10px;
   text-align:center;
-  display:block;
   color:#887;
   background:#585848;
   }
 
-.graph .fill {
-  height:14px;
+.graph a.fill {
+  float:none; z-index:0;
   position:absolute;
   left:0px;
   right:0px;
   }
 
-.graph .bar {
-  height:14px;
-  float:left;
-  position:relative;
-  z-index:1;
-  }
+.graph em,
+.graph i { font-style:normal; }
 
-.graph .bar label {
+.graph em {
   font-size:10px;
   line-height:15px;
   padding:5px 10px 15px;
@@ -597,13 +603,13 @@ div.question { /* use div. here to avoid conflict with body.question */
   margin-left:-80px;
   }
 
-  .graph .bar label strong {
-    font-size:12px;
-    color:#fff;
-    display:block;
-    }
+.graph b {
+  font-size:12px;
+  color:#fff;
+  display:block;
+  }
 
-.graph .bar:hover label { display:block; }
+.graph a:hover em { display:block; }
 
 .refused { background:#999; }
 .dont-know { background-color:#666; }
