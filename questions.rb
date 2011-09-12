@@ -25,8 +25,8 @@ source.each_with_index do |group, index|
   group['questions'].each do |qid,q|
     content['questions'].push({'key' => qid, 'title' => q['name'] })
   end
-  content['answers'] = []
   if group['answers']
+    content['answers'] = []
     group['answers'].each do |a|
       content['answers'].push(a['name'])
     end

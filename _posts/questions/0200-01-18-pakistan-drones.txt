@@ -6,7 +6,5 @@ questions:
   key: Q18
 title: Pakistani Drones
 key: Q18
-answers: []
-
 ---
 Do you the Pakistani military should launch its own drone attacks by air inside FATA?

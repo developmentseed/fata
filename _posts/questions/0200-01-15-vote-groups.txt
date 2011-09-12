@@ -6,7 +6,5 @@ questions:
   key: Q15
 title: Elections
 key: Q15
-answers: []
-
 ---
 If you could vote for any party or group in a Pakistani election, which of the following would you vote for?

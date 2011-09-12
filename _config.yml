@@ -3,4 +3,3 @@ server: true
 exclude: [README.md, _data, import.rb, questions.rb]
 permalink: /:categories/:title/
 baseurl: /fata
-markdown: rdiscount

@@ -6,7 +6,5 @@ questions:
   key: Q23
 title: U.S. Goals
 key: Q23
-answers: []
-
 ---
 What do you think is the real purpose of the US-led war on terror?

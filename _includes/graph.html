@@ -1,16 +1,33 @@
 <div class='graph'>
   {% assign total = data[question.key].total %}
-  {% if data[question.key] %}{% for answer in group.answers %}
-    {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
-    {% capture width %}{{data[question.key][answer] | times:280 | divided_by:total}}{% endcapture %}
-    <span class='bar {{class}}' style='width:{{width}}px;'>
-    <label>
-      <strong>{{answer}}</strong>
-      {{data[question.key][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key][answer]}} respondents
-    </label>
-    </span>
-    {% if forloop.last %}<span class='fill {{class}}'></span>{% endif %}
-  {% endfor %}{% else %}
+  {% if data[question.key] %}
+  {% if group.answers %}
+    {% for answer in group.answers %}
+      {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
+      {% capture width %}{{data[question.key][answer] | times:280 | divided_by:total}}{% endcapture %}
+      <span class='bar {{class}}' style='width:{{width}}px;'>
+      <label>
+        <strong>{{answer}}</strong>
+        {{data[question.key][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key][answer]}} respondents
+      </label>
+      </span>
+      {% if forloop.last %}<span class='fill {{class}}'></span>{% endif %}
+    {% endfor %}
+  {% else %}
+    {% for i in data[question.key] %}{% if i[0] != 'total' %}
+      {% assign answer = i[0] %}
+      {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
+      {% capture width %}{{data[question.key][answer] | times:280 | divided_by:total}}{% endcapture %}
+      <span class='bar {{class}} autogen autogen-{{forloop.index}}' style='width:{{width}}px;'>
+      <label>
+        <strong>{{answer}}</strong>
+        {{data[question.key][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key][answer]}} respondents
+      </label>
+      </span>
+      {% if forloop.last %}<span class='fill {{class}}'></span>{% endif %}
+    {% endif %}{% endfor %}
+  {% endif %}
+  {% else %}
     <span class='empty'>No data available</span>
   {% endif %}
 </div>
