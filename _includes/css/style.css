@@ -545,7 +545,7 @@ div.question { /* use div. here to avoid conflict with body.question */
   }
 
 .question-name,
-.agencey-name {
+.agency-name {
   font-weight:normal;
   width:260px;
   float:left;

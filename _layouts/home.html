@@ -1,8 +1,10 @@
 ---
 layout: default
+classes: front
 ---
 <div id='main'>
   <div class='map'>
+     <!--
      <div id='block-openlayers_plus-blockswitcher' class='ne'>
         <div class='openlayers-blockswitcher clear-block'>
           <div class='layers data'>
@@ -21,24 +23,25 @@ layout: default
         </div>
       </div>
       <div id='map-slide-toggle'>Larger Map</div>
+    -->
     <div id='home-map' class='waxmap' src='/map/home/{{id}}'></div>
   </div>
   <div class='navigation clearfix'>
     <div class='agencies'>
-        <h2>Administrative<br/>Agencies</h2>
-        <ul class='menu'>
-        {% for item in site.categories.agency %}
-          <li><a href="{{site.baseurl}}{{item.url}}">{{item.title}}</a></li>
-        {% endfor %}
-        </ul>
+      <h2>Administrative<br/>Agencies</h2>
+      <ul class='menu'>
+      {% for item in site.categories.agency reversed %}
+        <li><a href="{{site.baseurl}}{{item.url}}">{{item.title}}</a></li>
+      {% endfor %}
+      </ul>
     </div>
     <div class='questions'>
-        <h2>Sentiment<br/>Survey Questions</h2>
-        <ul class='menu questions'>
-        {{#groups}}
-            <li><a href="/question/{{id}}">{{shortname}}</a></li>
-        {{/groups}}
-        </ul>
+      <h2>Sentiment<br/>Survey Questions</h2>
+      <ul class='menu questions'>
+      {% for item in site.categories.questions reversed %}
+        <li><a href="{{site.baseurl}}{{item.url}}">{{item.title}}</a></li>
+      {% endfor %}
+      </ul>
     </div>
   </div>
   <div class='header'>

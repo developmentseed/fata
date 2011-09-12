@@ -1,14 +1,13 @@
 ---
 layout: default
 ---
-{% assign data = site.categories.data[0][page.key] %}
 <div id='left' class='sidebar'>
   <h2>Administrative Agencies</h2>
   <ul class='menu'>
-    {% for item in site.categories.agency %}
-      <li {% if item.url == page.url %}class='active' {% endif %}>
-        <a href='{{site.baseurl}}{{item.url}}'>{{item.title}}</a>
-      </li>
+    {% for item in site.categories.agency reversed %}
+    <li {% if item.url == page.url %}class='active' {% endif %}>
+      <a href='{{site.baseurl}}{{item.url}}'>{{item.title}}</a>
+    </li>
     {% endfor %}
   </ul>
   <div class='ender'></div>
@@ -16,7 +15,7 @@ layout: default
 
 <div id='main'>
   <div class='breadcrumb clearfix'>
-    <a href='{{site.baseurl}}'>Home</a>
+    <a href='{{site.baseurl}}/index.html'>Home</a>
     <span>Administrative Agencies</span>
     <span class='last'>{{page.title}}</span>
   </div>
@@ -25,6 +24,8 @@ layout: default
   </div>
   <div class='header'>
     <h2>{{page.title}}</h2>
+
+    {% assign data = site.categories.data[0][page.key] %}
     <div id='drone-info'>
       <h3><span class='icon'></span>Drone strikes*</h3>
       <ul>
@@ -66,6 +67,7 @@ layout: default
       <li><small>* Includes data through July 2010</small></li>
       </ul>
     </div>
+
     <div class='profile prose'>{{content}}</div>
   </div>
   <div class='content' id='content'>
@@ -90,30 +92,11 @@ layout: default
     <div id='ajax-content'>
     {% for group in site.categories.questions reversed %}
     <div class='group clearfix'>
-      <div class='more-link'><a href='{{site.baseurl}}{{item.url}}'>Details</a></div>
+      <div class='more-link'><a href='{{site.baseurl}}{{group.url}}'>Details</a></div>
       <h2 class='group-shortname'>{{group.title}}</h2>
       <p class='group-text'>{{group.content}}</p>
-      {% for item in group.questions %}
-      <div class='question clearfix'>
-        <h2 class='question-name'>{{item.title}}</h2>
-        <div class='graph'>
-          {% assign total = data.All[item.key].total %}
-          {% if data.All[item.key] %}{% for answer in group.answers %}
-            {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
-            {% capture width %}{{data.All[item.key][answer] | times:280 | divided_by:total}}{% endcapture %}
-            <span class='bar {{class}}' style='width:{{width}}px;'>
-            <label>
-              <strong>{{answer}}</strong>
-              {{data.All[item.key][answer] | times:100 | divided_by:total}}% &mdash; {{data.All[item.key][answer]}} respondents
-            </label>
-            </span>
-            {% if forloop.last %}<span class='fill {{class}}'></span>{% endif %}
-          {% endfor %}{% else %}
-            <span class='empty'>No data available</span>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
+      {% assign data = site.categories.data[0][page.key].All %}
+      {% for question in group.questions %}{% include question.html %}{% endfor %}
     </div>
     {% endfor %}
     </div>
