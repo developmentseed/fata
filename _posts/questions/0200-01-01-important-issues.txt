@@ -1,0 +1,37 @@
+---
+category: questions
+layout: questions
+title: Local Issues
+key: Q1
+questions:
+  - key: Q1a
+    title: Corruption of local officials
+  - key: Q1b
+    title: Lack of security
+  - key: Q1c
+    title: Drone attacks
+  - key: Q1d
+    title: Lack of jobs
+  - key: Q1e
+    title: Foreign fighters
+  - key: Q1f
+    title: Lack of schools and education
+  - key: Q1g
+    title: Lack of good roads and transportation
+  - key: Q1h
+    title: Poor health care and access to water
+  - key: Q1i
+    title: Taliban fighters
+  - key: Q1j
+    title: People fleeing from the area as refugees
+  - key: Q1k
+    title: Afghan refugees coming into the area
+answers:
+  - Very important
+  - Somewhat important
+  - Somewhat unimportant
+  - Not at all important
+  - Don't know
+  - Refused
+---
+How important are the following issues?

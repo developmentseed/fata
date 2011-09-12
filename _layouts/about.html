@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div id='left' class='sidebar'>
+  <h2>About</h2>
+  <ul class='menu'>
+    {% for item in site.categories.about reversed %}
+    <li {% if page.url == item.url %}class='active'{% endif %}>
+      <a href='{{site.baseurl}}{{item.url}}'>{{item.title}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class='ender'></div>
+</div>
+<div id='main'>
+  <div class='breadcrumb clearfix'>
+    <a href='/'>Home</a>
+    <span>About</span>
+    <span class='last'>{{page.title}}</span>
+  </div>
+  <div class='header'></div>
+  <div class='content'>
+    <div class='section'>
+      <div class='prose'>{{content}}</div>
+    </div>
+  </div>
+</div>

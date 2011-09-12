@@ -1,0 +1,33 @@
+---
+category: questions
+layout: questions
+title: Government
+key: Q2
+questions:
+  - key: Q2a
+    title: Building new schools
+  - key: Q2b
+    title: Improving mosques
+  - key: Q2c
+    title: Improving health care
+  - key: Q2d
+    title: Improving the economy
+  - key: Q2e
+    title: Expelling foreign fighters
+  - key: Q2f
+    title: Support more drone attacks
+  - key: Q2g
+    title: Implementing strict Sharia
+  - key: Q2h
+    title: Ensuring and independent judiciary
+  - key: Q2i
+    title: Defeating Taliban fighers
+answers:
+  - Very important
+  - Somewhat important
+  - Somewhat unimportant
+  - Not at all important
+  - Don't know
+  - Refused
+---
+How important are the following long-term goals for the government of Pakistan in the tribal areas?

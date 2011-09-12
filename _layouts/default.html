@@ -1,0 +1,58 @@
+---
+siteTitle: "FATA: Inside Pakistan's Tribal Regions"
+siteSlogan: Data and in-depth analysis from all seven tribal agencies of FATA-pakistan
+---
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <title>{% if page.url == '/index.html' %}{{page.title}}{% else %}{{page.title}} | {{page.siteTitle}}{% endif %}</title>
+  <link rel='stylesheet' href='{{site.baseurl}}/site.css' type='text/css' media='all' charset='utf-8'>
+  <script type='text/javascript' src='{{site.baseurl}}/site.js'></script>
+</head>
+<body>
+  <div id='global'><div class='limiter'>
+    <a class='new-america' href='http://www.newamerica.net'>New American Foundation</a>
+  </div></div>
+  <div class='limiter'>
+    <div id='branding'>
+      <h1 class='site-name'><a href='/'>{{page.siteTitle}}</a></h1>
+      <div class='slogan'>{{page.siteSlogan}}</div>
+      <div class='more-link clearfix'><a href='/about'>About</a></div>
+    </div>
+    {{content}}
+    <div id='footer'>
+      Copyright © <a href='http://newamerica.net/about/copyright'>New America Foundation</a><br/>Background photo by <a href='http://www.flickr.com/photos/aamerjaved/2914342056/'>AamerJaved</a> Creative Commons (<a href='http://creativecommons.org/licenses/by-nc-nd/2.0/'>by-nc-nd 2.0</a>)
+    </div>
+  </div>
+
+  <!--
+  <script src='/js/jquery.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/stylewriter/jquery-jsonp.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/jquery.ba-bbq-min.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/OpenLayers.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/stylewriter/stylewriter_xyz.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/zoomonload.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/stylewriter/stylewriter_interaction.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/stylewriter/stylewriter_tooltip.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/openlayers_plus/behaviors/openlayers_plus_behavior_blockswitcher.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/openlayers_plus/behaviors/openlayers_plus_behavior_legend.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/underscore-min.js' type='text/javascript' charset='utf-8'></script>
+  <script src='http://js.mapbox.com/ol/2.8/mapbox.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/openlayers_wax.js' type='text/javascript' charset='utf-8'></script>
+  <script src='/js/site.js' type='text/javascript' charset='utf-8'></script>
+
+  <script type='text/javascript'>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{.}}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  -->
+</body>
+</html>

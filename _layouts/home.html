@@ -1,0 +1,91 @@
+---
+layout: default
+---
+<div id='main'>
+  <div class='map'>
+     <div id='block-openlayers_plus-blockswitcher' class='ne'>
+        <div class='openlayers-blockswitcher clear-block'>
+          <div class='layers data'>
+            <h2 class='layers-title'>Map Overlays</h2>
+            <div class='layers-content'>
+            </div>
+          </div>
+          <div style='display:none' class='factory'>
+            <div class='form-item form-option radio'>
+              <label class='option'></label>
+            </div>
+            <div class='form-item form-option checkbox'>
+              <label class='option'><span class='key'></span><input class='form-checkbox' type='checkbox' /></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='map-slide-toggle'>Larger Map</div>
+    <div id='home-map' class='waxmap' src='/map/home/{{id}}'></div>
+  </div>
+  <div class='navigation clearfix'>
+    <div class='agencies'>
+        <h2>Administrative<br/>Agencies</h2>
+        <ul class='menu'>
+        {% for item in site.categories.agency %}
+          <li><a href="{{site.baseurl}}{{item.url}}">{{item.title}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class='questions'>
+        <h2>Sentiment<br/>Survey Questions</h2>
+        <ul class='menu questions'>
+        {{#groups}}
+            <li><a href="/question/{{id}}">{{shortname}}</a></li>
+        {{/groups}}
+        </ul>
+    </div>
+  </div>
+  <div class='header'>
+    <div class='section'>
+        <div class='partners clearfix'>
+            <h3>In Partnership With</h3>
+            <ul>
+              {% for item in page.partners %}
+              <li><a href='{{item.url}}'>{{item.title}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+        <div class='prose'>{{page.intro|markdownify}}</div>
+    </div>
+  </div>
+  <div class='content'>
+    {{content}}
+    <!--
+    {{#sections}}
+    <div class='section'>
+        {{#group}}
+        <div class='group clearfix'>
+            <h2 class='group-shortname'>{{shortname}}</h2>
+            <p class='group-text'>{{text}}</p>
+            {{#renderedQuestions}}
+            <div class='question clearfix'>
+                <h2 class='question-name'>{{{name}}}</h2>
+                <div class='graph'>
+                    {{^responses}}
+                        <span class='empty'>No data available</span>
+                    {{/responses}}
+                    {{#responses}}
+                    <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+                        <label>
+                            <strong>{{label}}</strong>
+                            {{percent}}% &mdash; {{number}} respondents
+                        </label>
+                    </span>
+                    {{/responses}}
+                </div>
+            </div>
+            {{/renderedQuestions}}
+        </div>
+        {{/group}}
+        <div class='prose'>{{{content}}}</div>
+    </div>
+    {{/sections}}
+    -->
+  </div>
+</div>

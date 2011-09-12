@@ -1,0 +1,123 @@
+---
+layout: default
+---
+{% assign data = site.categories.data[0][page.key] %}
+
+<div id='left' class='sidebar'>
+  <h2>Administrative Agencies</h2>
+  <ul class='menu'>
+    {% for item in site.categories.agency %}
+      <li {% if item.url == page.url %}class='active' {% endif %}>
+        <a href='{{site.baseurl}}{{item.url}}'>{{item.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <div class='ender'></div>
+</div>
+
+<div id='main'>
+  <div class='breadcrumb clearfix'>
+    <a href='/'>Home</a>
+    <span>Administrative Agencies</span>
+    <span class='last'>{{page.title}}</span>
+  </div>
+  <div class='map'>
+    <div id='agency-map' class='waxmap' src='/map/agency/{{agencyid}}'></div>
+  </div>
+  <div class='header'>
+    <h2>{{page.title}}</h2>
+    <div id='drone-info'>
+      <h3><span class='icon'></span>Drone strikes*</h3>
+      <ul>
+      <li><span class='label'>Total incidents</span> <span class='value'>
+        {% if data.drone.total %}
+          {{data.drone.total}}
+        {% else %}
+          0
+        {% endif %}
+        strikes
+      </span></li>
+      <li><span class='label'>Non-militants killed</span> <span class='value'>
+        {% if data.drone.civilian_deaths_max %}
+          {{data.drone.civilian_deaths_min}}
+        {% else %}
+          0
+        {% endif %}
+        {% if data.drone.civilian_deaths_max %}
+          to {{data.drone.civilian_deaths_max}}
+        {% endif %}
+      </span></li>
+      <li><span class='label'>Militant deaths</span> <span class='value'>
+        {% if data.drone.militant_deaths_min %}
+          {{data.drone.militant_deaths_min}}
+        {% else %}
+          0
+        {% endif %}
+        {% if data.drone.militant_deaths_max %}
+          to {{data.drone.militant_deaths_max}}
+        {% endif %}
+      </span></li>
+      <li><span class='label'>Militant Leaders killed</span> <span class='value'>
+        {% if data.drone.leader_deaths %}
+          {{ data.drone.leader_deaths }}
+        {% else %}
+          0
+        {% endif %}
+      </span></li>
+      <li><small>* Includes data through July 2010</small></li>
+      </ul>
+    </div>
+    <div class='profile prose'>{{content}}</div>
+  </div>
+  <div class='content' id='content'>
+    <div class='demographics-wrapper'><div class='demographics'>
+      <div class='filter filter-title'>
+        <h2>Filter by demographics</h2>
+        <div class='facets facets-1 clearfix'>
+          <a class='ajax' id='facet-all' href='/agency/{{agencyid}}}'>All results</a>
+        </div>
+      </div>
+      {% for item in data.Q1a %}
+      <div class='filter'>
+        <label>{{item[0]}}</label>
+        <div class='facets facets-{{item[1].size}} clearfix'>
+          {% for item in item[1] %}
+          <a id='facet-{{../id}}-{{id}}' class='ajax {% comment %}active{% endcomment %}' href='/agency/{{../../agencyid}}/{{../id}}/{{id}}'>{{item[0]}}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div></div>
+    <div id='ajax-content'>
+    {% for group in site.categories.questions reversed %}
+    <div class='group clearfix'>
+      <div class='more-link'><a href='{{site.baseurl}}{{item.url}}'>Details</a></div>
+      <h2 class='group-shortname'>{{group.title}}</h2>
+      <p class='group-text'>{{group.content}}</p>
+      {% for item in group.questions %}
+      <div class='question clearfix'>
+        <h2 class='question-name'>{{item.title}}</h2>
+        <div class='graph'>
+          {% assign total = data.All[item.key].total %}
+          {% assign offset = 0 %}
+          {% if data.All[item.key] %}{% for answer in group.answers %}
+            {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
+            {% capture width %}{{data.All[item.key][answer] | times:280 | divided_by:total}}{% endcapture %}
+            <span class='bar {{class}}' style='width:{{width}}px; left:{{offset}}px;'>
+            <label>
+              <strong>{{bar[0]}}</strong>
+              {{data.All[item.key][answer] | times:100 | divided_by:total}}% &mdash; {{data.All[item.key][answer]}} respondents
+            </label>
+            </span>
+            {% capture offset %}{{offset | plus:width}}{% endcapture %}
+          {% endfor %}{% else %}
+            <span class='empty'>No data available</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
