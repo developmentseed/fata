@@ -2,7 +2,7 @@
   <div class='filter filter-title'>
     <h2>Filter by demographics</h2>
     <div class='facets facets-1 clearfix'>
-      <a class='ajax active' id='facet-all' href='{{site.baseurl}}{{page.url}}#All'>All results</a>
+      <a class='active' href='{{site.baseurl}}{{page.url}}#All'>All results</a>
     </div>
   </div>
   {% for demographic in page.demographics %}
@@ -10,7 +10,7 @@
     <label>{{demographic[0]}}</label>
     <div class='facets facets-{{demographic[1].size}} clearfix'>
       {% for item in demographic[1] %}
-      <a id='facet-{{demographic[0]|replace:' ','-'|downcase}}-{{item|downcase}}' class='ajax {% comment %}active{% endcomment %}' href='{{site.baseurl}}{{page.url}}#{{demographic[0]|replace:' ','-'|downcase}}/{{item}}'>{{item}}</a>
+      <a href='{{site.baseurl}}{{page.url}}#{{item.key}}'>{{item.title}}</a>
       {% endfor %}
     </div>
   </div>

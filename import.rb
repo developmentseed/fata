@@ -34,10 +34,10 @@ def csv(filename)
 end
 
 def plus(hash, group, key, value)
-  hash[group] = hash[group] || {}
-  hash[group][key] = hash[group][key] || {}
-  hash[group][key][value] = (hash[group][key][value] || 0) + 1
-  hash[group][key]['total'] = (hash[group][key]['total'] || 0) + 1
+  hash[key] = hash[key] || {}
+  hash[key][group] = hash[key][group] || {}
+  hash[key][group][value] = (hash[key][group][value] || 0) + 1
+  hash[key][group]['total'] = (hash[key][group]['total'] || 0) + 1
 end
 
 # Final data hash.
@@ -60,47 +60,47 @@ csv('_data/fata_variables.csv').each do |record|
 
         # Gender
         if record['D1'] == 'Male'
-          plus(scope, 'Gender/Male', key, value)
+          plus(scope, 'g0', key, value)
         elsif record['D1'] = 'Female'
-          plus(scope, 'Gender/Female', key, value)
+          plus(scope, 'g1', key, value)
         end
 
         # Age
         if !record['D2'].is_a? Fixnum
         elsif record['D2'] >= 18 and record['D2'] <= 25
-          plus(scope, 'Age/18-25', key, value)
+          plus(scope, 'a0', key, value)
         elsif record['D2'] >= 26 and record['D2'] <= 39
-          plus(scope, 'Age/26-39', key, value)
+          plus(scope, 'a1', key, value)
         elsif record['D2'] >= 40 and record['D2'] <= 54
-          plus(scope, 'Age/40-54', key, value)
+          plus(scope, 'a2', key, value)
         elsif record['D2'] >= 55
-          plus(scope, 'Age/55+', key, value)
+          plus(scope, 'a3', key, value)
         end
 
         # Years of Education
         if !record['D3'].is_a? Fixnum
         elsif record['D3'] == 0
-          plus(scope, 'Years of Education/0', key, value)
+          plus(scope, 'e0', key, value)
         elsif record['D3'] >= 1 and record['D3'] <= 7
-          plus(scope, 'Years of Education/1-7', key, value)
+          plus(scope, 'e1', key, value)
         elsif record['D3'] >= 8 and record['D3'] <= 11
-          plus(scope, 'Years of Education/8-11', key, value)
+          plus(scope, 'e2', key, value)
         elsif record['D3'] >= 12
-          plus(scope, 'Years of Education/12+', key, value)
+          plus(scope, 'e3', key, value)
         end
 
         # Marital status
         if record['D7a'] == 'Married'
-          plus(scope, 'Marital Status/Married', key, value)
+          plus(scope, 'm0', key, value)
         elsif record['D7a'] == 'Single' or record['D7a'] == 'Widowed or Divorced'
-          plus(scope, 'Marital Status/Unmarried', key, value)
+          plus(scope, 'm1', key, value)
         end
 
         # Income level
         if ["Rs. 10,001 – 15,000", "Rs. 15,001 or more"].include?(record['D8'])
-          plus(scope, 'Income Level/High', key, value)
+          plus(scope, 'i0', key, value)
         elsif ["Rs. 1,001 – 3,000", "Rs. 3,001 – 5,000", "Rs. 5,001 – 7,000", "Rs. 7,001 – 10,000"]
-          plus(scope, 'Income Level/Low', key, value)
+          plus(scope, 'i1', key, value)
         end
       end
     end

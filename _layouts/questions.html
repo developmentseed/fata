@@ -3,24 +3,38 @@ layout: default
 classes: question
 demographics:
   Gender:
-    - Male
-    - Female
+    - title: Male
+      key: g0
+    - title: Female
+      key: g1
   Age:
-    - 18-25
-    - 26-39
-    - 40-54
-    - 55+
+    - title: 18-25
+      key: a0
+    - title: 26-39
+      key: a1
+    - title: 40-54
+      key: a2
+    - title: 55+
+      key: a3
   Years of Education:
-    - 0
-    - 1-7
-    - 8-11
-    - 12+
+    - title: 0
+      key: e0
+    - title: 1-7
+      key: e1
+    - title: 8-11
+      key: e2
+    - title: 12+
+      key: e3
   Marital Status:
-    - Married
-    - Unmarried
+    - title: Married
+      key: m0
+    - title: Unmarried
+      key: m1
   Income Level:
-    - High
-    - Low
+    - title: High
+      key: i0
+    - title: Low
+      key: i1
 ---
 <div id='left' class='sidebar'>
   <h2>Sentiment Survey Questions</h2>
@@ -46,7 +60,7 @@ demographics:
     <div id='ajax-content'>
     <div class='group clearfix'>
       <h2 class='group-shortname'>FATA Totals</h2>
-      {% assign data = site.categories.data[0]['fata'].All %}
+      {% assign data = site.categories.data[0]['fata'] %}
       {% assign group = page %}
       {% for question in page.questions %}
       <div class='question clearfix'>
@@ -62,7 +76,7 @@ demographics:
         {% for agency in site.categories.agency reversed %}
         <div class='question clearfix'>
           <h2 class='agency-name'><a href="{{site.baseurl}}{{agency.url}}">{{agency.title}}</a></h2>
-          {% assign data = site.categories.data[0][agency.key].All %}
+          {% assign data = site.categories.data[0][agency.key] %}
           {% assign group = page %}
           {% include graph.html %}
         </div>

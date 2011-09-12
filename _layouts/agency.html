@@ -2,24 +2,38 @@
 layout: default
 demographics:
   Gender:
-    - Male
-    - Female
+    - title: Male
+      key: g0
+    - title: Female
+      key: g1
   Age:
-    - 18-25
-    - 26-39
-    - 40-54
-    - 55+
+    - title: 18-25
+      key: a0
+    - title: 26-39
+      key: a1
+    - title: 40-54
+      key: a2
+    - title: 55+
+      key: a3
   Years of Education:
-    - 0
-    - 1-7
-    - 8-11
-    - 12+
+    - title: 0
+      key: e0
+    - title: 1-7
+      key: e1
+    - title: 8-11
+      key: e2
+    - title: 12+
+      key: e3
   Marital Status:
-    - Married
-    - Unmarried
+    - title: Married
+      key: m0
+    - title: Unmarried
+      key: m1
   Income Level:
-    - High
-    - Low
+    - title: High
+      key: i0
+    - title: Low
+      key: i1
 ---
 <div id='left' class='sidebar'>
   <h2>Administrative Agencies</h2>
@@ -98,7 +112,7 @@ demographics:
       <div class='more-link'><a href='{{site.baseurl}}{{group.url}}'>Details</a></div>
       <h2 class='group-shortname'>{{group.title}}</h2>
       <p class='group-text'>{{group.content}}</p>
-      {% assign data = site.categories.data[0][page.key].All %}
+      {% assign data = site.categories.data[0][page.key] %}
       {% for question in group.questions %}
       <div class='question clearfix'>
         <h2 class='question-name'>{{question.title}}</h2>
@@ -110,16 +124,3 @@ demographics:
     </div>
   </div>
 </div>
-
-<script type='text/javascript'>
-var data = {};
-{% assign key = 'All' %}
-{% assign data = site.categories.data[0][page.key][key] %}
-{% include scope.json %}
-
-{% for demographic in page.demographics %}{% for facet in demographic[1] %}
-{% capture key %}{{demographic[0]}}/{{facet}}{% endcapture %}
-{% assign data = site.categories.data[0][page.key][key] %}
-{% include scope.json %}
-{% endfor %}{% endfor %}
-</script>

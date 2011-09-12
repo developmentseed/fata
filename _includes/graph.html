@@ -1,24 +1,24 @@
 <div class='graph' id='{{question.key}}'>
-  {% assign total = data[question.key].total %}
-  {% if data[question.key] %}
+  {% assign total = data[question.key]['All'].total %}
+  {% if data[question.key]['All'] %}
   {% if group.answers %}
     {% for answer in group.answers %}
       {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
-      {% capture width %}{{data[question.key][answer] | times:280 | divided_by:total}}{% endcapture %}
-      <a class='{{class}}' style='width:{{width}}px;'><em>
+      {% capture width %}{{data[question.key]['All'][answer] | times:280 | divided_by:total}}{% endcapture %}
+      <a class='{{class}}' style='width:{{width}}px;' {% include scope.json %}><em>
         <b>{{answer}}</b>
-        <i>{{data[question.key][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key][answer]}} respondents</i>
+        <i>{{data[question.key]['All'][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key]['All'][answer]}} respondents</i>
       </em></a>
       {% if forloop.last %}<a class='fill {{class}}'></a>{% endif %}
     {% endfor %}
   {% else %}
-    {% for i in data[question.key] %}{% if i[0] != 'total' %}
+    {% for i in data[question.key]['All'] %}{% if i[0] != 'total' %}
       {% assign answer = i[0] %}
       {% capture class %}{{answer | downcase | remove:"'" | replace:' ','-'}}{% endcapture %}
-      {% capture width %}{{data[question.key][answer] | times:280 | divided_by:total}}{% endcapture %}
-      <a class='{{class}} autogen autogen-{{forloop.index}}' style='width:{{width}}px;'><em>
+      {% capture width %}{{data[question.key]['All'][answer] | times:280 | divided_by:total}}{% endcapture %}
+      <a class='{{class}} autogen autogen-{{forloop.index}}' style='width:{{width}}px;' {% include scope.json %}><em>
         <b>{{answer}}</b>
-        <i>{{data[question.key][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key][answer]}} respondents</i>
+        <i>{{data[question.key]['All'][answer] | times:100 | divided_by:total}}% &mdash; {{data[question.key]['All'][answer]}} respondents</i>
       </em></a>
       {% if forloop.last %}<a class='fill {{class}}'></a>{% endif %}
     {% endif %}{% endfor %}
