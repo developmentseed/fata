@@ -1,5 +1,7 @@
 $(function() {
 var demographics = $('.demographics');
+if (!demographics.size()) return;
+
 $('a', demographics).click(function() {
   var facet = $(this).attr('href').split('#').pop().toLowerCase();
   var template = _('<%=pct%>% &mdash; <%=num%> respondents').template();
@@ -26,4 +28,15 @@ $('a', demographics).click(function() {
   $(this).addClass('active');
   return false;
 });
+
+var filterPosition = demographics.offset().top;
+$(window).bind('scroll', function(e) {
+  var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
+  if (scroll > filterPosition) {
+    $('body').addClass('fix-filters');
+  } else {
+    $('body').removeClass('fix-filters');
+  }
+});
+
 });
