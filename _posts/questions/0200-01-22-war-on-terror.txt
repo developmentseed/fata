@@ -1,0 +1,17 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Do you support or oppose the U.S.-led war on terror?
+  key: Q22
+title: The War on Terror
+key: Q22
+answers: 
+- Strongly Support
+- Somewhat Support
+- Somewhat Oppose
+- Strongly Oppose
+- Don't know
+- Refused
+---
+Do you support or oppose the U.S.-led war on terror?

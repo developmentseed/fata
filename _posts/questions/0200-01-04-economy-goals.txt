@@ -1,0 +1,25 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Better water/sanitation
+  key: Q4c
+- title: Better agricultural assistance
+  key: Q4d
+- title: Land reform to allow for local ownership
+  key: Q4e
+- title: New jobs
+  key: Q4a
+- title: New roads and transportation
+  key: Q4b
+title: Economy
+key: Q4
+answers: 
+- Very important
+- Somewhat important
+- Somewhat unimportant
+- Not at all important
+- Don't know
+- Refused
+---
+How important are the following long-term goals for the economy in the tribal areas?

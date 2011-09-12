@@ -1,0 +1,12 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Which of the following groups is <em>most responsible</em> for the violence inside FATA?
+  key: Q12
+title: Violence
+key: Q12
+answers: []
+
+---
+Which of the following groups is <em>most responsible</em> for the violence inside FATA?

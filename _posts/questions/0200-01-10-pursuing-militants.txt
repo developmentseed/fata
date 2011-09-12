@@ -1,0 +1,21 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: The U.S. military working with the Pakistani military to pursue Taliban, Al Qaeda, and foreign fighters inside Pakistan
+  key: Q10b
+- title: The U.S. military pursuing Taliban, Al Qaeda, and foreign fighters by itself inside Pakistan, without working with the Pakistani military
+  key: Q10c
+- title: The Pakistani military pursuing Taliban, Al Qaeda, and foreign fighters inside FATA
+  key: Q10a
+title: Pursuing Militants
+key: Q10
+answers: 
+- Strongly support
+- Somewhat support
+- Somewhat oppose
+- Strongly oppose
+- Don't know
+- Refused
+---
+Do you support or oppose each of the following?

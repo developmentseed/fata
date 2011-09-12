@@ -1,0 +1,33 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Maliks
+  key: Q19a
+- title: Political agents
+  key: Q19b
+- title: Pakistani army
+  key: Q19c
+- title: Frontier Corps
+  key: Q19d
+- title: Arab and other Foreign fighters
+  key: Q19e
+- title: Local Imams and Mullahs
+  key: Q19f
+- title: Taliban fighers
+  key: Q19g
+- title: Political leaders
+  key: Q19h
+- title: NGOs
+  key: Q19i
+title: Local Actors
+key: Q19
+answers: 
+- Very important
+- Somewhat important
+- Somewhat unimportant
+- Not at all important
+- Don't know
+- Refused
+---
+Are the following people important in your area?

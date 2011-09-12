@@ -1,0 +1,17 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Do you support or oppose United States military drone strikes by air inside FATA today?
+  key: Q16
+title: Drone Strikes
+key: Q16
+answers: 
+- Strongly Support
+- Somewhat Support
+- Somewhat Oppose
+- Strongly Oppose
+- Don't know
+- Refused
+---
+Do you support or oppose United States military drone strikes by air inside FATA today?

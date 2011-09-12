@@ -1,0 +1,23 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Afghan Taliban fighters (led by Mullah Omar)
+  key: Q11c
+- title: Pakistani Taliban fighters
+  key: Q11d
+- title: The United States Military
+  key: Q11a
+- title: Arab and foreign Al Qaeda fighters
+  key: Q11b
+title: Foreign Groups
+key: Q11
+answers: 
+- Strongly support
+- Somewhat support
+- Somewhat oppose
+- Strongly oppose
+- Don't know
+- Refused
+---
+Do you support or oppose the presence of the following groups inside FATA today?

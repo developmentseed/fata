@@ -1,0 +1,43 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Manmohan Singh
+  key: Q9h
+- title: Asif Ali Zardari
+  key: Q9i
+- title: Fazl-ur-Rahman
+  key: Q9j
+- title: Qazi Hussain Ahmed
+  key: Q9k
+- title: Pervez Musharraf
+  key: Q9a
+- title: Osama bin Laden
+  key: Q9l
+- title: Barack Obama
+  key: Q9b
+- title: Mullah Omar
+  key: Q9m
+- title: Ashfaq Parvez Kayani
+  key: Q9c
+- title: Sami ul-Haq
+  key: Q9n
+- title: Jaluddin Haqqani
+  key: Q9d
+- title: Nawaz Sharif
+  key: Q9e
+- title: Yousaf Raza Gilani
+  key: Q9f
+- title: Siraj Haqqani
+  key: Q9g
+title: Leadership
+key: Q9
+answers: 
+- Very favorable
+- Somewhat favorable
+- Somewhat unfavorable
+- Very unfavorable
+- Don't know
+- Refused
+---
+How favorable is your opinion of the following individuals?

@@ -1,0 +1,21 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Arab and foreign Al Qaeda fighters
+  key: Q13a
+- title: Afghan Taliban fighters
+  key: Q13b
+- title: Pakistani Taliban fighters
+  key: Q13c
+- title: Other militant groups (e.g. Mangal Bagh's faction, etc)
+  key: Q13d
+title: Negotiation
+key: Q13
+answers: 
+- Negotiate
+- Not Negotiate and Fight
+- Don't know
+- Refused
+---
+Should the Pakistani government negotiate with, or continue to fight, the following groups?

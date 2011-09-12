@@ -1,0 +1,23 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: The tribal areas should be governed by Pakistani government courts
+  key: Q6a
+- title: The tribal areas should be governed by local <em>jirga</em>
+  key: Q6b
+- title: FATA should be governed by strict Sharia
+  key: Q6c
+- title: FATA should be governed by the Pakistani military
+  key: Q6d
+title: Justice
+key: Q6
+answers: 
+- Very important
+- Somewhat important
+- Somewhat unimportant
+- Not at all important
+- Don't know
+- Refused
+---
+How important are the following long-term goals for justice in the tribal areas?

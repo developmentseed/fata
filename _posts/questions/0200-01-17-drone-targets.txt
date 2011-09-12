@@ -1,0 +1,12 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Do you think American drone strikes for the most part accurately kill militants or mostly kill civilians?
+  key: Q17
+title: Drone Targets
+key: Q17
+answers: []
+
+---
+Do you think American drone strikes for the most part accurately kill militants or mostly kill civilians?

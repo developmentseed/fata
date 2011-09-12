@@ -1,0 +1,25 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: FATA should be governed by the Pakistani military
+  key: Q5d
+- title: FATA should have an independent and elected council
+  key: Q5e
+- title: FATA should be governed as it now is
+  key: Q5a
+- title: Regular Pakistani criminal and civil laws should be extended to FATA
+  key: Q5b
+- title: FATA should become part of an independent Pashtun state
+  key: Q5c
+title: Governing FATA
+key: Q5
+answers: 
+- Very important
+- Somewhat important
+- Somewhat unimportant
+- Not at all important
+- Don't know
+- Refused
+---
+How important are the following long-term goals for governing in the tribal areas?

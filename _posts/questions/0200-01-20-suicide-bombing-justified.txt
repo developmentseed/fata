@@ -1,0 +1,17 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Do you think that suicide bombings and attacks are justified?
+  key: Q20
+title: Suicide Bombings
+key: Q20
+answers: 
+- Often Justified
+- Sometimes Justified
+- Rarely Justified
+- Never Justified
+- Don't know
+- Refused
+---
+Do you think that suicide bombings and attacks are justified?

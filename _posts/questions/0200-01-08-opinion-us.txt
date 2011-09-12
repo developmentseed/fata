@@ -1,0 +1,31 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Withdrawal of U.S. military from Afghanistan
+  key: Q8g
+- title: U.S. brokering a comprehensive Middle East peace between Israelis and Palestinians
+  key: Q8h
+- title: U.S. business investment in FATA
+  key: Q8a
+- title: U.S. aid for school construction and teacher training in FATA
+  key: Q8b
+- title: U.S. aid for medical care and training in FATA
+  key: Q8c
+- title: U.S. military equipment and training to the Pakistani armed forces in FATA
+  key: Q8d
+- title: U.S. increasing visas for people in FATA to work or study in the United States
+  key: Q8e
+- title: U.S. increasing educational scholarships for students in FATA to study in the United States
+  key: Q8f
+title: Opinions of the U.S.
+key: Q8
+answers: 
+- A great deal
+- Some-what
+- Not significantly
+- Not at all
+- Don't know
+- Refused
+---
+Would any of the following improve your opinion of the United States?

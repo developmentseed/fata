@@ -1,0 +1,23 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: The U.S. military
+  key: Q21b
+- title: Pakistani civilians
+  key: Q21c
+- title: American civilians
+  key: Q21d
+- title: The Pakistani military and police
+  key: Q21a
+title: Bombing Targets
+key: Q21
+answers: 
+- Often Justified
+- Sometimes Justified
+- Rarely Justified
+- Never Justified
+- Don't know
+- Refused
+---
+Are suicide bombings justified against the following targets?

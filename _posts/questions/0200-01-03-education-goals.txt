@@ -1,0 +1,23 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Building new government schools for girls
+  key: Q3b
+- title: Building new madrassas for boys
+  key: Q3c
+- title: Building new madrassas for girls
+  key: Q3d
+- title: Building new government schools for boys
+  key: Q3a
+title: Education
+key: Q3
+answers: 
+- Very important
+- Somewhat important
+- Somewhat unimportant
+- Not at all important
+- Don't know
+- Refused
+---
+How important are the following long-term goals for education in the tribal areas?

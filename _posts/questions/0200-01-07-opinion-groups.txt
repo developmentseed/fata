@@ -1,0 +1,37 @@
+--- 
+layout: questions
+category: questions
+questions: 
+- title: Federal Pakistani Government in Islamabad
+  key: Q7g
+- title: Provincial government in Peshawar
+  key: Q7h
+- title: Political agent
+  key: Q7i
+- title: Pakistani Police
+  key: Q7j
+- title: FATA Secretariat
+  key: Q7k
+- title: Arab and other foreign fighters
+  key: Q7a
+- title: FATA Development Authority
+  key: Q7l
+- title: American military
+  key: Q7b
+- title: Pakistani army
+  key: Q7c
+- title: Frontier corps
+  key: Q7d
+- title: Pakistani Taliban
+  key: Q7e
+title: Group Actors
+key: Q7
+answers: 
+- Very favorable
+- Somewhat favorable
+- Somewhat unfavorable
+- Very unfavorable
+- Don't know
+- Refused
+---
+How favorable is your opinion of the following groups?
