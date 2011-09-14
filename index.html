@@ -101,3 +101,61 @@ sections:
     <p>In terms of administering justice in the tribal regions, the least popular option was having justice delivered by the Taliban, with only 12 percent believing this to be very important. By contrast, nearly two-thirds chose being governed by local tribal leaders.</p>
   </div>
 </div>
+
+<script type='text/javascript'>
+var templates = [
+  _('<strong><%=assumed_target%></strong><br /><%=deaths_min%> deaths &mdash <%=date%>').template(),
+  _('<strong><%=adm2_name%></strong><br /><%=positive_pct%>% support &mdash; <%=positive%> respondents').template()
+];
+var map = {
+  "minzoom":6,
+  "maxzoom":9,
+  "center":[72,33.5,7],
+  "attribution": "Certain data &copy; OpenStreetMap contributors, CC-BY-SA",
+  "formatter": function(o, d) {
+    if (templates[d.__layer__]) return templates[d.__layer__](d);
+  },
+  "scheme":"tms"
+};
+var layers = function(layers) {
+  var schema = 'http://{s}.tiles.mapbox.com/devseed/1.0.0/newamerica.pakistan-fata,{l}/{z}/{x}/{y}.{format}';
+  return {
+    tiles: _(['a', 'b', 'c', 'd']).map(function(s) {
+      return schema.replace('{s}', s).replace('{l}', layers).replace('{format}', 'png128');
+    }),
+    grids: _(['a', 'b', 'c', 'd']).map(function(s) {
+      return schema.replace('{s}', s).replace('{l}', layers).replace('{format}', 'grid.json');
+    })
+  };
+};
+
+var mm = com.modestmaps;
+var m = new mm.Map('map', new wax.mm.connector(_(map).extend(layers('fata-q16,fata-drones'))), null, [
+    new mm.MouseHandler(),
+    new mm.TouchHandler()
+]);
+m.setCenterZoom(new mm.Location(
+    map.center[1],
+    map.center[0]),
+    map.center[2]);
+wax.mm.zoomer(m, map).appendTo(m.parent);
+wax.mm.attribution(m, map).appendTo(m.parent);
+var interaction = wax.mm.interaction(m, map);
+
+$(function() {
+  $('#biggermap').click(function() {
+    $('#map').toggleClass('big');
+    return false;
+  });
+  $('div.wax-legends a.legend-toggler').click(function() {
+    _(map).extend(layers($(this).attr('href').split('#').pop()));
+    m.setProvider(new wax.mm.connector(map));
+    interaction.remove();
+    interaction = wax.mm.interaction(m, map);
+
+    $('div.wax-legends a.active').removeClass('active');
+    $(this).addClass('active');
+    return false;
+  });
+});
+</script>

@@ -3,28 +3,31 @@ layout: default
 classes: front
 ---
 <div id='main'>
-  <div class='map'>
-     <!--
-     <div id='block-openlayers_plus-blockswitcher' class='ne'>
-        <div class='openlayers-blockswitcher clear-block'>
-          <div class='layers data'>
-            <h2 class='layers-title'>Map Overlays</h2>
-            <div class='layers-content'>
-            </div>
-          </div>
-          <div style='display:none' class='factory'>
-            <div class='form-item form-option radio'>
-              <label class='option'></label>
-            </div>
-            <div class='form-item form-option checkbox'>
-              <label class='option'><span class='key'></span><input class='form-checkbox' type='checkbox' /></label>
-            </div>
-          </div>
-        </div>
+  <div id='map' class='map'>
+    <div class='wax-legends'>
+      <strong class='legend-item'>Map Overlays</strong>
+      <div class='legend-item'>
+        <span class='swatch' style='background-color:#e63;'></span>
+        Drone strikes under Bush
       </div>
-      <div id='map-slide-toggle'>Larger Map</div>
-    -->
-    <div id='home-map' class='waxmap' src='/map/home/{{id}}'></div>
+      <div class='legend-item'>
+        <span class='swatch' style='background-color:#ef3;'></span>
+        Drone strikes under Obama
+      </div>
+      <a class='legend-toggler active' href='#fata-q16,fata-drones'>
+        <span class='swatch'></span>
+        Support for U.S. drone strikes
+      </a>
+      <a class='legend-toggler' href='#fata-q11b,fata-drones'>
+        <span class='swatch'></span>
+        Support for Pakistani Taliban fighters
+      </a>
+      <a class='legend-toggler' href='#fata-q11d,fata-drones'>
+        <span class='swatch'></span>
+        Support for Arab and foreign Al Qaeda fighters
+      </a>
+    </div>
+    <a href='#bigger' id='biggermap'><span class='bigger'>Larger Map</span><span class='smaller'>Smaller Map</span></a>
   </div>
   <div class='navigation clearfix'>
     <div class='agencies'>

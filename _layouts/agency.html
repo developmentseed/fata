@@ -53,8 +53,18 @@ demographics:
     <span>Administrative Agencies</span>
     <span class='last'>{{page.title}}</span>
   </div>
-  <div class='map'>
-    <div id='agency-map' class='waxmap' src='/map/agency/{{agencyid}}'></div>
+  <div id='map' class='map'>
+    <div class='wax-legends'>
+      <div class='legend-item'>
+        <span class='swatch' style='background-color:#e63;'></span>
+        Drone strikes under Bush
+      </div>
+      <div class='legend-item'>
+        <span class='swatch' style='background-color:#ef3;'></span>
+        Drone strikes under Obama
+      </div>
+    </div>
+    <a href='#bigger' id='biggermap'><span class='bigger'>Larger Map</span><span class='smaller'>Smaller Map</span></a>
   </div>
   <div class='header'>
     <h2>{{page.title}}</h2>
@@ -124,3 +134,50 @@ demographics:
     </div>
   </div>
 </div>
+
+<script type='text/javascript'>
+var templates = [
+  _('<strong><%=assumed_target%></strong><br /><%=deaths_min%> deaths &mdash <%=date%>').template()
+];
+var map = {
+  "minzoom":6,
+  "maxzoom":9,
+  "center":[{{page.lon}},{{page.lat}},9],
+  "attribution": "Certain data &copy; OpenStreetMap contributors, CC-BY-SA",
+  "formatter": function(o, d) {
+    if (templates[d.__layer__]) return templates[d.__layer__](d);
+  },
+  "scheme":"tms"
+};
+var layers = function(layers) {
+  var schema = 'http://{s}.tiles.mapbox.com/devseed/1.0.0/newamerica.pakistan-fata,{l}/{z}/{x}/{y}.{format}';
+  return {
+    tiles: _(['a', 'b', 'c', 'd']).map(function(s) {
+      return schema.replace('{s}', s).replace('{l}', layers).replace('{format}', 'png128');
+    }),
+    grids: _(['a', 'b', 'c', 'd']).map(function(s) {
+      return schema.replace('{s}', s).replace('{l}', layers).replace('{format}', 'grid.json');
+    })
+  };
+};
+
+var mm = com.modestmaps;
+var m = new mm.Map('map', new wax.mm.connector(_(map).extend(layers('fata-drones'))), null, [
+    new mm.MouseHandler(),
+    new mm.TouchHandler()
+]);
+m.setCenterZoom(new mm.Location(
+    map.center[1],
+    map.center[0]),
+    map.center[2]);
+wax.mm.zoomer(m, map).appendTo(m.parent);
+wax.mm.attribution(m, map).appendTo(m.parent);
+var interaction = wax.mm.interaction(m, map);
+
+$(function() {
+  $('#biggermap').click(function() {
+    $('#map').toggleClass('big');
+    return false;
+  });
+});
+</script>
