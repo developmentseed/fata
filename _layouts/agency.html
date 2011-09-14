@@ -136,17 +136,13 @@ demographics:
 </div>
 
 <script type='text/javascript'>
-var templates = [
-  _('<strong><%=assumed_target%></strong><br /><%=deaths_min%> deaths &mdash <%=date%>').template()
-];
+var template = _('<strong><%=assumed_target%></strong><br /><%=deaths_min%> deaths &mdash <%=date%>').template();
 var map = {
   "minzoom":6,
   "maxzoom":9,
   "center":[{{page.lon}},{{page.lat}},9],
   "attribution": "Certain data &copy; OpenStreetMap contributors, CC-BY-SA",
-  "formatter": function(o, d) {
-    if (templates[d.__layer__]) return templates[d.__layer__](d);
-  },
+  "formatter": function(o, d) { return template(d); },
   "scheme":"tms"
 };
 var layers = function(layers) {
