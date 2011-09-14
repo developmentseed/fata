@@ -580,6 +580,7 @@ div.question { /* use div. here to avoid conflict with body.question */
   position:absolute;
   left:0px;
   right:0px;
+  top:0px;
   }
 
 .graph a.empty {
