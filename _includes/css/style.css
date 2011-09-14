@@ -617,8 +617,8 @@ div.question { /* use div. here to avoid conflict with body.question */
 
 .graph a:hover em { display:block; }
 
-.refused { background:#999; }
-.dont-know { background-color:#666; }
+.dont-know { background-color:#686858; }
+.refused { background:#585848; }
 
 .negotiate,
 .never-justified,

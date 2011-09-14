@@ -1,0 +1,15 @@
+{% assign data = site.categories.data[0]['fata'] %}
+{% for group in site.categories.questions %}{% if group.key == section.group %}
+<h2 class='group-shortname'>{{group.title}}</h2>
+<p class='group-text'>{{group.content}}</p>
+{% for question in group.questions %}{% if section.questions contains question.key %}
+<div class='question clearfix'>
+  {% assign question = group.questions[0] %}
+  {% if section.questions.size > 1 %}
+  <h2 class='question-name'>{{question.title}}</h2>
+  {% endif %}
+  {% include graph.html %}
+</div>
+{% endif %}{% endfor %}
+{% endif %}{% endfor %}
+

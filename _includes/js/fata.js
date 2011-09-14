@@ -23,11 +23,10 @@ $('a', demographics).click(function() {
       $('a:not(.fill)', this).each(function() {
         var val = parseInt($(this).data()[facet] || 0, 10);
         var values = {
-          width: Math.floor(280 * val / total),
-          pct: Math.floor(100 * val / total),
+          pct: (Math.floor(1000 * val / total) * 0.1).toFixed(1),
           num: val
         };
-        $(this).css({width: values.width + 'px'});
+        $(this).css({width: values.pct + '%'});
         $('i', this).html(template(values));
       });
     }).bind(this));
