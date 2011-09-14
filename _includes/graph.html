@@ -23,7 +23,6 @@
       {% if forloop.last %}<a class='fill {{class}}'></a>{% endif %}
     {% endif %}{% endfor %}
   {% endif %}
-  {% else %}
-    <a class='empty'>No data available</a>
   {% endif %}
+  <a class='fill empty {% if data[question.key]['All'] %}hidden{% endif %}'>No data available</a>
 </div>

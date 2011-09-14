@@ -13,6 +13,13 @@ $('a', demographics).click(function() {
       $('a:not(.fill)', this).each(function() {
         total += parseInt($(this).data()[facet] || 0, 10);
       });
+
+      if (total === 0) {
+        $('.empty', this).removeClass('hidden');
+      } else {
+        $('.empty', this).addClass('hidden');
+      }
+
       $('a:not(.fill)', this).each(function() {
         var val = parseInt($(this).data()[facet] || 0, 10);
         var values = {
