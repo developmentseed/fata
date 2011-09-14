@@ -1,0 +1,2 @@
+{% for agency in site.categories.agency %}{{agency.key}},{% assign data = site.categories.data[0][agency.key][page.key]['All'] %}{{data[page.pos1] | plus: data[page.pos2]}},{{data[page.pos1] | plus: data[page.pos2] | times:1000 | divided_by: data['total'] | times:0.1}},{{data[page.neg1] | plus: data[page.neg2]}},{{data[page.neg1] | plus: data[page.neg2] | times:1000 | divided_by: data['total'] | times:0.1}}{% unless forloop.last %}
+{% endunless %}{% endfor %}
