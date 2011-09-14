@@ -6,21 +6,16 @@
     38
   ],
   "center": [
-    70.37841796875,
-    30.921076375384803,
-    6
+    69.91149902343749,
+    32.82421110161323,
+    9
   ],
   "format": "png",
   "interactivity": {
     "layer": "drones",
     "template_teaser": "<strong>[assumed_target]</strong><br/>\n[deaths_min] deaths — [date]",
     "template_full": "",
-    "template_location": "",
-    "fields": [
-      "assumed_target",
-      "deaths_min",
-      "date"
-    ]
+    "template_location": ""
   },
   "minzoom": 6,
   "maxzoom": 9,
@@ -43,5 +38,5 @@
   "name": "FATA drones",
   "description": "Drone strikes in FATA",
   "attribution": "",
-  "legend": ""
+  "legend": "<div style='font-size:11px; line-height:15px; position:relative; padding-left:15px;'><span style='position:absolute; left:0px; top:2px; display:block; width:10px; height:10px;  background-color:#e63; vertical-align:middle;'></span> Drone strikes under Bush</div>\n<div style='font-size:11px; line-height:15px; position:relative; padding-left:15px;'><span style='position:absolute; left:0px; top:2px; display:block; width:10px; height:10px;  background-color:#ef3; vertical-align:middle;'></span> Drone strikes under Obama</div>"
 }

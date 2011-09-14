@@ -1,0 +1,47 @@
+{
+  "bounds": [
+    -180,
+    -85.05112877980659,
+    180,
+    85.05112877980659
+  ],
+  "center": [
+    70.44158935546875,
+    33.66949697279541,
+    8
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "fata",
+    "template_teaser": "<strong>[adm2_name]</strong><br />\n[positive_pct]% — [positive] respondents",
+    "template_full": "",
+    "template_location": ""
+  },
+  "minzoom": 6,
+  "maxzoom": 9,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "name": "fata",
+      "id": "fata",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "class": "",
+      "Datasource": {
+        "file": "layers/fata.sqlite",
+        "table": "(SELECT * FROM 'fata' INNER JOIN data.data ON data.agency = adm2_id)",
+        "attachdb": "data@layers/Q11d.sqlite",
+        "extent": "",
+        "type": "sqlite",
+        "id": "fata"
+      }
+    }
+  ],
+  "name": "FATA Q11d",
+  "description": "Do you support or oppose Pakistani Taliban fighters inside FATA today?",
+  "attribution": "",
+  "legend": "<div style='font-size:11px; line-height:15px; position:relative; padding-left:15px;'><span style='position:absolute; left:0px; top:2px; display:block; width:10px; height:10px; background-color:#7ab658;'></span> Surveyed respondents that support Pakistan Taliban fighters</div>"
+}
