@@ -9,7 +9,6 @@
         <b>{{answer}}</b>
         <i>{{pct}}% &mdash; {{data[question.key]['All'][answer]}} respondents</i>
       </em></a>
-      {% if forloop.last %}<a class='fill {{class}}'></a>{% endif %}
     {% endfor %}
   {% else %}
     {% for i in data[question.key]['All'] %}{% if i[0] != 'total' %}
@@ -20,7 +19,6 @@
         <b>{{answer}}</b>
         <i>{{pct}}% &mdash; {{data[question.key]['All'][answer]}} respondents</i>
       </em></a>
-      {% if forloop.last %}<a class='fill {{class}}'></a>{% endif %}
     {% endif %}{% endfor %}
   {% endif %}
   {% endif %}

@@ -562,6 +562,7 @@ div.question { /* use div. here to avoid conflict with body.question */
   height:14px;
   width:280px;
   position:relative;
+  background:#585848;
   }
 
 .graph a {
